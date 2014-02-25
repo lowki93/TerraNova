@@ -1,0 +1,12 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+	{% for type, messages in app.session.flashbag.all() %}
+		{% for message in messages %}
+				<p>{{ message }}</p>
+		{% endfor %}
+	{% endfor %}
+
+	{% include 'TerraNovaBundle:Security:login_box.html.twig' %}
+
+{% endblock %}

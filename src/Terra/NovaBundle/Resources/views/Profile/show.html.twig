@@ -1,0 +1,14 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+	{% trans_default_domain 'FOSUserBundle' %}
+
+	<a href="{{ path('fos_user_security_logout') }}">Déconnection</a>
+	
+	<div>
+	    <p>Username : {{ user.username }}</p>
+	    <p>Password : {{ user.email }}</p>
+	</div>
+
+{% endblock body %}

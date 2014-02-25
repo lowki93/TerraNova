@@ -1,3 +1,13 @@
 terra_nova_homepage:
     pattern:  /
     defaults: { _controller: TerraNovaBundle:Default:index }
+
+# terra_nova_api_get_user:
+#     path:      /
+#     defaults:  { _controller: Bundle:Controller:action }
+
+terra_nova_api_get_user:
+    pattern:   /api/list-user
+    defaults:  { _controller: TerraNovaBundle:Api:getUser,  _format: ~}
+    requirements:
+        _method: GET

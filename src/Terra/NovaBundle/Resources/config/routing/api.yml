@@ -1,0 +1,5 @@
+terra_nova_api_get_user:
+    pattern:   /api/list-user
+    defaults:  { _controller: TerraNovaBundle:Api:getUser,  _format: ~}
+    requirements:
+        _method: GET

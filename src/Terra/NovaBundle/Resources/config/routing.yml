@@ -6,8 +6,6 @@ terra_nova_homepage:
 #     path:      /
 #     defaults:  { _controller: Bundle:Controller:action }
 
-terra_nova_api_get_user:
-    pattern:   /api/list-user
-    defaults:  { _controller: TerraNovaBundle:Api:getUser,  _format: ~}
-    requirements:
-        _method: GET
+terra_nova_api:
+    resource: "@TerraNovaBundle/Resources/config/routing/api.yml"
+    type:   rest

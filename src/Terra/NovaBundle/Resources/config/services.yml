@@ -1,0 +1,7 @@
+parameters:
+#    terra_nova.example.class: Terra\NovaBundle\Example
+
+services:
+#    terra_nova.example:
+#        class: %terra_nova.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

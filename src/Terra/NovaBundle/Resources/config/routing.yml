@@ -1,0 +1,3 @@
+terra_nova_homepage:
+    pattern:  /
+    defaults: { _controller: TerraNovaBundle:Default:index }

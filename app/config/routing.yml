@@ -1,0 +1,4 @@
+terra_nova:
+    resource: "@TerraNovaBundle/Resources/config/routing.yml"
+    prefix:   /
+

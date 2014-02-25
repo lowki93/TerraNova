@@ -2,3 +2,5 @@ terra_nova:
     resource: "@TerraNovaBundle/Resources/config/routing.yml"
     prefix:   /
 
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"

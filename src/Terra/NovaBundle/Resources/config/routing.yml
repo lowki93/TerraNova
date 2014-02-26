@@ -2,9 +2,8 @@ terra_nova_homepage:
     pattern:  /
     defaults: { _controller: TerraNovaBundle:Default:index }
 
-# terra_nova_api_get_user:
-#     path:      /
-#     defaults:  { _controller: Bundle:Controller:action }
+terra_nova_enseignant:
+    resource: "@TerraNovaBundle/Resources/config/routing/enseignant.yml"
 
 terra_nova_api:
     resource: "@TerraNovaBundle/Resources/config/routing/api.yml"

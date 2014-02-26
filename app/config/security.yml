@@ -15,8 +15,12 @@ security:
             pattern: ^/
             form_login:
                 provider: fos_userbundle
+                remember_me: true
                 csrf_provider: form.csrf_provider
-            logout:       true
+                check_path: /enseignant/login_check
+                default_target_path: /enseignant
+            logout:
+                path:   /enseignant/logout
             anonymous:    true
 
     access_control:

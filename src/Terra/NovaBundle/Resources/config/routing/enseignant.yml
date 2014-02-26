@@ -1,0 +1,3 @@
+terra_nova_enseigant_index:
+    pattern:   /enseignant/
+    defaults:  { _controller: TerraNovaBundle:Enseignant:index }

@@ -1,5 +1,5 @@
 {% if error %}
-    <div>{{ error|trans }}</div>
+    <p>{{ error|trans }}</p>
 {% endif %}
 
 <form action="{{ path("fos_user_security_check") }}" method="post">
@@ -12,7 +12,7 @@
     <input type="password" id="password" name="_password" required="required" />
 	<br />
     <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-    <label for="remember_me">connection automatique</label>
+    <label for="remember_me">se souvenir de moi</label>
     <br />
     <input type="submit" id="_submit" name="_submit" value="Valider" />
 </form>

@@ -2,23 +2,23 @@
 
 {% block body %}
 
-    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-        <div>
-            <a href="{{ path('fos_user_security_logout') }}">Déconnection</a>
-        </div>
-    {% endif %}
+	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+		<div>
+			<a href="{{ path('fos_user_security_logout') }}">Déconnection</a>
+		</div>
+	{% endif %}
 
-    {% for type, messages in app.session.flashbag.all() %}
-        {% for message in messages %}
-            <div class="flash-{{ type }}">
-                {{ message }}
-            </div>
-        {% endfor %}
-    {% endfor %}
+	{% for type, messages in app.session.flashbag.all() %}
+		{% for message in messages %}
+			<div class="flash-{{ type }}">
+				{{ message }}
+			</div>
+		{% endfor %}
+	{% endfor %}
 
-    <div>
-        {% block fos_user_content %}
-        {% endblock fos_user_content %}
-    </div>
+	<div>
+		{% block fos_user_content %}
+		{% endblock fos_user_content %}
+	</div>
 
 {% endblock %}

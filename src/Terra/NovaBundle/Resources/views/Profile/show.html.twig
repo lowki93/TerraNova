@@ -4,11 +4,10 @@
 
 	{% trans_default_domain 'FOSUserBundle' %}
 
-	<a href="{{ path('fos_user_security_logout') }}">Déconnection</a>
-	
+	<a href="{{ path('terra_nova_enseigant_index') }}">Go to Enseignant</a>
 	<div>
-	    <p>Username : {{ user.username }}</p>
-	    <p>Password : {{ user.email }}</p>
+		<p>Username : {{ user.username }}</p>
+		<p>Email : {{ user.email }}</p>
 	</div>
 
 {% endblock body %}

@@ -3,8 +3,10 @@
 {% block body %}
 	Hello Guy ! <br />
 	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-		<a href="{{ path('fos_user_profile_show') }}">Profile</a>
+		<a href="{{ path('terra_nova_enseigant_index') }}">Enseignant</a><br />
+		<a href="{{ path('fos_user_security_logout') }}">Déconnection</a>
 	{% else %}
-		<a href="{{ path('fos_user_security_login') }}">Login</a>
+		<a href="{{ path('fos_user_security_login') }}">Go to enseignant</a>
 	{% endif %}
+
 {% endblock %}

@@ -1,12 +1,14 @@
 {% extends '::base.html.twig' %}
 
+{% block title %}Accueil{% endblock %}
+
 {% block body %}
-	Hello Guy ! <br />
+	<h1>Accueil</h1><br />
 	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 		<a href="{{ path('terra_nova_enseigant_index') }}">Enseignant</a><br />
-		<a href="{{ path('fos_user_security_logout') }}">Déconnection</a>
+		<a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
 	{% else %}
-		<a href="{{ path('fos_user_security_login') }}">Go to enseignant</a>
+		<a href="{{ path('terra_nova_enseigant_connection') }}">Go to enseignant</a>
 	{% endif %}
 
 {% endblock %}

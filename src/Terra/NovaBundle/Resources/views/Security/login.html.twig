@@ -1,5 +1,7 @@
 {% extends '::base.html.twig' %}
 
+{% block title %}Enseignant | Login{% endblock %}
+
 {% block body %}
 	{% for type, messages in app.session.flashbag.all() %}
 		{% for message in messages %}
@@ -7,6 +9,25 @@
 		{% endfor %}
 	{% endfor %}
 
-	{% include 'TerraNovaBundle:Security:login_box.html.twig' %}
+	{% if error %}
+	    <p>{{ error|trans }}</p>
+	{% endif %}
+
+	<form action="{{ path("fos_user_security_check") }}" method="post">
+	    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+	    <br />
+	    <label for="username">Login</label>
+	    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+	    <br />
+	    <label for="password">Password</label>
+	    <input type="password" id="password" name="_password" required="required" />
+		<br />
+	    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+	    <label for="remember_me">se souvenir de moi</label>
+	    <br />
+	    <input type="submit" id="_submit" name="_submit" value="Connexion" />
+	</form>
+
+	<p><a href="{{ path('terra_nova_enseigant_register') }}">Go to inscription</a></p>
 
 {% endblock %}

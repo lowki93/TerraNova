@@ -4,6 +4,7 @@ terra_nova_homepage:
 
 terra_nova_enseignant:
     resource: "@TerraNovaBundle/Resources/config/routing/enseignant.yml"
+    prefix: /enseignant
 
 terra_nova_api:
     resource: "@TerraNovaBundle/Resources/config/routing/api.yml"

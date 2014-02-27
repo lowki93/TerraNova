@@ -1,13 +1,16 @@
 {% extends "::base.html.twig" %}
 
+{% block title %}Enseignant | Profil{% endblock %}
+
 {% block body %}
 
 	{% trans_default_domain 'FOSUserBundle' %}
 
-	<a href="{{ path('terra_nova_enseigant_index') }}">Go to Enseignant</a>
+	<p><a href="{{ path('terra_nova_enseigant_index') }}">Go to Enseignant</a></p>
 	<div>
 		<p>Username : {{ user.username }}</p>
 		<p>Email : {{ user.email }}</p>
 	</div>
+	<p><a href="{{ path('terra_nova_enseigant_profile_edit') }}">Edit profil</a></p>
 
 {% endblock body %}

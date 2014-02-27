@@ -78,6 +78,9 @@ fos_user:
     profile:
         form:
             type: terra_nova_profile_edit
+    change_password:
+        form:
+            type: terra_nova_profile_change_password
 
 fos_rest:
     routing_loader:

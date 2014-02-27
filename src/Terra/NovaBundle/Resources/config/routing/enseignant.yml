@@ -3,18 +3,23 @@ terra_nova_enseigant_index:
     defaults:  { _controller: TerraNovaBundle:Enseignant:index }
 
 terra_nova_enseigant_connection:
-    path:	/connexion
+    path:   /connexion
     defaults:  { _controller: FOSUserBundle:Security:login }
 
 terra_nova_enseigant_register:
-    path:      /inscription
+    path:   /inscription
     defaults:  { _controller: FOSUserBundle:Registration:register }
 
 terra_nova_enseigant_profile_show:
-    path:	/profil
+    path:   /profil
     defaults:  { _controller: FOSUserBundle:Profile:show }
     requirements: { _method: get }
 
 terra_nova_enseigant_profile_edit:
-    path:	/profil/edit
+    path:   /profil/edit
     defaults:  { _controller: FOSUserBundle:Profile:edit }
+
+terra_nova_enseigant_profil_change_password:
+    path:   /profil/changer-de-mot-de-passe
+    defaults:  { _controller: FOSUserBundle:ChangePassword:changePassword }
+    requirements: { _method: get|post }

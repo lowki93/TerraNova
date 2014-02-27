@@ -75,6 +75,9 @@ fos_user:
     registration:
         form:
             type: terra_nova_registration
+    profile:
+        form:
+            type: terra_nova_profile_edit
 
 fos_rest:
     routing_loader:

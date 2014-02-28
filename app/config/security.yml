@@ -14,6 +14,7 @@ security:
         main:
             pattern: ^/
             form_login:
+                login_path: /enseignant/connexion
                 provider: fos_userbundle
                 remember_me: true
                 csrf_provider: form.csrf_provider
@@ -24,6 +25,7 @@ security:
             anonymous:    true
 
     access_control:
-        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/enseignant/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/enseignant/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/enseignant$, role: IS_AUTHENTICATED_FULLY }
         # IS_AUTHENTICATED_FULLY

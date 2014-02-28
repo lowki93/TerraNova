@@ -1,7 +1,6 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-
 	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 		<div>
 			<a href="{{ path('fos_user_security_logout') }}">Déconnection</a>

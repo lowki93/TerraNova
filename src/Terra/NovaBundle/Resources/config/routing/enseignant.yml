@@ -10,6 +10,21 @@ terra_nova_enseigant_register:
     path:   /inscription
     defaults:  { _controller: FOSUserBundle:Registration:register }
 
+fos_user_registration_check_email:
+    path:   /inscription/envoi-email-de-confirmation
+    defaults:  { _controller: FOSUserBundle:Registration:checkEmail }
+    requirements: { _method: get }
+
+fos_user_registration_confirm:
+    path:   /inscription/confirmation/{token}
+    defaults:  { _controller: FOSUserBundle:Registration:confirm }
+    requirements: { _method: get }
+
+fos_user_registration_confirmed:
+    path:   /inscription/confirmer
+    defaults:  { _controller: FOSUserBundle:Registration:confirmed }
+    requirements: { _method: get }
+
 terra_nova_enseigant_profile_show:
     path:   /profil
     defaults:  { _controller: FOSUserBundle:Profile:show }

@@ -21,7 +21,7 @@ class ChangePasswordFormType extends BaseType
         }
 
         $builder->add('current_password', 'password', array(
-            'label' => 'Password',
+            'label' => 'form.current_password',
             'translation_domain' => 'FOSUserBundle',
             'mapped' => false,
             'constraints' => $constraint,
@@ -29,8 +29,8 @@ class ChangePasswordFormType extends BaseType
         $builder->add('plainPassword', 'repeated', array(
             'type' => 'password',
             'options' => array('translation_domain' => 'FOSUserBundle'),
-            'first_options' => array('label' => 'New Password'),
-            'second_options' => array('label' => 'News Password Confirmation'),
+            'first_options' => array('label' => 'form.new_password'),
+            'second_options' => array('label' => 'form.new_password_confirmation'),
             'invalid_message' => 'fos_user.password.mismatch',
         ));
     }

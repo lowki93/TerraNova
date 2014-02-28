@@ -2,6 +2,8 @@
 
 {% block title %}Enseignant | Login{% endblock %}
 
+{% trans_default_domain 'FOSUserBundle' %}
+
 {% block body %}
 	{% for type, messages in app.session.flashbag.all() %}
 		{% for message in messages %}
@@ -16,16 +18,16 @@
 	<form action="{{ path("fos_user_security_check") }}" method="post">
 	    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 	    <br />
-	    <label for="username">Login</label>
+	    <label for="username">{{ 'security.login.username'|trans }}</label>
 	    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
 	    <br />
-	    <label for="password">Password</label>
+	    <label for="password">{{ 'security.login.password'|trans }}</label>
 	    <input type="password" id="password" name="_password" required="required" />
 		<br />
 	    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-	    <label for="remember_me">se souvenir de moi</label>
+	    <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
 	    <br />
-	    <input type="submit" id="_submit" name="_submit" value="Connexion" />
+	    <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
 	</form>
 
 	<p><a href="{{ path('terra_nova_enseigant_register') }}">Go to inscription</a></p>

@@ -11,7 +11,7 @@
 	<form action="{{ path('terra_nova_enseigant_profile_edit') }}" {{ form_enctype(form) }} method="POST">
 	    {{ form_widget(form) }}
 	    <div>
-	        <input type="submit" value="Valider" />
+	        <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
 	    </div>
 	</form>
 

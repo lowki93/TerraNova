@@ -74,6 +74,9 @@ fos_user:
     user_class: Terra\NovaBundle\Entity\User
     service:
         mailer: fos_user.mailer.twig_swift
+    from_email:
+        address:        noreply@terranova.dev
+        sender_name:    Terra Nova
     registration:
         form:
             type: terra_nova_registration
@@ -81,7 +84,7 @@ fos_user:
             enabled:    true
             template: TerraNovaBundle:Registration:email.txt.twig
             from_email:
-                address:    registration@acmedemo.com
+                address:    noreply@terranova.dev
                 sender_name:    Terra Nova Registration
     profile:
         form:
@@ -89,6 +92,12 @@ fos_user:
     change_password:
         form:
             type: terra_nova_profile_change_password
+    resetting:
+        email:
+            from_email:
+                address:    noreply@terranova.dev
+                sender_name:    Terra Nova new password
+            template:   TerraNovaBundle:Resetting:email.txt.twig
     template:
         engine: twig
 

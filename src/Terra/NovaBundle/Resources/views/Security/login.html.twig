@@ -5,15 +5,6 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block body %}
-	{% for type, messages in app.session.flashbag.all() %}
-		{% for message in messages %}
-				<p>{{ message }}</p>
-		{% endfor %}
-	{% endfor %}
-
-	{% if error %}
-	    <p>{{ error|trans }}</p>
-	{% endif %}
 
 	<form action="{{ path("fos_user_security_check") }}" method="post">
 	    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
@@ -30,6 +21,17 @@
 	    <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
 	</form>
 
+	{% for type, messages in app.session.flashbag.all() %}
+		{% for message in messages %}
+				<p>{{ message }}</p>
+		{% endfor %}
+	{% endfor %}
+
+	{% if error %}
+	    <p class="error">{{ error|trans }}</p>
+	{% endif %}
+
 	<p><a href="{{ path('terra_nova_enseigant_register') }}">Go to inscription</a></p>
+	<p><a href="{{ path('terra_nova_enseigant_forget_password') }}">New Password</a></p>
 
 {% endblock %}

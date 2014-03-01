@@ -16,7 +16,7 @@ Bad credentials: "Nom d'utilisateur ou mot de passe incorrect"
 
 security:
     login:
-        username: "Nom d'utilifsateur :"
+        username: "Nom d'utilisateur :"
         password: "Mot de passe :"
         remember_me: Se souvenir de moi
         submit: Connexion

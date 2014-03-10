@@ -16,7 +16,7 @@ class EnseignantController extends Controller
 			$url = $this->container->get('router')->generate('terra_nova_enseigant_connection');
 			return $response = new RedirectResponse($url);
 		} else {
-			return $this->render('TerraNovaBundle:Enseignant:index.html.twig', array());
+			return $this->render('TerraNovaBundle:Enseignant:index.html.twig', array( 'user' => $user));
 		}
 	}
 

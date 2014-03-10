@@ -28,3 +28,8 @@ etablissement_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "TerraNovaBundle:Etablissement:delete" }
     requirements: { _method: post|delete }
+
+etablissement_choose:
+    pattern: /{id}/choose
+    defaults: { _controller: "TerraNovaBundle:Etablissement:choose" }
+    requirements: { _method: get|put }

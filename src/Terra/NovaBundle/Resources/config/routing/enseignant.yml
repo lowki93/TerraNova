@@ -58,3 +58,7 @@ terra_nova_enseigant_profil_change_password:
     path:   /profil/changer-de-mot-de-passe
     defaults:  { _controller: FOSUserBundle:ChangePassword:changePassword }
     requirements: { _method: get|post }
+
+TerraNovaBundle_etablissement:
+        resource: "@TerraNovaBundle/Resources/config/routing/etablissement.yml"
+        prefix:   /etablissement

@@ -6,10 +6,6 @@ terra_nova_enseignant:
     resource: "@TerraNovaBundle/Resources/config/routing/enseignant.yml"
     prefix: /enseignant
 
-TerraNovaBundle_etablissement:
-        resource: "@TerraNovaBundle/Resources/config/routing/etablissement.yml"
-        prefix:   /etablissement
-
 terra_nova_api:
     resource: "@TerraNovaBundle/Resources/config/routing/api.yml"
     type:   rest

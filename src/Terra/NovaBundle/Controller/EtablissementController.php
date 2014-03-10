@@ -3,10 +3,12 @@
 namespace Terra\NovaBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Terra\NovaBundle\Entity\Etablissement;
 use Terra\NovaBundle\Form\EtablissementType;
+use Terra\NovaBundle\Entity\User;
 
 /**
  * Etablissement controller.
@@ -156,6 +158,7 @@ class EtablissementController extends Controller
      */
     public function updateAction(Request $request, $id)
     {
+        print_r($request);die();
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('TerraNovaBundle:Etablissement')->find($id);
@@ -202,6 +205,25 @@ class EtablissementController extends Controller
         }
 
         return $this->redirect($this->generateUrl('etablissement'));
+    }
+
+    public function chooseAction($id)
+    {
+        $user = $this->container->get('security.context')->getToken()->getUser();
+        
+        $em = $this->getDoctrine()->getManager();
+        $qb = $em->createQueryBuilder();
+        $q = $qb->update('Terra\NovaBundle\Entity\User', 'u')
+                ->set('u.idEtablissement', '?1')
+                ->set('u.id', '?2')
+                ->setParameter(1, $id)
+                ->setParameter(2, $user->getId())
+                ->getQuery();
+        $p = $q->execute();
+
+        $url = $this->container->get('router')->generate('terra_nova_enseigant_index', array('user' => $user));
+        return $response = new RedirectResponse($url);
+
     }
 
     /**

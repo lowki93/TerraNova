@@ -84,4 +84,37 @@ class User extends BaseUser
     {
         return $this->name;
     }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set idEtablissement
+     *
+     * @param \Terra\NovaBundle\Entity\Etablissement $idEtablissement
+     * @return User
+     */
+    public function setIdEtablissement(\Terra\NovaBundle\Entity\Etablissement $idEtablissement = null)
+    {
+        $this->idEtablissement = $idEtablissement;
+
+        return $this;
+    }
+
+    /**
+     * Get idEtablissement
+     *
+     * @return \Terra\NovaBundle\Entity\Etablissement 
+     */
+    public function getIdEtablissement()
+    {
+        return $this->idEtablissement;
+    }
 }

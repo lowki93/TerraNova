@@ -5,6 +5,14 @@
 {% block body %}
 
 	<h1>Enseignant</h1>
+
+	{% if user.idEtablissement is null %}
+		<p><a href="{{ path('etablissement') }}" >Choose your etablissement</a></p>
+	{% else %}
+		<p> etablissement : {{ user.idEtablissement.name }} </p>
+		    
+	{% endif %}
+
 	<p><a href="{{ path('terra_nova_homepage') }}">Back to Index</a></p>
 	<p><a href="{{ path('terra_nova_enseigant_profile_show') }}">Profile</a><br /></p>
 	<p><a href="{{ path('fos_user_security_logout') }}">Déconnection</a></p>

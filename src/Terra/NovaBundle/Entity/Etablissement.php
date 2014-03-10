@@ -246,4 +246,44 @@ class Etablissement
     {
         return $this->ville;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->ensaignant = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add ensaignant
+     *
+     * @param \Terra\NovaBundle\Entity\User $ensaignant
+     * @return Etablissement
+     */
+    public function addEnsaignant(\Terra\NovaBundle\Entity\User $ensaignant)
+    {
+        $this->ensaignant[] = $ensaignant;
+
+        return $this;
+    }
+
+    /**
+     * Remove ensaignant
+     *
+     * @param \Terra\NovaBundle\Entity\User $ensaignant
+     */
+    public function removeEnsaignant(\Terra\NovaBundle\Entity\User $ensaignant)
+    {
+        $this->ensaignant->removeElement($ensaignant);
+    }
+
+    /**
+     * Get ensaignant
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEnsaignant()
+    {
+        return $this->ensaignant;
+    }
 }

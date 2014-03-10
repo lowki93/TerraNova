@@ -1,0 +1,30 @@
+etablissement:
+    pattern:  /
+    defaults: { _controller: "TerraNovaBundle:Etablissement:index" }
+
+etablissement_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "TerraNovaBundle:Etablissement:show" }
+
+etablissement_new:
+    pattern:  /new
+    defaults: { _controller: "TerraNovaBundle:Etablissement:new" }
+
+etablissement_create:
+    pattern:  /create
+    defaults: { _controller: "TerraNovaBundle:Etablissement:create" }
+    requirements: { _method: post }
+
+etablissement_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "TerraNovaBundle:Etablissement:edit" }
+
+etablissement_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "TerraNovaBundle:Etablissement:update" }
+    requirements: { _method: post|put }
+
+etablissement_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "TerraNovaBundle:Etablissement:delete" }
+    requirements: { _method: post|delete }

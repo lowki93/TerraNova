@@ -1,0 +1,30 @@
+classe:
+    pattern:  /
+    defaults: { _controller: "TerraNovaBundle:Classe:index" }
+
+classe_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "TerraNovaBundle:Classe:show" }
+
+classe_new:
+    pattern:  /new
+    defaults: { _controller: "TerraNovaBundle:Classe:new" }
+
+classe_create:
+    pattern:  /create
+    defaults: { _controller: "TerraNovaBundle:Classe:create" }
+    requirements: { _method: post }
+
+classe_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "TerraNovaBundle:Classe:edit" }
+
+classe_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "TerraNovaBundle:Classe:update" }
+    requirements: { _method: post|put }
+
+classe_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "TerraNovaBundle:Classe:delete" }
+    requirements: { _method: post|delete }

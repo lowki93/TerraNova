@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="User")
+ * @ORM\Table(name="Enseignant")
  */
 class User extends BaseUser
 {
@@ -31,7 +31,12 @@ class User extends BaseUser
     /**
     * @ORM\ManyToOne(targetEntity="Terra\NovaBundle\Entity\Etablissement", inversedBy="ensaignant")
     */
-    protected $idEtablissement;
+    protected $etablissement;
+
+    /**
+    * @ORM\OneToMany(targetEntity="Terra\NovaBundle\Entity\Classe", mappedBy="enseignant")
+    */
+    protected $classe;
 
     public function __construct()
     {
@@ -44,7 +49,7 @@ class User extends BaseUser
      *
      * @param string $lastName
      * @return User
-     */
+     */ 
     public function setLastName($lastName)
     {
         $this->lastName = $lastName;
@@ -116,5 +121,61 @@ class User extends BaseUser
     public function getIdEtablissement()
     {
         return $this->idEtablissement;
+    }
+
+    /**
+     * Add classe
+     *
+     * @param \Terra\NovaBundle\Entity\Classe $classe
+     * @return User
+     */
+    public function addClasse(\Terra\NovaBundle\Entity\Classe $classe)
+    {
+        $this->classe[] = $classe;
+
+        return $this;
+    }
+
+    /**
+     * Remove classe
+     *
+     * @param \Terra\NovaBundle\Entity\Classe $classe
+     */
+    public function removeClasse(\Terra\NovaBundle\Entity\Classe $classe)
+    {
+        $this->classe->removeElement($classe);
+    }
+
+    /**
+     * Get classe
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getClasse()
+    {
+        return $this->classe;
+    }
+
+    /**
+     * Set etablissement
+     *
+     * @param \Terra\NovaBundle\Entity\Etablissement $etablissement
+     * @return User
+     */
+    public function setEtablissement(\Terra\NovaBundle\Entity\Etablissement $etablissement = null)
+    {
+        $this->etablissement = $etablissement;
+
+        return $this;
+    }
+
+    /**
+     * Get etablissement
+     *
+     * @return \Terra\NovaBundle\Entity\Etablissement 
+     */
+    public function getEtablissement()
+    {
+        return $this->etablissement;
     }
 }

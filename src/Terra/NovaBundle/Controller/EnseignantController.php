@@ -16,7 +16,10 @@ class EnseignantController extends Controller
 			$url = $this->container->get('router')->generate('terra_nova_enseigant_connection');
 			return $response = new RedirectResponse($url);
 		} else {
-			return $this->render('TerraNovaBundle:Enseignant:index.html.twig', array( 'user' => $user));
+			$idEnseignant = $user->getId();
+			$classe = $this->getDoctrine()->getRepository('TerraNovaBundle:Classe')->findByEnseignant($idEnseignant);
+			return $this->render('TerraNovaBundle:Enseignant:index.html.twig', array( 'user' => $user,
+																					   'classe' => $classe));
 		}
 	}
 

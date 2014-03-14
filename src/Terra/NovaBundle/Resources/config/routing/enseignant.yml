@@ -60,5 +60,9 @@ terra_nova_enseigant_profil_change_password:
     requirements: { _method: get|post }
 
 TerraNovaBundle_etablissement:
-        resource: "@TerraNovaBundle/Resources/config/routing/etablissement.yml"
-        prefix:   /etablissement
+    resource: "@TerraNovaBundle/Resources/config/routing/etablissement.yml"
+    prefix:   /etablissement
+
+TerraNovaBundle_classe:
+    resource: "@TerraNovaBundle/Resources/config/routing/classe.yml"
+    prefix:   /classe

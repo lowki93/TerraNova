@@ -215,9 +215,8 @@ class EtablissementController extends Controller
         $qb = $em->createQueryBuilder();
         $q = $qb->update('Terra\NovaBundle\Entity\User', 'u')
                 ->set('u.etablissement', '?1')
-                ->set('u.id', '?2')
                 ->setParameter(1, $id)
-                ->setParameter(2, $user->getId())
+                ->andWhere("u.id =".$user->getId()."")
                 ->getQuery();
         $p = $q->execute();
 

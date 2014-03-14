@@ -15,9 +15,13 @@
 				<br /> !! Attention, votre établissement n'est pas encore activé
 			{% endif %}
 			<br /><br />
-			<a href="{{ path('classe') }}" >Create a classe</a>
+			<a href="{{ path('classe_new') }}" >Create a classe</a>
 			{% if classe | length == 0 %}
 				<br />Vous n'avez pas de classes
+			{% else %}
+				{% for classe in user.classe %}
+				    <br />{{classe.name}}
+				{% endfor %}
 			{% endif %}
 		{% endif %}
 	</p>

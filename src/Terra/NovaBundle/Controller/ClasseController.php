@@ -35,14 +35,30 @@ class ClasseController extends Controller
      */
     public function createAction(Request $request)
     {
+
         $entity = new Classe();
         $form = $this->createCreateForm($entity);
+
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
+
+            $user = $this->container->get('security.context')->getToken()->getUser();
+            $idEnseignant = $user->getId();
+            $idEtablissement = $user->getEtablissement()->getId();
+            $em = $this->getDoctrine()->getManager();
+            $qb = $em->createQueryBuilder();
+            $q = $qb->update('Terra\NovaBundle\Entity\Classe', 'c')
+                    ->set('c.etablissement', '?1')
+                    ->set('c.enseignant', '?2')
+                    ->setParameter(1, $idEtablissement)
+                    ->setParameter(2, $idEnseignant)
+                    ->andWhere("c.id =".$entity->getId()."")
+                    ->getQuery();
+            $p = $q->execute();
 
             return $this->redirect($this->generateUrl('classe_show', array('id' => $entity->getId())));
         }
@@ -80,6 +96,7 @@ class ClasseController extends Controller
     {
         $entity = new Classe();
         $form   = $this->createCreateForm($entity);
+
 
         return $this->render('TerraNovaBundle:Classe:new.html.twig', array(
             'entity' => $entity,

@@ -14,13 +14,11 @@
 			{% if user.etablissement.active == 0 %}
 				<br /> !! Attention, votre établissement n'est pas encore activé
 			{% endif %}
-		{% endif %}
-	</p>
-
-	<p>
-		<a href="{{ path('classe') }}" >Create a classe</a>
-		{% if classe | length == 0 %}
-			<br />Vous n'avez pas de classes
+			<br /><br />
+			<a href="{{ path('classe') }}" >Create a classe</a>
+			{% if classe | length == 0 %}
+				<br />Vous n'avez pas de classes
+			{% endif %}
 		{% endif %}
 	</p>
 

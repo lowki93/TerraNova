@@ -311,7 +311,7 @@ class Etablissement
      */
     public function removeClasse(\Terra\NovaBundle\Entity\Classe $classe)
     {
-        $this->classe->removeElement($classe)
+        $this->classe->removeElement($classe);
     }
 
     /**

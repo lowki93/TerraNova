@@ -71,10 +71,14 @@ class Etablissement
     private $active;
 
     /**
-    * @ORM\OneToMany(targetEntity="Terra\NovaBundle\Entity\User", mappedBy="idEtablissement")
+    * @ORM\OneToMany(targetEntity="Terra\NovaBundle\Entity\User", mappedBy="etablissement")
     */
     protected $ensaignant;
 
+    /**
+    * @ORM\OneToMany(targetEntity="Terra\NovaBundle\Entity\Classe", mappedBy="etablissement")
+    */
+    protected $classe;
 
     /**
      * Get id
@@ -285,5 +289,38 @@ class Etablissement
     public function getEnsaignant()
     {
         return $this->ensaignant;
+    }
+
+    /**
+     * Add classe
+     *
+     * @param \Terra\NovaBundle\Entity\Classe $classe
+     * @return Etablissement
+     */
+    public function addClasse(\Terra\NovaBundle\Entity\Classe $classe)
+    {
+        $this->classe[] = $classe;
+
+        return $this;
+    }
+
+    /**
+     * Remove classe
+     *
+     * @param \Terra\NovaBundle\Entity\Classe $classe
+     */
+    public function removeClasse(\Terra\NovaBundle\Entity\Classe $classe)
+    {
+        $this->classe->removeElement($classe);
+    }
+
+    /**
+     * Get classe
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getClasse()
+    {
+        return $this->classe;
     }
 }

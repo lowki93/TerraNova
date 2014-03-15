@@ -766,12 +766,21 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
+<<<<<<< HEAD
                 "reference": "c4103172903de83563790d42ea203e3758fe9794"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/c4103172903de83563790d42ea203e3758fe9794",
                 "reference": "c4103172903de83563790d42ea203e3758fe9794",
+=======
+                "reference": "7867dfc7aa67969a24fec7f8aa1051eda23098e9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/7867dfc7aa67969a24fec7f8aa1051eda23098e9",
+                "reference": "7867dfc7aa67969a24fec7f8aa1051eda23098e9",
+>>>>>>> 6287559ced2ddec190d3d6bc309b546c92e94768
                 "shasum": ""
             },
             "require": {
@@ -826,7 +835,11 @@
             "keywords": [
                 "User management"
             ],
+<<<<<<< HEAD
             "time": "2014-03-14 17:10:00"
+=======
+            "time": "2014-03-04 23:23:39"
+>>>>>>> 6287559ced2ddec190d3d6bc309b546c92e94768
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -1703,21 +1716,20 @@
         },
         {
             "name": "symfony/icu",
-            "version": "v1.2.0",
+            "version": "v1.0.0",
             "target-dir": "Symfony/Component/Icu",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Icu.git",
-                "reference": "7299cd3d8d6602103d1ebff5d0a9917b7bc6de72"
+                "reference": "cac3fdfb111adbe590155f491594636d45129783"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Icu/zipball/7299cd3d8d6602103d1ebff5d0a9917b7bc6de72",
-                "reference": "7299cd3d8d6602103d1ebff5d0a9917b7bc6de72",
+                "url": "https://api.github.com/repos/symfony/Icu/zipball/cac3fdfb111adbe590155f491594636d45129783",
+                "reference": "cac3fdfb111adbe590155f491594636d45129783",
                 "shasum": ""
             },
             "require": {
-                "lib-icu": ">=4.4",
                 "php": ">=5.3.3",
                 "symfony/intl": "~2.3"
             },
@@ -1747,7 +1759,7 @@
                 "icu",
                 "intl"
             ],
-            "time": "2013-06-03 18:32:58"
+            "time": "2013-06-03 18:32:07"
         },
         {
             "name": "symfony/monolog-bundle",

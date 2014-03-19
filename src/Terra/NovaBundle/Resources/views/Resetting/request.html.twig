@@ -6,6 +6,7 @@
 
 	{% trans_default_domain 'FOSUserBundle' %}
 
+	<p><a href={{path('terra_nova_enseigant_connection')}}>Back to login</a></p>
 	<form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
 	    <div>
 	        {% if invalid_username is defined %}

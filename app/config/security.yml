@@ -25,7 +25,6 @@ security:
             anonymous:    true
 
     access_control:
-        - { path: ^/enseignant/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/enseignant/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/enseignant$, role: IS_AUTHENTICATED_FULLY }
+        - { path: ^/enseignant/connexion$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/enseignant/, role: IS_AUTHENTICATED_FULLY }
         # IS_AUTHENTICATED_FULLY

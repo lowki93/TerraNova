@@ -46,7 +46,7 @@ class EtablissementController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('etablissement_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('etablissement'));
         }
 
         return $this->render('TerraNovaBundle:Etablissement:new.html.twig', array(
@@ -210,7 +210,7 @@ class EtablissementController extends Controller
     public function chooseAction($id)
     {
         $user = $this->container->get('security.context')->getToken()->getUser();
-        
+
         $em = $this->getDoctrine()->getManager();
         $qb = $em->createQueryBuilder();
         $q = $qb->update('Terra\NovaBundle\Entity\User', 'u')

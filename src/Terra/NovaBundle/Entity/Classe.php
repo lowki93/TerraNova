@@ -46,9 +46,14 @@ class Classe
     protected $enseignant;
 
     /**
+     * @ORM\OneToMany(targetEntity="Terra\NovaBundle\Entity\Student", mappedBy="classe")
+     */
+    protected $student;
+
+    /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
 
     public function getId()
@@ -72,7 +77,7 @@ class Classe
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -95,7 +100,7 @@ class Classe
     /**
      * Get niveau
      *
-     * @return string 
+     * @return string
      */
     public function getNiveau()
     {
@@ -118,7 +123,7 @@ class Classe
     /**
      * Get idEtablissement
      *
-     * @return \Terra\NovaBundle\Entity\Etablissement 
+     * @return \Terra\NovaBundle\Entity\Etablissement
      */
     public function getIdEtablissement()
     {
@@ -141,7 +146,7 @@ class Classe
     /**
      * Get idEnseignant
      *
-     * @return \Terra\NovaBundle\Entity\User 
+     * @return \Terra\NovaBundle\Entity\User
      */
     public function getIdEnseignant()
     {
@@ -164,7 +169,7 @@ class Classe
     /**
      * Get etablissement
      *
-     * @return \Terra\NovaBundle\Entity\Etablissement 
+     * @return \Terra\NovaBundle\Entity\Etablissement
      */
     public function getEtablissement()
     {
@@ -187,10 +192,50 @@ class Classe
     /**
      * Get enseignant
      *
-     * @return \Terra\NovaBundle\Entity\User 
+     * @return \Terra\NovaBundle\Entity\User
      */
     public function getEnseignant()
     {
         return $this->enseignant;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->student = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add student
+     *
+     * @param \Terra\NovaBundle\Entity\Student $student
+     * @return Classe
+     */
+    public function addStudent(\Terra\NovaBundle\Entity\Student $student)
+    {
+        $this->student[] = $student;
+
+        return $this;
+    }
+
+    /**
+     * Remove student
+     *
+     * @param \Terra\NovaBundle\Entity\Student $student
+     */
+    public function removeStudent(\Terra\NovaBundle\Entity\Student $student)
+    {
+        $this->student->removeElement($student);
+    }
+
+    /**
+     * Get student
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getStudent()
+    {
+        return $this->student;
     }
 }

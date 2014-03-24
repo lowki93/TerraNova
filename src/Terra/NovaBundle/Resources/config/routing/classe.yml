@@ -28,3 +28,7 @@ classe_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "TerraNovaBundle:Classe:delete" }
     requirements: { _method: post|delete }
+
+TerraNovaBundle_Eleve:
+    resource: "@TerraNovaBundle/Resources/config/routing/student.yml"
+    prefix:   /eleve

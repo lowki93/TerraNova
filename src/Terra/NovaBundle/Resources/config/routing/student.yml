@@ -1,0 +1,30 @@
+Eleve:
+    pattern:  /
+    defaults: { _controller: "TerraNovaBundle:Student:index" }
+
+Eleve_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "TerraNovaBundle:Student:show" }
+
+Eleve_new:
+    pattern:  /new
+    defaults: { _controller: "TerraNovaBundle:Student:new" }
+
+Eleve_create:
+    pattern:  /create
+    defaults: { _controller: "TerraNovaBundle:Student:create" }
+    requirements: { _method: post }
+
+Eleve_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "TerraNovaBundle:Student:edit" }
+
+Eleve_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "TerraNovaBundle:Student:update" }
+    requirements: { _method: post|put }
+
+Eleve_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "TerraNovaBundle:Student:delete" }
+    requirements: { _method: post|delete }

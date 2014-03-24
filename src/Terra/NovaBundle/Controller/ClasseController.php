@@ -78,10 +78,15 @@ class ClasseController extends Controller
     */
     private function createCreateForm(Classe $entity)
     {
-        $form = $this->createForm(new ClasseType(), $entity, array(
-            'action' => $this->generateUrl('classe_create'),
-            'method' => 'POST',
-        ));
+        $user = $this->container->get('security.context')->getToken()->getUser();
+        $form = $this->createForm(
+            new ClasseType($user),
+            $entity,
+            array(
+                'action' => $this->generateUrl('classe_create'),
+                'method' => 'POST'
+                )
+            );
 
         $form->add('submit', 'submit', array('label' => 'Create'));
 

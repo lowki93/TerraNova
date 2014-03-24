@@ -26,5 +26,8 @@ security:
 
     access_control:
         - { path: ^/enseignant/connexion$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/enseignant/inscription$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/enseignant/inscription/confirmation, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/enseignant/inscription/envoi-email-de-confirmation-d-inscription$, role:IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/enseignant/, role: IS_AUTHENTICATED_FULLY }
         # IS_AUTHENTICATED_FULLY

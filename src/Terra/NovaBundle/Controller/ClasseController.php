@@ -163,7 +163,8 @@ class ClasseController extends Controller
     */
     private function createEditForm(Classe $entity)
     {
-        $form = $this->createForm(new ClasseType(), $entity, array(
+        $user = $this->container->get('security.context')->getToken()->getUser();
+        $form = $this->createForm(new ClasseType($user), $entity, array(
             'action' => $this->generateUrl('classe_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));

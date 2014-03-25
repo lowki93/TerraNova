@@ -21,9 +21,8 @@ class StudentController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('TerraNovaBundle:Student')->findAll();
+        $em = $this->getDoctrine();
+        $entities = $em->getRepository('TerraNovaBundle:Student')->findByClasse('1');
 
         return $this->render('TerraNovaBundle:Student:index.html.twig', array(
             'entities' => $entities,

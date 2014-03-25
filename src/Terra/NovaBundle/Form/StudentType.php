@@ -19,10 +19,13 @@ class StudentType extends AbstractType
             ->add('firstName')
             ->add('age')
             ->add('avatar')
-            ->add('classe')
+            ->add('classe', 'entity', array(
+                'class' => 'TerraNovaBundle:Classe',
+                'property' => 'name'
+            ))
         ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */

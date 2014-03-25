@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Classe
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Terra\NovaBundle\Entity\ClasseRepository")
  */
 class Classe
 {
@@ -232,7 +232,7 @@ class Classe
     /**
      * Get student
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getStudent()
     {

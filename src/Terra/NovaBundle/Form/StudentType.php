@@ -8,6 +8,11 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class StudentType extends AbstractType
 {
+
+    function __construct(){
+
+    }
+
         /**
      * @param FormBuilderInterface $builder
      * @param array $options

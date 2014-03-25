@@ -30,12 +30,12 @@
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('Eleve') }}">
+    <a href="{{ path('Eleve', {'id': idClasse}) }}">
             Back to the list
         </a>
     </li>
     <li>
-        <a href="{{ path('Eleve_edit', { 'id': entity.id }) }}">
+        <a href="{{ path('Eleve_edit', { 'id': entity.id, 'idClasse': idClasse }) }}">
             Edit
         </a>
     </li>

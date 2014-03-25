@@ -10,7 +10,7 @@
 		{% if user.etablissement is null %}
 			<a href="{{ path('etablissement') }}" >Choose your etablissement</a>
 		{% else %}
-			etablissement : {{ user.etablissement.name }}
+		etablissement : {{ user.etablissement.name }}
 			{% if user.etablissement.active == 0 %}
 				<br /> !! Attention, votre établissement n'est pas encore activé
 			{% endif %}
@@ -20,7 +20,7 @@
 				<br />Vous n'avez pas de classes
 			{% else %}
 				{% for classe in user.classe %}
-				    <br />{{classe.name}}
+				<br />{{classe.name}} <a href="{{ path('Eleve', { 'id': classe.id }) }}">List élève</a>
 				{% endfor %}
 			{% endif %}
 		{% endif %}
@@ -29,5 +29,4 @@
 	<p><a href="{{ path('terra_nova_homepage') }}">Back to Index</a></p>
 	<p><a href="{{ path('terra_nova_enseigant_profile_show') }}">Profile</a><br /></p>
 	<p><a href="{{ path('fos_user_security_logout') }}">Déconnection</a></p>
-	
 {% endblock %}

@@ -5,6 +5,7 @@ namespace Terra\NovaBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+use Terra\NovaBundle\Entity\Classe;
 use Terra\NovaBundle\Entity\Student;
 use Terra\NovaBundle\Form\StudentType;
 
@@ -19,23 +20,25 @@ class StudentController extends Controller
      * Lists all Student entities.
      *
      */
-    public function indexAction()
+    public function indexAction($id)
     {
         $em = $this->getDoctrine();
-        $entities = $em->getRepository('TerraNovaBundle:Student')->findByClasse('1');
-
+        $entities = $em->getRepository('TerraNovaBundle:Student')->findByClasse($id);
+        $name = $em->getRepository('TerraNovaBundle:Classe')->findByName($id);
         return $this->render('TerraNovaBundle:Student:index.html.twig', array(
+            'class' => $name,
             'entities' => $entities,
+            'idClasse' => $id,
         ));
     }
     /**
      * Creates a new Student entity.
      *
      */
-    public function createAction(Request $request)
+    public function createAction(Request $request, $idClasse)
     {
         $entity = new Student();
-        $form = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity, $idClasse);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -43,7 +46,7 @@ class StudentController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('Eleve_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('Eleve', array('id' => $idClasse)));
         }
 
         return $this->render('TerraNovaBundle:Student:new.html.twig', array(
@@ -59,10 +62,10 @@ class StudentController extends Controller
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createCreateForm(Student $entity)
+    private function createCreateForm(Student $entity, $idClasse)
     {
         $form = $this->createForm(new StudentType(), $entity, array(
-            'action' => $this->generateUrl('Eleve_create'),
+            'action' => $this->generateUrl('Eleve_create', array('idClasse' => $idClasse)),
             'method' => 'POST',
         ));
 
@@ -75,13 +78,14 @@ class StudentController extends Controller
      * Displays a form to create a new Student entity.
      *
      */
-    public function newAction()
+    public function newAction($idClasse)
     {
         $entity = new Student();
-        $form   = $this->createCreateForm($entity);
+        $form   = $this->createCreateForm($entity, $idClasse);
 
         return $this->render('TerraNovaBundle:Student:new.html.twig', array(
             'entity' => $entity,
+            'idClasse' => $idClasse,
             'form'   => $form->createView(),
         ));
     }
@@ -90,7 +94,7 @@ class StudentController extends Controller
      * Finds and displays a Student entity.
      *
      */
-    public function showAction($id)
+    public function showAction($id, $idClasse)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -100,9 +104,10 @@ class StudentController extends Controller
             throw $this->createNotFoundException('Unable to find Student entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
+        $deleteForm = $this->createDeleteForm($id, $idClasse);
 
         return $this->render('TerraNovaBundle:Student:show.html.twig', array(
+            'idClasse' => $idClasse,
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),        ));
     }
@@ -111,7 +116,7 @@ class StudentController extends Controller
      * Displays a form to edit an existing Student entity.
      *
      */
-    public function editAction($id)
+    public function editAction($id,$idClasse)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -121,10 +126,11 @@ class StudentController extends Controller
             throw $this->createNotFoundException('Unable to find Student entity.');
         }
 
-        $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
+        $editForm = $this->createEditForm($entity, $idClasse);
+        $deleteForm = $this->createDeleteForm($id, $idClasse);
 
         return $this->render('TerraNovaBundle:Student:edit.html.twig', array(
+            'idClasse' => $idClasse,
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -138,10 +144,10 @@ class StudentController extends Controller
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Student $entity)
+    private function createEditForm(Student $entity, $idClasse)
     {
         $form = $this->createForm(new StudentType(), $entity, array(
-            'action' => $this->generateUrl('Eleve_update', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('Eleve_update', array('id' => $entity->getId(), 'idClasse' => $idClasse)),
             'method' => 'PUT',
         ));
 
@@ -153,7 +159,7 @@ class StudentController extends Controller
      * Edits an existing Student entity.
      *
      */
-    public function updateAction(Request $request, $id)
+    public function updateAction(Request $request, $id, $idClasse)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -163,17 +169,18 @@ class StudentController extends Controller
             throw $this->createNotFoundException('Unable to find Student entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
+        $deleteForm = $this->createDeleteForm($id, $idClasse);
+        $editForm = $this->createEditForm($entity, $idClasse);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('Eleve_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('Eleve_edit', array('id' => $id, 'idClasse' => $idClasse)));
         }
 
         return $this->render('TerraNovaBundle:Student:edit.html.twig', array(
+            'idClasse' => $idClasse,
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -183,9 +190,9 @@ class StudentController extends Controller
      * Deletes a Student entity.
      *
      */
-    public function deleteAction(Request $request, $id)
+    public function deleteAction(Request $request, $id, $idClasse)
     {
-        $form = $this->createDeleteForm($id);
+        $form = $this->createDeleteForm($id, $idClasse);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -200,7 +207,7 @@ class StudentController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('Eleve'));
+        return $this->redirect($this->generateUrl('Eleve', array('id' => $idClasse)));
     }
 
     /**
@@ -210,10 +217,10 @@ class StudentController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm($id)
+    private function createDeleteForm($id, $idClasse)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('Eleve_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('Eleve_delete', array('id' => $id, 'idClasse'=> $idClasse)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()

@@ -64,10 +64,16 @@ class StudentController extends Controller
     */
     private function createCreateForm(Student $entity, $idClasse)
     {
-        $form = $this->createForm(new StudentType(), $entity, array(
-            'action' => $this->generateUrl('Eleve_create', array('idClasse' => $idClasse)),
-            'method' => 'POST',
-        ));
+        $form = $this->createForm(
+            new StudentType($idClasse),
+            $entity,
+            array(
+                'action' => $this->generateUrl('Eleve_create',
+                    array('idClasse' => $idClasse)
+                    ),
+                'method' => 'POST',
+            )
+        );
 
         $form->add('submit', 'submit', array('label' => 'Create'));
 
@@ -146,7 +152,7 @@ class StudentController extends Controller
     */
     private function createEditForm(Student $entity, $idClasse)
     {
-        $form = $this->createForm(new StudentType(), $entity, array(
+        $form = $this->createForm(new StudentType($idClasse), $entity, array(
             'action' => $this->generateUrl('Eleve_update', array('id' => $entity->getId(), 'idClasse' => $idClasse)),
             'method' => 'PUT',
         ));

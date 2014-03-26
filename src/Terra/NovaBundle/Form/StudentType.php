@@ -2,6 +2,8 @@
 
 namespace Terra\NovaBundle\Form;
 
+use Terra\NovaBundle\Entity\Classe;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -9,11 +11,14 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class StudentType extends AbstractType
 {
 
-    function __construct(){
+    private $idClasse;
 
+    public function __construct( $idClasse )
+    {
+        $this->idClasse = $idClasse;
     }
 
-        /**
+    /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
@@ -26,7 +31,13 @@ class StudentType extends AbstractType
             ->add('avatar')
             ->add('classe', 'entity', array(
                 'class' => 'TerraNovaBundle:Classe',
-                'property' => 'name'
+                'property' => 'name',
+                'query_builder' => function(EntityRepository $er) {
+                    return $er->createQueryBuilder('c')
+                              ->orderBy('c.name', 'ASC')
+                              ->where('c.id = :id')
+                              ->setParameter('id', $this->idClasse);
+                }
             ))
         ;
     }

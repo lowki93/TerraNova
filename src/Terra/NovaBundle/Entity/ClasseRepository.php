@@ -24,4 +24,13 @@ class ClasseRepository extends EntityRepository {
         return $classeName = $qb->getQuery()->getResult();
     }
 
+    /*public function findById($idClass)
+    {
+        $qb = $this->createQueryBuilder('c');
+        $qb->where('c.id = :id')
+           ->setParameter('id', $idClass);
+
+        return $class = $qb->getQuery()->getResult();
+}*/
+
 }

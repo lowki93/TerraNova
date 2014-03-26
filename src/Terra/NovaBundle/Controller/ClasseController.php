@@ -60,7 +60,7 @@ class ClasseController extends Controller
                     ->getQuery();
             $p = $q->execute();
 
-            return $this->redirect($this->generateUrl('classe_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('terra_nova_enseigant_index'));
         }
 
         return $this->render('TerraNovaBundle:Classe:new.html.twig', array(

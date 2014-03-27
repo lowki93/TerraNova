@@ -1,4 +1,4 @@
-<?
+<?php
 
 namespace Terra\NovaBundle\Entity;
 
@@ -14,5 +14,4 @@ class StudentRepository extends EntityRepository {
 
         return $class = $qb->getQuery()->getResult();
     }
-
 }

@@ -1,0 +1,30 @@
+seance:
+    pattern:  /
+    defaults: { _controller: "TerraNovaBundle:Seance:index" }
+
+seance_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "TerraNovaBundle:Seance:show" }
+
+seance_new:
+    pattern:  /new
+    defaults: { _controller: "TerraNovaBundle:Seance:new" }
+
+seance_create:
+    pattern:  /create
+    defaults: { _controller: "TerraNovaBundle:Seance:create" }
+    requirements: { _method: post }
+
+seance_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "TerraNovaBundle:Seance:edit" }
+
+seance_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "TerraNovaBundle:Seance:update" }
+    requirements: { _method: post|put }
+
+seance_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "TerraNovaBundle:Seance:delete" }
+    requirements: { _method: post|delete }

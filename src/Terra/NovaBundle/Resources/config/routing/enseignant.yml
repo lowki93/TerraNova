@@ -66,3 +66,7 @@ TerraNovaBundle_etablissement:
 TerraNovaBundle_classe:
     resource: "@TerraNovaBundle/Resources/config/routing/classe.yml"
     prefix:   /classe
+
+TerraNovaBundle_seance:
+    resource: "@TerraNovaBundle/Resources/config/routing/seance.yml"
+    prefix:   /seance

@@ -15,7 +15,7 @@ class EnseignantController extends Controller
 		$idEnseignant = $user->getId();
 		$classe = $this->getDoctrine()->getRepository('TerraNovaBundle:Classe')->findByEnseignant($idEnseignant);
 		return $this->render('TerraNovaBundle:Enseignant:index.html.twig', array( 'user' => $user,
-																					   'classe' => $classe));
+	'classe' => $classe,));
 	}
 
 }

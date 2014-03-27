@@ -38,6 +38,11 @@ class User extends BaseUser
     */
     protected $classe;
 
+    /**
+    * @ORM\OneToMany(targetEntity="Terra\NovaBundle\Entity\Seance", mappedBy="enseignant")
+    */
+    protected $seance;
+
     public function __construct()
     {
         parent::__construct();
@@ -177,5 +182,38 @@ class User extends BaseUser
     public function getEtablissement()
     {
         return $this->etablissement;
+    }
+
+    /**
+     * Add seance
+     *
+     * @param \Terra\NovaBundle\Entity\Seance $seance
+     * @return User
+     */
+    public function addSeance(\Terra\NovaBundle\Entity\Seance $seance)
+    {
+        $this->seance[] = $seance;
+
+        return $this;
+    }
+
+    /**
+     * Remove seance
+     *
+     * @param \Terra\NovaBundle\Entity\Seance $seance
+     */
+    public function removeSeance(\Terra\NovaBundle\Entity\Seance $seance)
+    {
+        $this->seance->removeElement($seance);
+    }
+
+    /**
+     * Get seance
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSeance()
+    {
+        return $this->seance;
     }
 }

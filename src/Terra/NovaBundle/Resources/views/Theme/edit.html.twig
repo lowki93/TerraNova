@@ -1,15 +1,13 @@
 {% extends '::base.html.twig' %}
 
-{% block title %}Enseignant | Modification d'un élève{% endblock %}
-
-{% block body %}
-    <h1>Student edit</h1>
+{% block body -%}
+    <h1>Theme edit</h1>
 
     {{ form(edit_form) }}
 
         <ul class="record_actions">
     <li>
-    <a href="{{ path('Eleve', {'id': idClasse}) }}">
+        <a href="{{ path('theme') }}">
             Back to the list
         </a>
     </li>

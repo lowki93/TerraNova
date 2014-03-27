@@ -1,15 +1,13 @@
 {% extends '::base.html.twig' %}
 
-{% block title%}Enseignant | Création de séances{% endblock %}
-
-{% block body %}
-    <h1>Seance creation</h1>
+{% block body -%}
+    <h1>Theme creation</h1>
 
     {{ form(form) }}
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('seance') }}">
+        <a href="{{ path('theme') }}">
             Back to the list
         </a>
     </li>

@@ -1,32 +1,28 @@
 {% extends '::base.html.twig' %}
 
-{% block title %}Enseignant | Classe{% endblock %}
-
-{% block body %}
-    <h1>Classe list</h1>
+{% block body -%}
+    <h1>Theme list</h1>
 
     <table class="records_list">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Name</th>
-                <th>Niveau</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('classe_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td><a href="{{ path('theme_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.name }}</td>
-                <td>{{ entity.niveau }}</td>
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('classe_show', { 'id': entity.id }) }}">show</a>
+                        <a href="{{ path('theme_show', { 'id': entity.id }) }}">show</a>
                     </li>
                     <li>
-                        <a href="{{ path('classe_edit', { 'id': entity.id }) }}">edit</a>
+                        <a href="{{ path('theme_edit', { 'id': entity.id }) }}">edit</a>
                     </li>
                 </ul>
                 </td>
@@ -37,7 +33,7 @@
 
         <ul>
         <li>
-            <a href="{{ path('classe_new') }}">
+            <a href="{{ path('theme_new') }}">
                 Create a new entry
             </a>
         </li>

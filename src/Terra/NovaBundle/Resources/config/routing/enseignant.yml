@@ -70,3 +70,7 @@ TerraNovaBundle_classe:
 TerraNovaBundle_seance:
     resource: "@TerraNovaBundle/Resources/config/routing/seance.yml"
     prefix:   /seance
+
+TerraNovaBundle_theme:
+    resource: "@TerraNovaBundle/Resources/config/routing/theme.yml"
+    prefix:   /theme

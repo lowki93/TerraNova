@@ -1,0 +1,30 @@
+theme:
+    pattern:  /
+    defaults: { _controller: "TerraNovaBundle:Theme:index" }
+
+theme_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "TerraNovaBundle:Theme:show" }
+
+theme_new:
+    pattern:  /new
+    defaults: { _controller: "TerraNovaBundle:Theme:new" }
+
+theme_create:
+    pattern:  /create
+    defaults: { _controller: "TerraNovaBundle:Theme:create" }
+    requirements: { _method: post }
+
+theme_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "TerraNovaBundle:Theme:edit" }
+
+theme_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "TerraNovaBundle:Theme:update" }
+    requirements: { _method: post|put }
+
+theme_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "TerraNovaBundle:Theme:delete" }
+    requirements: { _method: post|delete }

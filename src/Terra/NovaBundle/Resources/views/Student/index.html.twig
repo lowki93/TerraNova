@@ -1,6 +1,8 @@
 {% extends '::base.html.twig' %}
 
-{% block body -%}
+{% block title %}Enseignant | Elévès de {% for className in class %}{{ className.name }}{% endfor %}{% endblock %}
+
+{% block body %}
 <h1>Classe Name : {% for className in class %}{{ className.name }}{% endfor %}</h1>
 
     <a href="{{ path('terra_nova_enseigant_index') }}">Back to enseignant</a>

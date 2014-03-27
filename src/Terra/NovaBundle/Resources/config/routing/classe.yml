@@ -1,6 +1,6 @@
-classe:
-    pattern:  /
-    defaults: { _controller: "TerraNovaBundle:Classe:index" }
+#classe:
+#    pattern:  /
+#    defaults: { _controller: "TerraNovaBundle:Classe:index" }
 
 classe_show:
     pattern:  /{id}/show

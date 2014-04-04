@@ -43,10 +43,12 @@ class User extends BaseUser
     */
     protected $seance;
 
+
     public function __construct()
     {
         parent::__construct();
-        // your own logic
+        $this->roles = array('ROLE_ENSEIGANT');
+        // $this->roles = array('ROLE_BACK');
     }
 
     /**
@@ -54,7 +56,7 @@ class User extends BaseUser
      *
      * @param string $lastName
      * @return User
-     */ 
+     */
     public function setLastName($lastName)
     {
         $this->lastName = $lastName;
@@ -65,7 +67,7 @@ class User extends BaseUser
     /**
      * Get lastName
      *
-     * @return string 
+     * @return string
      */
     public function getLastName()
     {
@@ -88,7 +90,7 @@ class User extends BaseUser
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -98,7 +100,7 @@ class User extends BaseUser
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -121,7 +123,7 @@ class User extends BaseUser
     /**
      * Get idEtablissement
      *
-     * @return \Terra\NovaBundle\Entity\Etablissement 
+     * @return \Terra\NovaBundle\Entity\Etablissement
      */
     public function getIdEtablissement()
     {
@@ -154,7 +156,7 @@ class User extends BaseUser
     /**
      * Get classe
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getClasse()
     {
@@ -177,7 +179,7 @@ class User extends BaseUser
     /**
      * Get etablissement
      *
-     * @return \Terra\NovaBundle\Entity\Etablissement 
+     * @return \Terra\NovaBundle\Entity\Etablissement
      */
     public function getEtablissement()
     {
@@ -210,10 +212,11 @@ class User extends BaseUser
     /**
      * Get seance
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getSeance()
     {
         return $this->seance;
     }
+
 }

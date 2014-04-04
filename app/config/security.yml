@@ -4,7 +4,7 @@ security:
 
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
-        ROLE_SUPER_ADMIN: ROLE_ADMIN
+        ROLE_ENSEIGNANT: ROLE_USER
 
     providers:
         fos_userbundle:
@@ -29,5 +29,5 @@ security:
         - { path: ^/enseignant/inscription$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/enseignant/inscription/confirmation, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/enseignant/inscription/envoi-email-de-confirmation-d-inscription$, role:IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/enseignant/, role: IS_AUTHENTICATED_FULLY }
+        - { path: ^/enseignant, role: ROLE_ADMIN_ENSEIGANT }
         # IS_AUTHENTICATED_FULLY

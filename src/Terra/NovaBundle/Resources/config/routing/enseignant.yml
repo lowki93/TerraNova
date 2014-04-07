@@ -2,9 +2,9 @@ terra_nova_enseigant_index:
     pattern:   /
     defaults:  { _controller: TerraNovaBundle:Enseignant:index }
 
-terra_nova_enseigant_connection:
-    path:   /connexion
-    defaults:  { _controller: FOSUserBundle:Security:login }
+terra_nova_enseignant_logout:
+    path: /logout
+    defaults: { _controller: FOSUserBundle:Security:logout }
 
 terra_nova_enseigant_register:
     path:   /inscription

@@ -17,7 +17,10 @@ services:
         arguments: [%fos_user.model.user.class%]
         tags:
             - { name: form.type, alias: terra_nova_profile_change_password }
+    terra_nova.redirection_after_login:
+        class: Terra\NovaBundle\Authentification\UserRedirection
+        arguments: [@router]
 
-#    terra_nova.example:
+#   terra_nova.example:
 #        class: %terra_nova.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]

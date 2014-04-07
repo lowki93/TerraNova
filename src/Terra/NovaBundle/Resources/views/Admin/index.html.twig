@@ -1,0 +1,17 @@
+{% extends '::baseAdmin.html.twig' %}
+
+{% block stylesheets %}
+{% stylesheets filter="sass"
+        "@TerraNovaBundle/Resources/Public/css/backend.sass"
+     %}
+      <link rel="stylesheet" href="{{ asset_url }}"/>
+{% endstylesheets %}
+{% endblock %}
+{# 
+% block stylesheets %}
+    {% stylesheets
+        '@JocondeLabBundle/Resources/Public/css/search.sass'
+        filter="cssrewrite,sass" output='css/search.css' %}
+           <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+    {% endstylesheets %}
+{% endblock %} #}

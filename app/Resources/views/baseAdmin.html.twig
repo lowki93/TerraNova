@@ -1,0 +1,58 @@
+{# <!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+        {# Script for FOS Js routing #}
+       {# <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
+ #}
+ <!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% block stylesheets %}{% endblock %}
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    </head>
+    <body>
+    <div id="main" class="container-fluid">
+     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+    {# display the navigation only if an user is logged in #}
+    {% block mainmenu %}
+    <div class="row-fluid">
+      <div class="navbar">
+        <div class="navbar-inner">
+            {% include 'TerraNovaBundle:User:user.info.html.twig' with { 'user' : app.user } %}
+        </div>
+       </div>
+    </div>
+    {% endblock %}
+   {% endif %}
+     {% block body %}
+
+     {% endblock %}
+     </div>
+      {% javascripts
+            'jquery/jquery.js'
+            'jquery/jquery-ui.js'
+            'sass-bootstrap/js/bootstrap-dropdown.js'
+            'sass-bootstrap/js/bootstrap-collapse.js'
+            '@TerraNovaBundle/Resources/Public/js/bootstrap-sider-menu.js'
+            '@TerraNovaBundle/Resources/Public/js/scripts.js'
+        %}
+      <script src="{{ asset_url }}"></script>
+      {% endjavascripts %}
+      {% block javascripts %}
+      {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,25 @@
+<a class="brand hidden-mobile" href="#">WIPO BACK OFFICE ADMIN</a>
+
+{% include 'TerraNovaBundle:Admin:menu.html.twig' %}
+<!-- the new toggle buttons -->
+<div class="nav nav-collapse-top pull-right">
+
+  <ul class="nav full pull-right">
+    <li class="dropdown">
+
+      <!-- the dropdown has a custom user-avatar class, this is the small avatar with the badge -->
+
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <span>
+          <i class="icon-user"></i> <span>{{ user.name }} <i class="icon-caret-down"></i></span>
+        </span>
+      </a>
+
+      <ul class="dropdown-menu">
+        <li><a href="{# {{ path('user_profile', {'id' : user.id}) }} #}"><i class="icon-user"></i> <span>Profil</span></a></li>
+        <li><a href="{# {{ path('logout') }} #}"><i class="icon-off"></i> <span>Déconnexion</span></a></li>
+      </ul>
+    </li>
+  </ul>
+
+</div>

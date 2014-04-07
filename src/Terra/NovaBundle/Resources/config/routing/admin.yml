@@ -1,0 +1,3 @@
+terra_nova_admin_index:
+    pattern: /
+    defaults: { _controller: "TerraNovaBundle:Admin:home" }

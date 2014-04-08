@@ -1,7 +1,14 @@
-{% extends '::base.html.twig' %}
+{% extends '::baseAdmin.html.twig' %}
 
-{% block body -%}
-    <h1>Theme creation</h1>
+{% block title %}Admin | Creation d'un thème{% endblock %}
+
+{% block body %}
+    <div id="breadcrumb">
+     	<a href="{{ path('terra_nova_admin_etablissement') }}" title="" class="tip-bottom">Thèmes</a>
+    	<span class="current">Création d'un thème</span>
+    </div>
+
+    <h1>Création d'un thème</h1>
 
     {{ form(form) }}
 

@@ -36,3 +36,11 @@ terra_nova_admin_etablissement_no_active:
 etablissement_admin_active:
     pattern: /etablissement-non-active/{id}/active
     defaults: { _controller: "TerraNovaBundle:Etablissement:active" }
+
+TerraNovaBundle_theme:
+    resource: "@TerraNovaBundle/Resources/config/routing/theme.yml"
+    prefix:   /theme
+
+TerraNovaBundle_soustheme:
+        resource: "@TerraNovaBundle/Resources/config/routing/soustheme.yml"
+        prefix:   /soustheme

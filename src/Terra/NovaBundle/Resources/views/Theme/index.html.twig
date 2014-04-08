@@ -1,41 +1,42 @@
-{% extends '::base.html.twig' %}
+{% extends '::baseAdmin.html.twig' %}
+
+{% block title %}Admin | Thèmes{% endblock %}
 
 {% block body -%}
-    <h1>Theme list</h1>
-
-    <table class="records_list">
-        <thead>
+    <div id="breadcrumb">
+      <a href="{{ path('theme') }}" title="" class="tip-bottom">Thèmes</a>
+    </div>
+    {% if entities %}
+        <table class="table table-striped">
             <tr>
                 <th>Id</th>
                 <th>Name</th>
+                <th>Sous Theme</th>
                 <th>Actions</th>
             </tr>
-        </thead>
-        <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('theme_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.name }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('theme_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('theme_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            {% for entity in entities %}
+                <tr>
+                    <td><a href="{{ path('theme_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                    <td>{{ entity.name }}</td>
+                    <td>
+                        {% if entity.sousTheme is null %}
+                            {% for sousTheme in entity.sousTheme %}
+                                {{ sousTheme.name }}
+                            {% endfor %}
+                        {% else %}
+                            pas de sous themes
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{{ path('theme_show', { 'id': entity.id }) }}">voir</a><br />
+                        <a href="{{ path('theme_edit', { 'id': entity.id }) }}">editer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>Il n'y a pas de thème.</p>
+    {% endif %}
 
-        <ul>
-        <li>
-            <a href="{{ path('theme_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
+    <a href="{{ path('theme_new') }}" class="btn btn-default">Creer un thème</a>
     {% endblock %}

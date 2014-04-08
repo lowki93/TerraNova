@@ -1,0 +1,12 @@
+{% extends '::baseAdmin.html.twig' %}
+
+{% block body -%}
+    <div id="breadcrumb">
+      <a href="{{ path('terra_nova_admin_etablissement') }}" title="" class="tip-bottom">Etablissement</a>
+      <span class="current">{{ entity.name }}</span>
+    </div>
+
+    {{ form(edit_form) }}
+
+    <a href="{{ path('etablissement') }}" class="btn btn-default" >Retour</a>
+{% endblock %}

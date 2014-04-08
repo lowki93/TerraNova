@@ -9,12 +9,22 @@ class AdminController extends Controller
     public function userAction()
     {
     	$em = $this->getDoctrine()->getManager();
+    	
+        $users = $em->getRepository('TerraNovaBundle:User')->findAll();
 
-        // $entities = $em->getRepository('TerraNovaBundle:User')->findByRole;
+        return $this->render('TerraNovaBundle:Admin:index.html.twig', array(
+            'users' => $users,
+        ));
+    }
 
-        // return $this->render('TerraNovaBundle:Classe:index.html.twig', array(
-        //     'entities' => $entities,
-        // ));
-        return $this->render('TerraNovaBundle:Admin:index.html.twig');
+    public function allEtablissementAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $entities = $em->getRepository('TerraNovaBundle:Etablissement')->findAll();
+
+        return $this->render('TerraNovaBundle:Etablissement:index.html.twig', array(
+            'entities' => $entities,
+        ));
     }
 }

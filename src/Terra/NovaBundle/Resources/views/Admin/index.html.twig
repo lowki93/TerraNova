@@ -7,3 +7,40 @@
       <link rel="stylesheet" href="{{ asset_url }}"/>
 {% endstylesheets %}
 {% endblock %}
+
+{% block title %}Admin | Users{% endblock %}
+
+{% block body %}
+	<div id="breadcrumb">
+	  <a href="{{ path('terra_nova_admin_index') }}" title="" class="tip-bottom">Utilisateur</a>
+	</div>
+	<table class="table table-striped">
+  <tr>
+    <th>Id</th>
+    <th>Nom</th>
+    <th>Prénom</th>
+    <th>Username</th>
+    <th>Email</th>
+    <th>Roles</th>
+  </tr>
+{% for user in users %}
+  <tr>
+    <td>{{ user.id }}</td>
+    <td>{{ user.lastName }}</td>
+    <td>{{ user.name }}</td>
+    <td>{{ user.username }}</td>
+    <td>{{ user.email }}</td>
+    <td>
+      {% for role in user.getRoles() %} 
+          {% if role == 'ROLE_ENSEIGNANT' %}Enseignant{% endif %}
+          {% if role == 'ROLE_ADMIN' %}Admin{% endif %}
+      {% endfor %}
+    </td>
+{#     <td>
+      <a href="{{ path('user_edit', { id : entity.id }) }}">{{ 'common.action.edit' | trans | capitalize }}</a>
+    </td> #}
+  </tr>
+{% endfor %}
+</table>
+{# <a href="{{ path('user_new') }}">{{ 'common.action.create' | trans | capitalize }}</a> #}
+{% endblock %}

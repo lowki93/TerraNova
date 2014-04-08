@@ -34,6 +34,11 @@ class Theme
     protected $sousTheme;
 
     /**
+     * @ORM\OneToMany(targetEntity="Terra\NovaBundle\Entity\Seance", mappedBy="theme")
+     */
+    protected $seance;
+
+    /**
      * Get id
      *
      * @return integer

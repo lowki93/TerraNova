@@ -1,16 +1,11 @@
-{% extends '::base.html.twig' %}
+{% if is_granted("ROLE_ENSEIGNANT") %}
 
-{% block body -%}
-    <h1>Etablissement edit</h1>
+	{% include 'TerraNovaBundle:Etablissement:edit_enseignant.html.twig'  %}
 
-    {{ form(edit_form) }}
+{% endif %}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('etablissement') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
-{% endblock %}
+{% if is_granted("ROLE_ADMIN") %}
+	
+	{% include 'TerraNovaBundle:Etablissement:edit_admin.html.twig'  %}
+
+{% endif %}

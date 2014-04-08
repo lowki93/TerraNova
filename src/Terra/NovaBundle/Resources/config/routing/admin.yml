@@ -14,4 +14,17 @@ terra_nova_admin_profil_change_password:
 
 terra_nova_admin_index:
     pattern: /user
-    defaults: { _controller: "TerraNovaBundle:Admin:user" }
+    defaults: { _controller: TerraNovaBundle:Admin:user }
+
+terra_nova_admin_etablissement:
+    pattern: /tous-les-etablissement
+    defaults: { _controller: TerraNovaBundle:Admin:allEtablissement }
+
+etablissement_admin_edit:
+    pattern:  /tous-les-etablissement/{id}/edit
+    defaults: { _controller: "TerraNovaBundle:Etablissement:edit" }
+
+etablissement_admin_update:
+    pattern: /tous-les-etablissement/{id}/update
+    defaults: { _controller: "TerraNovaBundle:Etablissement:update" }
+    requirements: { _method: post|put }

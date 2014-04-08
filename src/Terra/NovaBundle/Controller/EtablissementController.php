@@ -144,7 +144,7 @@ class EtablissementController extends Controller
     private function createEditForm(Etablissement $entity)
     {
         $form = $this->createForm(new EtablissementType(), $entity, array(
-            'action' => $this->generateUrl('etablissement_update', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('etablissement_admin_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -158,7 +158,6 @@ class EtablissementController extends Controller
      */
     public function updateAction(Request $request, $id)
     {
-        print_r($request);die();
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('TerraNovaBundle:Etablissement')->find($id);
@@ -174,7 +173,7 @@ class EtablissementController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('etablissement_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('terra_nova_admin_etablissement'));
         }
 
         return $this->render('TerraNovaBundle:Etablissement:edit.html.twig', array(

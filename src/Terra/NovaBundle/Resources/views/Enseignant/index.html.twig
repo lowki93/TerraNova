@@ -23,11 +23,13 @@
 				<br />{{classe.name}} <a href="{{ path('Eleve', { 'id': classe.id }) }}">List élève</a>
 				{% endfor %}
 			{% endif %}
+			<br /><br />
+			<a href="#">Les Themes</a><br />
+			<a href="{{ path('seance')}}">Les seances</a><br />
+			<a href="">Les eleves</a>
 		{% endif %}
 	</p>
-	<p><a href="#">Les Themes</a></p>
-	<p><a href="{{ path('seance')}}">Les seances</a></p>
-	<p><a href="">Les eleves</a></p>
+
 	<p><a href="{{ path('terra_nova_homepage') }}">Back to Index</a></p>
 	<p><a href="{{ path('terra_nova_enseignant_profile_show') }}">Profile</a><br /></p>
 	<p><a href="{{ path('terra_nova_logout') }}">Déconnection</a></p>

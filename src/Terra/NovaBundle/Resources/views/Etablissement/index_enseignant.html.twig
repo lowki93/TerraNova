@@ -1,0 +1,56 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Etablissement | Liste{% endblock %}
+
+{% block body -%}
+    <h1>Etablissement list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Numeronational</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Adresse</th>
+                <th>Codepostal</th>
+                <th>Ville</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('etablissement_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.numeroNational }}</td>
+                <td>{{ entity.name }}</td>
+                <td>{{ entity.type }}</td>
+                <td>{{ entity.adresse }}</td>
+                <td>{{ entity.codePostal }}</td>
+                <td>{{ entity.ville }}</td>
+                <td>
+                <ul>
+    {#                     <li>
+                        <a href="{{ path('etablissement_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('etablissement_edit', { 'id': entity.id }) }}">edit</a>
+                    </li> #}
+                    <li>
+                        <a href="{{ path('etablissement_choose', { 'id': entity.id }) }}">choose</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('etablissement_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+{% endblock %}

@@ -6,6 +6,10 @@ terra_nova_enseigant_connection:
     path:   /connexion
     defaults:  { _controller: FOSUserBundle:Security:login }
 
+terra_nova_logout:
+    path: /logout
+    defaults: { _controller: FOSUserBundle:Security:logout }
+
 terra_nova_enseignant:
     resource: "@TerraNovaBundle/Resources/config/routing/enseignant.yml"
     prefix: /enseignant

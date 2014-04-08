@@ -16,8 +16,8 @@
       </a>
 
       <ul class="dropdown-menu">
-        <li><a href="{# {{ path('user_profile', {'id' : user.id}) }} #}"><i class="icon-user"></i> <span>Profil</span></a></li>
-        <li><a href="{# {{ path('logout') }} #}"><i class="icon-off"></i> <span>Déconnexion</span></a></li>
+        <li><a href="{{ path('terra_nova_admin_profile_edit')}}"><i class="icon-user"></i> <span>Profil</span></a></li>
+        <li><a href="{{ path('terra_nova_logout') }}"><i class="icon-off"></i> <span>Déconnexion</span></a></li>
       </ul>
     </li>
   </ul>

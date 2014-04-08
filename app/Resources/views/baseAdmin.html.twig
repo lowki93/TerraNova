@@ -1,27 +1,15 @@
-{# <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {# Script for FOS Js routing #}
-       {# <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
-        <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
-        {% block javascripts %}{% endblock %}
-    </body>
-</html>
- #}
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <title>{% block title %}{% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+          {% stylesheets filter="sass"
+                  "@TerraNovaBundle/Resources/Public/css/backend.sass"
+               %}
+                <link rel="stylesheet" href="{{ asset_url }}"/>
+          {% endstylesheets %}
+        {% endblock %}
         <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     </head>
     <body>

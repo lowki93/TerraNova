@@ -6,7 +6,7 @@
 	<h1>Accueil</h1><br />
 	{% if is_granted("ROLE_ENSEIGNANT") %}
 		<a href="{{ path('terra_nova_enseigant_index') }}">Enseignant</a><br />
-		<a href="{{ path('terra_nova_enseignant_logout') }}">Déconnexion</a>
+		<a href="{{ path('terra_nova_logout') }}">Déconnexion</a>
 	{% else %}
 		<a href="{{ path('terra_nova_enseigant_connection') }}">Connexion</a>
 	{% endif %}

@@ -2,10 +2,6 @@ terra_nova_enseigant_index:
     pattern:   /
     defaults:  { _controller: TerraNovaBundle:Enseignant:index }
 
-terra_nova_enseignant_logout:
-    path: /logout
-    defaults: { _controller: FOSUserBundle:Security:logout }
-
 terra_nova_enseigant_register:
     path:   /inscription
     defaults:  { _controller: FOSUserBundle:Registration:register }
@@ -45,16 +41,16 @@ fos_user_registration_confirmed:
     defaults:  { _controller: FOSUserBundle:Registration:confirmed }
     requirements: { _method: get }
 
-terra_nova_enseigant_profile_show:
+terra_nova_enseignant_profile_show:
     path:   /profil
     defaults:  { _controller: FOSUserBundle:Profile:show }
     requirements: { _method: get }
 
-terra_nova_enseigant_profile_edit:
+terra_nova_enseignant_profile_edit:
     path:   /profil/edit
     defaults:  { _controller: FOSUserBundle:Profile:edit }
 
-terra_nova_enseigant_profil_change_password:
+terra_nova_enseignant_profil_change_password:
     path:   /profil/changer-de-mot-de-passe
     defaults:  { _controller: FOSUserBundle:ChangePassword:changePassword }
     requirements: { _method: get|post }

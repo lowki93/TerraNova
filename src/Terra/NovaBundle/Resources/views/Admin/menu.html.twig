@@ -2,11 +2,15 @@
 
   <ul class="nav full pull-left">
     <li class="dropdown">
-      <a href="#" class="dropdown-toggle">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
         <span>
           <span>Etablissement</span>
         </span>
       </a>
+      <ul class="dropdown-menu">
+        <li><a href="{# {{ path('user_profile', {'id' : user.id}) }} #}"><span>Tous les établissement</span></a></li>
+        <li><a href="{# {{ path('logout') }} #}"><span>Établissement non activé</span></a></li>
+      </ul>
     </li>
     <li class="dropdown">
       <a href="#" class="dropdown-toggle">

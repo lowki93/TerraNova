@@ -1,0 +1,18 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Enseignant | Edit{% endblock %}
+
+{% block body %}
+
+	{% trans_default_domain 'FOSUserBundle' %}
+
+	<p><a href="{{ path('terra_nova_enseigant_profile_show') }}">Back to profil</a></p>
+
+	<form action="{{ path('terra_nova_enseigant_profile_edit') }}" {{ form_enctype(form) }} method="POST">
+	    {{ form_widget(form) }}
+	    <div>
+	        <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+	    </div>
+	</form>
+
+{% endblock  %}	

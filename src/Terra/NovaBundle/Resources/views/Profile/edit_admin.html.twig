@@ -1,0 +1,16 @@
+{% extends "::baseAdmin.html.twig" %}
+
+{% block title %}Admin | Edit{% endblock %}
+
+{% block body %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+<form action="{{ path('terra_nova_admin_profile_edit') }}" {{ form_enctype(form) }} method="POST">
+    {{ form_widget(form) }}
+    <div>
+        <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
+    </div> 
+</form>
+
+{% endblock  %}	

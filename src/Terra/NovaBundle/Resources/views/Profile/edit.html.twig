@@ -1,19 +1,11 @@
-{% extends "::base.html.twig" %}
+{% if is_granted("ROLE_ENSEIGNANT") %}
 
-{% block title %}Enseignant | Edit{% endblock %}
+	{% include 'TerraNovaBundle:Profile:edit_enseignant.html.twig'  %}
 
-{% block body %}
+{% endif %}
 
-	{% trans_default_domain 'FOSUserBundle' %}
+{% if is_granted("ROLE_ADMIN") %}
+	
+	{% include 'TerraNovaBundle:Profile:edit_admin.html.twig'  %}
 
-	<p><a href="{{ path('terra_nova_enseigant_profile_show') }}">Back to profil</a></p>
-
-	<form action="{{ path('terra_nova_enseigant_profile_edit') }}" {{ form_enctype(form) }} method="POST">
-	    {{ form_widget(form) }}
-	    <div>
-	        <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
-	    </div>
-	</form>
-
-
-{% endblock  %}
+{% endif %}

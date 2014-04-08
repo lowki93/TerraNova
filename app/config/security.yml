@@ -22,7 +22,7 @@ security:
                 success_handler: terra_nova.redirection_after_login
                 #default_target_path: /enseignant
             logout:
-                path:   /enseignant/logout
+                path:   /logout
             anonymous:    true
 
     access_control:

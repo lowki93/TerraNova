@@ -1,0 +1,15 @@
+{% extends '::baseAdmin.html.twig' %}
+
+{% block body -%}
+    <h1>SousTheme creation</h1>
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('soustheme') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

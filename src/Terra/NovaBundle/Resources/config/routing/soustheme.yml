@@ -1,0 +1,30 @@
+soustheme:
+    pattern:  /
+    defaults: { _controller: "TerraNovaBundle:SousTheme:index" }
+
+soustheme_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "TerraNovaBundle:SousTheme:show" }
+
+soustheme_new:
+    pattern:  /new
+    defaults: { _controller: "TerraNovaBundle:SousTheme:new" }
+
+soustheme_create:
+    pattern:  /create
+    defaults: { _controller: "TerraNovaBundle:SousTheme:create" }
+    requirements: { _method: post }
+
+soustheme_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "TerraNovaBundle:SousTheme:edit" }
+
+soustheme_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "TerraNovaBundle:SousTheme:update" }
+    requirements: { _method: post|put }
+
+soustheme_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "TerraNovaBundle:SousTheme:delete" }
+    requirements: { _method: post|delete }

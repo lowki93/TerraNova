@@ -28,3 +28,11 @@ etablissement_admin_update:
     pattern: /tous-les-etablissement/{id}/update
     defaults: { _controller: "TerraNovaBundle:Etablissement:update" }
     requirements: { _method: post|put }
+
+terra_nova_admin_etablissement_no_active:
+    pattern: /etablissement-non-active
+    defaults: { _controller: TerraNovaBundle:Admin:NoActiveEtablissement }
+
+etablissement_admin_active:
+    pattern: /etablissement-non-active/{id}/active
+    defaults: { _controller: "TerraNovaBundle:Etablissement:active" }

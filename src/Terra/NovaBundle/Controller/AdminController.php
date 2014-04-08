@@ -25,6 +25,19 @@ class AdminController extends Controller
 
         return $this->render('TerraNovaBundle:Etablissement:index.html.twig', array(
             'entities' => $entities,
+            'active' => $active = false,
+        ));
+    }
+
+    public function NoActiveEtablissementAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $entities = $em->getRepository('TerraNovaBundle:Etablissement')->findByActive(false);
+
+        return $this->render('TerraNovaBundle:Etablissement:index.html.twig', array(
+            'entities' => $entities,
+            'active' => $active = true,
         ));
     }
 }

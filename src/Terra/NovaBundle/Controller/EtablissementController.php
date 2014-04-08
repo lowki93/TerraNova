@@ -240,4 +240,19 @@ class EtablissementController extends Controller
             ->getForm()
         ;
     }
+
+    public function activeAction($id)
+    {  
+        $em = $this->getDoctrine()->getManager();
+        $qb = $em->createQueryBuilder();
+        $q = $qb->update('Terra\NovaBundle\Entity\Etablissement', 'e')
+                ->set('e.active', '?1')
+                ->setParameter(1, $id)
+                ->andWhere("e.id =".$id."")
+                ->getQuery();
+        $p = $q->execute();
+
+        $url = $this->container->get('router')->generate('terra_nova_admin_etablissement_no_active');
+        return $response = new RedirectResponse($url);
+    }
 }

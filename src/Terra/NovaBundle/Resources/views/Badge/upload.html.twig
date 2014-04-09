@@ -1,0 +1,18 @@
+{% extends '::baseAdmin.html.twig' %}
+
+{% block title %}Admin | Creation d'un thème{% endblock %}
+
+{% block body %}
+    <div id="breadcrumb">
+     	<a href="{{ path('badge_upload') }}" title="" class="tip-bottom">Badge</a>
+    </div>
+
+    <h1>Création d'un bagde</h1>
+
+    <form action="{{ path('badge_upload') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+
+        <input type="submit" class="btn btn-default" value="Upload Document" />
+    </form>
+
+{% endblock %}

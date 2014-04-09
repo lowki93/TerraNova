@@ -1,0 +1,30 @@
+badge:
+    pattern:  /
+    defaults: { _controller: "TerraNovaBundle:Badge:index" }
+
+badge_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "TerraNovaBundle:Badge:show" }
+
+badge_new:
+    pattern:  /new
+    defaults: { _controller: "TerraNovaBundle:Badge:new" }
+
+badge_create:
+    pattern:  /create
+    defaults: { _controller: "TerraNovaBundle:Badge:create" }
+    requirements: { _method: post }
+
+badge_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "TerraNovaBundle:Badge:edit" }
+
+badge_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "TerraNovaBundle:Badge:update" }
+    requirements: { _method: post|put }
+
+badge_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "TerraNovaBundle:Badge:delete" }
+    requirements: { _method: post|delete }

@@ -42,5 +42,9 @@ TerraNovaBundle_theme:
     prefix:   /theme
 
 TerraNovaBundle_soustheme:
-        resource: "@TerraNovaBundle/Resources/config/routing/soustheme.yml"
-        prefix:   /soustheme
+    resource: "@TerraNovaBundle/Resources/config/routing/soustheme.yml"
+    prefix:   /soustheme
+
+TerraNovaBundle_badge:
+    resource: "@TerraNovaBundle/Resources/config/routing/badge.yml"
+    prefix:   /badge

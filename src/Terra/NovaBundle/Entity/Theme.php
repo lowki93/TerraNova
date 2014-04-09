@@ -110,4 +110,37 @@ class Theme
     {
         return $this->sousTheme;
     }
+
+    /**
+     * Add seance
+     *
+     * @param \Terra\NovaBundle\Entity\Seance $seance
+     * @return Theme
+     */
+    public function addSeance(\Terra\NovaBundle\Entity\Seance $seance)
+    {
+        $this->seance[] = $seance;
+
+        return $this;
+    }
+
+    /**
+     * Remove seance
+     *
+     * @param \Terra\NovaBundle\Entity\Seance $seance
+     */
+    public function removeSeance(\Terra\NovaBundle\Entity\Seance $seance)
+    {
+        $this->seance->removeElement($seance);
+    }
+
+    /**
+     * Get seance
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSeance()
+    {
+        return $this->seance;
+    }
 }

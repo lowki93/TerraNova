@@ -20,11 +20,13 @@
                     <td>{{ entity.name }}</td>
                     <td>
                         {% if entity.sousTheme is null %}
-                            {% for sousTheme in entity.sousTheme %}
-                                {{ sousTheme.name }}
-                            {% endfor %}
-                        {% else %}
                             pas de sous themes
+                        {% else %}
+                            <ul>
+                                {% for sousTheme in entity.sousTheme %}
+                                    <li>{{ sousTheme.name }}</li>
+                                {% endfor %}
+                            </ul>
                         {% endif %}
                     </td>
                     <td>

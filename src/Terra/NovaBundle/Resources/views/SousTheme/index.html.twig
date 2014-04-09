@@ -18,16 +18,18 @@
                 <tr>
                     <td><a href="{{ path('soustheme_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                     <td>{{ entity.name }}</td>
-                    <th>Thème</th>
                     <td>
-                    <ul>
+                        {{ entity.theme.name }}
+                    </td>
+                    <td>
+{#                     <ul>
                         <li>
                             <a href="{{ path('soustheme_show', { 'id': entity.id }) }}">show</a>
                         </li>
                         <li>
                             <a href="{{ path('soustheme_edit', { 'id': entity.id }) }}">edit</a>
                         </li>
-                    </ul>
+                    </ul> #}
                     </td>
                 </tr>
             {% endfor %}

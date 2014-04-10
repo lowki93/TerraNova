@@ -44,7 +44,7 @@ class TrophyController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('trophy_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('trophy'));
         }
 
         return $this->render('TerraNovaBundle:Trophy:new.html.twig', array(
@@ -146,8 +146,6 @@ class TrophyController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
-
         return $form;
     }
     /**
@@ -171,7 +169,7 @@ class TrophyController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('trophy_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('trophy'));
         }
 
         return $this->render('TerraNovaBundle:Trophy:edit.html.twig', array(
@@ -216,7 +214,6 @@ class TrophyController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('trophy_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
     }

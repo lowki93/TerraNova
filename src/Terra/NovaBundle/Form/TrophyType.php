@@ -2,6 +2,7 @@
 
 namespace Terra\NovaBundle\Form;
 
+use Terra\NovaBundle\Entity\SousTheme;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -16,9 +17,12 @@ class TrophyType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('type')
-            ->add('path')
-            ->add('sousTheme')
+            ->add('sousTheme', 'entity', array(
+                'class' => 'TerraNovaBundle:SousTheme',
+                'property' => 'name',
+            ))
+            ->add('file')
+            ->add('type', 'choice', array('choices' => array('Or' => 'or', 'Argent' => 'Argent', 'Bronze' => 'Bronze')))
         ;
     }
     

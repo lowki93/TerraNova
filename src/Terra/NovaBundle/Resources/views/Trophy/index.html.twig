@@ -1,45 +1,30 @@
-{% extends '::base.html.twig' %}
+{% extends '::baseAdmin.html.twig' %}
+
+{% block title %} Admin | Trophée{% endblock %}
 
 {% block body -%}
-    <h1>Trophy list</h1>
+    <div id="breadcrumb">
+        <a href="{{ path('trophy') }}" title="" class="tip-bottom">Trophés</a>
+    </div>
 
-    <table class="records_list">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Path</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('trophy_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.name }}</td>
-                <td>{{ entity.type }}</td>
-                <td>{{ entity.path }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('trophy_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('trophy_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    {% if entities %}
+        <div class="container">
+            <div class="row">
+                {% for entity in entities %}
+                    <div class="span3 reward-badge">
+                        <div>Nom : {{ entity.name }}</div>
+                        <img src="/img/trophy/{{ entity.path }}" alt="{{ entity.name }}" />
+                        <div class="badge-hover">
+{#                             <a href="{{ path('badge_show', { 'id': entity.id }) }}">voir</a><br /> #}
+                            <a href="{{ path('trophy_edit', { 'id': entity.id }) }}">editer</a> 
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        <p>Il n'y a pas de trophé</p>
+    {% endif %}
+    <a href="{{ path('trophy_new') }}">Créer un trophé</a>
 
-        <ul>
-        <li>
-            <a href="{{ path('trophy_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
-    {% endblock %}
+{% endblock %}

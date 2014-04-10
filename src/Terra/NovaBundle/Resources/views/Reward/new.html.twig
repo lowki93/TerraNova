@@ -1,0 +1,27 @@
+{% extends '::baseAdmin.html.twig' %}
+
+{% block title %}Admin | Creation d'une récompense{% endblock %}
+
+{% block body -%}
+    <div id="breadcrumb">
+     	<a href="{{ path('reward') }}" title="" class="tip-bottom">Récompense</a>
+    	<span class="current">Création d'une récompense</span>
+    </div>
+
+    {{ form_start(form, { 'attr': {'class' : 'form-horizontal'} }) }}
+    <div class="control-group">
+        <label class="control-label">Nom</label>
+        <div class="controls">
+            {{ form_widget(form.name) }}
+        </div>
+    </div>
+
+
+    {{ form_widget(form._token) }}
+    <div class="control-group">
+        <div class="controls">
+            <button type="submit" class="btn btn-primary">Créer</button>
+            <a href="{{ path('reward') }}"class="btn btn-default">Retour</a>
+        </div>
+    </div>
+{% endblock %}

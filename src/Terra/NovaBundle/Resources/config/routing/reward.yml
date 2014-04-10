@@ -1,0 +1,30 @@
+reward:
+    pattern:  /
+    defaults: { _controller: "TerraNovaBundle:Reward:index" }
+
+reward_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "TerraNovaBundle:Reward:show" }
+
+reward_new:
+    pattern:  /new
+    defaults: { _controller: "TerraNovaBundle:Reward:new" }
+
+reward_create:
+    pattern:  /create
+    defaults: { _controller: "TerraNovaBundle:Reward:create" }
+    requirements: { _method: post }
+
+reward_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "TerraNovaBundle:Reward:edit" }
+
+reward_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "TerraNovaBundle:Reward:update" }
+    requirements: { _method: post|put }
+
+reward_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "TerraNovaBundle:Reward:delete" }
+    requirements: { _method: post|delete }

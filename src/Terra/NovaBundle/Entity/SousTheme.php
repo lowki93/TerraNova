@@ -39,9 +39,9 @@ class SousTheme
     protected $seance;
 
     /**
-     * @ORM\OneToMany(targetEntity="Terra\NovaBundle\Entity\Badge", mappedBy="sousTheme")
+     * @ORM\OneToMany(targetEntity="Terra\NovaBundle\Entity\Trophy", mappedBy="sousTheme")
      */
-    protected $bagde;
+    protected $trophy;
 
     /**
      * Get id
@@ -160,5 +160,38 @@ class SousTheme
     public function getSeance()
     {
         return $this->seance;
+    }
+
+    /**
+     * Add trophy
+     *
+     * @param \Terra\NovaBundle\Entity\Trophy $trophy
+     * @return SousTheme
+     */
+    public function addTrophy(\Terra\NovaBundle\Entity\Trophy $trophy)
+    {
+        $this->trophy[] = $trophy;
+
+        return $this;
+    }
+
+    /**
+     * Remove trophy
+     *
+     * @param \Terra\NovaBundle\Entity\Trophy $trophy
+     */
+    public function removeTrophy(\Terra\NovaBundle\Entity\Trophy $trophy)
+    {
+        $this->trophy->removeElement($trophy);
+    }
+
+    /**
+     * Get trophy
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getTrophy()
+    {
+        return $this->trophy;
     }
 }

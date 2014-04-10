@@ -35,7 +35,17 @@ class Trophy
      */
     private $type;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="path", type="string", length=255)
+     */
+    private $path;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Terra\NovaBundle\Entity\SousTheme", inversedBy="trophy")
+     */
+    protected $sousTheme;
     /**
      * Get id
      *
@@ -90,5 +100,51 @@ class Trophy
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     * @return Trophy
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+
+        return $this;
+    }
+
+    /**
+     * Get path
+     *
+     * @return string 
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
+
+    /**
+     * Set sousTheme
+     *
+     * @param \Terra\NovaBundle\Entity\SousTheme $sousTheme
+     * @return Trophy
+     */
+    public function setSousTheme(\Terra\NovaBundle\Entity\SousTheme $sousTheme = null)
+    {
+        $this->sousTheme = $sousTheme;
+
+        return $this;
+    }
+
+    /**
+     * Get sousTheme
+     *
+     * @return \Terra\NovaBundle\Entity\SousTheme 
+     */
+    public function getSousTheme()
+    {
+        return $this->sousTheme;
     }
 }

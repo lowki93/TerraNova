@@ -5,37 +5,37 @@ namespace Terra\NovaBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-use Terra\NovaBundle\Entity\Badge;
-use Terra\NovaBundle\Form\BadgeType;
+use Terra\NovaBundle\Entity\Reward;
+use Terra\NovaBundle\Form\RewardType;
 
 /**
- * Badge controller.
+ * Reward controller.
  *
  */
-class BadgeController extends Controller
+class RewardController extends Controller
 {
 
     /**
-     * Lists all Badge entities.
+     * Lists all Reward entities.
      *
      */
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('TerraNovaBundle:Badge')->findAll();
+        $entities = $em->getRepository('TerraNovaBundle:Reward')->findAll();
 
-        return $this->render('TerraNovaBundle:Badge:index.html.twig', array(
+        return $this->render('TerraNovaBundle:Reward:index.html.twig', array(
             'entities' => $entities,
         ));
     }
     /**
-     * Creates a new Badge entity.
+     * Creates a new Reward entity.
      *
      */
     public function createAction(Request $request)
     {
-        $entity = new Badge();
+        $entity = new Reward();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -44,26 +44,26 @@ class BadgeController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('badge'));
+            return $this->redirect($this->generateUrl('reward'));
         }
 
-        return $this->render('TerraNovaBundle:Badge:new.html.twig', array(
+        return $this->render('TerraNovaBundle:Reward:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
 
     /**
-    * Creates a form to create a Badge entity.
+    * Creates a form to create a Reward entity.
     *
-    * @param Badge $entity The entity
+    * @param Reward $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createCreateForm(Badge $entity)
+    private function createCreateForm(Reward $entity)
     {
-        $form = $this->createForm(new BadgeType(), $entity, array(
-            'action' => $this->generateUrl('badge_create'),
+        $form = $this->createForm(new RewardType(), $entity, array(
+            'action' => $this->generateUrl('reward_create'),
             'method' => 'POST',
         ));
 
@@ -73,59 +73,59 @@ class BadgeController extends Controller
     }
 
     /**
-     * Displays a form to create a new Badge entity.
+     * Displays a form to create a new Reward entity.
      *
      */
     public function newAction()
     {
-        $entity = new Badge();
+        $entity = new Reward();
         $form   = $this->createCreateForm($entity);
 
-        return $this->render('TerraNovaBundle:Badge:new.html.twig', array(
+        return $this->render('TerraNovaBundle:Reward:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
     }
 
     /**
-     * Finds and displays a Badge entity.
+     * Finds and displays a Reward entity.
      *
      */
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('TerraNovaBundle:Badge')->find($id);
+        $entity = $em->getRepository('TerraNovaBundle:Reward')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Badge entity.');
+            throw $this->createNotFoundException('Unable to find Reward entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('TerraNovaBundle:Badge:show.html.twig', array(
+        return $this->render('TerraNovaBundle:Reward:show.html.twig', array(
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),        ));
     }
 
     /**
-     * Displays a form to edit an existing Badge entity.
+     * Displays a form to edit an existing Reward entity.
      *
      */
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('TerraNovaBundle:Badge')->find($id);
+        $entity = $em->getRepository('TerraNovaBundle:Reward')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Badge entity.');
+            throw $this->createNotFoundException('Unable to find Reward entity.');
         }
 
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('TerraNovaBundle:Badge:edit.html.twig', array(
+        return $this->render('TerraNovaBundle:Reward:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -133,33 +133,35 @@ class BadgeController extends Controller
     }
 
     /**
-    * Creates a form to edit a Badge entity.
+    * Creates a form to edit a Reward entity.
     *
-    * @param Badge $entity The entity
+    * @param Reward $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Badge $entity)
+    private function createEditForm(Reward $entity)
     {
-        $form = $this->createForm(new BadgeType(), $entity, array(
-            'action' => $this->generateUrl('badge_update', array('id' => $entity->getId())),
+        $form = $this->createForm(new RewardType(), $entity, array(
+            'action' => $this->generateUrl('reward_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
+
+        $form->add('submit', 'submit', array('label' => 'Update'));
 
         return $form;
     }
     /**
-     * Edits an existing Badge entity.
+     * Edits an existing Reward entity.
      *
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('TerraNovaBundle:Badge')->find($id);
+        $entity = $em->getRepository('TerraNovaBundle:Reward')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Badge entity.');
+            throw $this->createNotFoundException('Unable to find Reward entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -169,17 +171,17 @@ class BadgeController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('badge'));
+            return $this->redirect($this->generateUrl('reward_edit', array('id' => $id)));
         }
 
-        return $this->render('TerraNovaBundle:Badge:edit.html.twig', array(
+        return $this->render('TerraNovaBundle:Reward:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
     /**
-     * Deletes a Badge entity.
+     * Deletes a Reward entity.
      *
      */
     public function deleteAction(Request $request, $id)
@@ -189,21 +191,21 @@ class BadgeController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('TerraNovaBundle:Badge')->find($id);
+            $entity = $em->getRepository('TerraNovaBundle:Reward')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Badge entity.');
+                throw $this->createNotFoundException('Unable to find Reward entity.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('badge'));
+        return $this->redirect($this->generateUrl('reward'));
     }
 
     /**
-     * Creates a form to delete a Badge entity by id.
+     * Creates a form to delete a Reward entity by id.
      *
      * @param mixed $id The entity id
      *
@@ -212,8 +214,9 @@ class BadgeController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('badge_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('reward_delete', array('id' => $id)))
             ->setMethod('DELETE')
+            ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
     }

@@ -2,9 +2,9 @@ badge:
     pattern:  /
     defaults: { _controller: "TerraNovaBundle:Badge:index" }
 
-badge_show:
-    pattern:  /{id}/show
-    defaults: { _controller: "TerraNovaBundle:Badge:show" }
+# badge_show:
+#     pattern:  /{id}/show
+#     defaults: { _controller: "TerraNovaBundle:Badge:show" }
 
 badge_new:
     pattern:  /new

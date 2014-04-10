@@ -38,9 +38,9 @@ class Badge
     private $path;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Terra\NovaBundle\Entity\SousTheme", inversedBy="bagde")
+     * @ORM\ManyToOne(targetEntity="Terra\NovaBundle\Entity\Reward", inversedBy="bagde")
      */
-    protected $sousTheme;
+    protected $reward;
 
     /**
      * @Assert\File(maxSize="6000000")
@@ -168,25 +168,25 @@ class Badge
     }
 
     /**
-     * Set sousTheme
+     * Set reward
      *
-     * @param \Terra\NovaBundle\Entity\SousTheme $sousTheme
+     * @param \Terra\NovaBundle\Entity\Reward $reward
      * @return Badge
      */
-    public function setSousTheme(\Terra\NovaBundle\Entity\SousTheme $sousTheme = null)
+    public function setReward(\Terra\NovaBundle\Entity\Reward $reward = null)
     {
-        $this->sousTheme = $sousTheme;
+        $this->reward = $reward;
 
         return $this;
     }
 
     /**
-     * Get sousTheme
+     * Get reward
      *
-     * @return \Terra\NovaBundle\Entity\SousTheme 
+     * @return \Terra\NovaBundle\Entity\Reward 
      */
-    public function getSousTheme()
+    public function getReward()
     {
-        return $this->sousTheme;
+        return $this->reward;
     }
 }

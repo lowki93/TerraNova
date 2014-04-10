@@ -29,6 +29,11 @@ class Reward
     private $name;
 
     /**
+     * @ORM\OneToMany(targetEntity="Terra\NovaBundle\Entity\Badge", mappedBy="reward")
+     */
+    protected $bagde;
+
+    /**
      * Get id
      *
      * @return integer 
@@ -59,5 +64,45 @@ class Reward
     public function getName()
     {
         return $this->name;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->bagde = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add bagde
+     *
+     * @param \Terra\NovaBundle\Entity\Badge $bagde
+     * @return Reward
+     */
+    public function addBagde(\Terra\NovaBundle\Entity\Badge $bagde)
+    {
+        $this->bagde[] = $bagde;
+
+        return $this;
+    }
+
+    /**
+     * Remove bagde
+     *
+     * @param \Terra\NovaBundle\Entity\Badge $bagde
+     */
+    public function removeBagde(\Terra\NovaBundle\Entity\Badge $bagde)
+    {
+        $this->bagde->removeElement($bagde);
+    }
+
+    /**
+     * Get bagde
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getBagde()
+    {
+        return $this->bagde;
     }
 }

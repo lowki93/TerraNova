@@ -161,37 +161,4 @@ class SousTheme
     {
         return $this->seance;
     }
-
-    /**
-     * Add bagde
-     *
-     * @param \Terra\NovaBundle\Entity\Badge $bagde
-     * @return SousTheme
-     */
-    public function addBagde(\Terra\NovaBundle\Entity\Badge $bagde)
-    {
-        $this->bagde[] = $bagde;
-
-        return $this;
-    }
-
-    /**
-     * Remove bagde
-     *
-     * @param \Terra\NovaBundle\Entity\Badge $bagde
-     */
-    public function removeBagde(\Terra\NovaBundle\Entity\Badge $bagde)
-    {
-        $this->bagde->removeElement($bagde);
-    }
-
-    /**
-     * Get bagde
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getBagde()
-    {
-        return $this->bagde;
-    }
 }

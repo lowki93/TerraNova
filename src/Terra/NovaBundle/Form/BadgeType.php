@@ -2,7 +2,7 @@
 
 namespace Terra\NovaBundle\Form;
 
-use Terra\NovaBundle\Entity\sousTheme;
+use Terra\NovaBundle\Entity\Reward;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -17,8 +17,8 @@ class BadgeType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('sousTheme', 'entity', array(
-                'class' => 'TerraNovaBundle:sousTheme',
+            ->add('reward', 'entity', array(
+                'class' => 'TerraNovaBundle:Reward',
                 'property' => 'name',
             ))
             ->add('file')

@@ -17,25 +17,39 @@ terra_nova_admin_index:
     defaults: { _controller: TerraNovaBundle:Admin:user }
 
 terra_nova_admin_etablissement:
-    pattern: /tous-les-etablissement
+    pattern: /etablissement
     defaults: { _controller: TerraNovaBundle:Admin:allEtablissement }
 
 etablissement_admin_edit:
-    pattern:  /tous-les-etablissement/{id}/edit
+    pattern:  /etablissement/{id}/edit
     defaults: { _controller: "TerraNovaBundle:Etablissement:edit" }
 
 etablissement_admin_update:
-    pattern: /tous-les-etablissement/{id}/update
+    pattern: /etablissement/{id}/update
     defaults: { _controller: "TerraNovaBundle:Etablissement:update" }
     requirements: { _method: post|put }
 
 terra_nova_admin_etablissement_no_active:
-    pattern: /etablissement-non-active
+    pattern: /etablissement/non-active
     defaults: { _controller: TerraNovaBundle:Admin:NoActiveEtablissement }
 
 etablissement_admin_active:
-    pattern: /etablissement-non-active/{id}/active
+    pattern: /etablissement/non-active/{id}/active
     defaults: { _controller: "TerraNovaBundle:Etablissement:active" }
+
+etablissement_admin_new:
+    pattern:  /etablissement/new
+    defaults: { _controller: "TerraNovaBundle:Etablissement:new" }
+
+etablissement_admin_create:
+    pattern:  /etablissement/create
+    defaults: { _controller: "TerraNovaBundle:Etablissement:create" }
+    requirements: { _method: post }
+
+etablissement_admin_delete:
+    pattern:  /etablissement/{id}/delete
+    defaults: { _controller: "TerraNovaBundle:Etablissement:delete" }
+    requirements: { _method: post|delete }
 
 TerraNovaBundle_theme:
     resource: "@TerraNovaBundle/Resources/config/routing/theme.yml"

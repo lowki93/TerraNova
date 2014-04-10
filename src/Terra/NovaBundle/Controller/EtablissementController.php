@@ -46,7 +46,14 @@ class EtablissementController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('etablissement'));
+            $Roles = $this->container->get('security.context')->getToken()->getUser()->getRoles();
+
+            if (in_array("ROLE_ENSEIGNANT", $Roles)) {
+                return $this->redirect($this->generateUrl('etablissement'));
+            } else if (in_array("ROLE_ADMIN", $Roles)){
+                return $this->redirect($this->generateUrl('terra_nova_admin_etablissement'));
+            }
+            
         }
 
         return $this->render('TerraNovaBundle:Etablissement:new.html.twig', array(
@@ -64,10 +71,20 @@ class EtablissementController extends Controller
     */
     private function createCreateForm(Etablissement $entity)
     {
-        $form = $this->createForm(new EtablissementType(), $entity, array(
-            'action' => $this->generateUrl('etablissement_create'),
-            'method' => 'POST',
-        ));
+
+        $Roles = $this->container->get('security.context')->getToken()->getUser()->getRoles();
+
+        if (in_array("ROLE_ENSEIGNANT", $Roles)) {
+            $form = $this->createForm(new EtablissementType(), $entity, array(
+                'action' => $this->generateUrl('etablissement_create'),
+                'method' => 'POST',
+            ));
+        } else if (in_array("ROLE_ADMIN", $Roles)){
+            $form = $this->createForm(new EtablissementType(), $entity, array(
+                'action' => $this->generateUrl('etablissement_admin_create'),
+                'method' => 'POST',
+            ));
+        }
 
         $form->add('submit', 'submit', array('label' => 'Create'));
 
@@ -148,8 +165,6 @@ class EtablissementController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
-
         return $form;
     }
     /**
@@ -203,7 +218,7 @@ class EtablissementController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('etablissement'));
+        return $this->redirect($this->generateUrl('terra_nova_admin_etablissement'));
     }
 
     public function chooseAction($id)
@@ -234,9 +249,8 @@ class EtablissementController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('etablissement_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('etablissement_admin_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
     }

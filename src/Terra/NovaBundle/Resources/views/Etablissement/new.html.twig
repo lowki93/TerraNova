@@ -1,17 +1,11 @@
-{% extends '::base.html.twig' %}
+{% if is_granted("ROLE_ENSEIGNANT") %}
 
-{% block title %}Etablissement | Création{% endblock %}
+	{% include 'TerraNovaBundle:Etablissement:new_enseignant.html.twig'  %}
 
-{% block body -%}
-    <h1>Etablissement creation</h1>
+{% endif %}
 
-    {{ form(form) }}
+{% if is_granted("ROLE_ADMIN") %}
+	
+	{% include 'TerraNovaBundle:Etablissement:new_admin.html.twig'  %}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('etablissement') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
-{% endblock %}
+{% endif %}

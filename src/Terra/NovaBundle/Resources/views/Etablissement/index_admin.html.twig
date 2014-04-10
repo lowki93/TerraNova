@@ -6,48 +6,49 @@
     <div id="breadcrumb">
       <a href="{{ path('terra_nova_admin_etablissement') }}" title="" class="tip-bottom">Etablissement</a>
     </div>
-{% if entities %}
-    <table class="table table-striped">
-            <tr>
-                <th>Id</th>
-                <th>Numeronational</th>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Adresse</th>
-                <th>Codepostal</th>
-                <th>Ville</th>
-                <th>Active</th>
-                <th>Actions</th>
-            </tr>
-        {% for entity in entities %}
-            <tr>
-                <td>{{ entity.id }}</td>
-                <td>{{ entity.numeroNational }}</td>
-                <td>{{ entity.name }}</td>
-                <td>{{ entity.type }}</td>
-                <td>{{ entity.adresse }}</td>
-                <td>{{ entity.codePostal }}</td>
-                <td>{{ entity.ville }}</td>
-                <td>{% if entity.active == 0 %}non active{% else %}active{% endif %}</td>
-                <td>
-                    {% if active %}
-                        <a href="{{ path('etablissement_admin_active', { 'id': entity.id }) }}">activé</a>
-                    {% else %}
-                        <a href="{{ path('etablissement_admin_edit', { 'id': entity.id }) }}">edit</a>
-                    {% endif %}
-{#                 <ul>
-                        <li>
-                        <a href="{{ path('etablissement_show', { 'id': entity.id }) }}">show</a>
-                    </li> #}
-{#                     <li>
-                        <a href="{{ path('etablissement_choose', { 'id': entity.id }) }}">choose</a>
-                    </li> 
-                </ul>#}
-                </td>
-            </tr>
-        {% endfor %}
-    </table>
-{% else %}
-    Tous les établissement sont activé.
-{% endif %}
+    {% if entities %}
+        <table class="table table-striped">
+                <tr>
+                    <th>Id</th>
+                    <th>Numeronational</th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Adresse</th>
+                    <th>Codepostal</th>
+                    <th>Ville</th>
+                    <th>Active</th>
+                    <th>Actions</th>
+                </tr>
+            {% for entity in entities %}
+                <tr>
+                    <td>{{ entity.id }}</td>
+                    <td>{{ entity.numeroNational }}</td>
+                    <td>{{ entity.name }}</td>
+                    <td>{{ entity.type }}</td>
+                    <td>{{ entity.adresse }}</td>
+                    <td>{{ entity.codePostal }}</td>
+                    <td>{{ entity.ville }}</td>
+                    <td>{% if entity.active == 0 %}non active{% else %}active{% endif %}</td>
+                    <td>
+                        {% if active %}
+                            <a href="{{ path('etablissement_admin_active', { 'id': entity.id }) }}">activé</a>
+                        {% else %}
+                            <a href="{{ path('etablissement_admin_edit', { 'id': entity.id }) }}">edit</a>
+                        {% endif %}
+    {#                 <ul>
+                            <li>
+                            <a href="{{ path('etablissement_show', { 'id': entity.id }) }}">show</a>
+                        </li> #}
+    {#                     <li>
+                            <a href="{{ path('etablissement_choose', { 'id': entity.id }) }}">choose</a>
+                        </li> 
+                    </ul>#}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>Tous les établissement sont activé.</p>
+    {% endif %}
+    <p><a href="{{ path('etablissement_admin_new') }}">Créer un établissement</a></p>
 {% endblock %}

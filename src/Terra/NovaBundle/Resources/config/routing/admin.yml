@@ -46,9 +46,14 @@ TerraNovaBundle_soustheme:
     prefix:   /soustheme
 
 TerraNovaBundle_reward:
-        resource: "@TerraNovaBundle/Resources/config/routing/reward.yml"
-        prefix:   /reward
+    resource: "@TerraNovaBundle/Resources/config/routing/reward.yml"
+    prefix:   /reward
 
 TerraNovaBundle_badge:
     resource: "@TerraNovaBundle/Resources/config/routing/badge.yml"
     prefix:   /badge
+
+
+TerraNovaBundle_trophy:
+    resource: "@TerraNovaBundle/Resources/config/routing/trophy.yml"
+    prefix:   /trophy

@@ -44,7 +44,7 @@ class SousThemeController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('soustheme_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('soustheme'));
         }
 
         return $this->render('TerraNovaBundle:SousTheme:new.html.twig', array(
@@ -146,8 +146,6 @@ class SousThemeController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
-
         return $form;
     }
     /**
@@ -171,7 +169,7 @@ class SousThemeController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('soustheme_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('soustheme'));
         }
 
         return $this->render('TerraNovaBundle:SousTheme:edit.html.twig', array(
@@ -216,7 +214,6 @@ class SousThemeController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('soustheme_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
     }

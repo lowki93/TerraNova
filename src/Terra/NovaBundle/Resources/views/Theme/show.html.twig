@@ -1,7 +1,10 @@
-{% extends '::base.html.twig' %}
+{% extends '::baseAdmin.html.twig' %}
 
 {% block body -%}
-    <h1>Theme</h1>
+    <div id="breadcrumb">
+      <a href="{{ path('terra_nova_admin_etablissement') }}" title="" class="tip-bottom">Thèmes</a>
+      <span class="current">{{ entity.name }}</span>
+    </div>
 
     <table class="record_properties">
         <tbody>

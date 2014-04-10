@@ -2,9 +2,9 @@ soustheme:
     pattern:  /
     defaults: { _controller: "TerraNovaBundle:SousTheme:index" }
 
-soustheme_show:
-    pattern:  /{id}/show
-    defaults: { _controller: "TerraNovaBundle:SousTheme:show" }
+# soustheme_show:
+#     pattern:  /{id}/show
+#     defaults: { _controller: "TerraNovaBundle:SousTheme:show" }
 
 soustheme_new:
     pattern:  /new

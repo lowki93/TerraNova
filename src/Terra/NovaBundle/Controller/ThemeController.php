@@ -44,7 +44,7 @@ class ThemeController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('theme_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('theme'));
         }
 
         return $this->render('TerraNovaBundle:Theme:new.html.twig', array(
@@ -146,8 +146,6 @@ class ThemeController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
-
         return $form;
     }
     /**
@@ -171,7 +169,7 @@ class ThemeController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('theme_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('theme'));
         }
 
         return $this->render('TerraNovaBundle:Theme:edit.html.twig', array(
@@ -216,7 +214,6 @@ class ThemeController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('theme_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
     }

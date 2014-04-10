@@ -2,9 +2,9 @@ theme:
     pattern:  /
     defaults: { _controller: "TerraNovaBundle:Theme:index" }
 
-theme_show:
-    pattern:  /{id}/show
-    defaults: { _controller: "TerraNovaBundle:Theme:show" }
+# theme_show:
+#     pattern:  /{id}/show
+#     defaults: { _controller: "TerraNovaBundle:Theme:show" }
 
 theme_new:
     pattern:  /new

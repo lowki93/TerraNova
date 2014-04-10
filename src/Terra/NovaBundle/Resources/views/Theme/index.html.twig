@@ -16,11 +16,11 @@
             </tr>
             {% for entity in entities %}
                 <tr>
-                    <td><a href="{{ path('theme_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                    <td>{{ entity.id }}</td>
                     <td>{{ entity.name }}</td>
                     <td>
-                        {% if entity.sousTheme is null %}
-                            pas de sous themes
+                        {% if entity.sousTheme is empty %}
+                            <p>pas de sous themes</p>
                         {% else %}
                             <ul>
                                 {% for sousTheme in entity.sousTheme %}
@@ -30,7 +30,6 @@
                         {% endif %}
                     </td>
                     <td>
-                        <a href="{{ path('theme_show', { 'id': entity.id }) }}">voir</a><br />
                         <a href="{{ path('theme_edit', { 'id': entity.id }) }}">editer</a>
                     </td>
                 </tr>
@@ -40,5 +39,5 @@
         <p>Il n'y a pas de thème.</p>
     {% endif %}
 
-    <a href="{{ path('theme_new') }}" class="btn btn-default">Creer un thème</a>
+    <a href="{{ path('theme_new') }}">Creer un thème</a>
     {% endblock %}

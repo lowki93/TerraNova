@@ -1,15 +1,39 @@
-{% extends '::base.html.twig' %}
+{% extends '::baseAdmin.html.twig' %}
+
+{% block title %}Admin | Bagde création{% endblock %}
 
 {% block body -%}
-    <h1>Badge creation</h1>
+	<div id="breadcrumb">
+      <a href="{{ path('badge') }}" title="" class="tip-bottom">Badge</a>
+      <span class="current">Création d'un badge</span>
+    </div>
 
-    {{ form(form) }}
+    {{ form_start(form, { 'attr': {'class' : 'form-horizontal'} }) }}
+    <div class="control-group">
+        <label class="control-label">Name</label>
+        <div class="controls">
+            {{ form_widget(form.name) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Sous Thème</label>
+        <div class="controls">
+            {{ form_widget(form.sousTheme) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Image</label>
+        <div class="controls">
+            {{ form_widget(form.file) }}
+        </div>
+    </div>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('badge') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+    {{ form_widget(form._token) }}
+    <div class="control-group">
+        <div class="controls">
+            <button type="submit" class="btn btn-primary">Créer</button>
+            <a href="{{ path('badge') }}"class="btn btn-default">Retour</a>
+        </div>
+    </div>
+
 {% endblock %}

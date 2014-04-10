@@ -1,0 +1,30 @@
+trophy:
+    pattern:  /
+    defaults: { _controller: "TerraNovaBundle:Trophy:index" }
+
+trophy_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "TerraNovaBundle:Trophy:show" }
+
+trophy_new:
+    pattern:  /new
+    defaults: { _controller: "TerraNovaBundle:Trophy:new" }
+
+trophy_create:
+    pattern:  /create
+    defaults: { _controller: "TerraNovaBundle:Trophy:create" }
+    requirements: { _method: post }
+
+trophy_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "TerraNovaBundle:Trophy:edit" }
+
+trophy_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "TerraNovaBundle:Trophy:update" }
+    requirements: { _method: post|put }
+
+trophy_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "TerraNovaBundle:Trophy:delete" }
+    requirements: { _method: post|delete }

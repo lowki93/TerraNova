@@ -12,7 +12,7 @@
             <div class="row">
                 {% for entity in entities %}
                     <div class="span3 reward-badge">
-                        <div>Nom : {{ entity.name }}</div>
+                        <div>Nom : {{ entity.name }}<br />Type : {{ entity.type }}</div>
                         <img src="/img/trophy/{{ entity.path }}" alt="{{ entity.name }}" />
                         <div class="badge-hover">
 {#                             <a href="{{ path('badge_show', { 'id': entity.id }) }}">voir</a><br /> #}
@@ -25,6 +25,6 @@
     {% else %}
         <p>Il n'y a pas de trophé</p>
     {% endif %}
-    <a href="{{ path('trophy_new') }}">Créer un trophé</a>
+    <p><a href="{{ path('trophy_new') }}">Créer un trophé</a></p>
 
 {% endblock %}

@@ -16,6 +16,10 @@ terra_nova_admin_index:
     pattern: /user
     defaults: { _controller: TerraNovaBundle:Admin:user }
 
+terra_nova_add_register:
+    path:   /user/add
+    defaults:  { _controller: FOSUserBundle:Registration:register }
+
 terra_nova_admin_etablissement:
     pattern: /etablissement
     defaults: { _controller: TerraNovaBundle:Admin:allEtablissement }

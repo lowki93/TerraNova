@@ -10,6 +10,45 @@ terra_nova_logout:
     path: /logout
     defaults: { _controller: FOSUserBundle:Security:logout }
 
+terra_nova_enseigant_register:
+    path:   /inscription
+    defaults:  { _controller: TerraNovaBundle:Registration:register }
+
+terra_nova_enseigant_forget_password:
+    path:   /reinitialisation-du-mot-de-passe
+    defaults:  { _controller: FOSUserBundle:Resetting:request }
+    requirements: { _method: get }
+
+fos_user_resetting_send_email:
+    path:   /reinitialisation-du-mot-de-passe-deja-en-cours
+    defaults:  { _controller: FOSUserBundle:Resetting:sendEmail }
+    requirements: { _method: post }
+
+fos_user_resetting_check_email:
+    path:   /reinitialisation-confirmer
+    defaults:  { _controller: FOSUserBundle:Resetting:checkEmail }
+    requirements: { _method: get }
+
+fos_user_resetting_reset:
+    path:   /reinitialisation/{token}
+    defaults:  { _controller: FOSUserBundle:Resetting:reset }
+    requirements: { _method: get|post }
+
+fos_user_registration_check_email:
+    path:   /inscription/envoi-email-de-confirmation-d-inscription
+    defaults:  { _controller: FOSUserBundle:Registration:checkEmail }
+    requirements: { _method: get }
+
+fos_user_registration_confirm:
+    path:   /inscription/confirmation/{token}
+    defaults:  { _controller: FOSUserBundle:Registration:confirm }
+    requirements: { _method: get }
+
+fos_user_registration_confirmed:
+    path:   /inscription/confirmer
+    defaults:  { _controller: FOSUserBundle:Registration:confirmed }
+    requirements: { _method: get }
+
 terra_nova_enseignant:
     resource: "@TerraNovaBundle/Resources/config/routing/enseignant.yml"
     prefix: /enseignant

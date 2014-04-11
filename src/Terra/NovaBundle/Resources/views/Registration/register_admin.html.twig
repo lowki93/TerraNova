@@ -1,0 +1,63 @@
+{% extends "::baseAdmin.html.twig" %}
+
+{% block title %}Enseignant | Inscription{% endblock %}
+
+{% block body %}
+	<div id="breadcrumb">
+      <a href="{{ path('terra_nova_admin_index') }}" title="" class="tip-bottom">Utilisateur</a>
+      <span class="current">Création d'un admin</span>
+    </div>
+	{% trans_default_domain 'FOSUserBundle' %}
+
+	<form action="{{ path('terra_nova_enseigant_register') }}" {{ form_enctype(form) }} method="POST" class="form-horizontal">
+	    <div class="control-group">
+	        <label class="control-label">Nom</label>
+	        <div class="controls">
+	            {{ form_widget(form.lastName) }}
+	        </div>
+	    </div>
+
+		<div class="control-group">
+	        <label class="control-label">Prénom</label>
+	        <div class="controls">
+	            {{ form_widget(form.name) }}
+	        </div>
+	    </div>
+
+	    <div class="control-group">
+	        <label class="control-label">Email</label>
+	        <div class="controls">
+	            {{ form_widget(form.email) }}
+	        </div>
+	    </div>
+
+	    <div class="control-group">
+	        <label class="control-label">Login</label>
+	        <div class="controls">
+	            {{ form_widget(form.username) }}
+	        </div>
+	    </div>
+
+	    <div class="control-group">
+	        <label class="control-label">Login</label>
+	        <div class="controls">
+	            {{ form_widget(form.plainPassword) }}
+	        </div>
+	    </div>
+
+    {{ form_widget(form._token) }}
+    <div class="control-group">
+        <div class="controls">
+            <button type="submit" class="btn btn-primary">Créer</button>
+            <a href="{{ path('terra_nova_admin_index') }}"class="btn btn-default">Retour</a>
+        </div>
+    </div>
+	</form>
+
+	{% for type, messages in app.session.flashbag.all() %}
+		{% for message in messages %}
+				<p>{{ message }}</p>
+		{% endfor %}
+	{% endfor %}
+
+{% endblock  %}

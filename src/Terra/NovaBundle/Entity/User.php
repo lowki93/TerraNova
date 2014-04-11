@@ -44,12 +44,14 @@ class User extends BaseUser
     protected $seance;
 
 
-    public function __construct()
+    public function __construct($roles)
     {
         parent::__construct();
-        $this->roles = array('ROLE_ENSEIGNANT');
-        // $this->roles = array('ROLE_ADMIN');
-        // $this->roles = array('ROLE_BACK');
+
+        if( $roles === "admin")
+            $this->roles = array('ROLE_ADMIN');
+        else
+            $this->roles = array('ROLE_ENSEIGNANT');
     }
 
     /**

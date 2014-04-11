@@ -1,12 +1,9 @@
-{% extends "::base.html.twig" %}
+{% if is_granted("ROLE_ADMIN") %}
+	
+	{% include 'TerraNovaBundle:Registration:checkEmail_admin.html.twig'  %}
 
-{% block title %}Enseignant | Confirmation en cours{% endblock %}
+{% else %}
+        
+	{# {% include 'TerraNovaBundle:Registration:checkEmail_enseignant.html.twig'  %} #}
 
-{% trans_default_domain 'FOSUserBundle' %}
-
-{% block body %}
-
-    <p>{{ 'registration.check_email'|trans({'%email%': user.email}) }}</p>
-    <p><a href="{{ path('terra_nova_homepage') }}">Back to index</a></p>
-
-{% endblock  %}
+{% endif %}

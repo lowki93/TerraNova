@@ -1,24 +1,10 @@
-{% extends "::base.html.twig" %}
-
-{% block title %}Enseignant | Confirmation{% endblock %}
-
-{% trans_default_domain 'FOSUserBundle' %}
-
-{% block body %}
-    <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
-    <p><a href="{{ path('terra_nova_homepage') }}">Back to index</a></p>
-
-    {% if is_granted("ROLE_ADMIN") %}
-		<p><a href="{{ path('terra_nova_admin_index') }}">Back to admin</a></p>
-	{% endif %}
-	{% if is_granted("ROLE_ENSEIGNANT") %}	    
-		<p><a href="{{ path('terra_nova_enseigant_index') }}">Back to enseignant</a></p>
-	{% endif %}
+{% if is_granted("ROLE_ADMIN") %}
 	
+	{% include 'TerraNovaBundle:Registration:confirmed_admin.html.twig'  %}
 
-    {% if app.session is not empty %}
-        {% set targetUrl = app.session.get('_security.' ~ app.security.token.providerKey ~ '.target_path') %}
-        {% if targetUrl is not empty %}<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>{% endif %}
-    {% endif %}
+{% endif %}
+{% if is_granted("ROLE_ENSEIGNANT") %}
+    
+	{% include 'TerraNovaBundle:Registration:confirmed_enseignant.html.twig'  %}
 
-{% endblock  %}
+{% endif %}

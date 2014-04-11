@@ -1,0 +1,16 @@
+{% extends "::baseAdmin.html.twig" %}
+
+{% block title %}Admin | Confirmation en cours{% endblock %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block body %}
+	<div id="breadcrumb">
+      <a href="{{ path('terra_nova_admin_index') }}" title="" class="tip-bottom">Utilisateur</a>
+      <span class="current">Confirmation en cours</span>
+    </div>
+
+    <p>{{ 'registration.check_email'|trans({'%email%': user.email}) }}</p>
+    <p><a href="{{ path('terra_nova_admin_index') }}">Retour</a></p>
+
+{% endblock  %}

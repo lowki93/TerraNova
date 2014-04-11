@@ -1,0 +1,22 @@
+{% extends "::baseAdmin.html.twig" %}
+
+{% block title %}Admin | Confirmation{% endblock %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block body %}
+    <div id="breadcrumb">
+      <a href="{{ path('terra_nova_admin_index') }}" title="" class="tip-bottom">Utilisateur</a>
+      <span class="current">Confirmation d'inscription</span>
+    </div>
+    <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+    <p><a href="{{ path('terra_nova_homepage') }}">Back to index</a></p>
+
+	<p><a href="{{ path('terra_nova_admin_index') }}">Back to admin</a></p>
+
+    {% if app.session is not empty %}
+        {% set targetUrl = app.session.get('_security.' ~ app.security.token.providerKey ~ '.target_path') %}
+        {% if targetUrl is not empty %}<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>{% endif %}
+    {% endif %}
+
+{% endblock  %}

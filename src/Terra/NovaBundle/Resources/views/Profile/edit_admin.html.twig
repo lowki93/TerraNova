@@ -4,13 +4,41 @@
 
 {% block body %}
 
-{% trans_default_domain 'FOSUserBundle' %}
+	{% trans_default_domain 'FOSUserBundle' %}
 
-<form action="{{ path('terra_nova_admin_profile_edit') }}" {{ form_enctype(form) }} method="POST">
-    {{ form_widget(form) }}
-    <div>
-        <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
-    </div> 
-</form>
+	<div id="breadcrumb">
+      <a href="{{ path('terra_nova_admin_index') }}" title="" class="tip-bottom">Utilisateur {{ app.user.name }}</a>
+      <span class="current">Profil</span>
+    </div>
+
+	<form action="{{ path('terra_nova_admin_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="form-horizontal">
+
+		<div class="control-group">
+	        <label class="control-label">Login</label>
+	        <div class="controls">
+	            {{ form_widget(form.username) }}
+	        </div>
+	    </div>
+	    <div class="control-group">
+	        <label class="control-label">Login</label>
+	        <div class="controls">
+	            {{ form_widget(form.email) }}
+	        </div>
+	    </div>
+	    <div class="control-group">
+	        <label class="control-label">Mot de passe Actuel</label>
+	        <div class="controls">
+	            {{ form_widget(form.current_password) }}
+	        </div>
+	    </div>
+	    {{ form_widget(form._token) }}
+	    <div class="control-group">
+	        <div class="controls">
+	            <button type="submit" class="btn btn-primary">Mettre à jour</button>
+	            <a href="{{ path('badge') }}"class="btn btn-default">Retour</a>
+	        </div>
+	    </div>
+
+	</form>
 
 {% endblock  %}	

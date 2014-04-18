@@ -3,14 +3,73 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            {% stylesheets
+                'bundles/terranova/css/style.sass'
+                filter="cssrewrite,sass" output='css/style.css' %}
+                   <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+            {% endstylesheets %}
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
-    <body>
-        {% block body %}{% endblock %}
+    <body data-spy="scroll" data-target=".navbar">
+        <header>
+            <div class="navbar container" id="navbar">
+                <div class="navbar-inner">
+                    <a class="brand hidden-mobile" href="{{ path('terra_nova_admin_index')}}"><img src="img/logo.png" alt="Wipo"/>WIPO</a>
+                    <ul class="nav full pull-left">
+                        <li><a href="#game">Le jeu</a></li>
+                        <li><a href="#principle">Le principe</a></li>
+                        <li><a href="#team">L'équipe</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                    <ul class="nav full pull-right">
+                        <li><a href="#">s'inscire</a></li>
+                        <li><a href="#" class='test' data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="Popover on bottom">se connecter</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <div class="container">
+            {% block body %}{% endblock %}
+        </div>
         {# Script for FOS Js routing #}
         <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
         <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+        {% javascripts
+            'jquery/jquery.js'
+            'jquery/jquery-ui.js'
+            'sass-bootstrap/js/bootstrap-tooltip.js'
+            'sass-bootstrap/js/bootstrap-popover.js'
+            'sass-bootstrap/js/bootstrap-scrollspy.js'
+            'sass-bootstrap/js/bootstrap-carousel.js'
+        %}
+        <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+        <script>
+            $('.test').popover();
+            // $('#navbar').scrollspy();
+            $(".navbar ul li a[href^='#']").on('click', function(e) {
+
+               // prevent default anchor click behavior
+               e.preventDefault();
+
+               // store hash
+               var hash = this.hash;
+
+               // animate
+               $('html, body').animate({
+                   scrollTop: $(this.hash).offset().top
+                 }, 300, function(){
+
+                   // when done, add hash to url
+                   // (default click behaviour)
+                   // window.location.hash = hash;
+                 });
+
+            });
+            $('.carousel').carousel()
+        </script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

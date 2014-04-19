@@ -14,21 +14,20 @@ security:
         main:
             pattern: ^/
             form_login:
-                login_path: /connexion
+                login_path: /
                 provider: fos_userbundle
                 remember_me: true
                 csrf_provider: form.csrf_provider
                 check_path: /login_check
                 success_handler: terra_nova.redirection_after_login
-                #default_target_path: /enseignant
             logout:
                 path:   /logout
             anonymous:    true
 
     access_control:
-        - { path: ^/enseignant/connexion$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/enseignant/inscription$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/enseignant/inscription/confirmation, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/enseignant/inscription/envoi-email-de-confirmation-d-inscription$, role:IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/enseignant, role: ROLE_ENSEIGNANT }
+        - { path: ^/enseignant, role: ROLE_ADMIN }
         # IS_AUTHENTICATED_FULLY

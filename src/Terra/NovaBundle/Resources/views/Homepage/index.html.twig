@@ -2,6 +2,14 @@
 
 {% block title %}Accueil{% endblock %}
 
+{% block stylesheets %}
+    {% stylesheets
+        'bundles/terranova/css/homepage.sass'
+        filter="cssrewrite,sass" output='css/homepage.css' %}
+           <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+    {% endstylesheets %}
+{% endblock %}
+
 {% block body %}
 	{# <h1>Accueil</h1><br />
 	{% if is_granted("ROLE_ENSEIGNANT") %}

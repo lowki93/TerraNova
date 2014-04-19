@@ -25,7 +25,7 @@
                     </ul>
                     <ul class="nav full pull-right">
                         <li><a href="#">s'inscire</a></li>
-                        <li><a href="#" class='test' data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="Popover on bottom">se connecter</a></li>
+                        <li><a href="#" class="connexion-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-content="{% render(controller('FOSUserBundle:Security:login')) %}" >se connecter</a></li>
                     </ul>
                 </div>
             </div>
@@ -39,15 +39,19 @@
         {% javascripts
             'jquery/jquery.js'
             'jquery/jquery-ui.js'
-            'sass-bootstrap/js/bootstrap-tooltip.js'
-            'sass-bootstrap/js/bootstrap-popover.js'
-            'sass-bootstrap/js/bootstrap-scrollspy.js'
-            'sass-bootstrap/js/bootstrap-carousel.js'
+            'bundles/terranova/sass-bootstrap/js/bootstrap-tooltip.js'
+            'bundles/terranova/sass-bootstrap/js/bootstrap-popover.js'
+            'bundles/terranova/sass-bootstrap/js/bootstrap-scrollspy.js'
+            'bundles/terranova/sass-bootstrap/js/bootstrap-carousel.js'
         %}
         <script src="{{ asset_url }}"></script>
         {% endjavascripts %}
         <script>
-            $('.test').popover();
+            $('.connexion-popover').popover();
+
+            // if(!$('.connexion p.error'))
+            //     $('.connexion-popover').popover('show')
+
             // $('#navbar').scrollspy();
             $(".navbar ul li a[href^='#']").on('click', function(e) {
 

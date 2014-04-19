@@ -6,7 +6,7 @@
         {% block stylesheets %}
           {% stylesheets filter="sass"
                   "bundles/terranova/css/backend.sass"
-               %}
+                filter="cssrewrite,sass" output='css/backend.css' %}
                 <link rel="stylesheet" href="{{ asset_url }}"/>
           {% endstylesheets %}
         {% endblock %}

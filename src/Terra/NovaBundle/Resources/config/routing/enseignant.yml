@@ -9,7 +9,7 @@ terra_nova_enseignant_profile_show:
 
 terra_nova_enseignant_profile_edit:
     path:   /profil/edit
-    defaults:  { _controller: FOSUserBundle:Profile:edit }
+    defaults:  { _controller: TerraNovaBundle:Profile:edit }
 
 terra_nova_enseignant_profil_change_password:
     path:   /profil/changer-de-mot-de-passe

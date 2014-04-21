@@ -2,6 +2,7 @@
 
 namespace Terra\NovaBundle\Controller;
 
+use FOS\UserBundle\Controller\ChangePasswordController as BaseController;
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Event\FormEvent;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
@@ -12,13 +13,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
-/**
- * Controller managing the password change
- *
- * @author Thibault Duplessis <thibault.duplessis@gmail.com>
- * @author Christophe Coevoet <stof@notk.org>
- */
-class ChangePasswordController extends ContainerAware
+
+class ChangePasswordController extends BaseController
 {
     /**
      * Change user password

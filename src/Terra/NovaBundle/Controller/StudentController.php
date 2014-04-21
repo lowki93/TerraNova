@@ -4,10 +4,10 @@ namespace Terra\NovaBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use Terra\NovaBundle\Entity\Classe;
 use Terra\NovaBundle\Entity\Student;
 use Terra\NovaBundle\Form\StudentType;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * Student controller.
@@ -15,6 +15,24 @@ use Terra\NovaBundle\Form\StudentType;
  */
 class StudentController extends Controller
 {
+    public function studentByEtablissementAction()
+    {
+        $em = $this->getDoctrine();
+        $user = $this->container->get('security.context')->getToken()->getUser();
+        $idEnseignant = $user->getId();
+
+        $classes = $em->getRepository('TerraNovaBundle:Classe')->findByEnseignant($idEnseignant);
+
+        $firstId = $classes[0]->getId();
+        $students = $em->getRepository('TerraNovaBundle:Student')->findByClasse($firstId);
+
+        return $this->render('TerraNovaBundle:Student:studentByEtablissement.html.twig', array(
+                'classes' => $classes,
+                'user' => $user,
+                'students' => $students,
+                'idClasse' => $firstId
+            ));
+    }
 
     /**
      * Lists all Student entities.
@@ -23,13 +41,22 @@ class StudentController extends Controller
     public function indexAction($id)
     {
         $em = $this->getDoctrine();
-        $entities = $em->getRepository('TerraNovaBundle:Student')->findByClasse($id);
+        $students = $em->getRepository('TerraNovaBundle:Student')->findByClasse($id);
         $name = $em->getRepository('TerraNovaBundle:Classe')->findByName($id);
-        return $this->render('TerraNovaBundle:Student:index.html.twig', array(
-            'class' => $name,
-            'entities' => $entities,
-            'idClasse' => $id,
-        ));
+        // die('test');
+
+        $response['content'] = $this->renderView('TerraNovaBundle:Student:index.html.twig',
+                                    array('class' => $name,
+                                        'students' => $students,
+                                        'idClasse' => $id));
+
+
+        return new JsonResponse($response);
+        // return $this->render('TerraNovaBundle:Student:index.html.twig', array(
+        //     'class' => $name,
+        //     'students' => $entities,
+        //     'idClasse' => $id,
+        // ));
     }
     /**
      * Creates a new Student entity.

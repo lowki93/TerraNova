@@ -17,7 +17,7 @@ class ClasseRepository extends EntityRepository {
 
     public function findByName($idClasse){
         $qb = $this->createQueryBuilder('c');
-        $qb->select('c.name')
+        $qb->select()
            ->where('c.id = :id')
            ->setParameter('id', $idClasse);
 

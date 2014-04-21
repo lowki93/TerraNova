@@ -1,6 +1,12 @@
+Eleve_by_etablissement:
+    pattern:  /
+    defaults: { _controller: "TerraNovaBundle:Student:studentByEtablissement" }
+
 Eleve:
     pattern:  /{id}
     defaults: { _controller: "TerraNovaBundle:Student:index" }
+    options:
+        expose: true
 
 Eleve_show:
     pattern:  /{idClasse}/{id}/show

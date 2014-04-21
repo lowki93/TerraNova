@@ -1,15 +1,21 @@
-{% extends '::base.html.twig' %}
-
-{% block title %}Enseignant | Elévès de {% for className in class %}{{ className.name }}{% endfor %}{% endblock %}
-
-{% block body %}
-<h1>Classe Name : {% for className in class %}{{ className.name }}{% endfor %}</h1>
-
-    <a href="{{ path('terra_nova_enseigant_index') }}">Back to enseignant</a>
-    <table class="records_list">
+<ul class="student-list">
+    {% for student in students %}
+        <li>
+            <a href="{{ path('Eleve_show', { 'idClasse': idClasse , 'id' : student.id }) }}">   
+                <img src="{{ asset('bundles/terranova/img/bonhommes/default.png') }}">
+                <div><span>{{ student.name }}<br />{{ student.firstName }}</span></div>
+            </a>
+        </li>
+    {% endfor %}
+    <li>
+        <a href="{{ path('Eleve_new', { 'idClasse' : idClasse }) }}">
+            <i class="icon-plus-sign"></i><div>Ajouter<br />un élève</div>
+        </a>
+    </li>
+</ul>
+{#     <table class="records_list">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Name</th>
                 <th>Firstname</th>
                 <th>Age</th>
@@ -18,20 +24,19 @@
             </tr>
         </thead>
         <tbody>
-        {% for entity in entities %}
+        {% for student in students %}
             <tr>
-                <td><a href="{{ path('Eleve_show', { 'id': entity.id, 'idClasse': idClasse }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.name }}</td>
-                <td>{{ entity.firstName }}</td>
-                <td>{{ entity.age }}</td>
-                <td>{{ entity.avatar }}</td>
+                <td>{{ student.name }}</td>
+                <td>{{ student.firstName }}</td>
+                <td>{{ student.age }}</td>
+                <td>{{ student.avatar }}</td>
                 <td>
                 <ul>
                     <li>
-                        <a href="{{ path('Eleve_show', { 'id': entity.id, 'idClasse': idClasse }) }}">show</a>
+                        <a href="{{ path('Eleve_show', { 'id': student.id, 'idClasse': idClasse }) }}">show</a>
                     </li>
                     <li>
-                        <a href="{{ path('Eleve_edit', { 'id': entity.id, 'idClasse': idClasse }) }}">edit</a>
+                        <a href="{{ path('Eleve_edit', { 'id': student.id, 'idClasse': idClasse }) }}">edit</a>
                     </li>
                 </ul>
                 </td>
@@ -46,5 +51,4 @@
                 Create a new entry
             </a>
         </li>
-    </ul>
-    {% endblock %}
+    </ul> #}

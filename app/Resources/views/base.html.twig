@@ -10,23 +10,39 @@
                    <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
             {% endstylesheets %}
         {% endblock %}
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body data-spy="scroll" data-target=".navbar">
         <header>
             <div class="navbar container" id="navbar">
                 <div class="navbar-inner">
-                    <a class="brand hidden-mobile" href="{{ path('terra_nova_admin_index')}}"><img src="img/logo.png" alt="Wipo"/>WIPO</a>
-                    <ul class="nav full pull-left">
-                        <li><a href="#game">Le jeu</a></li>
-                        <li><a href="#principle">Le principe</a></li>
-                        <li><a href="#team">L'équipe</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
+                    <a class="brand hidden-mobile" href="{{ path('terra_nova_homepage')}}"><img src="{{ asset('img/logo.png') }}" alt="Wipo"/>WIPO</a>
+                    {% if is_granted("ROLE_ENSEIGNANT") %}
+                        <ul class="nav full pull-left">
+                            <li>Bonjour {{app.user.name}} {{app.user.lastName}}</li>
+                        </ul>
+                        <ul class="nav full pull-right">
+                            <li><a href="#">les thèmes</a></li>
+                            <li><a href="#">mes séances</a></li>
+                            <li><a href="#">mes élèves</a></li>
+                            <li><a href="{{ path('terra_nova_enseignant_profile_show') }}">mon compte</a></li>
+                            <li><a href="{{ path('terra_nova_logout') }}"><i class="icon-off"></i></a></li>
+                        </ul>
+                    {% else %}
+                        {% if app.request.attributes.get('_route') != 'terra_nova_enseigant_register' %}
+                        <ul class="nav full pull-left">
+                            <li><a href="#game">Le jeu</a></li>
+                            <li><a href="#principle">Le principe</a></li>
+                            <li><a href="#team">L'équipe</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    {% endif %}
                     <ul class="nav full pull-right">
                         <li><a href="{{ path('terra_nova_enseigant_register')}}">s'inscire</a></li>
                         <li><a href="#" class="connexion-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-content="{% render(controller('FOSUserBundle:Security:login')) %}" >se connecter</a></li>
                     </ul>
+                    {% endif %}
                 </div>
             </div>
         </header>

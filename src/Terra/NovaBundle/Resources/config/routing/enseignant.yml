@@ -13,7 +13,7 @@ terra_nova_enseignant_profile_edit:
 
 terra_nova_enseignant_profil_change_password:
     path:   /profil/changer-de-mot-de-passe
-    defaults:  { _controller: FOSUserBundle:ChangePassword:changePassword }
+    defaults:  { _controller: TerraNovaBundle:ChangePassword:changePassword }
     requirements: { _method: get|post }
 
 TerraNovaBundle_etablissement:

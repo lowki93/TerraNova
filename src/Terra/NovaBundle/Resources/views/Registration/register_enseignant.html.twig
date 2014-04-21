@@ -5,12 +5,57 @@
 {% block body %}
 
 	{% trans_default_domain 'FOSUserBundle' %}
-	<p><a href="{{ path('terra_nova_enseigant_connection') }}">Back to login</a></p>
-	<form action="{{ path('terra_nova_enseigant_register') }}" {{ form_enctype(form) }} method="POST">
-		{{ form_widget(form) }}
-	    <div>
-	        <input type="submit" value="{{ 'registration.submit'|trans }}" />
+
+	<h1>Inscription</h1>
+
+	<form action="{{ path('terra_nova_enseigant_register') }}" {{ form_enctype(form) }} method="POST" class="form-horizontal">
+	    <div class="control-group">
+	        <label class="control-label">Nom</label>
+	        <div class="controls">
+	            {{ form_widget(form.lastName) }}
+	        </div>
 	    </div>
+
+		<div class="control-group">
+	        <label class="control-label">Prénom</label>
+	        <div class="controls">
+	            {{ form_widget(form.name) }}
+	        </div>
+	    </div>
+
+	    <div class="control-group">
+	        <label class="control-label">Email</label>
+	        <div class="controls">
+	            {{ form_widget(form.email) }}
+	        </div>
+	    </div>
+
+	    <div class="control-group">
+	        <label class="control-label">Login</label>
+	        <div class="controls">
+	            {{ form_widget(form.username) }}
+	        </div>
+	    </div>
+
+	    <div class="control-group">
+	        <label class="control-label">Mot de passe</label>
+	        <div class="controls">
+	            {{ form_widget(form.plainPassword.first) }}
+	        </div>
+	    </div>
+	    <div class="control-group">
+	        <label class="control-label">Vérification</label>
+	        <div class="controls">
+	            {{ form_widget(form.plainPassword.second) }}
+	        </div>
+	    </div>
+        {{ form_widget(form._token) }}
+        <div class="control-group">
+            <div class="controls">
+                <button type="submit" class="btn btn-primary">Créer</button>
+                <a href="{{ path('terra_nova_homepage') }}"class="btn btn-default">Retour</a>
+            </div>
+        </div>
 	</form>
 
 	{% for type, messages in app.session.flashbag.all() %}

@@ -1,17 +1,28 @@
 {% extends "::base.html.twig" %}
 
+{% block stylesheets %}
+    {% stylesheets
+        'bundles/terranova/css/enseignant.sass'
+        filter="cssrewrite,sass" output='css/enseignant.css' %}
+           <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+    {% endstylesheets %}
+{% endblock %}
+
 {% block title %}Enseignant | Profil{% endblock %}
+
+{% trans_default_domain 'FOSUserBundle' %}
 
 {% block body %}
 
-	{% trans_default_domain 'FOSUserBundle' %}
+	<h1>Mon compte</h1>
 
-	<p><a href="{{ path('terra_nova_enseigant_index') }}">Go to Enseignant</a></p>
-	<div>
-		<p>Username : {{ user.username }}</p>
-		<p>Email : {{ user.email }}</p>
+	<div class="row profil">
+		<div class="span6">
+			{% render(controller('TerraNovaBundle:Profile:edit')) %}
+		</div>
+		<div class="span6">
+			{% render(controller('TerraNovaBundle:ChangePassword:ChangePassword')) %}
+		</div>
 	</div>
-	<p><a href="{{ path('terra_nova_enseignant_profile_edit') }}">Edit profil</a></p>
-	<p><a href="{{ path('terra_nova_enseignant_profil_change_password') }}"> Change Password</a></p>
 
 {% endblock body %}

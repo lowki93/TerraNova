@@ -33,6 +33,9 @@
         <div class="container">
             {% block body %}{% endblock %}
         </div>
+        <footer>
+            <p>Wipo © Kevin Budain, Julie Muckensturm, Glenn Sonna - 2015 -      Gobelins l’École de l’Image</p>
+        </footer>
         {# Script for FOS Js routing #}
         <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
         <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>

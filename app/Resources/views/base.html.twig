@@ -24,17 +24,17 @@
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                     <ul class="nav full pull-right">
-                        <li><a href="#">s'inscire</a></li>
+                        <li><a href="{{ path('terra_nova_enseigant_register')}}">s'inscire</a></li>
                         <li><a href="#" class="connexion-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-content="{% render(controller('FOSUserBundle:Security:login')) %}" >se connecter</a></li>
                     </ul>
                 </div>
             </div>
         </header>
-        <div class="container">
+        <div class="container contenu">
             {% block body %}{% endblock %}
         </div>
         <footer>
-            <p>Wipo © Kevin Budain, Julie Muckensturm, Glenn Sonna - 2015 -      Gobelins l’École de l’Image</p>
+            <p>Wipo © Kevin Budain, Julie Muckensturm, Glenn Sonna - 2015 - Gobelins l’École de l’Image</p>
         </footer>
         {# Script for FOS Js routing #}
         <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>

@@ -1,23 +1,23 @@
 jQuery(function($){
     if($("#selectClass")) {
         var idClass = $("#selectClass").find(':selected').attr('data-id');
-        student.load(idClass);
+        student.loadByClass(idClass);
     }
 });
 
 $("#selectClass").change(function() {
     var idClass = $(this).find(':selected').attr('data-id');
-        student.load(idClass);
+    student.loadByClass(idClass);
 }); 
 
 var student = {
-    load: function(idClass) {
+    loadByClass: function(idClass) {
         $.ajax({
              url: Routing.generate('Eleve', { id: idClass }),
              dataType: "json",
              complete: function(content){
                  var response = content.responseJSON.content;
-                 $(".content-student").html(response);
+                 $(".content-student-list").html(response);
              }
         });
     }

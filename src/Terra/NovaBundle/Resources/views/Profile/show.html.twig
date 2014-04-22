@@ -13,16 +13,16 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block body %}
+	<div class="container">
+		<h1>Mon compte</h1>
 
-	<h1>Mon compte</h1>
-
-	<div class="row profil">
-		<div class="span6">
-			{% render(controller('TerraNovaBundle:Profile:edit')) %}
-		</div>
-		<div class="span6">
-			{% render(controller('TerraNovaBundle:ChangePassword:ChangePassword')) %}
+		<div class="row profil">
+			<div class="span6">
+				{% render(controller('TerraNovaBundle:Profile:edit')) %}
+			</div>
+			<div class="span6">
+				{% render(controller('TerraNovaBundle:ChangePassword:ChangePassword')) %}
+			</div>
 		</div>
 	</div>
-
 {% endblock body %}

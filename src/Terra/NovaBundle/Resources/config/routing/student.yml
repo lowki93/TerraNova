@@ -11,6 +11,8 @@ Eleve:
 Eleve_show:
     pattern:  /{idClasse}/{id}/show
     defaults: { _controller: "TerraNovaBundle:Student:show" }
+    options:
+        expose: true
 
 Eleve_new:
     pattern:  /{idClasse}/new

@@ -142,7 +142,8 @@ class StudentController extends Controller
         return $this->render('TerraNovaBundle:Student:show.html.twig', array(
             'idClasse' => $idClasse,
             'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        ));
+            'delete_form' => $deleteForm->createView(),
+        ));
     }
 
     /**

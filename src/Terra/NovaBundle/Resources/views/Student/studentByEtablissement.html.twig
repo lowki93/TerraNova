@@ -11,19 +11,20 @@
 {% block title %}Enseignant | Elévès {% endblock %}
 
 {% block body %}
-    <h1>Mes élèves</h1>
+    <div class="container">
+        <h1>Mes élèves</h1>
 
-    <h4 class="form-horizontal">
-        <div class="control-group">
-            <label class="control-label">Etablissement : {{ user.etablissement.name }}</label>
-            <div class="controls">
-                <select id="selectClass">{% for class in classes %}<option data-id="{{class.id}}">{{class.name}}</option>{% endfor %}</select>
+        <h4 class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label">Etablissement : {{ user.etablissement.name }}</label>
+                <div class="controls">
+                    <select id="selectClass">{% for class in classes %}<option data-id="{{class.id}}">{{class.name}}</option>{% endfor %}</select>
+                </div>
             </div>
+        </h4>
+
+        <div class="content-student-list">
         </div>
-    </h4>
-
-    <div class="content-student">
-
     </div>
 {% endblock %}
 

@@ -3,7 +3,9 @@
 .scroll-area
 	position: relative
 	overflow: auto
+	height: 100%
 	.game
+		height: 100%
 		position: relative
 		.game-title
 			position: absolute
@@ -22,6 +24,7 @@
 				font-size: 20px
 		.carousel
 			margin: 0
+			height: 100%
 			.carousel-indicators
 				top: auto
 				right: auto
@@ -32,6 +35,13 @@
 				li
 					float: none
 					display: inline-block
+			.carousel-inner
+				height: 100%
+				div
+					height: 100%
+					background-size: cover
+					background-position: center center
+					background-repeat: no-repat
 		img
 			width: 100%
 	.principle
@@ -98,8 +108,11 @@
 			padding:
 				left: 30px
 				right: 30px
-			input, textarea, select
-				width: 95%
+			input, textarea
+				width: 100%
+				color: $greyFont
+			select
+				width: 103%
 				color: $greyFont
 		label
 			font-size: 16px

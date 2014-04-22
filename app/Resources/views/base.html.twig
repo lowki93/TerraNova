@@ -12,85 +12,117 @@
         {% endblock %}
         <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     </head>
-    <body data-spy="scroll" data-target=".navbar">
-        <header>
-            <div class="navbar container" id="navbar">
-                <div class="navbar-inner">
-                    <a class="brand hidden-mobile" href="{{ path('terra_nova_homepage')}}"><img src="{{ asset('img/logo.png') }}" alt="Wipo"/>WIPO</a>
-                    {% if is_granted("ROLE_ENSEIGNANT") %}
-                        <ul class="nav full pull-left">
-                            <li>Bonjour {{app.user.name}} {{app.user.lastName}}</li>
-                        </ul>
-                        <ul class="nav full pull-right">
-                            <li><a href="#">les thèmes</a></li>
-                            <li><a href="#">mes séances</a></li>
-                            <li><a href="{{ path('Eleve_by_etablissement') }}">mes élèves</a></li>
-                            <li><a href="{{ path('terra_nova_enseignant_profile_show') }}">mon compte</a></li>
-                            <li><a href="{{ path('terra_nova_logout') }}"><i class="icon-off"></i></a></li>
-                        </ul>
-                    {% else %}
-                        {% if app.request.attributes.get('_route') != 'terra_nova_enseigant_register' %}
-                        <ul class="nav full pull-left">
-                            <li><a href="#game">Le jeu</a></li>
-                            <li><a href="#principle">Le principe</a></li>
-                            <li><a href="#team">L'équipe</a></li>
-                            <li><a href="#contact">Contact</a></li>
-                        </ul>
-                    {% endif %}
-                    <ul class="nav full pull-right">
-                        <li><a href="{{ path('terra_nova_enseigant_register')}}">s'inscire</a></li>
-                        <li><a href="#" class="connexion-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-content="{% render(controller('FOSUserBundle:Security:login')) %}" >se connecter</a></li>
-                    </ul>
-                    {% endif %}
+    <body>
+        <div class="mp-pusher" id="mp-pusher">
+            <nav id="mp-menu" class="mp-menu">
+                dbzihfbzfev
+            </nav>
+            <div class="scroller">
+                <header>
+                    <div class="navbar" id="navbar">
+                        <div class="navbar-inner">
+                            <a class="brand hidden-mobile" href="{{ path('terra_nova_homepage')}}"><img src="{{ asset('img/logo.png') }}" alt="Wipo"/>WIPO</a>
+                            <ul class="nav full pull-left">
+                                    <li><a href="#" id="trigger" class="menu hidden-menu show-mobile"><i class="icon-align-justify"></i></a></li>
+                                </ul>
+                            {% if is_granted("ROLE_ENSEIGNANT") %}
+                                <ul class="nav full pull-left">
+                                    <li>Bonjour {{app.user.name}} {{app.user.lastName}}</li>
+                                </ul>
+                                <ul class="nav full pull-right">
+                                    <li><a href="#">les thèmes</a></li>
+                                    <li><a href="#">mes séances</a></li>
+                                    <li><a href="{{ path('Eleve_by_etablissement') }}">mes élèves</a></li>
+                                    <li><a href="{{ path('terra_nova_enseignant_profile_show') }}">mon compte</a></li>
+                                    <li><a href="{{ path('terra_nova_logout') }}"><i class="icon-off"></i></a></li>
+                                </ul>
+                            {% else %}
+                                {% if app.request.attributes.get('_route') != 'terra_nova_enseigant_register' %}
+        {#                             <ul class="nav full pull-left">
+                                        <li class="dropdown">
+                                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                            <span>
+                                              <span>Etablissement</span>
+                                            </span>
+                                          </a>
+                                          <ul class="dropdown-menu">
+                                            <li><a href="{{ path('terra_nova_admin_etablissement') }}"><span>Tous les établissement</span></a></li>
+                                            <li><a href="{{ path('terra_nova_admin_etablissement_no_active') }}"><span>Établissement non activé</span></a></li>
+                                          </ul>
+                                        </li>
+                                    </ul> #}
+                                    <ul class="nav full pull-left hidden-tablette">
+                                        <li><a href="#game">Le jeu</a></li>
+                                        <li><a href="#principle">Le principe</a></li>
+                                        <li><a href="#team">L'équipe</a></li>
+                                        <li><a href="#contact">Contact</a></li>
+                                    </ul>
+                                {% endif %}
+                                <ul class="nav full pull-right">
+                                    <li><a href="#" class="connexion-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-content="{% render(controller('FOSUserBundle:Security:login')) %}" >se connecter</a></li>
+                                    <li><a href="{{ path('terra_nova_enseigant_register')}}">s'inscire</a></li>
+                                </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+                </header>
+                <div class="contenu">
+                    {% block body %}{% endblock %}
                 </div>
+                <footer>
+                    <p>Wipo © Kevin Budain, Julie Muckensturm, Glenn Sonna - 2015 - Gobelins l’École de l’Image</p>
+                </footer>
             </div>
-        </header>
-        <div class="container contenu">
-            {% block body %}{% endblock %}
         </div>
-        <footer>
-            <p>Wipo © Kevin Budain, Julie Muckensturm, Glenn Sonna - 2015 - Gobelins l’École de l’Image</p>
-        </footer>
         {# Script for FOS Js routing #}
         <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
         <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
         {% javascripts
             'jquery/jquery.js'
             'jquery/jquery-ui.js'
+            'bundles/terranova/js/modernizr.custom.js'
+            'bundles/terranova/js/classie.js'
+            'bundles/terranova/js/mlpushmenu.js'
             'bundles/terranova/sass-bootstrap/js/bootstrap-tooltip.js'
             'bundles/terranova/sass-bootstrap/js/bootstrap-popover.js'
             'bundles/terranova/sass-bootstrap/js/bootstrap-scrollspy.js'
             'bundles/terranova/sass-bootstrap/js/bootstrap-carousel.js'
+            'bundles/terranova/sass-bootstrap/js/bootstrap-dropdown.js'
         %}
         <script src="{{ asset_url }}"></script>
         {% endjavascripts %}
         <script>
+            new mlPushMenu( document.getElementById( 'mp-menu' ), document.getElementById( 'trigger' ) );
             $('.connexion-popover').popover();
 
             // if(!$('.connexion p.error'))
             //     $('.connexion-popover').popover('show')
 
-            // $('#navbar').scrollspy();
-            $(".navbar ul li a[href^='#']").on('click', function(e) {
+            $('#navbar').scrollspy({
+                offset: 50
+              });
+            // $(".navbar ul li a[href^='#']").on('click', function(e) {
 
-               // prevent default anchor click behavior
-               e.preventDefault();
+            //    // prevent default anchor click behavior
+            //    e.preventDefault();
 
-               // store hash
-               var hash = this.hash;
+            //    // store hash
+            //    var hash = this.hash;
+            //    console.log($(this.hash).offset().top-60);
+            //    console.log($(this.hash).offset().top);
+            //    // animate
+            //    $('.scroll-area').animate({
+            //        scrollTop: $(this.hash).offset().top
+            //      }, 300, function(){
 
-               // animate
-               $('html, body').animate({
-                   scrollTop: $(this.hash).offset().top
-                 }, 300, function(){
+            //        // when done, add hash to url
+            //        // (default click behaviour)
+            //        // window.location.hash = hash;
+            //      });
 
-                   // when done, add hash to url
-                   // (default click behaviour)
-                   // window.location.hash = hash;
-                 });
-
-            });
+            // });
             $('.carousel').carousel()
         </script>
         {% block javascripts %}{% endblock %}

@@ -24,9 +24,13 @@
                             <li>Bonjour {{app.user.name}} {{app.user.lastName}}</li>
                         </ul>
                         <ul>
-                            <li><a href="#">les thèmes</a></li>
-                            <li><a href="#">mes séances</a></li>
-                            <li><a href="{{ path('Eleve_by_etablissement') }}">mes élèves</a></li>
+                            {% if app.user.etablissement != null %}
+                                <li><a href="#">les thèmes</a></li>
+                                <li><a href="#">mes séances</a></li>
+                                <li><a href="{{ path('Eleve_by_etablissement') }}">mes élèves</a></li>
+                            {% else %}
+                                <li><a href="{{ path('etablissement') }}" >Choisir son établissement</a></li>
+                            {% endif %}
                             <li><a href="{{ path('terra_nova_enseignant_profile_show') }}">mon compte</a></li>
                             <li><a href="{{ path('terra_nova_logout') }}"><i class="icon-off"></i></a></li>
                         </ul>
@@ -51,13 +55,17 @@
                                 <li><a href="#" id="trigger" class="menu hidden-menu show-mobile"><i class="icon-align-justify"></i></a></li>
                             </ul>
                             {% if is_granted("ROLE_ENSEIGNANT") %}
-                                <ul class="nav full pull-left">
+                                <ul class="nav full pull-left hidden-tablette">
                                     <li>Bonjour {{app.user.name}} {{app.user.lastName}}</li>
                                 </ul>
-                                <ul class="nav full pull-right">
-                                    <li><a href="#">les thèmes</a></li>
-                                    <li><a href="#">mes séances</a></li>
-                                    <li><a href="{{ path('Eleve_by_etablissement') }}">mes élèves</a></li>
+                                <ul class="nav full pull-right hidden-tablette">
+                                    {% if app.user.etablissement != null %}
+                                <li><a href="#">les thèmes</a></li>
+                                <li><a href="#">mes séances</a></li>
+                                <li><a href="{{ path('Eleve_by_etablissement') }}">mes élèves</a></li>
+                            {% else %}
+                                <li><a href="{{ path('etablissement') }}" >Choisir son établissement</a></li>
+                            {% endif %}
                                     <li><a href="{{ path('terra_nova_enseignant_profile_show') }}">mon compte</a></li>
                                     <li><a href="{{ path('terra_nova_logout') }}"><i class="icon-off"></i></a></li>
                                 </ul>

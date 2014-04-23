@@ -48,7 +48,11 @@
             {% endfor %}
         </table>
     {% else %}
-        <p>Tous les établissement sont activé.</p>
+        {% if active == false %}
+            <p>Il n'y a pas d'établissement.</p>
+        {% else %}
+            <p>Tous les établissement sont activé.</p>
+        {% endif %}
     {% endif %}
     <p><a href="{{ path('etablissement_admin_new') }}">Créer un établissement</a></p>
 {% endblock %}

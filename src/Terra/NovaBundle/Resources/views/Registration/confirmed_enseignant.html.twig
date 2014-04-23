@@ -5,12 +5,13 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block body %}
-    <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
-    <p><a href="{{ path('terra_nova_homepage') }}">Back to index</a></p>
+	<div class="container inscription">
+	    <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+	    <p><a class="btn" href="{{ path('terra_nova_homepage') }}">Retour</a></p>
 
-	<p><a href="{{ path('terra_nova_enseigant_index') }}">Back to enseignant</a></p>
+		<p><a class="btn" href="{{ path('terra_nova_enseigant_index') }}">Back off</a></p>
 	
-
+	</div>
     {% if app.session is not empty %}
         {% set targetUrl = app.session.get('_security.' ~ app.security.token.providerKey ~ '.target_path') %}
         {% if targetUrl is not empty %}<p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>{% endif %}

@@ -1,0 +1,12 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Ensaignant | Confirmation en cours{% endblock %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block body %}
+	<div class="container">
+	    <p>{{ 'registration.check_email'|trans({'%email%': user.email}) }}</p>
+	    <p><a  class="btn" href="{{ path('terra_nova_homepage') }}">Retour</a></p>
+	</div>
+{% endblock  %}

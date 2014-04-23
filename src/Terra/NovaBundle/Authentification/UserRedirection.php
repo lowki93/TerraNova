@@ -21,7 +21,12 @@ class UserRedirection implements AuthenticationSuccessHandlerInterface
     	$Roles = $token->getUser()->getRoles();
 
     	if (in_array("ROLE_ENSEIGNANT", $Roles)) {
-    		return new RedirectResponse($this->router->generate('terra_nova_enseigant_index'));
+                $user = $token->getUser();
+                $etablissement = $user->getEtablissement();
+                if($etablissement == 0)
+                    return new RedirectResponse($this->router->generate('etablissement'));
+                else
+                    return new RedirectResponse($this->router->generate('terra_nova_enseigant_index'));
     	} else if (in_array("ROLE_ADMIN", $Roles)){
     		return new RedirectResponse($this->router->generate('terra_nova_admin_index'));
     	}

@@ -77,7 +77,7 @@ class StudentController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('Eleve', array('id' => $idClasse)));
+            return $this->redirect($this->generateUrl('Eleve_by_etablissement'));
         }
 
         return $this->render('TerraNovaBundle:Student:new.html.twig', array(

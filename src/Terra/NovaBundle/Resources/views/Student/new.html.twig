@@ -3,15 +3,42 @@
 {% block title %}Enseignant | Création d'élèves{% endblock %}
 
 {% block body %}
-    <h1>Student creation</h1>
+	<div class="container">
+    	<h3>Créer un élève</h3>
 
-    {{ form(form) }}
-
-        <ul class="record_actions">
-    <li>
-    <a href="{{ path('Eleve', { 'id' : idClasse }) }}">
-            Back to the list
-        </a>
-    </li>
+    	{{ form_start(form, { 'attr': {'class' : 'form-horizontal'} }) }}
+	    <div class="control-group">
+	        <label class="control-label">Nom</label>
+	        <div class="controls">
+	            {{ form_widget(form.name) }}
+	        </div>
+	    </div>
+	    <div class="control-group">
+	        <label class="control-label">Prénom</label>
+	        <div class="controls">
+	            {{ form_widget(form.firstName) }}
+	        </div>
+	    </div>
+	    <div class="control-group">
+	        <label class="control-label">age</label>
+	        <div class="controls">
+	            {{ form_widget(form.age) }}
+	        </div>
+	    </div>
+	    <div class="control-group">
+	        <label class="control-label">Classe</label>
+	        <div class="controls">
+	            {{ form_widget(form.classe) }}
+	        </div>
+	    </div>
+	    {{ form_widget(form.avatar) }}
+	    {{ form_widget(form._token) }}
+	    <div class="control-group">
+	        <div class="controls">
+	            <button type="submit" class="btn btn-primary">Créer</button>
+	            <a href="{{ path('Eleve_by_etablissement') }}"class="btn btn-default">Retour</a>
+	        </div>
+	    </div>
+    </div>
 </ul>
 {% endblock %}

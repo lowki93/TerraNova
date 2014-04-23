@@ -28,7 +28,9 @@ class StudentType extends AbstractType
             ->add('name')
             ->add('firstName')
             ->add('age')
-            ->add('avatar')
+            ->add('avatar','hidden', array(
+                'data' => "000"
+            ))
             ->add('classe', 'entity', array(
                 'class' => 'TerraNovaBundle:Classe',
                 'property' => 'name',

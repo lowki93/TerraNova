@@ -23,8 +23,12 @@ class RegistrationController extends BaseController
         /** @var $dispatcher \Symfony\Component\EventDispatcher\EventDispatcherInterface */
         $dispatcher = $this->container->get('event_dispatcher');
 
-        //$user = $userManager->createUser();
-        $user = new User("admin");
+        if ($this->container->get('security.context')->isGranted('ROLE_ADMIN')){
+            $user = new User("admin");
+        } else {
+            $user = new User("ensaignant");
+        }
+
         $user->setEnabled(true);
 
         $event = new GetResponseUserEvent($user, $request);

@@ -23,7 +23,11 @@ class StudentController extends Controller
 
         $classes = $em->getRepository('TerraNovaBundle:Classe')->findByEnseignant($idEnseignant);
 
-        $firstId = $classes[0]->getId();
+        if($classes)
+            $firstId = $classes[0]->getId();
+        else
+            $firstId = null;
+
         $students = $em->getRepository('TerraNovaBundle:Student')->findByClasse($firstId);
 
         return $this->render('TerraNovaBundle:Student:studentByEtablissement.html.twig', array(

@@ -3,15 +3,54 @@
 {% block title %}Etablissement | Création{% endblock %}
 
 {% block body -%}
-    <h1>Etablissement creation</h1>
+	<div class="container">
+		<h3>Création de l'établissement</h3>
 
-    {{ form(form) }}
+		{{ form_start(form, { 'attr': {'class' : 'form-horizontal'} }) }}
+		<div class="control-group">
+		    <label class="control-label">Numéro National</label>
+		    <div class="controls">
+		        {{ form_widget(form.numeroNational) }}
+		    </div>
+		</div>
+		<div class="control-group">
+		    <label class="control-label">Nom</label>
+		    <div class="controls">
+		        {{ form_widget(form.name) }}
+		    </div>
+		</div>
+		<div class="control-group">
+		    <label class="control-label">Type</label>
+		    <div class="controls">
+		        {{ form_widget(form.type) }}
+		    </div>
+		</div>
+		<div class="control-group">
+		    <label class="control-label">Adresse</label>
+		    <div class="controls">
+		        {{ form_widget(form.adresse) }}
+		    </div>
+		</div>
+		<div class="control-group">
+		    <label class="control-label">Code Postal</label>
+		    <div class="controls">
+		        {{ form_widget(form.codePostal) }}
+		    </div>
+		</div>
+		<div class="control-group">
+		    <label class="control-label">Ville</label>
+		    <div class="controls">
+		        {{ form_widget(form.ville) }}
+		    </div>
+		</div>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('etablissement') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+		{{ form_widget(form.active) }}
+		{{ form_widget(form._token) }}
+		<div class="control-group">
+		    <div class="controls">
+		        <button type="submit" class="btn btn-primary">Créer</button>
+		        <a href="{{ path('etablissement') }}"class="btn btn-default">Retour</a>
+		    </div>
+		</div>
+	</div>
 {% endblock %}

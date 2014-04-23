@@ -3,15 +3,28 @@
 {% block title %}Enseignant | Création de classe{% endblock %}
 
 {% block body %}
-    <h1>Classe creation</h1>
+	<div class="container">
+	    <h3>Créer votre classe</h3>
 
-    {{ form(form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('terra_nova_enseigant_index') }}">
-            Back to enseignant
-        </a>
-    </li>
-</ul>
+	    {{ form_start(form, { 'attr': {'class' : 'form-horizontal'} }) }}
+	    <div class="control-group">
+	        <label class="control-label">Nom</label>
+	        <div class="controls">
+	            {{ form_widget(form.name) }}
+	        </div>
+	    </div>
+	    <div class="control-group">
+	        <label class="control-label">Niveau</label>
+	        <div class="controls">
+	            {{ form_widget(form.niveau) }}
+	        </div>
+	    </div>
+	    {{ form_widget(form._token) }}
+	    <div class="control-group">
+	        <div class="controls">
+	            <button type="submit" class="btn btn-primary">Créer</button>
+	            <a href="{{ path('Eleve_by_etablissement') }}"class="btn btn-default">Retour</a>
+	        </div>
+	    </div>
+	</div>
 {% endblock %}

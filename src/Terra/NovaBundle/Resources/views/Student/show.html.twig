@@ -12,128 +12,90 @@
 
 {% block body %}
     <div class="content-student">
-        <h1>Mes élèves</h1>
-        <div class="row">
-            <div class="span8">
-                <h2>{{ entity.firstName }} {{ entity.name }}</h2>
-                <button class="btn"><a href="javascript:history.back()">< Retour aux élèves</a></button>
-                <p>sélectionnez une séance</p>
-                    <ul>
-                        <li>
-                            <a href="#">
-                                <p class="theme-title">La mytologie</p>
-                                <img src="{{ asset('uploads/mythologie.png') }}">
-                                <div class="hover">
-                                    <hr />
-                                    <span>20/03/2014</span>
-                                    <hr />
-                                    <p><span>63%</span><br />de réponses correctes</p>
-                                </div>
-                                <button class="btn">Visualisez</button>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <p class="theme-title">La mytologie</p>
-                                <img src="{{ asset('uploads/mythologie.png') }}">
-                                <div class="hover">
-                                    <hr />
-                                    <span>20/03/2014</span>
-                                    <hr />
-                                    <p><span>63%</span><br />de réponses correctes</p>
-                                </div>
-                                <button class="btn">Visualisez</button>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <p class="theme-title">La mytologie</p>
-                                <img src="{{ asset('uploads/mythologie.png') }}">
-                                <div class="hover">
-                                    <hr />
-                                    <span>20/03/2014</span>
-                                    <hr />
-                                    <p><span>63%</span><br />de réponses correctes</p>
-                                </div>
-                                <button class="btn">Visualisez</button>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <p class="theme-title">La mytologie</p>
-                                <img src="{{ asset('uploads/mythologie.png') }}">
-                                <div class="hover">
-                                    <hr />
-                                    <span>20/03/2014</span>
-                                    <hr />
-                                    <p><span>63%</span><br />de réponses correctes</p>
-                                </div>
-                                <button class="btn">Visualisez</button>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <p class="theme-title">La mytologie</p>
-                                <img src="{{ asset('uploads/mythologie.png') }}">
-                                <div class="hover">
-                                    <hr />
-                                    <span>20/03/2014</span>
-                                    <hr />
-                                    <p><span>63%</span><br />de réponses correctes</p>
-                                </div>
-                                <button class="btn">Visualisez</button>
-                            </a>
-                        </li>
-                    </ul>
-                <p>remarque général sur l'élève</p>
-                <p>bagde obtenu</p>
-            </div>
-            <div class="span4">
-                <p><span>76%</span><br />de réponses correctes en moyenne</p>
-                <p><span>2H26</span><br />passées sur Wipo</p>
-                <p><span>5</span><br />thèmes joués</p>
-                <p><span>25min</span><br />passées en moyenne sur cahque thème</p>
+        <div class="container">
+             <h1>Mes élèves</h1>
+            <div class="row">
+                <div class="span8">
+                    <h2>{{ entity.firstName }} {{ entity.name }}</h2>
+                    <button class="btn"><a href="javascript:history.back()">< Retour aux élèves</a></button>
+                    <p>sélectionnez une séance</p>
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <p class="theme-title">La mytologie</p>
+                                    <img src="{{ asset('uploads/mythologie.png') }}">
+                                    <div class="hover">
+                                        <hr />
+                                        <span>20/03/2014</span>
+                                        <hr />
+                                        <p><span>63%</span><br />de réponses correctes</p>
+                                    </div>
+                                    <button class="btn">Visualisez</button>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <p class="theme-title">La mytologie</p>
+                                    <img src="{{ asset('uploads/mythologie.png') }}">
+                                    <div class="hover">
+                                        <hr />
+                                        <span>20/03/2014</span>
+                                        <hr />
+                                        <p><span>63%</span><br />de réponses correctes</p>
+                                    </div>
+                                    <button class="btn">Visualisez</button>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <p class="theme-title">La mytologie</p>
+                                    <img src="{{ asset('uploads/mythologie.png') }}">
+                                    <div class="hover">
+                                        <hr />
+                                        <span>20/03/2014</span>
+                                        <hr />
+                                        <p><span>63%</span><br />de réponses correctes</p>
+                                    </div>
+                                    <button class="btn">Visualisez</button>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <p class="theme-title">La mytologie</p>
+                                    <img src="{{ asset('uploads/mythologie.png') }}">
+                                    <div class="hover">
+                                        <hr />
+                                        <span>20/03/2014</span>
+                                        <hr />
+                                        <p><span>63%</span><br />de réponses correctes</p>
+                                    </div>
+                                    <button class="btn">Visualisez</button>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <p class="theme-title">La mytologie</p>
+                                    <img src="{{ asset('uploads/mythologie.png') }}">
+                                    <div class="hover">
+                                        <hr />
+                                        <span>20/03/2014</span>
+                                        <hr />
+                                        <p><span>63%</span><br />de réponses correctes</p>
+                                    </div>
+                                    <button class="btn">Visualisez</button>
+                                </a>
+                            </li>
+                        </ul>
+                    <p>remarque général sur l'élève</p>
+                    <p>bagde obtenu</p>
+                </div>
+                <div class="span4">
+                    <p><span>76%</span><br />de réponses correctes en moyenne</p>
+                    <p><span>2H26</span><br />passées sur Wipo</p>
+                    <p><span>5</span><br />thèmes joués</p>
+                    <p><span>25min</span><br />passées en moyenne sur cahque thème</p>
+                </div>
             </div>
         </div>
     </div>
-{#     <h1>Student</h1>
-
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ entity.name }}</td>
-            </tr>
-            <tr>
-                <th>Firstname</th>
-                <td>{{ entity.firstName }}</td>
-            </tr>
-            <tr>
-                <th>Age</th>
-                <td>{{ entity.age }}</td>
-            </tr>
-            <tr>
-                <th>Avatar</th>
-                <td>{{ entity.avatar }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-        <ul class="record_actions">
-    <li>
-    <a href="{{ path('Eleve', {'id': idClasse}) }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('Eleve_edit', { 'id': entity.id, 'idClasse': idClasse }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul> #}
 {% endblock %}

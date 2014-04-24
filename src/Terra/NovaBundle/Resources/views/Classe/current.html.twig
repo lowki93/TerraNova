@@ -1,0 +1,12 @@
+<h4>Ma classe courrante</h4>
+{% if app.user.currentClass %}<p>Votre classe courrante actuelle est : {{ app.user.currentClass.name }}</p>{% else %}
+		<p>Vous n'avez pas de classe courante</p>
+	{% endif %} 
+{{ form_start(currentForm) }}
+<label>Classe Courante</label>
+{{ form_widget(currentForm.currentClass) }}
+
+{{ form_widget(currentForm._token) }}
+<button type="submit" class="btn">Créer</button>
+
+{{ form_end(currentForm) }}

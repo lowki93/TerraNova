@@ -2,10 +2,13 @@
 
 namespace Terra\NovaBundle\Controller;
 
+use Doctrine\ORM\EntityRepository;
+
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Terra\NovaBundle\Entity\Classe;
+use Terra\NovaBundle\Entity\User;
 use Terra\NovaBundle\Form\ClasseType;
 
 /**
@@ -243,5 +246,60 @@ class ClasseController extends Controller
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
+    }
+
+    public function currentAction(Request $request)
+    {   
+        $user = $this->container->get('security.context')->getToken()->getUser();
+
+        $form = $this->createCurrentClasseForm($user);
+        $form->bind($request);
+
+        if($form->isValid()) {
+            $data = $request->request->all();
+            $idClasse = $data['form']['currentClass'];
+
+            $em = $this->getDoctrine()->getManager();
+            $qb = $em->createQueryBuilder();
+            $q = $qb->update('Terra\NovaBundle\Entity\User', 'u')
+                    ->set('u.currentClass', '?1')
+                    ->setParameter(1, $idClasse)
+                    ->andWhere("u.id =".$user->getId()."")
+                    ->getQuery();
+            $p = $q->execute();
+
+            return $this->redirect($this->generateUrl('terra_nova_enseignant_profile_show'));
+
+        }
+
+        return $this->render('TerraNovaBundle:Classe:current.html.twig',array(
+                'currentForm' => $form->createView(),
+            ));
+    }
+
+
+    /**
+     * Creates a form to update current class
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createCurrentClasseForm($user){
+        $this->user = $user;
+        
+        $qb = $this->createFormBuilder()
+            ->add('currentClass', 'entity', array(
+                'class' => 'TerraNovaBundle:Classe',
+                'property' => 'name',
+                'query_builder' => function(EntityRepository $er) {
+                    return $er->createQueryBuilder('c')
+                              ->orderBy('c.name', 'ASC')
+                              ->where('c.enseignant = :enseignant')
+                              ->setParameter('enseignant', $this->user);
+                    }
+                ))
+            ->setAction($this->generateUrl('terra_nova_enseignant_profil_current_class'))
+            ->getForm()
+            ;
+        return $qb;
     }
 }

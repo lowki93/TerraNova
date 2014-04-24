@@ -54,6 +54,12 @@ class Classe
      * @ORM\OneToMany(targetEntity="Terra\NovaBundle\Entity\Seance", mappedBy="classe")
      */
     protected $seance;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Terra\NovaBundle\Entity\User", mappedBy="currentClass")
+     */
+    protected $ensaignantCurrent;
+
     /**
      * Get id
      *
@@ -274,5 +280,38 @@ class Classe
     public function getSeance()
     {
         return $this->seance;
+    }
+
+    /**
+     * Add ensaignantCurrent
+     *
+     * @param \Terra\NovaBundle\Entity\User $ensaignantCurrent
+     * @return Classe
+     */
+    public function addEnsaignantCurrent(\Terra\NovaBundle\Entity\User $ensaignantCurrent)
+    {
+        $this->ensaignantCurrent[] = $ensaignantCurrent;
+
+        return $this;
+    }
+
+    /**
+     * Remove ensaignantCurrent
+     *
+     * @param \Terra\NovaBundle\Entity\User $ensaignantCurrent
+     */
+    public function removeEnsaignantCurrent(\Terra\NovaBundle\Entity\User $ensaignantCurrent)
+    {
+        $this->ensaignantCurrent->removeElement($ensaignantCurrent);
+    }
+
+    /**
+     * Get ensaignantCurrent
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEnsaignantCurrent()
+    {
+        return $this->ensaignantCurrent;
     }
 }

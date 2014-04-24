@@ -21,7 +21,7 @@
                     <a class="brand hidden-mobile" href="{{ path('terra_nova_homepage')}}"><img src="{{ asset('img/logo.png') }}" alt="Wipo"/>WIPO</a>
                     {% if is_granted("ROLE_ENSEIGNANT") %}
                         <ul>
-                            <li>Bonjour {{app.user.name}} {{app.user.lastName}}</li>
+                            <li class="title-user">Bonjour {{app.user.name}} {{app.user.lastName}}<br />{% if app.user.currentClass %}<p>Classe courrante : {{ app.user.currentClass.name }}</p>{% else %}<p>Pas de classe courante</p>{% endif %}</li>
                         </ul>
                         <ul>
                             {% if app.user.etablissement != null %}
@@ -56,7 +56,7 @@
                             </ul>
                             {% if is_granted("ROLE_ENSEIGNANT") %}
                                 <ul class="nav full pull-left hidden-tablette">
-                                    <li>Bonjour {{app.user.name}} {{app.user.lastName}}</li>
+                                    <li class="title-user">Bonjour {{app.user.name}} {{app.user.lastName}}<br />{% if app.user.currentClass %}<p>Classe courrante : {{ app.user.currentClass.name }}</p>{% else %}<p>Pas de classe courante</p>{% endif %}</li>
                                 </ul>
                                 <ul class="nav full pull-right hidden-tablette">
                                     {% if app.user.etablissement != null %}

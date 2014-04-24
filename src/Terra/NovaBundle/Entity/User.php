@@ -29,6 +29,11 @@ class User extends BaseUser
     protected $name;
 
     /**
+    * @ORM\ManyToOne(targetEntity="Terra\NovaBundle\Entity\Classe", inversedBy="ensaignantCurrent")
+    */
+    protected $currentClass;
+
+    /**
     * @ORM\ManyToOne(targetEntity="Terra\NovaBundle\Entity\Etablissement", inversedBy="ensaignant")
     */
     protected $etablissement;
@@ -222,4 +227,27 @@ class User extends BaseUser
         return $this->seance;
     }
 
+
+    /**
+     * Set currentClass
+     *
+     * @param integer $currentClass
+     * @return User
+     */
+    public function setCurrentClass($currentClass)
+    {
+        $this->currentClass = $currentClass;
+
+        return $this;
+    }
+
+    /**
+     * Get currentClass
+     *
+     * @return integer 
+     */
+    public function getCurrentClass()
+    {
+        return $this->currentClass;
+    }
 }

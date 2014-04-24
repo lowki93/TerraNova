@@ -16,6 +16,11 @@ terra_nova_enseignant_profil_change_password:
     defaults:  { _controller: TerraNovaBundle:ChangePassword:changePassword }
     requirements: { _method: get|post }
 
+terra_nova_enseignant_profil_current_class:
+    path:   /profil/classe-courrante
+    defaults:  { _controller: TerraNovaBundle:Classe:current }
+    requirements: { _method: get|post }
+
 TerraNovaBundle_etablissement:
     resource: "@TerraNovaBundle/Resources/config/routing/etablissement.yml"
     prefix:   /etablissement

@@ -31,6 +31,13 @@ class Student
     /**
      * @var string
      *
+     * @ORM\Column(name="login", type="string", length=255)
+     */
+    private $login;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="firstName", type="string", length=255)
      */
     private $firstName;
@@ -177,5 +184,28 @@ class Student
     public function getClasse()
     {
         return $this->classe;
+    }
+
+    /**
+     * Set login
+     *
+     * @param string $login
+     * @return Student
+     */
+    public function setLogin($login)
+    {
+        $this->login = $login;
+
+        return $this;
+    }
+
+    /**
+     * Get login
+     *
+     * @return string 
+     */
+    public function getLogin()
+    {
+        return $this->login;
     }
 }

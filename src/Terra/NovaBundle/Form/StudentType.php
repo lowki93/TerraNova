@@ -28,6 +28,7 @@ class StudentType extends AbstractType
             ->add('name')
             ->add('firstName')
             ->add('age')
+            ->add('login')
             ->add('avatar','hidden', array(
                 'data' => "000"
             ))

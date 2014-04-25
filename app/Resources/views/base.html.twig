@@ -18,7 +18,7 @@
         <div class="mp-pusher" id="mp-pusher">
             <nav id="mp-menu" class="mp-menu">
                 <div class="header-menu">
-                    <a class="brand hidden-mobile" href="{{ path('terra_nova_homepage')}}"><img src="{{ asset('img/logo.png') }}" alt="Wipo"/>WIPO</a>
+                    <a class="brand hidden-mobile" href="{{ path('terra_nova_homepage')}}"><img src="{{ asset('bundles/terranova/img/logo.png') }}" alt="Wipo"/></a>
                     {% if is_granted("ROLE_ENSEIGNANT") %}
                         <ul>
                             <li class="title-user">Bonjour {{app.user.name}} {{app.user.lastName}}<br />{% if app.user.currentClass %}<p>Classe courrante : {{ app.user.currentClass.name }}</p>{% else %}<p>Pas de classe courante</p>{% endif %}</li>
@@ -50,7 +50,7 @@
                 <header>
                     <div class="navbar" id="navbar">
                         <div class="navbar-inner">
-                            <a class="brand hidden-mobile" href="{{ path('terra_nova_homepage')}}"><img src="{{ asset('img/logo.png') }}" alt="Wipo"/>WIPO</a>
+                            <a class="brand hidden-mobile" href="{{ path('terra_nova_homepage')}}"><img src="{{ asset('bundles/terranova/img/logo.png') }}" alt="Wipo"/></a>
                             <ul class="nav full pull-left">
                                 <li><a href="#" id="trigger" class="menu hidden-menu show-mobile"><i class="icon-align-justify"></i></a></li>
                             </ul>

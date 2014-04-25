@@ -1,5 +1,12 @@
 @import style
 
+.wipo-animate
+	position: absolute
+	z-index: 999
+	width: 10%
+	top: 80px
+	left: 40px
+
 .scroll-area
 	position: relative
 	overflow: auto
@@ -44,77 +51,182 @@
 					background-repeat: no-repat
 		img
 			width: 100%
-	.principle
-		background-color: $lightGrey
-		padding-bottom: 80px
+	.cloud-background
+		margin-top: -10px
+		background-image: url('../img/background-homepage.png')
+		background-size: cover
+		background-position: top center
+		background-repeat: no-repat
 		h4
-			padding:
-				top: 30px
-				bottom: 30px
-			font-size: 14px
+			font-family: 'marujo'
+			font-size: 30px
+			color: $yellowTitle
 			text-align: center
-		.principle-content
-			display: flex
-			align-items: center
-			justify-content: center
-	.team
-		background-color: $grey
-		h4
-			padding:
-				top: 30px
-				bottom: 15px
-			font-size: 14px
-			text-align: center
-		p
-			padding:
-				left: 10%
-				right: 10%
-				bottom: 40px
-			font-size: 20px
-		.span4
-			display: flex
-			align-items: center
-			justify-content: center
-			img
+		.teaser
+			h4
 				padding:
-					left: 10px
-					right: 10px
+					top: 30px
+					bottom: 30px
+			.teaser-content
+				display: flex
+				align-items: center
+				justify-content: center
+		.principle
+			padding-bottom: 80px
+			h4
+				padding:
+					top: 30px
+					bottom: 30px
+			.principle-content
+				display: flex
+				align-items: center
+				justify-content: center
+		.team
+			h4
+				padding:
+					top: 30px
+					bottom: 15px
 			p
-				color: #FFF
-				font-size: 14px
+				font-family: 'vagroundedsrd-light'
+				padding:
+					left: 10%
+					right: 10%
+					bottom: 40px
+				font-size: 16px
 				text-align: center
-				span
-					font-size: 18px
-	.contact
-		background-color: $lightGrey
-		padding-bottom: 40px
-		h4
-			padding:
-				top: 30px
-				bottom: 15px
-			font-size: 14px
-			text-align: center
-		p
-			text-align: center
-			padding:
-				left: 10%
-				right: 10%
-				bottom: 40px
-			font-size: 32px
-		.span6
-			-webkit-box-sizing: border-box
-			-moz-box-sizing: border-box
-			box-sizing: border-box
-			padding:
-				left: 30px
-				right: 30px
-			input, textarea
-				width: 100%
+				color: $labelBlue
+			.span4
+				display: flex
+				align-items: center
+				justify-content: center
+				img
+					border: 20px solid #fff
+				p
+					margin-top: 20px
+					font-size: 14px
+					span
+						font-size: 20px
+						font-family: 'Marujo'
+						color: #FFF
+		.contact
+			padding-bottom: 40px
+			h4
+				padding:
+					top: 30px
+					bottom: 15px
+			p
+				text-align: center
+				padding:
+					left: 10%
+					right: 10%
+					bottom: 40px
+				font-size: 32px
+			.span4, .span8
+				-webkit-box-sizing: border-box
+				-moz-box-sizing: border-box
+				box-sizing: border-box
+				padding:
+					left: 30px
+					right: 30px
+				label
+					color: $labelBlue
+					font-size: 16px
+					font-family: 'vagroundedsrd-bold'
+				input, select
+					border: 0
+					background: transparent
+					box-shadow: none
+					-webkit-appearance: none
+					font-family: 'Arial'
+					color: $labelBlue
+					font-size: 16px
+			.span4
+				input, select
+					-webkit-box-sizing: border-box
+					-moz-box-sizing: border-box
+					box-sizing: border-box
+					height: 47px
+					padding:
+						left: 20px
+						right: 20px
+				input
+					&:first-of-type
+						background-image: url('../img/input/name.png')
+						background-size: cover
+						background-position: top left
+						background-repeat: no-repeat
+					&:nth-of-type(2)
+						background-image: url('../img/input/firstName.png')
+						background-size: cover
+						background-position: top left
+						background-repeat: no-repeat
+					&:nth-of-type(3)
+						background-image: url('../img/input/email.png')
+						background-size: cover
+						background-position: top left
+						background-repeat: no-repeat
+				select
+					background-image: url('../img/input/youAre.png')
+					background-size: cover
+					background-position: top left
+					background-repeat: no-repeat
+					padding:
+						top: 10px
+			.span8
+				position: relative
+				textarea
+					border: 7px solid $borderArea
+					width: 100%
+					height: 280px
+					// -webkit-box-sizing: border-box
+					// -moz-box-sizing: border-box
+					// box-sizing: border-box
+					// width: 100%
+					// padding:
+					// 	left: 30px
+					// 	right: 30px
+					// 	top: 40px
+					// 	bottom: 40px
+					// background-image: url('../img/input/textarea.png')
+					// background-size: cover
+					// background-position: top left
+					// background-repeat: no-repeat
+				input
+					position: absolute
+					width: 10%
+					bottom: -30px
+					right: 0
+			label
+				font-size: 16px
+				text-transform: uppercase
 				color: $greyFont
-			select
-				width: 103%
-				color: $greyFont
-		label
-			font-size: 16px
-			text-transform: uppercase
-			color: $greyFont
+
+
+// @media (max-width: 520px)
+// 	.scroll-area
+// 		.cloud-background
+// 			.contact
+// 				.span8
+// 					position: relative
+// 					textarea
+// 						-webkit-box-sizing: border-box
+// 						-moz-box-sizing: border-box
+// 						box-sizing: border-box
+// 						width: 100%
+// 						padding:
+// 							left: 30px
+// 							right: 30px
+// 							top: 40px
+// 							bottom: 40px
+// 						background-image: url('../img/input/textarea-320.png')
+// 						background-size: cover
+// 						background-position: top left
+// 						background-repeat: no-repeat
+// 					input
+// 						position: absolute
+// 						bottom: 0
+// 						right: 0
+// 				label
+// 					font-size: 16px
+// 					text-transform: uppercase
+// 					color: $greyFont

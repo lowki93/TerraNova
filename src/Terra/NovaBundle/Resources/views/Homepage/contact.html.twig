@@ -1,6 +1,6 @@
 <div class="row">
 	{{ form_start(form) }}
-		<div class="span6">
+		<div class="span4">
 			<label>nom</label>
 			{{ form_widget(form.name) }}
 			<label>prenom</label>
@@ -10,10 +10,10 @@
 			<label>vous êtes ...</label>
 			{{ form_widget(form.youAre) }}
 		</div>
-		<div class="span6">
+		<div class="span8">
 			<label>votre message</label>
 			{{ form_widget(form.message) }}
-			<button type="submit" class="btn btn-primary">Envoyer</button>
+			<input type="image" src="{{ asset('bundles/terranova/img/input/sendMail.png') }}"/>
 		</div>
 	{{ form_end(form) }}
 </div>

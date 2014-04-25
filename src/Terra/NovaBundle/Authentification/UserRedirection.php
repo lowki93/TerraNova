@@ -22,7 +22,7 @@ class UserRedirection implements AuthenticationSuccessHandlerInterface
 
     	if (in_array("ROLE_ENSEIGNANT", $Roles)) {
                 $user = $token->getUser();
-                $etablissement = $user->getEtablissement();
+                $etablissement = $user->getEtablissement()->getId();
                 if($etablissement == 0)
                     return new RedirectResponse($this->router->generate('etablissement'));
                 else

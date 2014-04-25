@@ -11,13 +11,8 @@
 {% endblock %}
 
 {% block body %}
-	{# <h1>Accueil</h1><br />
-	{% if is_granted("ROLE_ENSEIGNANT") %}
-		<a href="{{ path('terra_nova_enseigant_index') }}">Enseignant</a><br />
-		<a href="{{ path('terra_nova_logout') }}">Déconnexion</a>
-	{% else %}
-		<a href="{{ path('terra_nova_enseigant_connection') }}">Connexion</a>
-	{% endif %} #}
+	
+	<img class="wipo-animate" id="masuperimage" src="{{ asset('bundles/terranova/img/wipo-anime/wipo1.png') }}">
 	<div class="scroll-area" data-spy="scroll" data-target="#navbar">
 		<div id="game" class="game">
  			<div class="game-title">
@@ -44,14 +39,20 @@
 			  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
 			</div>
 		</div>
- 		<div id="principle" class="principle">
-			<h4>Le principe</h4>
-			<div class="principle-content">
-				<img src="{{ asset('uploads/principle.png') }}">
+		<div class="cloud-background">
+			<div class="teaser container">
+				<h4>Découvre le teaser</h4>
+				<div class="teaser-content">
+					<img src="{{ asset('uploads/teaser.png') }}">
+				</div>
 			</div>
-		</div>
-		<div id="team" class="team">
-			<div class="container">
+	 		<div id="principle" class="principle">
+				<h4>Comment ça marche</h4>
+				<div class="principle-content">
+					<img src="{{ asset('uploads/principle.png') }}">
+				</div>
+			</div>
+			<div id="team" class="team container">
 				<h4>L'équipe</h4>
 				<p>Wipo est le projet de 3 étudiants Concepteurs Réalisateurs Multimédia à Gobelins, l'École de l’Image :</p>
 				<div class="row">
@@ -69,20 +70,62 @@
 					</div>
 					<div class="span4">
 						<div>
-							<img src="{{ asset('bundles/terranova/img/team/julie.png') }}" alt="julie" class="img-circle">
+							<img src="{{ asset('bundles/terranova/img/team/glenn.png') }}" alt="julie" class="img-circle">
 							<p><span>Glenn Sonna</span><br />Développeur<br />glennsonna.fr</p>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div id="contact" class="contact">
-			<div class="container">
-				<h4>Contactez-nous</h4>
-				<p>Venez nous dire coucou</p>
+			<div id="contact" class="contact container">
+				<h4>Venez nous dire coucou</h4>
 				{{ render(controller('TerraNovaBundle:Default:contact')) }}
 			</div>
 		</div>
 	</div> 
 
+{% endblock %}
+
+{% block javascripts %}
+
+	<script> 
+		// Un tableau qui va contenir toutes tes images.
+		var images = new Array();
+		images.push("{{ asset('bundles/terranova/img/wipo-anime/wipo2.png') }}");
+		images.push("{{ asset('bundles/terranova/img/wipo-anime/wipo3.png') }}");
+		images.push("{{ asset('bundles/terranova/img/wipo-anime/wipo4.png') }}");
+		images.push("{{ asset('bundles/terranova/img/wipo-anime/wipo5.png') }}");
+		images.push("{{ asset('bundles/terranova/img/wipo-anime/wipo6.png') }}");
+		images.push("{{ asset('bundles/terranova/img/wipo-anime/wipo7.png') }}");
+		images.push("{{ asset('bundles/terranova/img/wipo-anime/wipo8.png') }}");
+		images.push("{{ asset('bundles/terranova/img/wipo-anime/wipo9.png') }}");
+		images.push("{{ asset('bundles/terranova/img/wipo-anime/wipo10.png') }}");
+		images.push("{{ asset('bundles/terranova/img/wipo-anime/wipo11.png') }}");
+		images.push("{{ asset('bundles/terranova/img/wipo-anime/wipo12.png') }}");
+		images.push("{{ asset('bundles/terranova/img/wipo-anime/wipo13.png') }}");
+		images.push("{{ asset('bundles/terranova/img/wipo-anime/wipo14.png') }}");
+		images.push("{{ asset('bundles/terranova/img/wipo-anime/wipo15.png') }}");
+		images.push("{{ asset('bundles/terranova/img/wipo-anime/wipo16.png') }}");
+		images.push("{{ asset('bundles/terranova/img/wipo-anime/wipo17.png') }}");
+		images.push("{{ asset('bundles/terranova/img/wipo-anime/wipo1.png') }}");
+
+		 
+		var pointeur = 0;
+		 
+		function ChangerImage(){
+		document.getElementById("masuperimage").src = images[pointeur];
+		 
+			if(pointeur < images.length - 1)
+				pointeur++;
+			else
+				pointeur = 0;
+		 
+			setTimeout("ChangerImage()", 50)
+		}
+		 
+		// Charge la fonction
+		window.onload = function(){
+		ChangerImage();
+
+	}
+	</script>
 {% endblock %}

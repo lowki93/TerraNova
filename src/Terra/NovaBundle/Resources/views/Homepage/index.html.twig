@@ -15,13 +15,13 @@
 	<img class="wipo-animate" id="masuperimage" src="{{ asset('bundles/terranova/img/wipo-anime/wipo1.png') }}">
 	<div class="scroll-area" data-spy="scroll" data-target="#navbar">
 		<div id="game" class="game">
- 			<div class="game-title">
+{#  			<div class="game-title">
 				<h4>Le jeu</h4>
 				<h1>La pédagogie en réalité augmentée</h1>
 			</div>
 			<div class="command">
 				<button class="btn">commander le jeu</button>
-			</div>
+			</div> #}
 			<div id="myCarousel" class="carousel slide">
 			  <ol class="carousel-indicators">
 			    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -52,33 +52,37 @@
 					<img src="{{ asset('uploads/principle.png') }}">
 				</div>
 			</div>
-			<div id="team" class="team container">
-				<h4>L'équipe</h4>
-				<p>Wipo est le projet de 3 étudiants Concepteurs Réalisateurs Multimédia à Gobelins, l'École de l’Image :</p>
-				<div class="row">
-					<div class="span4">
-						<div>
-							<img src="{{ asset('bundles/terranova/img/team/julie.png') }}" alt="julie" class="img-circle">
-							<p><span>Kévin Budain</span><br />Développeur<br />lowki93.free.fr</p>
+			<div id="team" class="team">
+				<div class="container">
+					<h4>L'équipe</h4>
+					<p>Wipo est le projet de 3 étudiants Concepteurs Réalisateurs Multimédia à Gobelins, l'École de l’Image :</p>
+					<div class="row">
+						<div class="span4">
+							<div>
+								<img src="{{ asset('bundles/terranova/img/team/julie.png') }}" alt="julie" class="img-circle">
+								<p><span>Kévin Budain</span><br />Développeur<br />lowki93.free.fr</p>
+							</div>
 						</div>
-					</div>
-					<div class="span4">
-						<div>
-							<img src="{{ asset('bundles/terranova/img/team/julie.png') }}" alt="julie" class="img-circle">
-							<p><span>Julie Muckensturm</span><br />Designer intéractif<br />sneups.net</p>	
+						<div class="span4">
+							<div>
+								<img src="{{ asset('bundles/terranova/img/team/julie.png') }}" alt="julie" class="img-circle">
+								<p><span>Julie Muckensturm</span><br />Designer intéractif<br />sneups.net</p>	
+							</div>
 						</div>
-					</div>
-					<div class="span4">
-						<div>
-							<img src="{{ asset('bundles/terranova/img/team/glenn.png') }}" alt="julie" class="img-circle">
-							<p><span>Glenn Sonna</span><br />Développeur<br />glennsonna.fr</p>
+						<div class="span4">
+							<div>
+								<img src="{{ asset('bundles/terranova/img/team/glenn.png') }}" alt="julie" class="img-circle">
+								<p><span>Glenn Sonna</span><br />Développeur<br />glennsonna.fr</p>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div id="contact" class="contact container">
-				<h4>Venez nous dire coucou</h4>
-				{{ render(controller('TerraNovaBundle:Default:contact')) }}
+			<div id="contact" class="contact">
+				<div class="container">
+					<h4>Venez nous dire coucou</h4>
+					{{ render(controller('TerraNovaBundle:Default:contact')) }}
+				</div>
 			</div>
 		</div>
 	</div> 

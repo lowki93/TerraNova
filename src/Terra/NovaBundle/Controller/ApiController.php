@@ -47,6 +47,6 @@ class ApiController extends Controller
 				unset($user->getSeance()[$i]);
 			}
 		}
-	    return $this->handleView($this->view($user->getSeance(), 200));
+	    return $this->handleView($this->view($user, 200));
 	}
 }

@@ -37,10 +37,10 @@
                     {% else %}
                         {% if app.request.attributes.get('_route') != 'terra_nova_enseigant_register' %}
                             <ul class="">
-                                <li><a href="#game">Le jeu</a></li>
-                                <li><a href="#principle">Le principe</a></li>
-                                <li><a href="#team">L'équipe</a></li>
-                                <li><a href="#contact">Contact</a></li>
+                                <li><a href="{{ path('terra_nova_homepage')}}#game">Le jeu</a></li>
+                                <li><a href="{{ path('terra_nova_homepage')}}#principle">Le principe</a></li>
+                                <li><a href="{{ path('terra_nova_homepage')}}#team">L'équipe</a></li>
+                                <li><a href="{{ path('terra_nova_homepage')}}#contact">Contact</a></li>
                             </ul>
                         {% endif %}
                     {% endif %}

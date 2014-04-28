@@ -63,6 +63,8 @@
 			color: $yellowTitle
 			text-align: center
 		.teaser
+			padding:
+				bottom: 40px
 			h4
 				padding:
 					top: 30px
@@ -114,7 +116,7 @@
 			background-image: url('../img/feuillages.png')
 			background-position: center center
 			background-repeat: no-repeat
-				padding-bottom: 40px
+			padding-bottom: 40px
 			h4
 				padding:
 					top: 30px
@@ -203,40 +205,56 @@
 					// background-repeat: no-repeat
 				input
 					position: absolute
-					width: 10%
+					width: 80px
 					bottom: -30px
-					right: 0
+					right: 8%
 			label
 				font-size: 16px
 				text-transform: uppercase
 				color: $greyFont
 
+@media (max-width: 979px)
+	.scroll-area
+		.cloud-background
+			.contact
+				.span8
+					padding:
+						right: 0
+					input
+						width: 80px
+						bottom: -30px
+						right: -8%
+				.span4
+					padding:
+						left: 0
 
-// @media (max-width: 520px)
-// 	.scroll-area
-// 		.cloud-background
-// 			.contact
-// 				.span8
-// 					position: relative
-// 					textarea
-// 						-webkit-box-sizing: border-box
-// 						-moz-box-sizing: border-box
-// 						box-sizing: border-box
-// 						width: 100%
-// 						padding:
-// 							left: 30px
-// 							right: 30px
-// 							top: 40px
-// 							bottom: 40px
-// 						background-image: url('../img/input/textarea-320.png')
-// 						background-size: cover
-// 						background-position: top left
-// 						background-repeat: no-repeat
-// 					input
-// 						position: absolute
-// 						bottom: 0
-// 						right: 0
-// 				label
-// 					font-size: 16px
-// 					text-transform: uppercase
-// 					color: $greyFont
+@media (max-width: 767px)
+	.scroll-area
+		.cloud-background
+			.contact
+				.span8
+					padding:
+						right: 0
+					textarea
+						width: 95%
+					input
+						width: 80px
+						bottom: -30px
+						right: 0
+				.span4
+					padding:
+						left: 0
+						left: 30px
+
+@media (max-width: 520px)
+	.wipo-animate
+		display: none
+	.scroll-area
+		.game
+			height: 250px
+		.cloud-background
+			.contact
+				.span8
+					input
+						width: 80px
+						bottom: -30px

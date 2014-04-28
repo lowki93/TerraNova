@@ -13,6 +13,7 @@
 		<div class="span8">
 			<label>votre message</label>
 			{{ form_widget(form.message) }}
+			{{ form_widget(form._token) }}
 			<input type="image" src="{{ asset('bundles/terranova/img/input/sendMail.png') }}"/>
 		</div>
 	{{ form_end(form) }}

@@ -65,4 +65,21 @@ class ApiController extends Controller
 
 	    return $this->handleView($this->view($student, 200));
 	}
+
+	public function updateAvatarAction()
+	{	
+		$studentId = "1";
+		$avatar = "55844844";
+
+		$em = $this->getDoctrine();
+	    $student = $em->getRepository('TerraNovaBundle:Student')->unSetAvatar($studentId,$avatar);
+
+	    if($student == 1)
+			$response['good'] = true;	
+	    else
+			$response['good'] = false;
+
+	    // return new JsonResponse($response);
+	    return $this->handleView($this->view($response, 200));
+	}
 }

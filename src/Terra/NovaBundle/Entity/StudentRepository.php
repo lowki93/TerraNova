@@ -27,7 +27,13 @@ class StudentRepository extends EntityRepository {
 		return $student = $qb->getQuery()->getResult();
     }
 
-     public function unSetAvatar(){
+    public function unSetAvatar($studentId,$avatar){
+		$qb = $this->getEntityManager()->createQueryBuilder();
+		$qb->update('TerraNovaBundle:Student', 's')
+			->set('s.avatar', '?1')
+			->setParameter(1, $avatar)
+			->andWhere("s.id =".$studentId."");
 
-     }
+        return $qb->getQuery()->execute();
+    }
 }

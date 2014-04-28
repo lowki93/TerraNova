@@ -1,5 +1,17 @@
 terra_nova_api_get_user:
-    pattern:   /api/list-user
+    pattern:   /list-user
     defaults:  { _controller: TerraNovaBundle:Api:getUser,  _format: ~}
     requirements:
         _method: GET
+
+terra_nova_api_teacher_login:
+    pattern:   /teacher/login
+    defaults:  { _controller: TerraNovaBundle:Api:teacherLogin,  _format: ~}
+    requirements:
+        _method: GET|POST
+
+# terra_nova_api_student_login:
+#     pattern:   /api/student/login
+#     defaults:  { _controller: TerraNovaBundle:Api:studentLogin,  _format: ~}
+#     requirements:
+#         _method: GET|POST

@@ -59,4 +59,5 @@ terra_nova_admin:
 
 terra_nova_api:
     resource: "@TerraNovaBundle/Resources/config/routing/api.yml"
+    prefix: /api
     type:   rest

@@ -30,7 +30,7 @@ class SeanceType extends AbstractType
             ->add('date')
             ->add('heure')
             ->add('intro')
-            ->add('test', 'choice', array('choices' => array('Oui' => '1', 'Non' => '0')))
+            ->add('test', 'choice', array('choices' => array('1' => 'Oui', '0' => 'Non')))
             ->add('classe', 'entity', array(
                 'class' => 'TerraNovaBundle:Classe',
                 'property' => 'name',

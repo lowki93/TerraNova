@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="Student")
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Terra\NovaBundle\Entity\StudentRepository")
  */
 class Student
 {

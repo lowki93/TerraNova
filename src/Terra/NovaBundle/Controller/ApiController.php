@@ -49,4 +49,18 @@ class ApiController extends Controller
 		}
 	    return $this->handleView($this->view($user, 200));
 	}
+
+	public function studentLoginAction()
+	{	
+		$enseignantId = "5";
+		$classeId = "1";
+		$login = "Louise";
+
+		$em = $this->getDoctrine();
+
+		$class = $em->getRepository('TerraNovaBundle:Classe')->findById($classeId);
+		$student = $em->getRepository('TerraNovaBundle:Student')->findByStudent($login,$class);
+
+	    return $this->handleView($this->view($student, 200));
+	}
 }

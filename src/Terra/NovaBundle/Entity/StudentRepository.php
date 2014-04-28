@@ -14,4 +14,20 @@ class StudentRepository extends EntityRepository {
 
         return $class = $qb->getQuery()->getResult();
     }
+
+    public function findByStudent($login,$class){
+		$qb = $this->createQueryBuilder('s');
+		$qb->where('s.login = :login')
+			->andWhere('s.classe = :class')
+			->setParameters(array(
+					'login' => $login,
+					'class' => $class
+				));
+
+		return $student = $qb->getQuery()->getResult();
+    }
+
+     public function unSetAvatar(){
+
+     }
 }

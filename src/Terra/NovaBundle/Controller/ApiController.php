@@ -43,7 +43,9 @@ class ApiController extends Controller
 
 		for ($i=0; $i < $seance; $i++) {
 			$dateSeance = date_format($user->getSeance()[$i]->getDate(), 'Y-m-d');
-			if($dateSeance !== $date) {
+			$classId = $user->getSeance()[$i]->getClasse()->getId();
+
+			if($dateSeance !== $date || $classId !== $user->getCurrentClass()->getId()) {
 				unset($user->getSeance()[$i]);
 			}
 		}

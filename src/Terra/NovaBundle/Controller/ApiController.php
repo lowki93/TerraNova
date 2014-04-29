@@ -49,20 +49,26 @@ class ApiController extends Controller
 				unset($user->getSeance()[$i]);
 			}
 		}
+		//return new JsonResponse($user)
 	    return $this->handleView($this->view($user, 200));
 	}
 
-	public function studentLoginAction()
+	public function studentLoginAction(Request $request)
 	{	
+		// $data = $request->request->all();
+		// $enseignantId = $data['enseignant_id'];
+		// $classeId = $data['class_id'];
+		// $login = $data['login'];
 		$enseignantId = "5";
-		$classeId = "1";
-		$login = "Louise";
+		$classeId = "2";
+		$login = "Jordan";
 
 		$em = $this->getDoctrine();
 
 		$class = $em->getRepository('TerraNovaBundle:Classe')->findById($classeId);
 		$student = $em->getRepository('TerraNovaBundle:Student')->findByStudent($login,$class);
 
+		//return new JsonResponse($student)
 	    return $this->handleView($this->view($student, 200));
 	}
 

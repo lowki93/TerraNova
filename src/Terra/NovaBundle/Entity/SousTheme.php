@@ -50,6 +50,11 @@ class SousTheme
     protected $trophy;
 
     /**
+    * @ORM\OneToMany(targetEntity="Terra\NovaBundle\Entity\ResultSubTheme", mappedBy="sousTheme")
+    */
+    protected $resultSubTheme;
+
+    /**
      * Get id
      *
      * @return integer
@@ -199,5 +204,38 @@ class SousTheme
     public function getTrophy()
     {
         return $this->trophy;
+    }
+
+    /**
+     * Add resultSubTheme
+     *
+     * @param \Terra\NovaBundle\Entity\ResultSubTheme $resultSubTheme
+     * @return SousTheme
+     */
+    public function addResultSubTheme(\Terra\NovaBundle\Entity\ResultSubTheme $resultSubTheme)
+    {
+        $this->resultSubTheme[] = $resultSubTheme;
+
+        return $this;
+    }
+
+    /**
+     * Remove resultSubTheme
+     *
+     * @param \Terra\NovaBundle\Entity\ResultSubTheme $resultSubTheme
+     */
+    public function removeResultSubTheme(\Terra\NovaBundle\Entity\ResultSubTheme $resultSubTheme)
+    {
+        $this->resultSubTheme->removeElement($resultSubTheme);
+    }
+
+    /**
+     * Get resultSubTheme
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getResultSubTheme()
+    {
+        return $this->resultSubTheme;
     }
 }

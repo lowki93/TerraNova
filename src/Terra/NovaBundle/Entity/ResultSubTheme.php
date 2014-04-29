@@ -70,6 +70,20 @@ class ResultSubTheme
      */
     private $levelSuccess;
 
+    /**
+    * @ORM\ManyToOne(targetEntity="Terra\NovaBundle\Entity\Seance", inversedBy="resultSubTheme")
+    */
+    protected $seance;
+
+    /**
+    * @ORM\ManyToOne(targetEntity="Terra\NovaBundle\Entity\Student", inversedBy="resultSubTheme")
+    */
+    protected $student;
+
+    /**
+    * @ORM\ManyToOne(targetEntity="Terra\NovaBundle\Entity\SousTheme", inversedBy="resultSubTheme")
+    */
+    protected $sousTheme;
 
     /**
      * Get id
@@ -240,5 +254,74 @@ class ResultSubTheme
     public function getLevelSuccess()
     {
         return $this->levelSuccess;
+    }
+
+    /**
+     * Set seance
+     *
+     * @param \Terra\NovaBundle\Entity\Seance $seance
+     * @return ResultSubTheme
+     */
+    public function setSeance(\Terra\NovaBundle\Entity\Seance $seance = null)
+    {
+        $this->seance = $seance;
+
+        return $this;
+    }
+
+    /**
+     * Get seance
+     *
+     * @return \Terra\NovaBundle\Entity\Seance 
+     */
+    public function getSeance()
+    {
+        return $this->seance;
+    }
+
+    /**
+     * Set student
+     *
+     * @param \Terra\NovaBundle\Entity\Student $student
+     * @return ResultSubTheme
+     */
+    public function setStudent(\Terra\NovaBundle\Entity\Student $student = null)
+    {
+        $this->student = $student;
+
+        return $this;
+    }
+
+    /**
+     * Get student
+     *
+     * @return \Terra\NovaBundle\Entity\Student 
+     */
+    public function getStudent()
+    {
+        return $this->student;
+    }
+
+    /**
+     * Set sousTheme
+     *
+     * @param \Terra\NovaBundle\Entity\SousTheme $sousTheme
+     * @return ResultSubTheme
+     */
+    public function setSousTheme(\Terra\NovaBundle\Entity\SousTheme $sousTheme = null)
+    {
+        $this->sousTheme = $sousTheme;
+
+        return $this;
+    }
+
+    /**
+     * Get sousTheme
+     *
+     * @return \Terra\NovaBundle\Entity\SousTheme 
+     */
+    public function getSousTheme()
+    {
+        return $this->sousTheme;
     }
 }

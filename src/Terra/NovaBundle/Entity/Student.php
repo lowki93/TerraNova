@@ -63,6 +63,11 @@ class Student
     protected $classe;
 
     /**
+    * @ORM\OneToMany(targetEntity="Terra\NovaBundle\Entity\ResultSubTheme", mappedBy="student")
+    */
+    protected $resultSubTheme;
+
+    /**
      * Get id
      *
      * @return integer
@@ -208,5 +213,45 @@ class Student
     public function getLogin()
     {
         return $this->login;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->resultSubTheme = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add resultSubTheme
+     *
+     * @param \Terra\NovaBundle\Entity\ResultSubTheme $resultSubTheme
+     * @return Student
+     */
+    public function addResultSubTheme(\Terra\NovaBundle\Entity\ResultSubTheme $resultSubTheme)
+    {
+        $this->resultSubTheme[] = $resultSubTheme;
+
+        return $this;
+    }
+
+    /**
+     * Remove resultSubTheme
+     *
+     * @param \Terra\NovaBundle\Entity\ResultSubTheme $resultSubTheme
+     */
+    public function removeResultSubTheme(\Terra\NovaBundle\Entity\ResultSubTheme $resultSubTheme)
+    {
+        $this->resultSubTheme->removeElement($resultSubTheme);
+    }
+
+    /**
+     * Get resultSubTheme
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getResultSubTheme()
+    {
+        return $this->resultSubTheme;
     }
 }

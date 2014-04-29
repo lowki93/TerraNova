@@ -73,6 +73,11 @@ class Seance
    protected $enseignant;
 
     /**
+    * @ORM\OneToMany(targetEntity="Terra\NovaBundle\Entity\ResultSubTheme", mappedBy="seance")
+    */
+    protected $resultSubTheme;
+
+    /**
      * Get id
      *
      * @return integer
@@ -241,5 +246,45 @@ class Seance
     public function getEnseignant()
     {
         return $this->enseignant;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->resultSubTheme = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add resultSubTheme
+     *
+     * @param \Terra\NovaBundle\Entity\ResultSubTheme $resultSubTheme
+     * @return Seance
+     */
+    public function addResultSubTheme(\Terra\NovaBundle\Entity\ResultSubTheme $resultSubTheme)
+    {
+        $this->resultSubTheme[] = $resultSubTheme;
+
+        return $this;
+    }
+
+    /**
+     * Remove resultSubTheme
+     *
+     * @param \Terra\NovaBundle\Entity\ResultSubTheme $resultSubTheme
+     */
+    public function removeResultSubTheme(\Terra\NovaBundle\Entity\ResultSubTheme $resultSubTheme)
+    {
+        $this->resultSubTheme->removeElement($resultSubTheme);
+    }
+
+    /**
+     * Get resultSubTheme
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getResultSubTheme()
+    {
+        return $this->resultSubTheme;
     }
 }

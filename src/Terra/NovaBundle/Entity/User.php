@@ -4,11 +4,14 @@ namespace Terra\NovaBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="User")
  * @ORM\Entity(repositoryClass="Terra\NovaBundle\Entity\UserRepository")
+ * @ExclusionPolicy("all")
  */
 class User extends BaseUser
 {
@@ -21,21 +24,25 @@ class User extends BaseUser
 
     /**
     * @ORM\Column(name="last_name", type="string", length=100)
+    * @Expose
     */
     protected $lastName;
 
     /**
     * @ORM\Column(name="name", type="string", length=100)
+    * @Expose
     */
     protected $name;
 
     /**
     * @ORM\ManyToOne(targetEntity="Terra\NovaBundle\Entity\Classe", inversedBy="ensaignantCurrent")
+    * @Expose
     */
     protected $currentClass;
 
     /**
     * @ORM\ManyToOne(targetEntity="Terra\NovaBundle\Entity\Etablissement", inversedBy="ensaignant")
+    * @Expose
     */
     protected $etablissement;
 
@@ -46,6 +53,7 @@ class User extends BaseUser
 
     /**
     * @ORM\OneToMany(targetEntity="Terra\NovaBundle\Entity\Seance", mappedBy="enseignant")
+    * @Expose
     */
     protected $seance;
 

@@ -3,12 +3,15 @@
 namespace Terra\NovaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
 
 /**
  * Etablissement
  *
  * @ORM\Table()
  * @ORM\Entity
+ * @ExclusionPolicy("all")
  */
 class Etablissement
 {
@@ -18,6 +21,7 @@ class Etablissement
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Expose
      */
     private $id;
 
@@ -32,6 +36,7 @@ class Etablissement
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Expose
      */
     private $name;
 
@@ -39,6 +44,7 @@ class Etablissement
      * @var string
      *
      * @ORM\Column(name="type", type="string", length=255)
+     * @Expose
      */
     private $type;
 

@@ -4,6 +4,8 @@ namespace Terra\NovaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
 
 /**
  * Trophy
@@ -11,6 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table()
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
+ * @ExclusionPolicy("all")
  */
 class Trophy
 {
@@ -20,6 +23,7 @@ class Trophy
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Expose
      */
     private $id;
 
@@ -27,6 +31,7 @@ class Trophy
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Expose
      */
     private $name;
 
@@ -34,6 +39,7 @@ class Trophy
      * @var string
      *
      * @ORM\Column(name="type", type="string", length=255)
+     * @Expose
      */
     private $type;
 
@@ -41,6 +47,7 @@ class Trophy
      * @var string
      *
      * @ORM\Column(name="path", type="string", length=255)
+     * @Expose
      */
     private $path;
 

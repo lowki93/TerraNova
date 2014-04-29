@@ -3,12 +3,15 @@
 namespace Terra\NovaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
 
 /**
  * Seance
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="Terra\NovaBundle\Entity\SeanceRepository")
+ * @ExclusionPolicy("all")
  */
 class Seance
 {
@@ -18,6 +21,7 @@ class Seance
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Expose
      */
     private $id;
 
@@ -39,6 +43,7 @@ class Seance
      * @var string
      *
      * @ORM\Column(name="intro", type="string", length=255)
+     * @Expose
      */
     private $intro;
 
@@ -46,16 +51,19 @@ class Seance
      * @var boolean
      *
      * @ORM\Column(name="test", type="boolean")
+     * @Expose
      */
     private $test;
 
    /**
     * @ORM\ManyToOne(targetEntity="Terra\NovaBundle\Entity\Classe", inversedBy="seance")
+    * @Expose
     */
    protected $classe;
 
     /**
     * @ORM\ManyToOne(targetEntity="Terra\NovaBundle\Entity\Theme", inversedBy="seance")
+    * @Expose
     */
     protected $theme;
 

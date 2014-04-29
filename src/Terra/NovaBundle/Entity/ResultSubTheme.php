@@ -3,12 +3,15 @@
 namespace Terra\NovaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
 
 /**
  * ResultSubTheme
  *
  * @ORM\Table()
  * @ORM\Entity
+ * @ExclusionPolicy("all")
  */
 class ResultSubTheme
 {
@@ -18,6 +21,7 @@ class ResultSubTheme
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Expose
      */
     private $id;
 
@@ -67,6 +71,7 @@ class ResultSubTheme
      * @var string
      *
      * @ORM\Column(name="levelSuccess", type="string", length=255)
+     * @Expose
      */
     private $levelSuccess;
 
@@ -82,6 +87,7 @@ class ResultSubTheme
 
     /**
     * @ORM\ManyToOne(targetEntity="Terra\NovaBundle\Entity\SousTheme", inversedBy="resultSubTheme")
+    * @Expose
     */
     protected $sousTheme;
 

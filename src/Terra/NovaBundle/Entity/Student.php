@@ -68,6 +68,11 @@ class Student
     protected $resultSubTheme;
 
     /**
+    * @ORM\OneToMany(targetEntity="Terra\NovaBundle\Entity\ResultStudent", mappedBy="student")
+    */
+    protected $resultStudent;
+
+    /**
      * Get id
      *
      * @return integer
@@ -253,5 +258,38 @@ class Student
     public function getResultSubTheme()
     {
         return $this->resultSubTheme;
+    }
+
+    /**
+     * Add resultStudent
+     *
+     * @param \Terra\NovaBundle\Entity\ResultStudent $resultStudent
+     * @return Student
+     */
+    public function addResultStudent(\Terra\NovaBundle\Entity\ResultStudent $resultStudent)
+    {
+        $this->resultStudent[] = $resultStudent;
+
+        return $this;
+    }
+
+    /**
+     * Remove resultStudent
+     *
+     * @param \Terra\NovaBundle\Entity\ResultStudent $resultStudent
+     */
+    public function removeResultStudent(\Terra\NovaBundle\Entity\ResultStudent $resultStudent)
+    {
+        $this->resultStudent->removeElement($resultStudent);
+    }
+
+    /**
+     * Get resultStudent
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getResultStudent()
+    {
+        return $this->resultStudent;
     }
 }

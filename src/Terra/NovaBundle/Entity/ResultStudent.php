@@ -42,6 +42,10 @@ class ResultStudent
      */
     private $nbThemePlay;
 
+    /**
+    * @ORM\ManyToOne(targetEntity="Terra\NovaBundle\Entity\Student", inversedBy="resultStudent")
+    */
+    protected $student;
 
     /**
      * Get id
@@ -120,5 +124,28 @@ class ResultStudent
     public function getNbThemePlay()
     {
         return $this->nbThemePlay;
+    }
+
+    /**
+     * Set student
+     *
+     * @param \Terra\NovaBundle\Entity\Student $student
+     * @return ResultStudent
+     */
+    public function setStudent(\Terra\NovaBundle\Entity\Student $student = null)
+    {
+        $this->student = $student;
+
+        return $this;
+    }
+
+    /**
+     * Get student
+     *
+     * @return \Terra\NovaBundle\Entity\Student 
+     */
+    public function getStudent()
+    {
+        return $this->student;
     }
 }

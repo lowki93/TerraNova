@@ -9,7 +9,7 @@ class StudentRepository extends EntityRepository {
 
     public function findByClasse($idClass) {
         $qb = $this->createQueryBuilder('c');
-        $qb->where('c.classe', ':id')
+        $qb->where('c.classe = :id')
            ->setParameter('id', $idClass);
 
         return $class = $qb->getQuery()->getResult();

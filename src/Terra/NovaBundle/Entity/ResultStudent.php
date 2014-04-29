@@ -3,12 +3,14 @@
 namespace Terra\NovaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use \DateTime;
 
 /**
  * ResultStudent
  *
  * @ORM\Table()
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Terra\NovaBundle\Entity\ResultStudentRepository")
  */
 class ResultStudent
 {
@@ -46,6 +48,16 @@ class ResultStudent
     * @ORM\ManyToOne(targetEntity="Terra\NovaBundle\Entity\Student", inversedBy="resultStudent")
     */
     protected $student;
+
+    public function __construct($id)
+    {
+
+        $this->success = 0;
+        $this->timePassing = new DateTime('0000-00-00 00:00');
+        $this->nbThemePlay = 0;
+        $this->student = $id;
+
+    }
 
     /**
      * Get id

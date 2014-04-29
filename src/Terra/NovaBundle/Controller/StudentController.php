@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Terra\NovaBundle\Entity\Classe;
 use Terra\NovaBundle\Entity\Student;
+use Terra\NovaBundle\Entity\ResultStudent;
 use Terra\NovaBundle\Form\StudentType;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
@@ -75,7 +76,10 @@ class StudentController extends Controller
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
+            $result = new ResultStudent($entity);
+            $em->persist($result);
             $em->flush();
+
 
             return $this->redirect($this->generateUrl('Eleve_by_etablissement'));
         }
@@ -134,8 +138,8 @@ class StudentController extends Controller
     public function showAction($id, $idClasse)
     {
         $em = $this->getDoctrine()->getManager();
-
         $entity = $em->getRepository('TerraNovaBundle:Student')->find($id);
+        $result = $em->getRepository('TerraNovaBundle:ResultStudent')->findByStudent($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Student entity.');
@@ -144,6 +148,7 @@ class StudentController extends Controller
         $deleteForm = $this->createDeleteForm($id, $idClasse);
 
         return $this->render('TerraNovaBundle:Student:show.html.twig', array(
+            'result' => $result,
             'idClasse' => $idClasse,
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),

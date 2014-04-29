@@ -12,12 +12,12 @@
 
 {% block body %}
     <div class="content-student">
-        <div class="container">
-             <h1>Mes élèves</h1>
+        <div class="container">           
+            <h1>Mes élèves</h1>
             <div class="row">
                 <div class="span8">
                     <h2>{{ entity.firstName }} {{ entity.name }}</h2>
-                    <button class="btn"><a href="javascript:history.back()">< Retour aux élèves</a></button>
+                    <button class="btn"><a href="javascript:history.back()">Retour aux élèves</a></button>
                     <p>sélectionnez une séance</p>
                         <ul>
                             <li>
@@ -90,10 +90,16 @@
                     <p>bagde obtenu</p>
                 </div>
                 <div class="span4">
-                    <p><span>76%</span><br />de réponses correctes en moyenne</p>
-                    <p><span>2H26</span><br />passées sur Wipo</p>
+                    <p><span>{{ result[0].success }}%</span><br />de réponses correctes en moyenne</p>
+                    <p><span>
+                        {% if result[0].timePassing|date('H') > 0 %}
+                             {{ result[0].timePassing|date('h') }}H{{ result[0].timePassing|date('i') }}min
+                        {% else %}
+                            {{ result[0].timePassing|date('i') }}min
+                        {% endif %}
+                        </span><br />passées sur Wipo</p>
                     <p><span>5</span><br />thèmes joués</p>
-                    <p><span>25min</span><br />passées en moyenne sur cahque thème</p>
+                    <p><span>{{ result[0].timePassing|date('i')/5 }}min</span><br />passées en moyenne sur cahque thème</p>
                 </div>
             </div>
         </div>

@@ -5,6 +5,7 @@ namespace Terra\NovaBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation\ExclusionPolicy;
 use JMS\Serializer\Annotation\Expose;
+use \DateTime;
 
 /**
  * ResultSubTheme

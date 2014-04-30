@@ -21,3 +21,9 @@ terra_nova_api_student_update_avatar:
     defaults:  { _controller: TerraNovaBundle:Api:updateAvatar,  _format: ~}
     requirements:
         _method: GET|POST
+
+terra_nova_api_student_result_sub_thme:
+    pattern:   /student/result-sub-theme
+    defaults:  { _controller: TerraNovaBundle:Api:resultSubTheme,  _format: ~}
+    requirements:
+        _method: GET|POST

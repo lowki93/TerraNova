@@ -6,7 +6,9 @@ use Symfony\Component\HttpFoundation\Request;
 use FOS\RestBundle\Controller\FOSRestController as Controller;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\Validator\Constraints\DateTime;
+// use Symfony\Component\Validator\Constraints\DateTime;
+use Terra\NovaBundle\Entity\ResultSubTheme;
+use \DateTime;
 
 class ApiController extends Controller
 {
@@ -72,8 +74,11 @@ class ApiController extends Controller
 	    return $this->handleView($this->view($student, 200));
 	}
 
-	public function updateAvatarAction()
+	public function updateAvatarAction(Request $request)
 	{	
+		// $data = $request->request->all();
+		// $studentId = $data['student_id'];
+		// $avatar = $data['avatar'];
 		$studentId = "1";
 		$avatar = "55844844";
 
@@ -87,5 +92,59 @@ class ApiController extends Controller
 
 	    // return new JsonResponse($response);
 	    return $this->handleView($this->view($response, 200));
+	}
+
+	public function resultSubThemeAction(Request $request)
+	{
+		// $data = $request->request->all();
+		// $seanceId = $data['seance_id'];
+		// $studentId = $data['student_id'];
+		// $cozeText = $data['cozeText'];
+		// $dragCozeText = $data['dragCozeText'];
+		// $trueFalse = $data['trueFalse'];
+		// $freeSentence = $data['freeSentence'];
+		// $success = $data['success'];
+		// $raTime = $data['raTime'];
+		// $gameTime = $data['gameTime'];
+		// $levelSuccess = $data['levelSuccess'];
+		// $subThemeId = $data['subThemeId'];
+
+		$seanceId = 1;
+		$studentId = 2;
+		$cozeText = "true,false,true,false,true,false,true,false";
+		$dragCozeText = "false,true,false,true,false,true,false,true";
+		$trueFalse = "false,false,false,false,false,true,false,true";
+		$freeSentence = "je suis Glenn Sonna";
+		$success = 100;
+		$raTime = new DateTime('0000-00-00 0:20');
+		$gameTime = new DateTime('0000-00-00 0:10');
+		$levelSuccess = "or";
+		$subThemeId = 2;
+
+		$timePassing = new DateTime('0000-00-00 00:00');
+		$timePassing->add($raTime);
+		$timePassing->add($gameTime);
+
+		$resultSubTheme = new ResultSubTheme();
+
+		$em = $this->getDoctrine()->getManager();
+
+		$seance = $em->getRepository('TerraNovaBundle:Seance')->find($seanceId);
+		$student = $em->getRepository('TerraNovaBundle:Student')->find($studentId);
+		$subTheme = $em->getRepository('TerraNovaBundle:SousTheme')->find($subThemeId);
+
+		$resultSubTheme->setSeance($seance);	
+		$resultSubTheme->setStudent($student);
+		$resultSubTheme->setCozeText($cozeText);
+		$resultSubTheme->setDragCozeText($dragCozeText);
+		$resultSubTheme->setTrueFalse($trueFalse);
+		$resultSubTheme->setFreeSentence($freeSentence);
+		$resultSubTheme->setSuccess($success);
+		$resultSubTheme->setTimePassing($timePassing);
+		$resultSubTheme->setLevelSuccess($levelSuccess);
+		$resultSubTheme->setSousTheme($subTheme);
+
+        $em->persist($resultSubTheme);
+        $em->flush();
 	}
 }

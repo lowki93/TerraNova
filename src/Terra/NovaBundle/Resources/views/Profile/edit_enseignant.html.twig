@@ -22,8 +22,9 @@
 	{{ form_widget(form.current_password) }}
 	{{ form_widget(form._token) }}
     <div>
-        <button type="submit" class="btn">Mettre à jour</button>
+        <input type="image" src="{{ asset('bundles/terranova/img/button/update.png') }}"/>
     </div>
+</form>
 </form>
 
 {% for type, messages in app.session.flashbag.all() %}

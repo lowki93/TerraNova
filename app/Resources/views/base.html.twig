@@ -21,7 +21,7 @@
                     <a class="brand hidden-mobile" href="{{ path('terra_nova_homepage')}}"><img src="{{ asset('bundles/terranova/img/logo.png') }}" alt="Wipo"/></a>
                     {% if is_granted("ROLE_ENSEIGNANT") %}
                         <ul>
-                            <li class="title-user">Bonjour {{app.user.name}} {{app.user.lastName}}<br />{% if app.user.currentClass %}<p>Classe courrante : {{ app.user.currentClass.name }}</p>{% else %}<p>Pas de classe courante</p>{% endif %}</li>
+                            <li class="title-user"><p>Bonjour {{app.user.name}} {{app.user.lastName}}<br /><span>{% if app.user.currentClass %}Classe courrante : {{ app.user.currentClass.name }}{% else %}Pas de classe courante{% endif %}</span></p></li>
                         </ul>
                         <ul>
                             {% if app.user.etablissement != null %}
@@ -48,7 +48,7 @@
             </nav>
             <div class="scroller">
                 <header>
-                    <div class="navbar" id="navbar">
+                    <div class="navbar {% if app.request.attributes.get('_route') != 'terra_nova_homepage' %} container {% endif %}" id="navbar">
                         <div class="navbar-inner">
                             <a class="brand hidden-mobile" href="{{ path('terra_nova_homepage')}}"><img src="{{ asset('bundles/terranova/img/logo.png') }}" alt="Wipo"/></a>
                             <ul class="nav full pull-left">
@@ -56,7 +56,7 @@
                             </ul>
                             {% if is_granted("ROLE_ENSEIGNANT") %}
                                 <ul class="nav full pull-left hidden-tablette">
-                                    <li class="title-user">Bonjour {{app.user.name}} {{app.user.lastName}}<br />{% if app.user.currentClass %}<p>Classe courrante : {{ app.user.currentClass.name }}</p>{% else %}<p>Pas de classe courante</p>{% endif %}</li>
+                                    <li class="title-user"><p>Bonjour {{app.user.name}} {{app.user.lastName}}<br /><span>{% if app.user.currentClass %}Classe courrante : {{ app.user.currentClass.name }}{% else %}Pas de classe courante{% endif %}</span></p></li>
                                 </ul>
                                 <ul class="nav full pull-right hidden-tablette">
                                     {% if app.user.etablissement != null %}

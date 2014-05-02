@@ -14,4 +14,19 @@ class ResultStudentRepository extends EntityRepository {
 
 		return $student = $qb->getQuery()->getResult();
     }
+
+ 	public function updateResult($student,$newSuccess,$newTimePassing){
+		$qb = $this->getEntityManager()->createQueryBuilder();
+		$qb->update('TerraNovaBundle:ResultStudent', 'rs')
+			->set('rs.success', ':newSuccess')
+			->set('rs.timePassing', ':newTimePassing')
+			->where("rs.student = :student")
+			->setParameters(array(
+					'newSuccess' => $newSuccess,
+					'newTimePassing' => $newTimePassing,
+					'student' => $student
+				));
+
+        return $qb->getQuery()->execute();
+ 	}   
 }

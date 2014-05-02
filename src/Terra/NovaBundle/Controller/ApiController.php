@@ -106,6 +106,7 @@ class ApiController extends Controller
 		// $success = $data['success'];
 		// $raTime = $data['raTime'];
 		// $gameTime = $data['gameTime'];
+		// $timePassing = $data['timePassing'];
 		// $levelSuccess = $data['levelSuccess'];
 		// $subThemeId = $data['subThemeId'];
 
@@ -115,15 +116,12 @@ class ApiController extends Controller
 		$dragCozeText = "false,true,false,true,false,true,false,true";
 		$trueFalse = "false,false,false,false,false,true,false,true";
 		$freeSentence = "je suis Glenn Sonna";
-		$success = 100;
-		$raTime = new DateTime('0000-00-00 0:20');
+		$success = 25;
+		$raTime = new DateTime('0000-00-00 0:15');
 		$gameTime = new DateTime('0000-00-00 0:10');
+		$timePassing = new DateTime('0000-00-00 0:25');
 		$levelSuccess = "or";
 		$subThemeId = 2;
-
-		$timePassing = new DateTime('0000-00-00 00:00');
-		$timePassing->add($raTime);
-		$timePassing->add($gameTime);
 
 		$resultSubTheme = new ResultSubTheme();
 
@@ -140,11 +138,39 @@ class ApiController extends Controller
 		$resultSubTheme->setTrueFalse($trueFalse);
 		$resultSubTheme->setFreeSentence($freeSentence);
 		$resultSubTheme->setSuccess($success);
+		$resultSubTheme->setRaTime($raTime);
+		$resultSubTheme->setGameTime($gameTime);
 		$resultSubTheme->setTimePassing($timePassing);
 		$resultSubTheme->setLevelSuccess($levelSuccess);
 		$resultSubTheme->setSousTheme($subTheme);
 
-        $em->persist($resultSubTheme);
-        $em->flush();
+		// $em->persist($resultSubTheme);
+  //       $em->flush();
+
+		$result = $em->getRepository('TerraNovaBundle:ResultStudent')->findByStudent($student);
+
+		$newTimePassing = $result[0]->getTimePassing();
+
+		$diffHours = $timePassing->format('H');
+		$diffMin = $timePassing->format('i');
+
+		$newTimePassing->modify('+'.$diffHours.' hours +'.$diffMin.' minutes');
+
+		$oldSuccess = $result[0]->getSuccess();
+
+		if($oldSuccess == 0)
+			$newSuccess = $oldSuccess + $success;
+		else
+			$newSuccess = ($oldSuccess + $success)/2;
+
+		$newsResult = $em->getRepository('TerraNovaBundle:ResultStudent')->updateResult($student,$newSuccess,$newTimePassing);
+
+		if($newsResult == 1)
+			$response['good'] = true;	
+	    else
+			$response['good'] = false;
+
+		// return new JsonResponse($response);
+	    return $this->handleView($this->view($response, 200));
 	}
 }

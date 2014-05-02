@@ -64,6 +64,20 @@ class ResultSubTheme
     /**
      * @var \DateTime
      *
+     * @ORM\Column(name="raTime", type="time")
+     */
+    private $raTime;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="gameTime", type="time")
+     */
+    private $gameTime;
+
+    /**
+     * @var \DateTime
+     *
      * @ORM\Column(name="timePassing", type="time")
      */
     private $timePassing;
@@ -330,5 +344,51 @@ class ResultSubTheme
     public function getSousTheme()
     {
         return $this->sousTheme;
+    }
+
+    /**
+     * Set raTime
+     *
+     * @param \DateTime $raTime
+     * @return ResultSubTheme
+     */
+    public function setRaTime($raTime)
+    {
+        $this->raTime = $raTime;
+
+        return $this;
+    }
+
+    /**
+     * Get raTime
+     *
+     * @return \DateTime 
+     */
+    public function getRaTime()
+    {
+        return $this->raTime;
+    }
+
+    /**
+     * Set gameTime
+     *
+     * @param \DateTime $gameTime
+     * @return ResultSubTheme
+     */
+    public function setGameTime($gameTime)
+    {
+        $this->gameTime = $gameTime;
+
+        return $this;
+    }
+
+    /**
+     * Get gameTime
+     *
+     * @return \DateTime 
+     */
+    public function getGameTime()
+    {
+        return $this->gameTime;
     }
 }

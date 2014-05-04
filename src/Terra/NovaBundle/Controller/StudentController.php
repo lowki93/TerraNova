@@ -55,7 +55,7 @@ class StudentController extends Controller
             $result = $em->getRepository('TerraNovaBundle:ResultStudent')->findByStudent($students[$i]);
             $results = array_merge($results, $result);
         }
-
+        // var_dump($results);
         $response['content'] = $this->renderView('TerraNovaBundle:Student:index.html.twig',
                                     array('class' => $name,
                                         'students' => $students,

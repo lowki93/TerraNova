@@ -32,8 +32,8 @@ class ApiController extends Controller
 		// $data = $request->request->all();
 		// $email = $data['email'];
 		// $password = $data['password'];
-		$email = "budain.kevin@gmail.com";
-		$password = "ZdVuTeMwg8xkrecCrVEtDY4iGKZmakpcNU63SSa5nW4v77Rm+GwKDQlKkZOkp+0TmI4Ui4pH48OVYEAMEFcFDw==";
+		$email = "gsonna@gmail.com";
+		$password = "k7gwEoYUuiQ57uaoTRMFm6uAEKjikKKUKX9bZgve9E1RJwLab6J/gxtvKOI06w2M4iEo+M789bRcok1J4zzl5A==";
 
 		// // Pour récupérer le service UserManager du bundle
 		$userManager = $this->get('fos_user.user_manager');
@@ -111,16 +111,16 @@ class ApiController extends Controller
 		// $subThemeId = $data['subThemeId'];
 
 		$seanceId = 1;
-		$studentId = 2;
+		$studentId = 12;
 		$cozeText = "true,false,true,false,true,false,true,false";
 		$dragCozeText = "false,true,false,true,false,true,false,true";
 		$trueFalse = "false,false,false,false,false,true,false,true";
-		$freeSentence = "je suis Glenn Sonna";
-		$success = 25;
+		$freeSentence = "je suis Pascal BUdain";
+		$success = 30;
 		$raTime = new DateTime('0000-00-00 0:15');
 		$gameTime = new DateTime('0000-00-00 0:10');
 		$timePassing = new DateTime('0000-00-00 0:25');
-		$levelSuccess = "or";
+		$levelSuccess = "argent";
 		$subThemeId = 2;
 
 		$resultSubTheme = new ResultSubTheme();
@@ -144,8 +144,8 @@ class ApiController extends Controller
 		$resultSubTheme->setLevelSuccess($levelSuccess);
 		$resultSubTheme->setSousTheme($subTheme);
 
-		// $em->persist($resultSubTheme);
-  //       $em->flush();
+		$em->persist($resultSubTheme);
+        $em->flush();
 
 		$result = $em->getRepository('TerraNovaBundle:ResultStudent')->findByStudent($student);
 

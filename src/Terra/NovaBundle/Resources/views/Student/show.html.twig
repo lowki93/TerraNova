@@ -20,21 +20,20 @@
                     <p>sélectionnez une séance par {{ entity.firstName }}</p>
                         <ul>
                             {% for seance in seances %}
-                                <li>
-                                    <a href="#">
-                                        <p class="theme-title">{{ seance.theme.name }}</p>
-                                        <img src="{{ asset('uploads/mythologie.png') }}">
-                                        <div class="hover">
-                                            <hr />
-                                            <span>{{ seance.date|date('d/m/Y') }}</span>
-                                            <hr />
-                                            <p><span>
-                                            {{ render(controller('TerraNovaBundle:Student:getResultByTheme', {'idSeance': seance.id,'idStudent': entity.id } )) }}
-                                            %</span><br />de réponses correctes</p>
+                                <a href="#">
+                                    <li>
+                                        <div class="img-conteneur">
+                                            <img src="/img/theme/{{ seance.theme.path }}" alt="{{ entity.name }}" />
+                                            <div class="hover">
+                                                <p><span>
+                                                {{ render(controller('TerraNovaBundle:Student:getResultByTheme', {'idSeance': seance.id,'idStudent': entity.id } )) }}
+                                                %</span><br />de réponses correctes</p>
+                                            </div>
                                         </div>
-                                        <button class="btn">Visualisez</button>
-                                    </a>
-                                </li>
+                                        <p>{{ seance.theme.name }}</p>
+                                        <span>joué le {{ seance.date|date('d/m/Y') }}</span>
+                                    </li>
+                                </a>
                             {% endfor %}
                         </ul>
                     <p>remarque général sur l'élève</p>

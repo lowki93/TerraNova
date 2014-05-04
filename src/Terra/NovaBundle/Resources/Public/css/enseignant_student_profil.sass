@@ -10,60 +10,100 @@
 			display: block
 			li
 				width: 22%
-				position: relative
 				display: inline-block
 				margin:
 					right: 2%
 					bottom: 4%
-				a
-					button
-						position: absolute
-						top: 94%
-						width: 70%
-						left: 15%
+				padding:
+					top: 15px
+					left: 15px
+					right: 15px
+					bottom: 20px
+				border: 2px solid rgba(255, 255, 255, 0.5)
+				border-radius: 30px
+				background-color: rgba(255, 255, 255, 0.5)
+				p
+					margin: 0
+				.img-conteneur
+					width: 100%
+					height: 100%
+					position: relative
 					img
-						width: 100%
-					.theme-title
-						position: absolute
-						z-index: 6
-						text-align: center
-						width: 100%
-						color: #FFF
-						font-size: 18px
-						top: 15px
+					margin:
+						bottom: 20px
 					.hover
+						position: absolute
 						display: none
-						-webkit-box-sizing: border-box
-						-moz-box-sizing: border-box
-						box-sizing: border-box
-						padding:
-							top: 45px
 						width: 100%
 						height: 100%
-						position: absolute
 						top: 0
-						left: 0
-						background-color: rgba(204, 204, 204, 0.8)
-						text-align: center
-						color: #000
-						hr
-							width: 10%
-							margin:
-								top: 10px
-								bottom: 10px
-								left: 45%
-						span
-							font-size: 12px
+						background-color: rgba(6, 68, 84, 0.9)
+						border-radius: 18%
 						p
-							font-size: 20px
 							margin:
-								top: 20px
+								top: 55px
+							text-align: center
+							font-size: 12px
+							font-family: 'vagroundedsrd-light'
+							color: $greenLabel
 							span
-								font-size: 38px
-					&:hover .hover
-						display: block
-					&:hover .theme-title
-						color: $greyThemeHover
+								font-family: 'vagroundedsrd-bold'
+								color: $white
+								font-size: 35px
+			a:hover li
+				border: 2px solid rgba(81, 148, 167, 0.2)
+				background-color: rgba(81, 148, 167, 0.2)
+			a:hover .hover
+				display: block
+				// a
+				// 	button
+				// 		position: absolute
+				// 		top: 94%
+				// 		width: 70%
+				// 		left: 15%
+				// 	img
+				// 		width: 100%
+				// 	.theme-title
+				// 		position: absolute
+				// 		z-index: 6
+				// 		text-align: center
+				// 		width: 100%
+				// 		color: #FFF
+				// 		font-size: 18px
+				// 		top: 15px
+				// 	.hover
+				// 		display: none
+				// 		-webkit-box-sizing: border-box
+				// 		-moz-box-sizing: border-box
+				// 		box-sizing: border-box
+				// 		padding:
+				// 			top: 45px
+				// 		width: 100%
+				// 		height: 100%
+				// 		position: absolute
+				// 		top: 0
+				// 		left: 0
+				// 		background-color: rgba(204, 204, 204, 0.8)
+				// 		text-align: center
+				// 		color: #000
+				// 		hr
+				// 			width: 10%
+				// 			margin:
+				// 				top: 10px
+				// 				bottom: 10px
+				// 				left: 45%
+				// 		span
+				// 			font-size: 12px
+				// 		p
+				// 			font-size: 20px
+				// 			margin:
+				// 				top: 20px
+				// 			span
+				// 				font-size: 38px
+				// 	&:hover .hover
+				// 		display: block
+				// 	&:hover .theme-title
+				// 		color: $greyThemeHover
 		p
 			font-family: 'vagroundedsrd-bold'
 			font-size: 22px

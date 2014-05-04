@@ -16,6 +16,7 @@ class ThemeType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('file')
         ;
     }
     

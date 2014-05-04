@@ -11,6 +11,7 @@
             <tr>
                 <th>Id</th>
                 <th>Name</th>
+                <th>Image</th>
                 <th>Sous Theme</th>
                 <th>Actions</th>
             </tr>
@@ -18,6 +19,7 @@
                 <tr>
                     <td>{{ entity.id }}</td>
                     <td>{{ entity.name }}</td>
+                    <td><img src="/img/theme/{{ entity.path }}" alt="{{ entity.name }}" /></td>
                     <td>
                         {% if entity.sousTheme is empty %}
                             <p>pas de sous themes</p>

@@ -167,6 +167,7 @@ class TrophyController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $entity->preUpload();
             $em->flush();
 
             return $this->redirect($this->generateUrl('trophy'));

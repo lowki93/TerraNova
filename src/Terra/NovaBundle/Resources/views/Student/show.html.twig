@@ -12,79 +12,30 @@
 
 {% block body %}
     <div class="content-student">
-        <div class="container">           
-            <h1>Mes élèves</h1>
+        <div class="container">
+            <h1>{{ entity.firstName }} {{ entity.name }}</h1>
             <div class="row">
                 <div class="span8">
-                    <h2>{{ entity.firstName }} {{ entity.name }}</h2>
-                    <button class="btn"><a href="javascript:history.back()">Retour aux élèves</a></button>
-                    <p>sélectionnez une séance</p>
+{#                     <button class="btn"><a href="javascript:history.back()">Retour aux élèves</a></button> #}
+                    <p>sélectionnez une séance par {{ entity.firstName }}</p>
                         <ul>
-                            <li>
-                                <a href="#">
-                                    <p class="theme-title">La mytologie</p>
-                                    <img src="{{ asset('uploads/mythologie.png') }}">
-                                    <div class="hover">
-                                        <hr />
-                                        <span>20/03/2014</span>
-                                        <hr />
-                                        <p><span>63%</span><br />de réponses correctes</p>
-                                    </div>
-                                    <button class="btn">Visualisez</button>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <p class="theme-title">La mytologie</p>
-                                    <img src="{{ asset('uploads/mythologie.png') }}">
-                                    <div class="hover">
-                                        <hr />
-                                        <span>20/03/2014</span>
-                                        <hr />
-                                        <p><span>63%</span><br />de réponses correctes</p>
-                                    </div>
-                                    <button class="btn">Visualisez</button>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <p class="theme-title">La mytologie</p>
-                                    <img src="{{ asset('uploads/mythologie.png') }}">
-                                    <div class="hover">
-                                        <hr />
-                                        <span>20/03/2014</span>
-                                        <hr />
-                                        <p><span>63%</span><br />de réponses correctes</p>
-                                    </div>
-                                    <button class="btn">Visualisez</button>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <p class="theme-title">La mytologie</p>
-                                    <img src="{{ asset('uploads/mythologie.png') }}">
-                                    <div class="hover">
-                                        <hr />
-                                        <span>20/03/2014</span>
-                                        <hr />
-                                        <p><span>63%</span><br />de réponses correctes</p>
-                                    </div>
-                                    <button class="btn">Visualisez</button>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <p class="theme-title">La mytologie</p>
-                                    <img src="{{ asset('uploads/mythologie.png') }}">
-                                    <div class="hover">
-                                        <hr />
-                                        <span>20/03/2014</span>
-                                        <hr />
-                                        <p><span>63%</span><br />de réponses correctes</p>
-                                    </div>
-                                    <button class="btn">Visualisez</button>
-                                </a>
-                            </li>
+                            {% for seance in seances %}
+                                <li>
+                                    <a href="#">
+                                        <p class="theme-title">{{ seance.theme.name }}</p>
+                                        <img src="{{ asset('uploads/mythologie.png') }}">
+                                        <div class="hover">
+                                            <hr />
+                                            <span>{{ seance.date|date('d/m/Y') }}</span>
+                                            <hr />
+                                            <p><span>
+                                            {{ render(controller('TerraNovaBundle:Student:getResultByTheme', {'idSeance': seance.id,'idStudent': entity.id } )) }}
+                                            %</span><br />de réponses correctes</p>
+                                        </div>
+                                        <button class="btn">Visualisez</button>
+                                    </a>
+                                </li>
+                            {% endfor %}
                         </ul>
                     <p>remarque général sur l'élève</p>
                     <p>bagde obtenu</p>

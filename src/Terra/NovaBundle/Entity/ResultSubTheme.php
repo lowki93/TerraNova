@@ -13,6 +13,7 @@ use \DateTime;
  * @ORM\Table()
  * @ORM\Entity
  * @ExclusionPolicy("all")
+ * @ORM\Entity(repositoryClass="Terra\NovaBundle\Entity\ResultSubThemeRepository")
  */
 class ResultSubTheme
 {

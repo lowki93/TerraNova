@@ -147,8 +147,8 @@ class StudentController extends Controller
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('TerraNovaBundle:Student')->find($id);
         $result = $em->getRepository('TerraNovaBundle:ResultStudent')->findByStudent($id);
-        $seance = $em->getRepository('TerraNovaBundle:Seance')->findByClasse($idClasse);
-        $nbSeance = count($seance);
+        $seances = $em->getRepository('TerraNovaBundle:Seance')->findByClasse($idClasse);
+        $nbSeance = count($seances);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Student entity.');
@@ -159,6 +159,7 @@ class StudentController extends Controller
         return $this->render('TerraNovaBundle:Student:show.html.twig', array(
             'result' => $result,
             'idClasse' => $idClasse,
+            'seances' => $seances,
             'nbSeance' => $nbSeance,
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
@@ -278,5 +279,25 @@ class StudentController extends Controller
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
+    }
+
+    public function getResultByThemeAction($idSeance,$idStudent)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $result = $em->getRepository('TerraNovaBundle:ResultSubTheme')->findBySeance($idSeance,$idStudent);
+
+        $nbResult = count($result);
+        $resultByTheme = 0;
+
+        for ($i=0; $i < $nbResult; $i++) { 
+            $resultByTheme += $result[$i]->getSuccess();
+        }
+
+        if($nbResult != 0)
+            $resultByTheme = $resultByTheme/$nbResult;
+
+        return $this->render('TerraNovaBundle:Student:resultByTheme.html.twig', array(
+            'result' => $resultByTheme,
+        ));
     }
 }

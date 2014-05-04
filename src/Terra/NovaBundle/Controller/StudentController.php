@@ -48,11 +48,18 @@ class StudentController extends Controller
         $em = $this->getDoctrine();
         $students = $em->getRepository('TerraNovaBundle:Student')->findByClasse($id);
         $name = $em->getRepository('TerraNovaBundle:Classe')->findByName($id);
-        // die('test');
+
+        $nbStudent = count($students);
+        $results = array();
+        for ($i=0; $i < $nbStudent; $i++) { 
+            $result = $em->getRepository('TerraNovaBundle:ResultStudent')->findByStudent($students[$i]);
+            $results = array_merge($results, $result);
+        }
 
         $response['content'] = $this->renderView('TerraNovaBundle:Student:index.html.twig',
                                     array('class' => $name,
                                         'students' => $students,
+                                        'results' => $results,
                                         'idClasse' => $id));
 
 
@@ -140,6 +147,8 @@ class StudentController extends Controller
         $em = $this->getDoctrine()->getManager();
         $entity = $em->getRepository('TerraNovaBundle:Student')->find($id);
         $result = $em->getRepository('TerraNovaBundle:ResultStudent')->findByStudent($id);
+        $seance = $em->getRepository('TerraNovaBundle:Seance')->findByClasse($idClasse);
+        $nbSeance = count($seance);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Student entity.');
@@ -150,6 +159,7 @@ class StudentController extends Controller
         return $this->render('TerraNovaBundle:Student:show.html.twig', array(
             'result' => $result,
             'idClasse' => $idClasse,
+            'nbSeance' => $nbSeance,
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
         ));

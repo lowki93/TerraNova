@@ -1,3 +1,4 @@
+<div id="container" style="min-width: 320px; height: 400px; margin: 0 auto"></div>
 <ul class="student-list">
     {% for student in students %}
         <li>
@@ -13,42 +14,75 @@
         </a>
     </li>
 </ul>
-{#     <table class="records_list">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Firstname</th>
-                <th>Age</th>
-                <th>Avatar</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for student in students %}
-            <tr>
-                <td>{{ student.name }}</td>
-                <td>{{ student.firstName }}</td>
-                <td>{{ student.age }}</td>
-                <td>{{ student.avatar }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('Eleve_show', { 'id': student.id, 'idClasse': idClasse }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('Eleve_edit', { 'id': student.id, 'idClasse': idClasse }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 
-        <ul>
-        <li>
-        <a href="{{ path('Eleve_new', { 'idClasse' : idClasse }) }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul> #}
+<script>
+    $(function () {
+        $('#container').highcharts({
+            colors: 
+                ['#d2d2d2'],
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: ''
+            },
+            subtitle: {
+                text: ''
+            },
+            xAxis: {
+                type: 'category',
+                labels: {
+                    rotation: -45,
+                    align: 'right',
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            },
+            yAxis: {
+                min: 0,
+                max: 100,
+                title: {
+                    text: 'Reussite(%)'
+                }
+            },
+            plotOptions: {
+                column: {
+                    states: {
+                        hover: {
+                            color: '#f8c835'                                                           
+                        }
+                    }
+                        
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                pointFormat: '<b>{point.y}% de Reussite</b>',
+            },
+            series: [{
+                name: 'Reussite',
+                data: [
+                {% for result in results %}
+                    ['{{ result.student.firstName }} {{ result.student.name }}', {{ result.success }}],
+                {% endfor %}
+                ],
+                dataLabels: {
+                    enabled: true,
+                    color: '#000000',
+                    align: 'center',
+                    x: 0,
+                    y: 0,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif',
+                        textShadow: '0 0 3px black'
+                    }
+                }
+            }]
+        });
+    });
+    </script>

@@ -8,7 +8,7 @@
     {% endstylesheets %}
 {% endblock %}
 
-{% block title %}Enseignant | Élève {{entity.name}} {{entity.firstName}}{% endblock %}
+{% block title %}Enseignant | Élève {{entity.firstName}} {{entity.name}}{% endblock %}
 
 {% block body %}
     <div class="content-student">
@@ -18,31 +18,38 @@
                 <div class="span8">
 {#                     <button class="btn"><a href="javascript:history.back()">Retour aux élèves</a></button> #}
                     <p>Sélectionnez une séance jouée par {{ entity.firstName }}</p>
-                        <ul>
-                            {% for seance in seances %}
-                                <a href="#">
-                                    <li>
-                                        <div class="img-conteneur">
-                                            <img src="/img/theme/{{ seance.theme.path }}" alt="{{ entity.name }}" />
-                                            <div class="hover">
-                                                <p><span>
-                                                {{ render(controller('TerraNovaBundle:Student:getResultByTheme', {'idSeance': seance.id,'idStudent': entity.id } )) }}
-                                                %</span><br />de réponses correctes</p>
+                        {% if seances %}
+                            <ul>
+                                {% for seance in seances %}
+                                    <a href="#">
+                                        <li>
+                                            <div class="img-conteneur">
+                                                <img src="/img/theme/{{ seance.theme.path }}" alt="{{ entity.name }}" />
+                                                <div class="hover">
+                                                    <p><span>
+                                                    {{ render(controller('TerraNovaBundle:Student:getResultByTheme', {'idSeance': seance.id,'idStudent': entity.id } )) }}
+                                                    %</span><br />de réponses correctes</p>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <p>{{ seance.theme.name }}</p>
-                                        <span>joué le {{ seance.date|date('d/m/Y') }}</span>
-                                    </li>
-                                </a>
-                            {% endfor %}
-                        </ul>
-{#                         {{entity.id}} #}
+                                            <p>{{ seance.theme.name }}</p>
+                                            <span>joué le {{ seance.date|date('d/m/Y') }}</span>
+                                        </li>
+                                    </a>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <span class="nothing">Aucune séance n'a été faites</span>
+                        {% endif %}
                     <p>Remarques générales sur l'élève</p>
                     {{ render(controller('TerraNovaBundle:Student:udapteRemarksForm', { 'id': entity.id, 'idClasse': entity.classe.id} )) }}
                     <p>Bagdes obtenus</p>
-                    {% for badge in badges %}
-                        <img src="/img/trophy/{{ badge.path }}" alt="{{ badge.name }}" />
-                    {% endfor %}
+                    {% if badges %}
+                        {% for badge in badges %}
+                            <img src="/img/trophy/{{ badge.path }}" alt="{{ badge.name }}" />
+                        {% endfor %}
+                    {% else %}
+                        <span class="nothing">{{ entity.firstName }} n'a pas encore obtenu de badges.</span>
+                    {% endif %}
                 </div>
                 <div class="span4">
                     <p><span>{{ result[0].success }}%</span><br />de réponses correctes en moyenne</p>

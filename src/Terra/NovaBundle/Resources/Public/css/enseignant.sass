@@ -1,5 +1,8 @@
 @import style
 
+body
+	background-image: none
+
 /**** STUDENT ****/
 h4
 	.control-group
@@ -18,12 +21,13 @@ h4
 			-webkit-box-sizing: border-box
 			-moz-box-sizing: border-box
 			box-sizing: border-box
-			background-color: $lightGrey
 			margin:
-				right: 3px
-				bottom: 3px
+				right: 1%
+				bottom: 1%
 			float: left
-			width: 19.7%
+			width: 19%
+			border-radius: 15px
+			background-image: url('../img/grain.png')
 			a
 				color: #000
 				display: flex
@@ -36,12 +40,21 @@ h4
 					margin:
 						left: 3%
 					width: 65%
+					span
+						font-family: 'vagroundedsrd-thin'
+						font-size: 15px
+						color: $blueTitle
 				&:hover
 					text-decoration: none
 					background-color: $greyHover
+					border-radius: 15px	
 				i
 					font-size: 43px
 					margin-right: 5px
+			&:last-child
+				a
+					img
+						width: 28%
 
 /**** PROFIL ****/
 .profil

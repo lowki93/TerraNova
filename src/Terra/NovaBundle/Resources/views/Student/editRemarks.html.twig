@@ -1,0 +1,10 @@
+{{ form_start(edit_form, { 'attr': {'class' : 'form-horizontal'} }) }}
+{{ form_widget(edit_form.remarks) }}
+{{ form_widget(edit_form.name, { 'attr': {'class' : 'hidden-form'} }) }}
+{{ form_widget(edit_form.firstName, { 'attr': {'class' : 'hidden-form'} }) }}
+{{ form_widget(edit_form.avatar, { 'attr': {'class' : 'hidden-form'} }) }}
+{{ form_widget(edit_form.age, { 'attr': {'class' : 'hidden-form'} }) }}
+{{ form_widget(edit_form.login, { 'attr': {'class' : 'hidden-form'} }) }}
+{{ form_widget(edit_form.classe, { 'attr': {'class' : 'hidden-form'} }) }}
+{{ form_widget(edit_form._token) }}
+<input type="image" src="{{ asset('bundles/terranova/img/button/validate.png') }}"/>

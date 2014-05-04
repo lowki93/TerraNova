@@ -36,7 +36,9 @@
                                 </a>
                             {% endfor %}
                         </ul>
+{#                         {{entity.id}} #}
                     <p>Remarques générales sur l'élève</p>
+                    {{ render(controller('TerraNovaBundle:Student:udapteRemarksForm', { 'id': entity.id, 'idClasse': entity.classe.id} )) }}
                     <p>Bagdes obtenus</p>
                     {% for badge in badges %}
                         <img src="/img/trophy/{{ badge.path }}" alt="{{ badge.name }}" />
@@ -51,7 +53,7 @@
                             {{ result[0].timePassing|date('i') }}min
                         {% endif %}
                         </span><br />passées sur Wipo</p>
-                    <p><span>{{ result[0].timePassing|date('i')/nbSeance }}min</span><br />passées en moyenne sur cahque thème</p>
+                    <p><span>{{ result[0].timePassing|date('i') }}min</span><br />passées en moyenne sur cahque thème</p>
                 </div>
             </div>
         </div>

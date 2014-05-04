@@ -243,7 +243,7 @@ class StudentController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('Eleve_edit', array('id' => $id, 'idClasse' => $idClasse)));
+            return $this->redirect($this->generateUrl('Eleve_show', array('id' => $id, 'idClasse' => $idClasse)));
         }
 
         return $this->render('TerraNovaBundle:Student:edit.html.twig', array(
@@ -311,6 +311,26 @@ class StudentController extends Controller
 
         return $this->render('TerraNovaBundle:Student:resultByTheme.html.twig', array(
             'result' => $resultByTheme,
+        ));
+    }
+
+    public function udapteRemarksFormAction($id,$idClasse)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('TerraNovaBundle:Student')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Student entity.');
+        }
+
+        $editForm = $this->createEditForm($entity, $idClasse);
+        $deleteForm = $this->createDeleteForm($id, $idClasse);
+
+        return $this->render('TerraNovaBundle:Student:editRemarks.html.twig', array(
+            'idClasse' => $idClasse,
+            'entity'      => $entity,
+            'edit_form'   => $editForm->createView(),
         ));
     }
 }

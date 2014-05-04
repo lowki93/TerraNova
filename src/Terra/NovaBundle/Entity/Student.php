@@ -58,6 +58,13 @@ class Student
     private $avatar;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="remarks", type="string", length=4096, nullable=true)
+     */
+    private $remarks;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Terra\NovaBundle\Entity\Classe", inversedBy="student")
      */
     protected $classe;
@@ -291,5 +298,28 @@ class Student
     public function getResultStudent()
     {
         return $this->resultStudent;
+    }
+
+    /**
+     * Set remarks
+     *
+     * @param string $remarks
+     * @return Student
+     */
+    public function setRemarks($remarks)
+    {
+        $this->remarks = $remarks;
+
+        return $this;
+    }
+
+    /**
+     * Get remarks
+     *
+     * @return string 
+     */
+    public function getRemarks()
+    {
+        return $this->remarks;
     }
 }

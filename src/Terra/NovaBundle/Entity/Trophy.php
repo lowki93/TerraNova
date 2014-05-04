@@ -14,6 +14,7 @@ use JMS\Serializer\Annotation\Expose;
  * @ORM\Entity
  * @ORM\HasLifecycleCallbacks
  * @ExclusionPolicy("all")
+ * @ORM\Entity(repositoryClass="Terra\NovaBundle\Entity\TrophyRepository")
  */
 class Trophy
 {

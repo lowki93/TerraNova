@@ -17,7 +17,7 @@
             <div class="row">
                 <div class="span8">
 {#                     <button class="btn"><a href="javascript:history.back()">Retour aux élèves</a></button> #}
-                    <p>sélectionnez une séance par {{ entity.firstName }}</p>
+                    <p>Sélectionnez une séance jouée par {{ entity.firstName }}</p>
                         <ul>
                             {% for seance in seances %}
                                 <a href="#">
@@ -36,8 +36,11 @@
                                 </a>
                             {% endfor %}
                         </ul>
-                    <p>remarque général sur l'élève</p>
-                    <p>bagde obtenu</p>
+                    <p>Remarques générales sur l'élève</p>
+                    <p>Bagdes obtenus</p>
+                    {% for badge in badges %}
+                        <img src="/img/trophy/{{ badge.path }}" alt="{{ badge.name }}" />
+                    {% endfor %}
                 </div>
                 <div class="span4">
                     <p><span>{{ result[0].success }}%</span><br />de réponses correctes en moyenne</p>

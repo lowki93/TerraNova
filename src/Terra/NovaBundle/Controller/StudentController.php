@@ -148,6 +148,18 @@ class StudentController extends Controller
         $entity = $em->getRepository('TerraNovaBundle:Student')->find($id);
         $result = $em->getRepository('TerraNovaBundle:ResultStudent')->findByStudent($id);
         $seances = $em->getRepository('TerraNovaBundle:Seance')->findByClasse($idClasse);
+
+        $resultSubTheme = $em->getRepository('TerraNovaBundle:ResultSubTheme')->findByStudent($id);
+        $nbResulSubTHheme = count($resultSubTheme);
+
+        $badges = array();
+        for ($i=0; $i < $nbResulSubTHheme; $i++) { 
+            $subThemeId = $resultSubTheme[$i]->getSousTheme()->getId();
+            $levelSuccess = $resultSubTheme[$i]->getLevelSuccess();
+            $badge = $em->getRepository('TerraNovaBundle:Trophy')->findByResult($subThemeId,$levelSuccess);
+            $badges = array_merge($badges, $badge);
+        }
+
         $nbSeance = count($seances);
 
         if (!$entity) {
@@ -161,6 +173,7 @@ class StudentController extends Controller
             'idClasse' => $idClasse,
             'seances' => $seances,
             'nbSeance' => $nbSeance,
+            'badges' => $badges,
             'entity'      => $entity,
             'delete_form' => $deleteForm->createView(),
         ));

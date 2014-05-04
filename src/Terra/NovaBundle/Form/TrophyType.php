@@ -22,7 +22,7 @@ class TrophyType extends AbstractType
                 'property' => 'name',
             ))
             ->add('file')
-            ->add('type', 'choice', array('choices' => array('Or' => 'or', 'Argent' => 'Argent', 'Bronze' => 'Bronze')))
+            ->add('type', 'choice', array('choices' => array('or' => 'Or', 'argent' => 'Argent', 'bronze' => 'Bronze')))
         ;
     }
     

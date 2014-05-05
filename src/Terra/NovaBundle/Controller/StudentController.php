@@ -333,4 +333,20 @@ class StudentController extends Controller
             'edit_form'   => $editForm->createView(),
         ));
     }
+
+    public function seanceAction($idClasse,$id,$idSeance)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $student = $em->getRepository('TerraNovaBundle:Student')->find($id);
+        $result = $em->getRepository('TerraNovaBundle:ResultStudent')->findByStudent($id);
+        $seance = $em->getRepository('TerraNovaBundle:Seance')->find($idSeance);
+        $resultSubThemes = $em->getRepository('TerraNovaBundle:ResultSubTheme')->findBySeance($idSeance,$id);
+
+        return $this->render('TerraNovaBundle:Student:seance.html.twig', array(
+            'student' => $student,
+            'result' => $result,
+            'seance' => $seance,
+            'resultSubThemes' => $resultSubThemes
+        ));
+    }
 }

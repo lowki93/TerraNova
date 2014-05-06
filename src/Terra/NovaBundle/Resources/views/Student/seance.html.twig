@@ -17,38 +17,42 @@
 			<div class="row">
 				<div class="span8">
 					<h2>{{seance.theme.name }}</h2>
-					<h5>Temps passé sur les thèmes</h5>
-					{% for resultSubTheme in resultSubThemes %}
-						<h6>{{ resultSubTheme.sousTheme.name}}</h6>
-						<div class="graph" id="raTime{{loop.index}}"></div>
-						<div class="graph" id="gameTime{{loop.index}}"></div>
-					{% endfor %}
-					<div class="graph-label"><p><span class="graph-color"></span>Élève    <span class="graph-color"></span>Moyenne Classe</p></div>
-					{% for resultSubTheme in resultSubThemes %}
-						<h5>Réponses aux questions : {{ resultSubTheme.sousTheme.name}}
-							<span>
-								{% if resultSubTheme.levelSuccess == 'or' %}
-									<img src="{{ asset('bundles/terranova/img/star.png') }}" alt="star" />
-									<img src="{{ asset('bundles/terranova/img/star.png') }}" alt="star" />
-									<img src="{{ asset('bundles/terranova/img/star.png') }}" alt="star" />
+					{% if resultSubThemes %}
+						<h5>Temps passé sur les thèmes</h5>
+						{% for resultSubTheme in resultSubThemes %}
+							<h6>{{ resultSubTheme.sousTheme.name}}</h6>
+							<div class="graph" id="raTime{{loop.index}}"></div>
+							<div class="graph" id="gameTime{{loop.index}}"></div>
+						{% endfor %}
+						<div class="graph-label"><p><span class="graph-color"></span>Élève    <span class="graph-color"></span>Moyenne Classe</p></div>
+						{% for resultSubTheme in resultSubThemes %}
+							<h5>Réponses aux questions : {{ resultSubTheme.sousTheme.name}}
+								<span>
+									{% if resultSubTheme.levelSuccess == 'or' %}
+										<img src="{{ asset('bundles/terranova/img/star.png') }}" alt="star" />
+										<img src="{{ asset('bundles/terranova/img/star.png') }}" alt="star" />
+										<img src="{{ asset('bundles/terranova/img/star.png') }}" alt="star" />
+									{% endif %}
+									{% if resultSubTheme.levelSuccess == 'argent' %}
+										<img src="{{ asset('bundles/terranova/img/star.png') }}" alt="star" />
+										<img src="{{ asset('bundles/terranova/img/star.png') }}" alt="star" />
+									{% endif %}
+									{% if resultSubTheme.levelSuccess == 'bronze' %}
+										<img src="{{ asset('bundles/terranova/img/star.png') }}" alt="star" />
+									{% endif %}
+									{{ resultSubTheme.success}}%
+								</span>
+								</h5>
+								{% if resultSubTheme.sousTheme.name|lower == "le cycle de l'eau" %}
+									{% include 'TerraNovaBundle:SousTheme:WaterCycle.html.twig' %}
 								{% endif %}
-								{% if resultSubTheme.levelSuccess == 'argent' %}
-									<img src="{{ asset('bundles/terranova/img/star.png') }}" alt="star" />
-									<img src="{{ asset('bundles/terranova/img/star.png') }}" alt="star" />
-								{% endif %}
-								{% if resultSubTheme.levelSuccess == 'bronze' %}
-									<img src="{{ asset('bundles/terranova/img/star.png') }}" alt="star" />
-								{% endif %}
-								{{ resultSubTheme.success}}%
-							</span>
-							</h5>
-							{% if resultSubTheme.sousTheme.name|lower == "le cycle de l'eau" %}
-								{% include 'TerraNovaBundle:SousTheme:WaterCycle.html.twig' %}
-							{% endif %}
-					{% endfor %}
-					<div class="result">
-						<p>moyenne<br /><span>{{ render(controller('TerraNovaBundle:Student:getResultByTheme', {'idSeance': seance.id,'idStudent': student.id } )) }}%</span></p>
-					</div>
+						{% endfor %}
+						<div class="result">
+							<p>moyenne<br /><span>{{ render(controller('TerraNovaBundle:Student:getResultByTheme', {'idSeance': seance.id,'idStudent': student.id } )) }}%</span></p>
+						</div>
+					{% else %}
+					    <p class="not-playing">{{student.firstName}} n'a pas joué a ce thème</p>
+					{% endif %}
 				</div>
 				<div class="span4">
 					 <p><span>{{ result[0].success }}%</span><br />de réponses correctes en moyenne</p>

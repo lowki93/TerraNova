@@ -17,5 +17,17 @@ class ResultSubThemeRepository extends EntityRepository {
         	));
 
 		return $student = $qb->getQuery()->getResult();
-    }  
+    }
+
+    public function findByStats($idSeance,$idSubTheme){
+        $qb = $this->createQueryBuilder('rst');
+        $qb->where('rst.sousTheme = :idSubTheme')
+            ->andWhere('rst.seance = :idSeance')
+            ->setParameters(array(
+                    'idSubTheme' => $idSubTheme,
+                    'idSeance' => $idSeance,
+            ));
+
+        return $student = $qb->getQuery()->getResult();
+    }
 }

@@ -1,8 +1,5 @@
 @import style
 
-body
-	background-image: none
-
 /**** STUDENT-PROFIL ****/
 .content-student
 	.span8
@@ -71,6 +68,8 @@ body
 				bottom: 20px
 			display: block
 	.span4
+		padding:
+			top: 40px
 		p
 			font-family: 'vagroundedsrd-light'
 			font-size: 14px
@@ -81,3 +80,112 @@ body
 				font-family: 'vagroundedsrd-bold'
 				font-size: 60px
 				color: $blueTitle
+
+/**** STUDENT SEANCE ****/
+.highcharts-legend, .highcharts-axis-labels, .highcharts-axis, .highcharts-tooltip
+	// display: none !important
+
+.content-student
+	.span8
+		h5
+			position: relative
+			span
+				position: absolute
+				right: 0
+				color: $blueTitle
+				font-size: 20px
+				text-align: right
+				width: 200px
+				img
+					width: 15px
+					height: 14px
+					margin:
+						right: -3px
+						bottom: 3px
+					&:last-child
+						margin-right: 5px
+		.graph
+			width: 49%
+			display: inline-block
+			height: 150px
+			svg
+				text
+					tspan
+						font-family: 'vagroundedsrd-light'
+						font-size: 10px
+						color: $blueTitle
+		.graph-label
+			p
+				font-family: 'vagroundedsrd-light'
+				font-size: 10px
+				.graph-color
+					width: 10px
+					height: 10px
+					display: inline-block
+					margin-right: 10px 
+					&:first-child
+						background-color: $yellowGraph
+					&:last-child
+						background-color: $blueGraph
+		.response
+			background-color: $lightWhite
+			padding:
+				top: 10px
+				bottom: 10px
+				left: 15px
+				right: 15px
+			border-radius: 12px
+			box-shadow: 3px 5px 6px #aaaaaa
+			margin-bottom: 15px
+			p
+				font-family: 'vagroundedsrd-thin'
+				font-size: 14px
+				margin: 0
+				span
+					color: $greenTitle
+					font-family: 'vagroundedsrd-bold'
+					margin-right: 10px
+			.response-title
+				position: relative
+				img
+					position: absolute
+					top: 5px
+					right: 10px
+			.response-content
+				// display: none
+			.response-text
+				i
+					color: $greenTitle
+				margin-top: 10px
+				li
+					font-family: 'vagroundedsrd-thin'
+					font-size: 14px
+					margin-bottom: 5px
+				span
+					margin: 0
+				.error
+					color: $red
+					text-decoration: line-through
+		.result
+			display: flex
+			align-items: center
+			justify-content: center
+			margin-top: 30px
+			p
+				text-align: center
+				width: 132px
+				height: 132px
+				border-radius: 132px
+				text-transform: uppercase
+				font-size: 20px
+				color: $white
+				background-color: $blueTitle
+				display: flex
+				flex-direction: column
+				align-items: center
+				justify-content: center
+				span
+					font-size: 40px
+					margin:
+						top: 8px
+					

@@ -14,6 +14,10 @@ Eleve_show:
     options:
         expose: true
 
+Eleve_seance:
+    pattern: /{idClasse}/{id}/{idSeance}
+    defaults: { _controller: "TerraNovaBundle:Student:seance"}
+
 Eleve_new:
     pattern:  /{idClasse}/new
     defaults: { _controller: "TerraNovaBundle:Student:new" }

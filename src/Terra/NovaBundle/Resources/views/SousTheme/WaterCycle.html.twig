@@ -1,0 +1,82 @@
+{% set resultCozeText = resultSubTheme.cozeText | split(',') %}
+{% set rightSentences = ["soleil", "vapeur d'eau", "nuages", "s'infiltre", "nappe phréatique", "source", "ruisselle", "fleuves"] %}
+{% set trueCounter = 0 %}
+{% for trueSentence in resultCozeText %}
+	{% if trueSentence == rightSentences[loop.index-1] %}
+		{% set trueCounter = trueCounter + 1 %}
+	{% endif %}
+{% endfor %}
+<div class="response">
+	<div class="response-title game1"><p><span>{{trueCounter}}/{{resultCozeText|length}}</span> Compléter un texte à trou</p><img class="" src="{{ asset('bundles/terranova/img/arrow.png')}}"></div>
+	<div class="response-content game1">
+		<p class="response-text">
+			La chaleur du {% if resultCozeText[0] == rightSentences[0] %}<span>{{resultCozeText[0]}}</span>{% else %}<span class='error'>{{ resultCozeText[0] }}</span> <span>({{rightSentences[0]}})</span>{% endif %} fait évaporer l'eau des mers, des terres et des plantes. Cette eau se transforme en un gaz : la {% if resultCozeText[1] == rightSentences[1] %}<span>{{resultCozeText[1]}}</span>{% else %}<span class='error'>{{ resultCozeText[1] }}</span> <span>({{rightSentences[1]}})</span>{% endif %}. Celle-ci se condense en de minuscule gouttes d'eau qui se regroupent en {% if resultCozeText[2] == rightSentences[2] %}<span>{{resultCozeText[2]}}</span>{% else %}<span class='error'>{{ resultCozeText[2] }}</span> <span>({{rightSentences[2]}})</span>{% endif %}. Ils se transformeront en pluis ou en neige. Lorsqu cette eau retombe sur le som, il y a deux possibilités : <br />
+			- soit elle rencontre un terrain perméable comme le sable et elle {% if resultCozeText[3] == rightSentences[3] %}<span>{{resultCozeText[3]}}</span>{% else %}<span class='error'>{{ resultCozeText[3] }}</span> <span>({{rightSentences[3]}})</span>{% endif %} dans le sol. Elle constitue alors une {% if resultCozeText[4] == rightSentences[4] %}<span>{{resultCozeText[4]}}</span>{% else %}<span class='error'>{{ resultCozeText[4] }}</span> <span>({{rightSentences[4]}})</span>{% endif %} qui s'écoule très lentement. Elle ressort parfois des dizaines de kilomètres plus loin sous forme de {% if resultCozeText[5] == rightSentences[5] %}<span>{{resultCozeText[5]}}</span>{% else %}<span class='error'>{{ resultCozeText[5] }}</span> <span>({{rightSentences[5]}})</span>{% endif %}.<br />
+			- soit elle {% if resultCozeText[6] == rightSentences[6] %}<span>{{resultCozeText[6]}}</span>{% else %}<span class='error'>{{ resultCozeText[6] }}</span> <span>({{rightSentences[6]}})</span>{% endif %} en surface. Elle forme alors des ruisseaux qui se rassemblent en rivières et en {% if resultCozeText[7] == rightSentences[7] %}<span>{{resultCozeText[7]}}</span>{% else %}<span class='error'>{{ resultCozeText[7] }}</span> <span>({{rightSentences[7]}})</span>{% endif %} qui se jettent dans la mer.
+		</p>
+	</div>
+</div>
+
+{% set resultTrueFalse = resultSubTheme.trueFalse | split(',') %}
+{% set rightSentences = ["false", "true", "true"] %}
+{% set trueCounter = 0 %}
+{% for trueSentence in resultTrueFalse %}
+	{% if trueSentence == rightSentences[loop.index-1] %}
+		{% set trueCounter = trueCounter + 1 %}
+	{% endif %}
+{% endfor %}
+<div class="response">
+	<div class="response-title game2"><p><span>{{trueCounter}}/{{resultTrueFalse|length}}</span> Vrai / Faux</p><img src="{{ asset('bundles/terranova/img/arrow.png')}}"></div>
+	<div class="response-content game2">
+		<ul class="response-text">
+			<li>
+				Dans la nature, l'eau ne s'évapore que sur les mers : 
+				{% if resultTrueFalse[0] == rightSentences[0] %}
+					{% if rightSentences[0] == "true" %}
+						<i class="icon-ok"></i>
+					{% else %}
+						<i class="icon-remove"></i>
+					{% endif %}
+				{% else %}
+					{% if resultTrueFalse[0] == "false" %}
+						<i class="icon-ok error"></i><i class="icon-remove"></i>
+					{% else %}
+						<i class="icon-remove error"></i><i class="icon-ok"></i>
+					{% endif %}
+				{% endif %}
+			</li>
+			<li>
+				Dans la nature, l'eau ne s'évapore que sur les mers :
+				{% if resultTrueFalse[1] == rightSentences[1] %}
+					{% if rightSentences[1] == "true" %}
+						<i class="icon-ok"></i>
+					{% else %}
+						<i class="icon-remove"></i>
+					{% endif %}
+				{% else %}
+					{% if resultTrueFalse[1] == "false" %}
+						<i class="icon-ok error"></i><i class="icon-remove"></i>
+					{% else %}
+						<i class="icon-remove error"></i><i class="icon-ok"></i>
+					{% endif %}
+				{% endif %}
+			</li>
+			<li>
+				Dans la nature, l'eau ne s'évapore que sur les mers :
+				{% if resultTrueFalse[2] == rightSentences[2] %}
+					{% if rightSentences[2] == "true" %}
+						<i class="icon-ok"></i>
+					{% else %}
+						<i class="icon-remove"></i>
+					{% endif %}
+				{% else %}
+					{% if resultTrueFalse[2] == "false" %}
+						<i class="icon-ok error"></i><i class="icon-remove"></i>
+					{% else %}
+						<i class="icon-remove error"></i><i class="icon-ok"></i>
+					{% endif %}
+				{% endif %}
+			</li>
+		</ul>
+	</div>
+</div>

@@ -333,4 +333,72 @@ class StudentController extends Controller
             'edit_form'   => $editForm->createView(),
         ));
     }
+
+    public function seanceAction($idClasse,$id,$idSeance)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $student = $em->getRepository('TerraNovaBundle:Student')->find($id);
+        $result = $em->getRepository('TerraNovaBundle:ResultStudent')->findByStudent($id);
+        $seance = $em->getRepository('TerraNovaBundle:Seance')->find($idSeance);
+        $resultSubThemes = $em->getRepository('TerraNovaBundle:ResultSubTheme')->findBySeance($idSeance,$id);
+
+        return $this->render('TerraNovaBundle:Student:seance.html.twig', array(
+            'student' => $student,
+            'result' => $result,
+            'seance' => $seance,
+            'resultSubThemes' => $resultSubThemes
+        ));
+    }
+
+    public function getStatsRatimeAction($idSeance,$idSubTheme)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $results = $em->getRepository('TerraNovaBundle:resultSubTheme')->findByStats($idSeance,$idSubTheme);
+
+        $nbResult = count($results);
+
+        $raTimeStats = 0;
+
+        if($nbResult == 0)
+            $raTimeStats = 0;
+        else {
+            for ($i=0; $i < $nbResult; $i++) { 
+                $raTime = $results[$i]->getRaTime()->format('i');
+                $raTimeStats += $raTime;
+            }
+        }
+
+        $raTimeStats = $raTimeStats/$nbResult;
+
+        return $this->render('TerraNovaBundle:Student:stats.html.twig', array(
+            'timeStats' => $raTimeStats,
+        ));
+    }
+
+    public function getStatsGametimeAction($idSeance,$idSubTheme)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $results = $em->getRepository('TerraNovaBundle:resultSubTheme')->findByStats($idSeance,$idSubTheme);
+
+        $nbResult = count($results);
+
+        $gameTimeStats = 0;
+
+        if($nbResult == 0)
+            $gameTimeStats = 0;
+        else {
+            for ($i=0; $i < $nbResult; $i++) { 
+                $gameTime = $results[$i]->getGameTime()->format('i');
+                $gameTimeStats += $gameTime;
+            }
+        }
+
+        $gameTimeStats = $gameTimeStats/$nbResult;
+
+        return $this->render('TerraNovaBundle:Student:stats.html.twig', array(
+            'timeStats' => $gameTimeStats,
+        ));
+    }
 }

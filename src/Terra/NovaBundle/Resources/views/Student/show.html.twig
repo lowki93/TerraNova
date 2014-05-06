@@ -21,7 +21,7 @@
                         {% if seances %}
                             <ul>
                                 {% for seance in seances %}
-                                    <a href="#">
+                                    <a href="{{ path('Eleve_seance', {'idClasse': entity.classe.id, 'id': entity.id, 'idSeance': seance.id }) }}">
                                         <li>
                                             <div class="img-conteneur">
                                                 <img src="/img/theme/{{ seance.theme.path }}" alt="{{ entity.name }}" />
@@ -55,7 +55,7 @@
                     <p><span>{{ result[0].success }}%</span><br />de réponses correctes en moyenne</p>
                     <p><span>
                         {% if result[0].timePassing|date('H') > 0 %}
-                             {{ result[0].timePassing|date('h') }}H{{ result[0].timePassing|date('i') }}min
+                             {{ result[0].timePassing|date('h') }}H{{ result[0].timePassing|date('i') }}
                         {% else %}
                             {{ result[0].timePassing|date('i') }}min
                         {% endif %}

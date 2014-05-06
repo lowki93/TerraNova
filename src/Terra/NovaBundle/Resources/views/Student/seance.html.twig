@@ -1,0 +1,206 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+	{% stylesheets
+		'bundles/terranova/css/enseignant_student_profil.sass'
+		filter="cssrewrite,sass" output='css/enseignant_student_profil.css' %}
+		   <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+	{% endstylesheets %}
+{% endblock %}
+
+{% block title %}Enseignant | Séance sur {{seance.theme.name }}{% endblock %}
+
+{% block body %}
+	<div class="content-student">
+		<div class="container">
+			<h1>{{ student.firstName }} {{ student.name }}</h1>
+			<div class="row">
+				<div class="span8">
+					<h2>{{seance.theme.name }}</h2>
+					<h5>Temps passé sur les thèmes</h5>
+					{% for resultSubTheme in resultSubThemes %}
+						<h6>{{ resultSubTheme.sousTheme.name}}</h6>
+						<div class="graph" id="raTime{{loop.index}}"></div>
+						<div class="graph" id="gameTime{{loop.index}}"></div>
+					{% endfor %}
+					<div class="graph-label"><p><span class="graph-color"></span>Élève    <span class="graph-color"></span>Moyenne Classe</p></div>
+					{% for resultSubTheme in resultSubThemes %}
+						<h5>Réponses aux questions : {{ resultSubTheme.sousTheme.name}}
+							<span>
+								{% if resultSubTheme.levelSuccess == 'or' %}
+									<img src="{{ asset('bundles/terranova/img/star.png') }}" alt="star" />
+									<img src="{{ asset('bundles/terranova/img/star.png') }}" alt="star" />
+									<img src="{{ asset('bundles/terranova/img/star.png') }}" alt="star" />
+								{% endif %}
+								{% if resultSubTheme.levelSuccess == 'argent' %}
+									<img src="{{ asset('bundles/terranova/img/star.png') }}" alt="star" />
+									<img src="{{ asset('bundles/terranova/img/star.png') }}" alt="star" />
+								{% endif %}
+								{% if resultSubTheme.levelSuccess == 'bronze' %}
+									<img src="{{ asset('bundles/terranova/img/star.png') }}" alt="star" />
+								{% endif %}
+								{{ resultSubTheme.success}}%
+							</span>
+							</h5>
+							{% if resultSubTheme.sousTheme.id == 1 %}
+								{% include 'TerraNovaBundle:SousTheme:WaterCycle.html.twig' %}
+							{% endif %}
+					{% endfor %}
+					<div class="result">
+						<p>moyenne<br /><span>{{ render(controller('TerraNovaBundle:Student:getResultByTheme', {'idSeance': seance.id,'idStudent': student.id } )) }}%</span></p>
+					</div>
+				</div>
+				<div class="span4">
+					 <p><span>{{ result[0].success }}%</span><br />de réponses correctes en moyenne</p>
+					<p><span>
+						{% if result[0].timePassing|date('H') > 0 %}
+							 {{ result[0].timePassing|date('h') }}H{{ result[0].timePassing|date('i') }}
+						{% else %}
+							{{ result[0].timePassing|date('i') }}min
+						{% endif %}
+						</span><br />passées sur Wipo</p>
+					<p><span>{{ result[0].timePassing|date('i') }}min</span><br />passées en moyenne sur cahque thème</p>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	{% javascripts
+		'bundles/terranova/hightcharts/highcharts.js'
+	%}
+	<script src="{{ asset_url }}"></script>
+	{% endjavascripts %}
+	<script>
+		$(function () {
+			{% for resultSubTheme in resultSubThemes %}
+				$('#raTime{{loop.index}}').highcharts({
+					colors: 
+						['#f8c835', '#1fa7a2'],
+					chart: {
+						type: 'bar',
+						backgroundColor : null
+					},
+					title: {
+						text: 'Phase 2 : explication intéractive'
+					},
+					xAxis: {
+						categories: ['Reussite'],
+						labels: {
+							rotation: -90,
+							align: 'right',
+							style: {
+								fontSize: '13px',
+								fontFamily: 'Verdana, sans-serif'
+							},
+							enabled: false
+						}
+					},
+					yAxis: {
+						min: 0,
+						max: 30,
+						title: {
+							text: 'Minutes'
+						}
+					},
+					plotOptions: {
+						bar: {
+							dataLabels: {
+								enabled: true,
+								color: '#000000',
+								align: 'center',
+								x: -10,
+								y: 0
+							}
+						}
+					},
+					credits: {
+						enabled: false
+					},
+					legend: {
+						enabled: false
+					},
+					tooltip: {
+						enabled: false,
+					},
+					series: [{
+						name: 'Moyenne Classe',
+						data: [{{ render(controller('TerraNovaBundle:Student:getStatsRatime', {'idSeance': seance.id, 'idSubTheme': resultSubTheme.sousTheme.id } )) }}]
+					}, {
+						name: 'élève',
+						data: [{{resultSubTheme.raTime|date('i') }}]
+					}]
+				});
+		 
+				$('#gameTime{{loop.index}}').highcharts({
+					colors: 
+						['#f8c835', '#1fa7a2'],
+					chart: {
+						type: 'bar',
+						backgroundColor : null
+					},
+					title: {
+						text: 'Phase 3 : réponses aux questions'
+					},
+					xAxis: {
+						categories: ['Reussite'],
+						labels: {
+							rotation: -90,
+							align: 'right',
+							style: {
+								fontSize: '13px',
+								fontFamily: 'Verdana, sans-serif'
+							},
+							enabled: false
+						}
+					},
+					yAxis: {
+						min: 0,
+						max: 30,
+						title: {
+							text: 'Minutes'
+						}
+					},
+					plotOptions: {
+						bar: {
+							dataLabels: {
+								enabled: true,
+								color: '#000000',
+								align: 'center',
+								x: -10,
+								y: 0
+							}
+						}
+					},
+					credits: {
+						enabled: false
+					},
+					legend: {
+						enabled: false
+					},
+					tooltip: {
+						enabled: false,
+					},
+					series: [{
+						name: 'Moyenne Classe',
+						data: [{{ render(controller('TerraNovaBundle:Student:getStatsGametime', {'idSeance': seance.id, 'idSubTheme': resultSubTheme.sousTheme.id } )) }}]
+					}, {
+						name: 'élève',
+						data: [{{resultSubTheme.gameTime|date('i') }}]
+					}]
+
+				});
+			{% endfor %}
+
+			$( ".response-title.game1 img" ).click(function() {
+				$( ".response-content.game1" ).slideToggle( "slow" );
+			});
+
+			$( ".response-title.game2 img" ).click(function() {
+				$( ".response-content.game2" ).slideToggle( "slow" );
+			});
+
+		});
+	</script>
+{% endblock %}

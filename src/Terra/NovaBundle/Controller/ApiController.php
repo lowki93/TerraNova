@@ -114,7 +114,7 @@ class ApiController extends Controller
 		$studentId = 12;
 		$cozeText = "soleil,vapeur d'eau,nuages,s'infiltre,nappe phréatique,source,ruisselle,fleuves";
 		$dragCozeText = "false,true,false,true,false,true,false,true";
-		$trueFalse = "false,false,false,false,false,true,false,true";
+		$trueFalse = "false,false,false";
 		$freeSentence = "je suis Jordan Delcros";
 		$success = 100;
 		$raTime = new DateTime('0000-00-00 0:05');

@@ -38,10 +38,10 @@
 						<i class="icon-remove"></i>
 					{% endif %}
 				{% else %}
-					{% if resultTrueFalse[0] == "false" %}
-						<i class="icon-ok error"></i><i class="icon-remove"></i>
-					{% else %}
+					{% if resultTrueFalse[1] == "false" %}
 						<i class="icon-remove error"></i><i class="icon-ok"></i>
+					{% else %}
+						<i class="icon-ok error"></i><i class="icon-remove"></i>
 					{% endif %}
 				{% endif %}
 			</li>
@@ -55,9 +55,9 @@
 					{% endif %}
 				{% else %}
 					{% if resultTrueFalse[1] == "false" %}
-						<i class="icon-ok error"></i><i class="icon-remove"></i>
-					{% else %}
 						<i class="icon-remove error"></i><i class="icon-ok"></i>
+					{% else %}
+						<i class="icon-ok error"></i><i class="icon-remove"></i>
 					{% endif %}
 				{% endif %}
 			</li>
@@ -70,13 +70,22 @@
 						<i class="icon-remove"></i>
 					{% endif %}
 				{% else %}
-					{% if resultTrueFalse[2] == "false" %}
-						<i class="icon-ok error"></i><i class="icon-remove"></i>
-					{% else %}
+					{% if resultTrueFalse[1] == "false" %}
 						<i class="icon-remove error"></i><i class="icon-ok"></i>
+					{% else %}
+						<i class="icon-ok error"></i><i class="icon-remove"></i>
 					{% endif %}
 				{% endif %}
 			</li>
 		</ul>
+	</div>
+</div>
+
+<div class="response">
+	<div class="response-title game3"><p><span>TXT</span> Quelle quantité d’eau un français utilise-t-il en moyenne ?</p><img class="" src="{{ asset('bundles/terranova/img/arrow.png')}}"></div>
+	<div class="response-content game3">
+		<p class="response-text">
+		{{ resultSubTheme.freeSentence }}
+		</p>
 	</div>
 </div>

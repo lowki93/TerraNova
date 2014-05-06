@@ -124,7 +124,7 @@
 					},
 					series: [{
 						name: 'Moyenne Classe',
-						data: [20]
+						data: [{{ render(controller('TerraNovaBundle:Student:getStatsRatime', {'idSeance': seance.id, 'idSubTheme': resultSubTheme.sousTheme.id } )) }}]
 					}, {
 						name: 'élève',
 						data: [{{resultSubTheme.raTime|date('i') }}]
@@ -182,7 +182,7 @@
 					},
 					series: [{
 						name: 'Moyenne Classe',
-						data: [20]
+						data: [{{ render(controller('TerraNovaBundle:Student:getStatsGametime', {'idSeance': seance.id, 'idSubTheme': resultSubTheme.sousTheme.id } )) }}]
 					}, {
 						name: 'élève',
 						data: [{{resultSubTheme.gameTime|date('i') }}]

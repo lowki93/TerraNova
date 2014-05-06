@@ -17,12 +17,66 @@
 	</div>
 </div>
 
-{# {% set resultTrueFalse = resultSubTheme.trueFalse | split(',') %} #}
+{% set resultTrueFalse = resultSubTheme.trueFalse | split(',') %}
+{% set rightSentences = ["false", "true", "true"] %}
+{% set trueCounter = 0 %}
+{% for trueSentence in resultTrueFalse %}
+	{% if trueSentence == rightSentences[loop.index-1] %}
+		{% set trueCounter = trueCounter + 1 %}
+	{% endif %}
+{% endfor %}
 <div class="response">
-	<div class="response-title game2"><p><span>{{trueCounter}}/{{resultCozeText|length}}</span> Compléter un texte à trou</p><img src="{{ asset('bundles/terranova/img/arrow.png')}}"></div>
+	<div class="response-title game2"><p><span>{{trueCounter}}/{{resultTrueFalse|length}}</span> Vrai / Faux</p><img src="{{ asset('bundles/terranova/img/arrow.png')}}"></div>
 	<div class="response-content game2">
-		<p class="response-text">
-			
-		</p>
+		<ul class="response-text">
+			<li>
+				Dans la nature, l'eau ne s'évapore que sur les mers : 
+				{% if resultTrueFalse[0] == rightSentences[0] %}
+					{% if rightSentences[0] == "true" %}
+						<i class="icon-ok"></i>
+					{% else %}
+						<i class="icon-remove"></i>
+					{% endif %}
+				{% else %}
+					{% if resultTrueFalse[0] == "false" %}
+						<i class="icon-ok error"></i><i class="icon-remove"></i>
+					{% else %}
+						<i class="icon-remove error"></i><i class="icon-ok"></i>
+					{% endif %}
+				{% endif %}
+			</li>
+			<li>
+				Dans la nature, l'eau ne s'évapore que sur les mers :
+				{% if resultTrueFalse[1] == rightSentences[1] %}
+					{% if rightSentences[1] == "true" %}
+						<i class="icon-ok"></i>
+					{% else %}
+						<i class="icon-remove"></i>
+					{% endif %}
+				{% else %}
+					{% if resultTrueFalse[1] == "false" %}
+						<i class="icon-ok error"></i><i class="icon-remove"></i>
+					{% else %}
+						<i class="icon-remove error"></i><i class="icon-ok"></i>
+					{% endif %}
+				{% endif %}
+			</li>
+			<li>
+				Dans la nature, l'eau ne s'évapore que sur les mers :
+				{% if resultTrueFalse[2] == rightSentences[2] %}
+					{% if rightSentences[2] == "true" %}
+						<i class="icon-ok"></i>
+					{% else %}
+						<i class="icon-remove"></i>
+					{% endif %}
+				{% else %}
+					{% if resultTrueFalse[2] == "false" %}
+						<i class="icon-ok error"></i><i class="icon-remove"></i>
+					{% else %}
+						<i class="icon-remove error"></i><i class="icon-ok"></i>
+					{% endif %}
+				{% endif %}
+			</li>
+		</ul>
 	</div>
 </div>

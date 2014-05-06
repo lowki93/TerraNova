@@ -42,7 +42,7 @@
 								{{ resultSubTheme.success}}%
 							</span>
 							</h5>
-							{% if resultSubTheme.sousTheme.id == 1 %}
+							{% if resultSubTheme.sousTheme.name|lower == "le cycle de l'eau" %}
 								{% include 'TerraNovaBundle:SousTheme:WaterCycle.html.twig' %}
 							{% endif %}
 					{% endfor %}

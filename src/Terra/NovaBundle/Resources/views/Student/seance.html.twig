@@ -42,7 +42,9 @@
 								{{ resultSubTheme.success}}%
 							</span>
 							</h5>
-
+							{% if resultSubTheme.sousTheme.id == 1 %}
+								{% include 'TerraNovaBundle:SousTheme:WaterCycle.html.twig' %}
+							{% endif %}
 					{% endfor %}
 					<div class="result">
 						<p>moyenne<br /><span>{{ render(controller('TerraNovaBundle:Student:getResultByTheme', {'idSeance': seance.id,'idStudent': student.id } )) }}%</span></p>
@@ -190,6 +192,15 @@
 
 				});
 			{% endfor %}
+
+			$( ".response-title.game1 img" ).click(function() {
+				$( ".response-content.game1" ).slideToggle( "slow" );
+			});
+
+			$( ".response-title.game2 img" ).click(function() {
+				$( ".response-content.game2" ).slideToggle( "slow" );
+			});
+
 		});
 	</script>
 {% endblock %}

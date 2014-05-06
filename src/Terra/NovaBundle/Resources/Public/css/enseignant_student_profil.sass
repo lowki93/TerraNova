@@ -127,10 +127,44 @@
 						background-color: $yellowGraph
 					&:last-child
 						background-color: $blueGraph
+		.response
+			background-color: $lightWhite
+			padding:
+				top: 10px
+				bottom: 10px
+				left: 15px
+				right: 15px
+			border-radius: 12px
+			box-shadow: 3px 5px 6px #aaaaaa
+			margin-bottom: 15px
+			p
+				font-family: 'vagroundedsrd-thin'
+				font-size: 14px
+				margin: 0
+				span
+					color: $greenTitle
+					font-family: 'vagroundedsrd-bold'
+					margin-right: 10px
+			.response-title
+				position: relative
+				img
+					position: absolute
+					top: 5px
+					right: 10px
+			.response-content
+				display: none
+			.response-text
+				margin-top: 10px
+				span
+					margin: 0
+				.error
+					color: $red
+					text-decoration: line-through
 		.result
 			display: flex
 			align-items: center
 			justify-content: center
+			margin-top: 30px
 			p
 				text-align: center
 				width: 132px

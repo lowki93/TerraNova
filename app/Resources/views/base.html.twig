@@ -48,40 +48,49 @@
             </nav>
             <div class="scroller">
                 <header>
-                    <div class="navbar {% if app.request.attributes.get('_route') != 'terra_nova_homepage' %} container {% endif %}" id="navbar">
+                    <div class="navbar container" id="navbar">
                         <div class="navbar-inner">
                             <a class="brand hidden-mobile" href="{{ path('terra_nova_homepage')}}"><img src="{{ asset('bundles/terranova/img/logo.png') }}" alt="Wipo"/></a>
                             <ul class="nav full pull-left">
                                 <li><a href="#" id="trigger" class="menu hidden-menu show-mobile"><i class="icon-align-justify"></i></a></li>
                             </ul>
-                            {% if is_granted("ROLE_ENSEIGNANT") %}
+                            {% if app.request.attributes.get('_route') == ('terra_nova_homepage') %}
                                 <ul class="nav full pull-left hidden-tablette">
-                                    <li class="title-user"><p>Bonjour {{app.user.name}} {{app.user.lastName}}<br /><span>{% if app.user.currentClass %}Classe courrante : {{ app.user.currentClass.name }}{% else %}Pas de classe courante{% endif %}</span></p></li>
+                                    <li><a href="{{ path('terra_nova_homepage')}}#game">Le jeu</a></li>
+                                    <li><a href="{{ path('terra_nova_homepage')}}#principle">Le principe</a></li>
+                                    <li><a href="{{ path('terra_nova_homepage')}}#team">L'équipe</a></li>
+                                    <li><a href="{{ path('terra_nova_homepage')}}#contact">Contact</a></li>
                                 </ul>
-                                <ul class="nav full pull-right hidden-tablette">
-                                    {% if app.user.etablissement != null %}
-                                <li><a href="#">les thèmes</a></li>
-                                <li><a href="#">mes séances</a></li>
-                                <li><a href="{{ path('Eleve_by_etablissement') }}">mes élèves</a></li>
-                            {% else %}
-                                <li><a href="{{ path('etablissement') }}" >Choisir son établissement</a></li>
-                            {% endif %}
-                                    <li><a href="{{ path('terra_nova_enseignant_profile_show') }}">mon compte</a></li>
-                                    <li><a href="{{ path('terra_nova_logout') }}"><i class="icon-off"></i></a></li>
-                                </ul>
-                            {% else %}
-                                {% if app.request.attributes.get('_route') != 'terra_nova_enseigant_register' %}
-                                    <ul class="nav full pull-left hidden-tablette">
-                                        <li><a href="#game">Le jeu</a></li>
-                                        <li><a href="#principle">Le principe</a></li>
-                                        <li><a href="#team">L'équipe</a></li>
-                                        <li><a href="#contact">Contact</a></li>
+                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                    {% if is_granted("ROLE_ENSEIGNANT") %}
+                                        <ul class="nav full pull-right">
+                                            <li><a href="{{ path('Eleve_by_etablissement') }}">côté enseignant</a></li>
+                                            <li class="title-user right"><p>Bonjour {{app.user.name}} {{app.user.lastName}}<br /><span>{% if app.user.currentClass %}Classe courrante : {{ app.user.currentClass.name }}{% else %}Pas de classe courante{% endif %}</span></p></li>
+                                        </ul>
+                                    {% endif %}
+                                {% else %}
+                                    <ul class="nav full pull-right">
+                                        <li><a href="#" class="connexion-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-content="{% render(controller('FOSUserBundle:Security:login')) %}" >se connecter</a></li>
+                                        <li><a href="{{ path('terra_nova_enseigant_register')}}">s'inscire</a></li>
                                     </ul>
                                 {% endif %}
-                                <ul class="nav full pull-right">
-                                    <li><a href="#" class="connexion-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-content="{% render(controller('FOSUserBundle:Security:login')) %}" >se connecter</a></li>
-                                    <li><a href="{{ path('terra_nova_enseigant_register')}}">s'inscire</a></li>
-                                </ul>
+                            {% else %}
+                                {% if is_granted("ROLE_ENSEIGNANT") %}
+                                    <ul class="nav full pull-left hidden-tablette">
+                                        <li class="title-user"><p>Bonjour {{app.user.name}} {{app.user.lastName}}<br /><span>{% if app.user.currentClass %}Classe courrante : {{ app.user.currentClass.name }}{% else %}Pas de classe courante{% endif %}</span></p></li>
+                                    </ul>
+                                    <ul class="nav full pull-right hidden-tablette">
+                                        {% if app.user.etablissement != null %}
+                                            <li><a href="#">les thèmes</a></li>
+                                            <li><a href="#">mes séances</a></li>
+                                            <li><a href="{{ path('Eleve_by_etablissement') }}">mes élèves</a></li>
+                                        {% else %}
+                                            <li><a href="{{ path('etablissement') }}" >Choisir son établissement</a></li>
+                                        {% endif %}
+                                        <li><a href="{{ path('terra_nova_enseignant_profile_show') }}">mon compte</a></li>
+                                        <li><a href="{{ path('terra_nova_logout') }}"><i class="icon-off"></i></a></li>
+                                    </ul>
+                                {% endif %}
                             {% endif %}
                         </div>
                     </div>
@@ -141,7 +150,7 @@
             //      });
 
             // });
-            $('.carousel').carousel()
+
         </script>
         {% block javascripts %}{% endblock %}
     </body>

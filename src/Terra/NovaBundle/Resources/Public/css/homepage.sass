@@ -7,6 +7,9 @@
 	top: 80px
 	left: 40px
 
+.principe-mobile
+	display: none
+
 .scroll-area
 	position: relative
 	overflow: auto
@@ -49,6 +52,9 @@
 					background-size: cover
 					background-position: center center
 					background-repeat: no-repat
+			.carousel-control
+				background: none
+				border: none
 		img
 			width: 100%
 	.cloud-background
@@ -190,19 +196,6 @@
 					border: 7px solid $borderArea
 					width: 100%
 					height: 280px
-					// -webkit-box-sizing: border-box
-					// -moz-box-sizing: border-box
-					// box-sizing: border-box
-					// width: 100%
-					// padding:
-					// 	left: 30px
-					// 	right: 30px
-					// 	top: 40px
-					// 	bottom: 40px
-					// background-image: url('../img/input/textarea.png')
-					// background-size: cover
-					// background-position: top left
-					// background-repeat: no-repeat
 				input
 					position: absolute
 					width: 80px
@@ -247,6 +240,8 @@
 						left: 30px
 
 @media (max-width: 520px)
+	.principe-mobile
+		display: block
 	.wipo-animate
 		display: none
 	.scroll-area

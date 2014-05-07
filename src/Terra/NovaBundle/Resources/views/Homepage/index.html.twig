@@ -26,17 +26,15 @@
 			  <ol class="carousel-indicators">
 			    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
  			    <li data-target="#myCarousel" data-slide-to="1"></li>
-			    <li data-target="#myCarousel" data-slide-to="2"></li>
 			  </ol>
 			  <!-- Carousel items -->
 			  <div class="carousel-inner">
-			    <div class="active item" style="background-image:url({{ asset('uploads/image1.png') }});"></div>
-				<div class="item" style="background-image:url({{ asset('uploads/image1.png') }});"></div>
-				<div class="item" style="background-image:url({{ asset('uploads/image1.png') }});"></div>
+			    <div class="active item" style="background-image:url({{ asset('img/slide/slide1.png') }});"></div>
+				<div class="item" style="background-image:url({{ asset('img/slide/slide2.png') }});"></div>
 			  </div>
 			  <!-- Carousel nav -->
-			  <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-			  <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+			  <a class="carousel-control left" href="#myCarousel" data-slide="prev"><img src="{{ asset('bundles/terranova/img/slide/left.png') }}"></a>
+			  <a class="carousel-control right" href="#myCarousel" data-slide="next"><img src="{{ asset('bundles/terranova/img/slide/right.png') }}"></a>
 			</div>
 		</div>
 		<div class="cloud-background">
@@ -49,7 +47,8 @@
 	 		<div id="principle" class="principle">
 				<h4>Comment ça marche</h4>
 				<div class="principle-content">
-					<img src="{{ asset('uploads/principle.png') }}">
+					<img class="hidden-mobile" src="{{ asset('uploads/principle.png') }}">
+					<img class="principe-mobile" src="{{ asset('uploads/principle-mobile.png') }}">
 				</div>
 			</div>
 			<div id="team" class="team">
@@ -92,6 +91,11 @@
 {% block javascripts %}
 
 	<script> 
+
+	    $('.carousel').carousel({
+            interval: 5000
+        })
+
 		// Un tableau qui va contenir toutes tes images.
 		var images = new Array();
 		images.push("{{ asset('bundles/terranova/img/wipo-anime/wipo2.png') }}");

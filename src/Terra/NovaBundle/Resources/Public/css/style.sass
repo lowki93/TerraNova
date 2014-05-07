@@ -50,6 +50,14 @@ h6
 	font-family: 'vagroundedsrd-bold'
 	font-size: 14px	
 
+.flex
+	display: flex
+	display: -webkit-flex
+	justify-content: center
+	-webkit-justify-content: center
+	align-items: center
+	-webkit-align-items: center
+
 .hidden-form
 	display: none !important
 
@@ -173,6 +181,7 @@ header
 
 .contenu
 	height: 100%
+	// max-height: 100%
 	padding-top: 50px
 
 .inscription
@@ -180,26 +189,63 @@ header
 
 /**** FOOTER ****/
 footer
+	margin-top: -3px
+	padding:
+		top: 30px
 	background-color: $blueTitle
-	.container
-		&:last-child
-			background-color: $blueFooter
-	// display: none !important
-	// position: absolute
-	// width: 100%
-	// height: 50px
-	// display: flex
-	// align-items: center
-	// justify-content: center
-	// background-color: #000
-	// p
-	// 	text-align: center
-	// 	font-size: 12px
-	// 	color: #FFF
+	.first-footer
+		padding:
+			bottom: 30px
+		.span6
+			text-align: center
+		.wipo-footer
+			width: 59px
+			height: 59px
+			margin:
+				right: 10px
+				top: -10px
+		p
+			font-family: 'vagroundedsrd-light'
+			color: $white
+			font-size: 14px
+			margin-top: 10px
+			.download
+				font-size: 23px
+			.free
+				font-family: 'vagroundedsrd-bold'
+	.span3
+		ul
+			list-style-type: none
+			li
+				font-family: 'vagroundedsrd-thin'
+				font-size: 16px
+				color: $white
+				&:first-child
+					font-size: 14px
+					color: $blueTtileFooter
+	.last-footer
+		background-color: $blueFooter
+		.span6
+			p
+				margin:
+					top: 10px
+					bottom: 10px
+				color: $greenLabel
+				text-align: center
+				img:first-child
+					margin-right: 35px
 
 @media (max-width: 1000px)
-	.container
-		width: 100%
+	header
+		.container
+			width: 100%
+
+@media (max-width: 979px)
+	footer
+		.first-footer
+			.span6
+				.download-app
+					width: 45%
 
 @media (max-width: 777px)
 	header
@@ -212,6 +258,12 @@ footer
 @media (max-width: 767px)
 	body
 		padding: 0
+	footer
+		.first-footer
+			.span6
+				.download-app
+					width: 180px
+					height: 64px
 
 @media (max-width: 520px)
 	.show-mobile
@@ -226,3 +278,17 @@ footer
 				display: none
 			.brand
 				float: right
+	footer
+		.first-footer
+			.span3
+				width: 49%
+				display: inline-block
+
+@media (max-width: 320px)
+	body
+		padding: 0
+	footer
+		.first-footer
+			.span3			.span6
+				.download-app
+					width: 150px

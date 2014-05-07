@@ -11,7 +11,7 @@
             {% endstylesheets %}
         {% endblock %}
         <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('bundles/terranova/img/favicon/favicon2.png') }}" />
         <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     </head>
     <body>
@@ -25,6 +25,12 @@
                                 <ul>
                                     <li class="title-user right"><p>Bonjour {{app.user.name}} {{app.user.lastName}}<br /><span>{% if app.user.currentClass %}Classe courrante : {{ app.user.currentClass.name }}{% else %}Pas de classe courante{% endif %}</span></p></li>
                                     <li><a href="{{ path('Eleve_by_etablissement') }}">côté enseignant</a></li>
+                                </ul>
+                            {% endif %}
+                            {% if is_granted("ROLE_ADMIN") %}
+                                <ul>
+                                    <li class="title-user right"><p>Bonjour {{app.user.name}} {{app.user.lastName}}<br /><span>Administrateur</span></p></li>
+                                    <li><a href="{{ path('terra_nova_admin_index') }}">côté admin</a></li>
                                 </ul>
                             {% endif %}
                         {% else %}
@@ -81,6 +87,12 @@
                                             <li class="title-user right"><p>Bonjour {{app.user.name}} {{app.user.lastName}}<br /><span>{% if app.user.currentClass %}Classe courrante : {{ app.user.currentClass.name }}{% else %}Pas de classe courante{% endif %}</span></p></li>
                                         </ul>
                                     {% endif %}
+                                    {% if is_granted("ROLE_ADMIN") %}
+                                        <ul class="nav full pull-right hidden-mobile">
+                                            <li class="hidden-tablette" ><a href="{{ path('terra_nova_admin_index') }}">côté admin</a></li>
+                                            <li class="title-user right"><p>Bonjour {{app.user.name}} {{app.user.lastName}}<br /><span>Administrateur</span></p></li>
+                                        </ul>
+                                    {% endif %}
                                 {% else %}
                                     <ul class="nav full pull-right hidden-mobile">
                                         <li><a href="#" class="connexion-popover" data-toggle="popover" data-html="true" data-placement="bottom" data-content="{% render(controller('FOSUserBundle:Security:login')) %}" >se connecter</a></li>
@@ -112,23 +124,52 @@
                     {% block body %}{% endblock %}
                 </div>
                 <footer>
-                    <div class="container">
-                        <div class="row">
-                            <div class="span6">
-                                <ul>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                    <li></li>
-                                </ul>
-                            </div>
-                            <div class="span6">
-                                sdhfj
+                    <div class="first-footer">
+                        <div class="container">
+                            <div class="row">
+                                <div class="span3">
+                                    <ul>
+                                        <li>Le site</li>
+                                        <li>Wipo</li>
+                                        <li>Le principe</li>
+                                        <li>L'équipe</li>
+                                        <li>Contact</li>
+                                    </ul>
+                                </div>
+                                <div class="span3">
+                                    <ul>
+                                        <li>Général</li>
+                                        <li>Mentions légales</li>
+                                        <li>S'incrire</li>
+                                        <li>Se connecer</li>
+                                    </ul>
+                                </div>
+                                <div class="span6">
+                                    <div class="flex">
+                                        <img class="wipo-footer" src="{{ asset('bundles/terranova/img/wipo-footer.png') }}" alt="wipo-footer">
+                                        <p><span class="download">Télécharger <span class="free">gratuitement</span></span><br />l’application Wipo pour iPad et Android</p>
+                                    </div>
+                                    <img class="download-app" src="{{ asset('bundles/terranova/img/appstore.png') }}" alt="appstore">
+                                    <img class="download-app" src="{{ asset('bundles/terranova/img/playstore.png') }}" alt="playstore">
+                                </div>
                             </div>
                         </div>
                     </div>
-                    {# <p>Wipo © Kevin Budain, Julie Muckensturm, Glenn Sonna - 2015 - Gobelins l’École de l’Image</p> #}
+                    <div class="last-footer">
+                        <div class="container">
+                            <div class="row">
+                                <div class="span6 hidden-mobile">
+                                    <p>Wipo © Kevin Budain, Julie Muckensturm, Glenn Sonna | 2014</p>
+                                </div>
+                                <div class="span6">
+                                     <p>
+                                        <img src="{{ asset('bundles/terranova/img/logo-gobelins.png') }}" alt="gobelins">
+                                        <img src="{{ asset('bundles/terranova/img/logo-cci.png') }}" alt="cci">
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </footer>
             </div>
         </div>
@@ -145,6 +186,7 @@
             'bundles/terranova/sass-bootstrap/js/bootstrap-popover.js'
             'bundles/terranova/sass-bootstrap/js/bootstrap-scrollspy.js'
             'bundles/terranova/sass-bootstrap/js/bootstrap-carousel.js'
+            'bundles/terranova/sass-bootstrap/js/bootstrap-transition.js'
             'bundles/terranova/sass-bootstrap/js/bootstrap-dropdown.js'
         %}
         <script src="{{ asset_url }}"></script>

@@ -14,27 +14,7 @@
 	<div class="content-student">
 		<div class="container">
 			<h1>les thèmes<br /><span>Prix unique: 3,90€</span></h1>
-			<ul class="theme-list">
-				{% for theme in themes %}
-                    <a href="">
-                        <li>
-                            <div class="img-conteneur">
-                                <img src="/img/theme/{{ theme.path }}" alt="{{ theme.name }}" />
-                                {% if theme.name == "L'eau" %}
-                                	<img class="alreadyBuy" src="{{ asset('bundles/terranova/img/alreadyBuy.png') }}" alt="package">
-                                {% endif %} 
-                            </div>
-                            <p>{{ theme.name }}</p>
-                            <span>{{ theme.ageMin }}-{{ theme.ageMax }} ans</span>
-                        </li>
-                    </a>
-                {% endfor %}
-                <a class="flex">
-	                <li>
-	                	<p>Bientôt de<br />nouveaux thèmes...</p>
-	                </li>
-	            </a>
-			</ul>
+			{% include 'TerraNovaBundle:Theme:list.html.twig' %}
 		</div>
 		<div class="package">
 			<div class="container flex">

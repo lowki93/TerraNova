@@ -1,0 +1,21 @@
+<ul class="theme-list">
+	{% for theme in themes %}
+        <a href="{{ path('terra_nova_theme_show', { 'id': theme.id }) }}">
+            <li>
+                <div class="img-conteneur">
+                    <img src="/img/theme/{{ theme.path }}" alt="{{ theme.name }}" />
+                    {% if theme.name == "L'eau" %}
+                    	<img class="alreadyBuy" src="{{ asset('bundles/terranova/img/alreadyBuy.png') }}" alt="package">
+                    {% endif %} 
+                </div>
+                <p>{{ theme.name }}</p>
+                <span>{{ theme.ageMin }}-{{ theme.ageMax }} ans</span>
+            </li>
+        </a>
+    {% endfor %}
+    <a class="flex">
+        <li>
+        	<p>Bientôt de<br />nouveaux thèmes...</p>
+        </li>
+    </a>
+</ul>

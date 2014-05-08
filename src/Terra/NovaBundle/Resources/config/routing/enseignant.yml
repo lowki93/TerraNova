@@ -36,3 +36,7 @@ TerraNovaBundle_seance:
 terra_nova_theme_index:
     path:   /theme
     defaults:  { _controller: TerraNovaBundle:Theme:indexEnseignant }
+
+terra_nova_theme_show:
+    path:   /theme/{id}
+    defaults:  { _controller: TerraNovaBundle:Theme:ShowEnseignant }

@@ -1,0 +1,49 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+    {% stylesheets
+        'bundles/terranova/css/enseignant_theme.sass'
+        filter="cssrewrite,sass" output='css/enseignant_theme.css' %}
+           <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block title %}Enseignant | Thèmes {{theme.name}}{% endblock %}
+
+{% block body %}
+	<div class="content-student">
+		<div class="container">
+			<h1>les thèmes<br /><span>Prix unique: 3,90€</span></h1>
+			<div class="row theme-show">
+				<div class="span6 flex">
+					<img class="img-circle" src="/img/theme/{{ theme.path }}" alt="{{ theme.name }}" />
+				</div>
+				<div class="span6">
+					<h4>{{theme.name}}</h4>
+					<p class="catch-phrase">L’eau est un univers fascinant ipsum dolor sit amet, consectetur adipisicing elit</p>
+					<p class="theme-synopsis">Magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					<ul>
+						{% if theme.sousTheme is empty %}
+							<li>Pas de niveau</li>
+						{% else %}
+							{% for sousTheme in theme.sousTheme %}
+							    <li>Niveau {{loop.index}} : {{sousTheme.name}}</li>
+							{% endfor %}  
+						{% endif %}
+					</ul>
+					<p class="price"><input type="image" src="{{ asset('bundles/terranova/img/button/order.png') }}"/>3,90€</p>
+				</div>
+			</div>
+			{% include 'TerraNovaBundle:Theme:list.html.twig' %}
+		</div>
+		<div class="package">
+			<div class="container flex">
+				<img src="{{ asset('bundles/terranova/img/package.png') }}" alt="package">
+				<div class="package-price">
+					<p>Le pack Wipo</p><p>25,99€</p><p>au lieu de 29,98€</p>
+					<input type="image" src="{{ asset('bundles/terranova/img/button/order.png') }}"/>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock body %}

@@ -229,4 +229,17 @@ class ThemeController extends Controller
             'themes' => $themes,
         ));
     }
+
+    public function ShowEnseignantAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $theme = $em->getRepository('TerraNovaBundle:Theme')->find($id);
+        $themes = $em->getRepository('TerraNovaBundle:Theme')->findAll();
+
+        return $this->render('TerraNovaBundle:Enseignant:themeShow.html.twig', array(
+            'theme' => $theme,
+            'themes' => $themes
+        ));
+    }
 }

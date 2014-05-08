@@ -36,6 +36,20 @@ class Theme
     private $name;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="age_min", type="integer")
+     */
+    private $ageMin;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="age_max", type="integer")
+     */
+    private $ageMax;
+
+    /**
      * @ORM\OneToMany(targetEntity="Terra\NovaBundle\Entity\SousTheme", mappedBy="theme")
      * @Expose
      */
@@ -249,5 +263,51 @@ class Theme
     public function getPath()
     {
         return $this->path;
+    }
+
+    /**
+     * Set ageMin
+     *
+     * @param integer $ageMin
+     * @return Theme
+     */
+    public function setAgeMin($ageMin)
+    {
+        $this->ageMin = $ageMin;
+
+        return $this;
+    }
+
+    /**
+     * Get ageMin
+     *
+     * @return integer 
+     */
+    public function getAgeMin()
+    {
+        return $this->ageMin;
+    }
+
+    /**
+     * Set ageMax
+     *
+     * @param integer $ageMax
+     * @return Theme
+     */
+    public function setAgeMax($ageMax)
+    {
+        $this->ageMax = $ageMax;
+
+        return $this;
+    }
+
+    /**
+     * Get ageMax
+     *
+     * @return integer 
+     */
+    public function getAgeMax()
+    {
+        return $this->ageMax;
     }
 }

@@ -11,6 +11,7 @@
             <tr>
                 <th>Id</th>
                 <th>Name</th>
+                <th>Age</th>
                 <th>Image</th>
                 <th>Sous Theme</th>
                 <th>Actions</th>
@@ -19,6 +20,7 @@
                 <tr>
                     <td>{{ entity.id }}</td>
                     <td>{{ entity.name }}</td>
+                    <td>{{ entity.ageMin }} - {{ entity.ageMax }} ans</td>
                     <td><img src="/img/theme/{{ entity.path }}" alt="{{ entity.name }}" /></td>
                     <td>
                         {% if entity.sousTheme is empty %}

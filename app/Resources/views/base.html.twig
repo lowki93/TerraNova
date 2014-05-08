@@ -52,7 +52,7 @@
                             </ul>
                             <ul>
                                 {% if app.user.etablissement != null %}
-                                    <li><a href="{# {{ path('theme') }} #}#">les thèmes</a></li>
+                                    <li><a href="{{ path('terra_nova_theme_index') }}#">les thèmes</a></li>
                                     <li><a href="{{ path('seance') }}">mes séances</a></li>
                                     <li><a href="{{ path('Eleve_by_etablissement') }}">mes élèves</a></li>
                                 {% else %}
@@ -106,7 +106,7 @@
                                     </ul>
                                     <ul class="nav full pull-right hidden-tablette">
                                         {% if app.user.etablissement != null %}
-                                            <li><a href="{# {{ path('theme') }} #}#">les thèmes</a></li>
+                                            <li><a href="{{ path('terra_nova_theme_index') }}#">les thèmes</a></li>
                                             <li><a href="{{ path('seance') }}">mes séances</a></li>
                                             <li><a href="{{ path('Eleve_by_etablissement') }}">mes élèves</a></li>
                                         {% else %}
@@ -130,18 +130,29 @@
                                 <div class="span3">
                                     <ul>
                                         <li>Le site</li>
-                                        <li>Wipo</li>
-                                        <li>Le principe</li>
-                                        <li>L'équipe</li>
-                                        <li>Contact</li>
+                                        {% if is_granted("ROLE_ENSEIGNANT") %}
+                                            <li>Les thème</li>
+                                            <li>Mes séances</li>
+                                            <li>Mes élèves</li>
+                                            <li>Mon compte</li>
+                                        {% else %}
+                                            <li>Wipo</li>
+                                            <li>Le principe</li>
+                                            <li>L'équipe</li>
+                                            <li>Contact</li>
+                                        {% endif %}
                                     </ul>
                                 </div>
                                 <div class="span3">
                                     <ul>
                                         <li>Général</li>
                                         <li>Mentions légales</li>
-                                        <li>S'incrire</li>
-                                        <li>Se connecer</li>
+                                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                            <li>Contact</li>
+                                        {% else %}
+                                            <li>S'incrire</li>
+                                            <li>Se connecer</li>
+                                        {% endif %}
                                     </ul>
                                 </div>
                                 <div class="span6">

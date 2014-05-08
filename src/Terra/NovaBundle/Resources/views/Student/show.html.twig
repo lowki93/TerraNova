@@ -13,13 +13,13 @@
 {% block body %}
     <div class="content-student">
         <div class="container">
+            <a href="javascript:history.back()"><img src="{{ asset('bundles/terranova/img/back-button.png') }}" alt="back-button">Retour aux élèves</a>
             <h1>{{ entity.firstName }} {{ entity.name }}</h1>
             <div class="row">
                 <div class="span8">
-{#                     <button class="btn"><a href="javascript:history.back()">Retour aux élèves</a></button> #}
                     <p>Sélectionnez une séance jouée par {{ entity.firstName }}</p>
                         {% if seances %}
-                            <ul>
+                            <ul class="theme-list">
                                 {% for seance in seances %}
                                     <a href="{{ path('Eleve_seance', {'idClasse': entity.classe.id, 'id': entity.id, 'idSeance': seance.id }) }}">
                                         <li>

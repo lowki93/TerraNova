@@ -218,4 +218,15 @@ class ThemeController extends Controller
             ->getForm()
         ;
     }
+
+    public function indexEnseignantAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $themes = $em->getRepository('TerraNovaBundle:Theme')->findAll();
+
+        return $this->render('TerraNovaBundle:Enseignant:theme.html.twig', array(
+            'themes' => $themes,
+        ));
+    }
 }

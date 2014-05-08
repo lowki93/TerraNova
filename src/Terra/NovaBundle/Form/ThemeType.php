@@ -16,6 +16,8 @@ class ThemeType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('ageMin')
+            ->add('ageMax')
             ->add('file')
         ;
     }

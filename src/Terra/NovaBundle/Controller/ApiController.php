@@ -111,12 +111,12 @@ class ApiController extends Controller
 		// $subThemeId = $data['subThemeId'];
 
 		$seanceId = 1;
-		$studentId = 15;
+		$studentId = 13;
 		$cozeText = "soleil,vapeur d'eau,nuages,s'infiltre,nappe phréatique,source,ruisselle,fleuves";
 		$dragCozeText = "false,false,false,true,false,true,false,true";
 		$trueFalse = "false,false,false";
 		$freeSentence = "je suis Sherilybn Kamga";
-		$success = 50;
+		$success = 100;
 		$raTime = new DateTime('0000-00-00 0:10');
 		$gameTime = new DateTime('0000-00-00 0:10');
 		$timePassing = new DateTime('0000-00-00 0:20');

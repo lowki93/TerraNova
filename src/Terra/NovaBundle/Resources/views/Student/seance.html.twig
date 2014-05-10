@@ -27,7 +27,7 @@
 						{% endfor %}
 						<div class="graph-label"><p><span class="graph-color"></span>Élève    <span class="graph-color"></span>Moyenne Classe</p></div>
 						{% for resultSubTheme in resultSubThemes %}
-							<h5>Réponses aux questions : {{ resultSubTheme.sousTheme.name}}
+							<h5 class="response-sub-theme">Réponses aux questions : {{ resultSubTheme.sousTheme.name}}<br class="show-mobile" />
 								<span>
 									{% if resultSubTheme.levelSuccess == 'or' %}
 										<img src="{{ asset('bundles/terranova/img/star.png') }}" alt="star" />

@@ -152,13 +152,15 @@ class StudentController extends Controller
         $resultSubTheme = $em->getRepository('TerraNovaBundle:ResultSubTheme')->findByStudent($id);
         $nbResulSubTHheme = count($resultSubTheme);
 
-        $badges = array();
-        for ($i=0; $i < $nbResulSubTHheme; $i++) { 
-            $subThemeId = $resultSubTheme[$i]->getSousTheme()->getId();
-            $levelSuccess = $resultSubTheme[$i]->getLevelSuccess();
-            $badge = $em->getRepository('TerraNovaBundle:Trophy')->findByResult($subThemeId,$levelSuccess);
-            $badges = array_merge($badges, $badge);
-        }
+        // $badges = array();
+        // for ($i=0; $i < $nbResulSubTHheme; $i++) { 
+        //     $subThemeId = $resultSubTheme[$i]->getSousTheme()->getId();
+        //     $levelSuccess = $resultSubTheme[$i]->getLevelSuccess();
+        //     $badge = $em->getRepository('TerraNovaBundle:Trophy')->findByResult($subThemeId,$levelSuccess);
+        //     $badges = array_merge($badges, $badge);
+        // }
+
+        $badges = $em->getRepository('TerraNovaBundle:Badge')->findAll();
 
         $nbSeance = count($seances);
 

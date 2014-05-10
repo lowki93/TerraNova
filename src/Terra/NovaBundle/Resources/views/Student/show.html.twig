@@ -45,13 +45,13 @@
                     <p>Bagdes obtenus</p>
                     {% if badges %}
                         {% for badge in badges %}
-                            <img src="/img/trophy/{{ badge.path }}" alt="{{ badge.name }}" />
+                            <img src="/img/badge/{{ badge.path }}" alt="{{ badge.name }}" />
                         {% endfor %}
                     {% else %}
                         <span class="not-playing">{{ entity.firstName }} n'a pas encore obtenu de badges.</span>
                     {% endif %}
                 </div>
-                <div class="span4">
+                <div class="span4 hidden-mobile">
                     <p><span>{{ result[0].success }}%</span><br />de réponses correctes en moyenne</p>
                     <p><span>
                         {% if result[0].timePassing|date('H') > 0 %}

@@ -48,14 +48,14 @@
 									{% include 'TerraNovaBundle:SousTheme:WaterCycle.html.twig' %}
 								{% endif %}
 						{% endfor %}
-						<div class="result">
+						<div class="result flex">
 							<p>moyenne<br /><span>{{ render(controller('TerraNovaBundle:Student:getResultByTheme', {'idSeance': seance.id,'idStudent': student.id } )) }}%</span></p>
 						</div>
 					{% else %}
 					    <p class="not-playing">{{student.firstName}} n'a pas joué a ce thème</p>
 					{% endif %}
 				</div>
-				<div class="span4">
+				<div class="span4 hidden-mobile">
 					 <p><span>{{ result[0].success }}%</span><br />de réponses correctes en moyenne</p>
 					<p><span>
 						{% if result[0].timePassing|date('H') > 0 %}

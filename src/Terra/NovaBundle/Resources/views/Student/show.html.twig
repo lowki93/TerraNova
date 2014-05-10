@@ -44,14 +44,16 @@
                     {{ render(controller('TerraNovaBundle:Student:udapteRemarksForm', { 'id': entity.id, 'idClasse': entity.classe.id} )) }}
                     <p>Bagdes obtenus</p>
                     {% if badges %}
-                        {% for badge in badges %}
-                            <img src="/img/badge/{{ badge.path }}" alt="{{ badge.name }}" />
-                        {% endfor %}
+                        <ul class="result-badge">
+                            {% for badge in badges %}
+                                <li><img src="/img/badge/{{ badge.path }}" alt="{{ badge.name }}" /></li>
+                            {% endfor %}
+                        </ul>
                     {% else %}
                         <span class="not-playing">{{ entity.firstName }} n'a pas encore obtenu de badges.</span>
                     {% endif %}
                 </div>
-                <div class="span4 hidden-mobile">
+                <div class="span4 hidden-tablette2">
                     <p><span>{{ result[0].success }}%</span><br />de réponses correctes en moyenne</p>
                     <p><span>
                         {% if result[0].timePassing|date('H') > 0 %}

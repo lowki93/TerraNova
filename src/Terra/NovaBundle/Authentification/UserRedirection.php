@@ -29,7 +29,9 @@ class UserRedirection implements AuthenticationSuccessHandlerInterface
                     return new RedirectResponse($this->router->generate('terra_nova_theme_index'));
     	} else if (in_array("ROLE_ADMIN", $Roles)){
     		return new RedirectResponse($this->router->generate('terra_nova_admin_index'));
-    	}
+    	} else if (in_array("ROLE_SUPER_ADMIN", $Roles)){
+            return new RedirectResponse($this->router->generate('terra_nova_admin_index'));
+        }
 
     }
 }

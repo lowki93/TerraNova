@@ -3,8 +3,9 @@ security:
         FOS\UserBundle\Model\UserInterface: sha512
 
     role_hierarchy:
-        ROLE_ADMIN:       ROLE_USER
+        ROLE_ADMIN: ROLE_USER
         ROLE_ENSEIGNANT: ROLE_USER
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
 
     providers:
         fos_userbundle:
@@ -29,5 +30,5 @@ security:
         - { path: ^/enseignant/inscription/confirmation, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/enseignant/inscription/envoi-email-de-confirmation-d-inscription$, role:IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/enseignant, role: ROLE_ENSEIGNANT }
-        - { path: ^/enseignant, role: ROLE_ADMIN }
+        - { path: ^/admin, role: ROLE_ADMIN }
         # IS_AUTHENTICATED_FULLY

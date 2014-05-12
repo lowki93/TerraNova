@@ -23,13 +23,13 @@ class User extends BaseUser
     protected $id;
 
     /**
-    * @ORM\Column(name="last_name", type="string", length=100)
+    * @ORM\Column(name="last_name", type="string", length=100, nullable=true)
     * @Expose
     */
     protected $lastName;
 
     /**
-    * @ORM\Column(name="name", type="string", length=100)
+    * @ORM\Column(name="name", type="string", length=100, nullable=true)
     * @Expose
     */
     protected $name;
@@ -64,8 +64,10 @@ class User extends BaseUser
 
         if( $roles === "admin")
             $this->roles = array('ROLE_ADMIN');
-        else
+        
+        if( $roles === "ensaignant")
             $this->roles = array('ROLE_ENSEIGNANT');
+
     }
 
     /**

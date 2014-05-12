@@ -34,6 +34,7 @@
         {% for role in user.getRoles() %} 
             {% if role == 'ROLE_ENSEIGNANT' %}Enseignant{% endif %}
             {% if role == 'ROLE_ADMIN' %}Admin{% endif %}
+            {% if role == 'ROLE_SUPER_ADMIN' %}Super Admin{% endif %}
         {% endfor %}
       </td>
     </tr>

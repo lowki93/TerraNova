@@ -203,14 +203,20 @@
         <script src="{{ asset_url }}"></script>
         {% endjavascripts %}
         <script>
-            new mlPushMenu( document.getElementById( 'mp-menu' ), document.getElementById( 'trigger' ) );
+            // add menuSlider
+            var menu = new mlPushMenu( 
+                document.getElementById( 'mp-menu' ), 
+                document.getElementById( 'trigger' ));
+
+            // close menuSlider if you click in a link
+            $('.mp-menu a').click(function() {
+                menu._resetMenu();
+            });
+
             $('.connexion-popover').popover();
 
-            // if(!$('.connexion p.error'))
-            //     $('.connexion-popover').popover('show')
-
             $('#navbar').scrollspy({
-                offset: 50
+                offset: 100
               });
             // $(".navbar ul li a[href^='#']").on('click', function(e) {
 

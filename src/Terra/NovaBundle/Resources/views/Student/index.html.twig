@@ -1,15 +1,15 @@
-<div id="container" style="min-width: 320px; height: 250px; margin: 0 auto"></div>
+<div id="container" class="graph"></div>
 <ul class="student-list">
     {% for student in students %}
         <li>
-            <a href="{{ path('Eleve_show', { 'idClasse': idClasse , 'id' : student.id }) }}">   
+            <a class="flex" href="{{ path('Eleve_show', { 'idClasse': idClasse , 'id' : student.id }) }}">   
                 <img src="{{ asset('bundles/terranova/img/bonhommes/default.png') }}">
                 <div><span>{{ student.name }}<br />{{ student.firstName }}</span></div>
             </a>
         </li>
     {% endfor %}
     <li>
-        <a href="{{ path('Eleve_new', { 'idClasse' : idClasse }) }}">
+        <a class="flex" href="{{ path('Eleve_new', { 'idClasse' : idClasse }) }}">
             {# <i class="icon-plus-sign"></i> #}<img src="{{ asset('bundles/terranova/img/bonhommes/ajouter.png') }}"><div>Ajouter<br />un élève</div>
         </a>
     </li>

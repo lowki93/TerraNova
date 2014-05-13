@@ -14,8 +14,30 @@ h4
 			select
 				width: auto
 
-/**** STUDENT-LIST ****/			
+/**** STUDENT-LIST ****/
+.new-class
+	margin-left: 5px
+	display: inline-block
+	float: none !important
+	font-family: 'vagroundedsrd-light'
+	font-size: 18px
+	color: $greenLabel
+	img
+		margin-right: 5px
+.create-class
+	margin:
+		top: 10px
+	label
+		font-family: "vagroundedsrd-light"
+		font-size: 14px
+		color: $greenLabel
+.etablissement
+	font-size: 23px
 .content-student-list
+	.graph
+		min-width: 320px
+		height: 250px
+		margin: 0 auto
 	.student-list
 		list-style-type: none
 		li
@@ -31,9 +53,6 @@ h4
 			background-color: $white
 			a
 				color: #000
-				display: flex
-				align-items: center
-				justify-content: center
 				padding: 10px
 				img
 					width: 26%
@@ -72,10 +91,23 @@ h4
 		-webkit-box-sizing: border-box
 		-moz-box-sizing: border-box
 		box-sizing: border-box
-		// padding:
-		// 	left: 30px
-		// 	right: 30px
 		input, textarea, select
 			width: 100%
 		input[type=image]
 			width: 168px
+
+
+@media (max-width: 767px)
+	.content-student-list
+		.student-list
+			li
+				width: 24%
+
+@media (max-width: 520px)
+	.content-student-list
+		.graph
+			display: none
+		.student-list
+			margin-left: 0
+			li
+				width: 49%

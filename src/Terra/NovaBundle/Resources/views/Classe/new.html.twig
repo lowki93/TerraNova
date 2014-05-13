@@ -2,11 +2,19 @@
 
 {% block title %}Enseignant | Création de classe{% endblock %}
 
+{% block stylesheets %}
+    {% stylesheets
+        'bundles/terranova/css/enseignant.sass'
+        filter="cssrewrite,sass" output='css/enseignant.css' %}
+           <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+    {% endstylesheets %}
+{% endblock %}
+
 {% block body %}
 	<div class="container">
-	    <h3>Créer votre classe</h3>
-
-	    {{ form_start(form, { 'attr': {'class' : 'form-horizontal'} }) }}
+	    <h1>Créer votre classe</h1>
+	    <a class="new-class" href="javascript:history.back()"><img src="{{ asset('bundles/terranova/img/back-button.png') }}" alt="back-button">Retour aux élèves</a>
+	    {{ form_start(form, { 'attr': {'class' : 'form-horizontal create-class'} }) }}
 	    <div class="control-group">
 	        <label class="control-label">Nom</label>
 	        <div class="controls">
@@ -22,8 +30,7 @@
 	    {{ form_widget(form._token) }}
 	    <div class="control-group">
 	        <div class="controls">
-	            <button type="submit" class="btn btn-primary">Créer</button>
-	            <a href="{{ path('Eleve_by_etablissement') }}"class="btn btn-default">Retour</a>
+	           <input type="image" src="{{ asset('bundles/terranova/img/button/validate.png') }}"/>
 	        </div>
 	    </div>
 	</div>

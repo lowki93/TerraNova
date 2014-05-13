@@ -19,11 +19,11 @@
         {% else %}
             <h4 class="form-horizontal">
                 <div class="control-group">
-                    <label class="control-label">Etablissement : {{ user.etablissement.name }}</label>
+                    <label class="control-label etablissement">Etablissement : {{ user.etablissement.name }}</label>
                     <div class="controls">
                         <select id="selectClass">{% for class in classes %}<option data-id="{{class.id}}">{{class.name}}</option>{% endfor %}</select>
+                        <label class="control-label new-class"><a href="{{ path('classe_new') }}"><img src="{{ asset('bundles/terranova/img/plus-button.png') }}" alt="plus-button">Ajouter une classe</a></label>
                     </div>
-                    <label class="control-label"><a href="{{ path('classe_new') }}"><i class="icon-plus"></i></a></label>
                 </div>
             </h4>
             <div class="content-student-list">

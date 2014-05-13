@@ -15,4 +15,28 @@ class SeanceRepository extends EntityRepository {
         return $enseignant = $qb->getQuery()->getResult();
     }
 
+    public function findByEnseignantAndPast($user,$date) {
+        $qb = $this->createQueryBuilder('s');
+        $qb->where('s.enseignant = :user')
+        	->andWhere('s.date < :date')
+        	->setParameters(array(
+                'user' => $user,
+                'date' => $date,
+            ));
+
+        return $seance = $qb->getQuery()->getResult();
+    }
+
+    public function findByEnseignantAndNext($user,$date) {
+        $qb = $this->createQueryBuilder('s');
+        $qb->where('s.enseignant = :user')
+        	->andWhere('s.date > :date')
+        	->setParameters(array(
+                'user' => $user,
+                'date' => $date,
+            ));
+
+        return $seance = $qb->getQuery()->getResult();
+    }
+
 }

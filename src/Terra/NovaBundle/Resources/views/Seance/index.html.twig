@@ -21,10 +21,10 @@
 
         <div id="myTabContent" class="tab-content">
             <div class="tab-pane fade" id="next-sessions">
-            defs
+                {{ render(controller('TerraNovaBundle:Seance:nextSession')) }}
             </div>
             <div class="tab-pane fade" id="archives">
-            dffs
+                {{ render(controller('TerraNovaBundle:Seance:archive')) }}
             </div>
             <div class="tab-pane fade" id="create-seance">
                 {{ render(controller('TerraNovaBundle:Seance:new')) }}

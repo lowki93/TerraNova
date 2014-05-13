@@ -222,4 +222,30 @@ class SeanceController extends Controller
             ->getForm()
         ;
     }
+
+    public function archiveAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $user = $this->container->get('security.context')->getToken()->getUser();
+        $date = date('Y-m-d');
+
+        $seances = $em->getRepository('TerraNovaBundle:Seance')->findByEnseignantAndPast($user,$date);
+        return $this->render('TerraNovaBundle:Seance:archive.html.twig', array(
+            'seances' => $seances
+        ));
+    }
+
+    public function nextSessionAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $user = $this->container->get('security.context')->getToken()->getUser();
+        $date = date('Y-m-d');
+
+        $seances = $em->getRepository('TerraNovaBundle:Seance')->findByEnseignantAndNext($user,$date);
+        return $this->render('TerraNovaBundle:Seance:next.html.twig', array(
+            'seances' => $seances
+        ));
+    }
 }

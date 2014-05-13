@@ -1,0 +1,7 @@
+{% if seances %}
+	{% for seance in seances %}
+	    {{ seance.theme.name }}
+	{% endfor %}
+{% else %}
+    Aucune séance
+{% endif %}

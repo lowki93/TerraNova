@@ -2,48 +2,85 @@
 
 {% block title%}Enseignant | Séances{% endblock %}
 
-{% block body %}
-    <h1>Seance list</h1>
-    <p><a href="{{ path('terra_nova_enseigant_index') }}">Back to enseignant</a></p>
-    <table class="records_list">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Date</th>
-                <th>Heure</th>
-                <th>Intro</th>
-                <th>Test</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('seance_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{% if entity.date %}{{ entity.date|date('Y-m-d') }}{% endif %}</td>
-                <td>{{ entity.heure|date('H:i') }}</td>
-                <td>{{ entity.intro }}</td>
-                <td>{{ entity.test }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('seance_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('seance_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+{% block stylesheets %}
+    {% stylesheets
+        'bundles/terranova/css/seance.sass'
+        filter="cssrewrite,sass" output='css/seance.css' %}
+           <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+    {% endstylesheets %}
+{% endblock %}
 
-        <ul>
-        <li>
-            <a href="{{ path('seance_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
-    {% endblock %}
+{% block body %}
+    <div class="container">
+        <h1>Mes séances</h1>
+        <ul id="myTab" class="nav nav-tabs seance">
+            <li><a href="#next-sessions" data-toggle="tab" >Prochaines séances</a></li>
+            <li><a href="#archives" data-toggle="tab" >Archives</a></li>
+            <li><a href="#create-seance" data-toggle="tab" >Créer une séance</a></li>
+        </ul>
+
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade" id="next-sessions">
+            defs
+            </div>
+            <div class="tab-pane fade" id="archives">
+            dffs
+            </div>
+            <div class="tab-pane fade" id="create-seance">
+                {{ render(controller('TerraNovaBundle:Seance:new')) }}
+            </div>
+        </div>
+{#         <p><a href="{{ path('terra_nova_enseigant_index') }}">Back to enseignant</a></p>
+        <table class="records_list">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Date</th>
+                    <th>Heure</th>
+                    <th>Intro</th>
+                    <th>Test</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for entity in entities %}
+                <tr>
+                    <td><a href="{{ path('seance_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                    <td>{% if entity.date %}{{ entity.date|date('Y-m-d') }}{% endif %}</td>
+                    <td>{{ entity.heure|date('H:i') }}</td>
+                    <td>{{ entity.intro }}</td>
+                    <td>{{ entity.test }}</td>
+                    <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('seance_show', { 'id': entity.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('seance_edit', { 'id': entity.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+            <ul>
+            <li>
+                <a href="{{ path('seance_new') }}">
+                    Create a new entry
+                </a>
+            </li>
+        </ul> #}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript">
+        $('#myTab a:first').tab('show');
+        $('#myTab a').click(function (e) {
+          e.preventDefault();
+          $(this).tab('show');
+        })
+    </script>    
+{% endblock %}

@@ -6,10 +6,8 @@
 
 {% block body %}
 	<div class="container inscription">
-	    <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
-	    <p><a class="btn" href="{{ path('terra_nova_homepage') }}">Retour</a></p>
-
-		<p><a class="btn" href="{{ path('etablissement') }}">Choisir votre établissement</a></p>
+	    <p class="error-content">{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+		<p><a class="back" href="{{ path('terra_nova_homepage') }}"><img src="{{ asset('bundles/terranova/img/back-button.png') }}" alt="back-button">retour</a></p>
 	
 	</div>
     {% if app.session is not empty %}

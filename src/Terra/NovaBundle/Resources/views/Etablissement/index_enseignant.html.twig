@@ -3,9 +3,9 @@
 {% block title %}Etablissement | Liste{% endblock %}
 
 {% block body %}
-    <div class="container inscription">
-        <h3>Liste des établissements</h3>
-        <p>Vous devez choisir un établissement ou rajouté le votre avant de continuer</p>
+    <div class="container">
+        <h1>Liste des établissements</h1>
+        <p class="error-content">Vous devez choisir un établissement ou rajouté le votre avant de continuer</p>
         {% if entities %}
             <table class="table table-striped">
                 <tr>
@@ -26,13 +26,13 @@
                     <td>{{ entity.codePostal }}</td>
                     <td>{{ entity.ville }}</td>
                     <td>
-                        <a href="{{ path('etablissement_choose', { 'id': entity.id }) }}">choose</a>
+                        <a href="{{ path('etablissement_choose', { 'id': entity.id }) }}">choisir</a>
                     </td>
                 </tr>
                 {% endfor %}
             </table>
         {% else %}
-            <p>Il n'y a pas d'établissement</p>
+            <p class="error-content">Il n'y a pas d'établissement</p>
         {% endif %}
         <a class="btn" href="{{ path('etablissement_new') }}">Create votre établissement</a>
     </div>

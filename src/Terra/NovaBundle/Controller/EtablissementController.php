@@ -234,7 +234,7 @@ class EtablissementController extends Controller
                 ->getQuery();
         $p = $q->execute();
 
-        $url = $this->container->get('router')->generate('terra_nova_enseigant_index', array('user' => $user));
+        $url = $this->container->get('router')->generate('Eleve_by_etablissement');
         return $response = new RedirectResponse($url);
 
     }

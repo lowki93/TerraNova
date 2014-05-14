@@ -30,7 +30,11 @@
                             {% if is_granted("ROLE_ADMIN") %}
                                 <ul>
                                     <li class="title-user right"><p>Bonjour {{app.user.name}} {{app.user.lastName}}<br /><span>Administrateur</span></p></li>
-                                    <li><a href="{{ path('terra_nova_admin_index') }}">côté admin</a></li>
+                                    {% if app.user.etablissement != null %}
+                                        <li class="hidden-tablette" ><a href="{{ path('Eleve_by_etablissement') }}">côté enseignant</a></li>
+                                    {% else %}
+                                        <li class="hidden-tablette" ><a href="{{ path('etablissement') }}">côté enseignant</a></li>
+                                    {% endif %}
                                 </ul>
                             {% endif %}
                         {% else %}
@@ -83,7 +87,11 @@
                                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                                     {% if is_granted("ROLE_ENSEIGNANT") %}
                                         <ul class="nav full pull-right hidden-mobile">
-                                            <li class="hidden-tablette" ><a href="{{ path('Eleve_by_etablissement') }}">côté enseignant</a></li>
+                                            {% if app.user.etablissement != null %}
+                                                <li class="hidden-tablette" ><a href="{{ path('Eleve_by_etablissement') }}">côté enseignant</a></li>
+                                            {% else %}
+                                                <li class="hidden-tablette" ><a href="{{ path('etablissement') }}">côté enseignant</a></li>
+                                            {% endif %}
                                             <li class="title-user right"><p>Bonjour {{app.user.name}} {{app.user.lastName}}<br /><span>{% if app.user.currentClass %}Classe courrante : {{ app.user.currentClass.name }}{% else %}Pas de classe courante{% endif %}</span></p></li>
                                         </ul>
                                     {% endif %}

@@ -14,8 +14,8 @@
     <div class="container">
         <h1>Mes élèves</h1>
         {% if idClasse is null %} 
-            <p>Vous n'avez pas de classe veillez en créer une ici :</p>
-            <a href="{{ path('classe_new') }}" class="btn">Créer votre classe</a>
+            <p class="error-content" >Vous n'avez pas de classe veillez en créer une ici :</p>
+            <a class="back" href="{{ path('classe_new') }}"><img src="{{ asset('bundles/terranova/img/plus-button.png') }}" alt="plus-button">Ajouter une classe</a>
         {% else %}
             <h4 class="form-horizontal">
                 <div class="control-group">

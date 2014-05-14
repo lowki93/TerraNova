@@ -6,7 +6,8 @@
 
 {% block body %}
 	<div class="container">
-	    <p>{{ 'registration.check_email'|trans({'%email%': user.email}) }}</p>
-	    <p><a  class="btn" href="{{ path('terra_nova_homepage') }}">Retour</a></p>
+		<h1>Inscription</h1>
+	    <p class="error-content">{{ 'registration.check_email'|trans({'%email%': user.email}) }}</p>
+	    <p><a class="back" href="{{ path('terra_nova_homepage') }}"><img src="{{ asset('bundles/terranova/img/back-button.png') }}" alt="back-button">retour</a></p>
 	</div>
 {% endblock  %}

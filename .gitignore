@@ -9,6 +9,6 @@
 /composer.phar
 /web/css
 /web/js
-/web/img/badge/*
-/web/img/trophy/*
-/web/img/theme/
+/web/img/badge/*.png
+/web/img/trophy/*.png
+/web/img/theme/*.png

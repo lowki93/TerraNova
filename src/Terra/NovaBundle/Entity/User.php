@@ -9,7 +9,7 @@ use JMS\Serializer\Annotation\Expose;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="User")
+ * @ORM\Table(name="fos_user")
  * @ORM\Entity(repositoryClass="Terra\NovaBundle\Entity\UserRepository")
  * @ExclusionPolicy("all")
  */

@@ -1,4 +1,4 @@
-/web/bundles/
+/web/bundles/*
 /app/bootstrap.php.cache
 /app/cache/*
 /app/config/parameters.yml
@@ -7,8 +7,6 @@
 /vendor/
 /bin/
 /composer.phar
-/web/css
-/web/js
 /web/img/badge/*.png
 /web/img/trophy/*.png
 /web/img/theme/*.png

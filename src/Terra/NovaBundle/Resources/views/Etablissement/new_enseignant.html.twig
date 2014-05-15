@@ -4,8 +4,8 @@
 
 {% block body -%}
 	<div class="container">
-		<h3>Création de l'établissement</h3>
-
+		<h1>Création de l'établissement</h1>
+		<p><a class="back" href="{{ path('etablissement') }}"><img src="{{ asset('bundles/terranova/img/back-button.png') }}" alt="back-button">retour</a></p>
 		{{ form_start(form, { 'attr': {'class' : 'form-horizontal'} }) }}
 		<div class="control-group">
 		    <label class="control-label">Numéro National</label>
@@ -48,9 +48,10 @@
 		{{ form_widget(form._token) }}
 		<div class="control-group">
 		    <div class="controls">
-		        <button type="submit" class="btn btn-primary">Créer</button>
-		        <a href="{{ path('etablissement') }}"class="btn btn-default">Retour</a>
+		        <input class="etablissement-create" type="image" src="{{ asset('bundles/terranova/img/button/create.png') }}"/>
 		    </div>
 		</div>
+		
+
 	</div>
 {% endblock %}

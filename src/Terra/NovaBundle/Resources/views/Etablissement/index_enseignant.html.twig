@@ -34,6 +34,6 @@
         {% else %}
             <p class="error-content">Il n'y a pas d'établissement</p>
         {% endif %}
-        <a class="btn" href="{{ path('etablissement_new') }}">Create votre établissement</a>
+        <a href="{{ path('etablissement_new') }}"><input class="etablissement-button" type="image" src="{{ asset('bundles/terranova/img/button/etablissement.png') }}"/></a>
     </div>
 {% endblock %}

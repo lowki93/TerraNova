@@ -10,16 +10,17 @@
     {% if entities %}
         <div class="container">
             <div class="row">
+                <ul>
                 {% for entity in entities %}
-                    <div class="span3 reward-badge">
+                    <li class="span2 reward-badge">
                         <div>Nom : {{ entity.name }}<br />Type : {{ entity.type }}<br />Sous-thème : {{entity.sousTheme.name }}</div>
                         <img src="/img/trophy/{{ entity.path }}" alt="{{ entity.name }}" />
                         <div class="badge-hover">
-{#                             <a href="{{ path('badge_show', { 'id': entity.id }) }}">voir</a><br /> #}
                             <a href="{{ path('trophy_edit', { 'id': entity.id }) }}">editer</a> 
                         </div>
-                    </div>
+                    </li>
                 {% endfor %}
+                </ul>
             </div>
         </div>
     {% else %}

@@ -10,7 +10,7 @@
     {% if entities %}
         <div class="container">
             <div class="row">
-                <ul>
+                <ul class="reward-list">
                 {% for entity in entities %}
                     <li class="span2 reward-badge">
                         <div>Nom : {{ entity.name }}<br />Type : {{ entity.type }}<br />Sous-thème : {{entity.sousTheme.name }}</div>

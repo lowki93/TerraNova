@@ -56,7 +56,7 @@
                             </ul>
                             <ul>
                                 {% if app.user.etablissement != null %}
-                                    <li><a href="{{ path('terra_nova_theme_index') }}#">les thèmes</a></li>
+                                    <li><a href="{{ path('terra_nova_theme_index') }}">les thèmes</a></li>
                                     <li><a href="{{ path('seance') }}">mes séances</a></li>
                                     <li><a href="{{ path('Eleve_by_etablissement') }}">mes élèves</a></li>
                                 {% else %}
@@ -114,7 +114,7 @@
                                     </ul>
                                     <ul class="nav full pull-right hidden-tablette">
                                         {% if app.user.etablissement != null %}
-                                            <li><a href="{{ path('terra_nova_theme_index') }}#">les thèmes</a></li>
+                                            <li><a href="{{ path('terra_nova_theme_index') }}">les thèmes</a></li>
                                             <li><a href="{{ path('seance') }}">mes séances</a></li>
                                             <li><a href="{{ path('Eleve_by_etablissement') }}">mes élèves</a></li>
                                         {% else %}

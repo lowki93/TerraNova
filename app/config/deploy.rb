@@ -22,6 +22,7 @@ set :shared_files, ["app/config/parameters.yml"]
 set :shared_children, [app_path + "/logs", web_path + "/uploads", "vendor"]
 set :use_composer, true
 set :dump_assetic_assets, true
+set :interactive_mode, true
 
 set :php_bin, "php -d apc.enable_cli=0"
 

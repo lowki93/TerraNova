@@ -77,6 +77,65 @@
 				</div>
 			</div>
 		</div>
+		<footer>
+                    <div class="first-footer">
+                        <div class="container">
+                            <div class="row">
+                                <div class="span3">
+                                    <ul>
+                                        <li>Le site</li>
+                                        {% if is_granted("ROLE_ENSEIGNANT") %}
+                                            <li>Les thème</li>
+                                            <li>Mes séances</li>
+                                            <li>Mes élèves</li>
+                                            <li>Mon compte</li>
+                                        {% else %}
+                                            <li>Wipo</li>
+                                            <li>Le principe</li>
+                                            <li>L'équipe</li>
+                                            <li>Contact</li>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                                <div class="span3">
+                                    <ul>
+                                        <li>Général</li>
+                                        <li>Mentions légales</li>
+                                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                            <li>Contact</li>
+                                        {% else %}
+                                            <li>S'incrire</li>
+                                            <li>Se connecer</li>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                                <div class="span6">
+                                    <div class="flex">
+                                        <img class="wipo-footer" src="{{ asset('bundles/terranova/img/wipo-footer.png') }}" alt="wipo-footer">
+                                        <p><span class="download">Télécharger <span class="free">gratuitement</span></span><br />l’application Wipo pour iPad et Android</p>
+                                    </div>
+                                    <img class="download-app" src="{{ asset('bundles/terranova/img/appstore.png') }}" alt="appstore">
+                                    <img class="download-app" src="{{ asset('bundles/terranova/img/playstore.png') }}" alt="playstore">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="last-footer">
+                        <div class="container">
+                            <div class="row">
+                                <div class="span6 hidden-mobile">
+                                    <p>Wipo © Kevin Budain, Julie Muckensturm, Glenn Sonna | 2014</p>
+                                </div>
+                                <div class="span6">
+                                     <p>
+                                        <img src="{{ asset('bundles/terranova/img/logo-gobelins.png') }}" alt="gobelins">
+                                        <img src="{{ asset('bundles/terranova/img/logo-cci.png') }}" alt="cci">
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
 	</div> 
 
 {% endblock %}
@@ -88,6 +147,8 @@
 	    $('.carousel').carousel({
             interval: 5000
         })
+
+        $('.contenu').height($(window).height()-50);
 
 		// Un tableau qui va contenir toutes tes images.
 		var images = new Array();

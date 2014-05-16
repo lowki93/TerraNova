@@ -19,7 +19,7 @@
             <nav id="mp-menu" class="mp-menu">
                 <div class="header-menu">
                     <a class="brand" href="{{ path('terra_nova_homepage')}}"><img src="{{ asset('bundles/terranova/img/logo.png') }}" alt="Wipo"/></a>
-                    {% if app.request.attributes.get('_route') == ('terra_nova_homepage') %}
+                    {% if app.request.attributes.get('_route') == ('terra_nova_homepage') or app.request.attributes.get('_route') == ('terra_nova_enseigant_register') %}
                         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                             {% if is_granted("ROLE_ENSEIGNANT") %}
                                 <ul>

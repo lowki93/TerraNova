@@ -2,66 +2,70 @@
 
 {% block title %}Enseignant | Inscription{% endblock %}
 
+{% trans_default_domain 'FOSUserBundle' %}
+
 {% block body %}
 
-	{% trans_default_domain 'FOSUserBundle' %}
+	<div class="container">
 
-	<h1>Inscription</h1>
+		<h1>Inscription</h1>
+		<p><a class="back" href="{{ path('terra_nova_homepage') }}"><img src="{{ asset('bundles/terranova/img/back-button.png') }}" alt="back-button">retour</a></p>
 
-	<form action="{{ path('terra_nova_enseigant_register') }}" {{ form_enctype(form) }} method="POST" class="form-horizontal">
-	    <div class="control-group">
-	        <label class="control-label">Nom</label>
-	        <div class="controls">
-	            {{ form_widget(form.lastName) }}
+		<form action="{{ path('terra_nova_enseigant_register') }}" {{ form_enctype(form) }} method="POST" class="form-horizontal">
+		    <div class="control-group">
+		        <label class="control-label">Nom</label>
+		        <div class="controls">
+		            {{ form_widget(form.lastName) }}
+		        </div>
+		    </div>
+
+			<div class="control-group">
+		        <label class="control-label">Prénom</label>
+		        <div class="controls">
+		            {{ form_widget(form.name) }}
+		        </div>
+		    </div>
+
+		    <div class="control-group">
+		        <label class="control-label">Email</label>
+		        <div class="controls">
+		            {{ form_widget(form.email) }}
+		        </div>
+		    </div>
+
+		    <div class="control-group">
+		        <label class="control-label">Login</label>
+		        <div class="controls">
+		            {{ form_widget(form.username) }}
+		        </div>
+		    </div>
+
+		    <div class="control-group">
+		        <label class="control-label">Mot de passe</label>
+		        <div class="controls">
+		            {{ form_widget(form.plainPassword.first) }}
+		        </div>
+		    </div>
+		    <div class="control-group">
+		        <label class="control-label">Vérification</label>
+		        <div class="controls">
+		            {{ form_widget(form.plainPassword.second) }}
+		        </div>
+		    </div>
+	        {{ form_widget(form._token) }}
+	        <div class="control-group">
+	            <div class="controls">
+	                <input class="etablissement-create" type="image" src="{{ asset('bundles/terranova/img/button/create.png') }}"/>
+	            </div>
 	        </div>
-	    </div>
+		</form>
 
-		<div class="control-group">
-	        <label class="control-label">Prénom</label>
-	        <div class="controls">
-	            {{ form_widget(form.name) }}
-	        </div>
-	    </div>
-
-	    <div class="control-group">
-	        <label class="control-label">Email</label>
-	        <div class="controls">
-	            {{ form_widget(form.email) }}
-	        </div>
-	    </div>
-
-	    <div class="control-group">
-	        <label class="control-label">Login</label>
-	        <div class="controls">
-	            {{ form_widget(form.username) }}
-	        </div>
-	    </div>
-
-	    <div class="control-group">
-	        <label class="control-label">Mot de passe</label>
-	        <div class="controls">
-	            {{ form_widget(form.plainPassword.first) }}
-	        </div>
-	    </div>
-	    <div class="control-group">
-	        <label class="control-label">Vérification</label>
-	        <div class="controls">
-	            {{ form_widget(form.plainPassword.second) }}
-	        </div>
-	    </div>
-        {{ form_widget(form._token) }}
-        <div class="control-group">
-            <div class="controls">
-                <button type="submit" class="btn btn-primary">Créer</button>
-                <a href="{{ path('terra_nova_homepage') }}"class="btn btn-default">Retour</a>
-            </div>
-        </div>
-	</form>
-
-	{% for type, messages in app.session.flashbag.all() %}
-		{% for message in messages %}
-				<p>{{ message }}</p>
+		{% for type, messages in app.session.flashbag.all() %}
+			{% for message in messages %}
+					<p>{{ message }}</p>
+			{% endfor %}
 		{% endfor %}
-	{% endfor %}
+
+	</div>
 
 {% endblock  %}

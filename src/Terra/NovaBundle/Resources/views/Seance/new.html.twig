@@ -1,10 +1,43 @@
-
-    {{ form(form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('seance') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+    {{ form_start(form, { 'attr': {'class' : 'form-horizontal'} }) }}
+    <div class="control-group">
+        <label class="control-label">Date</label>
+        <div class="controls">
+            {{ form_widget(form.date) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Heure de début</label>
+        <div class="controls">
+            {{ form_widget(form.heure) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Test</label>
+        <div class="controls">
+            {{ form_widget(form.test) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Classe</label>
+        <div class="controls">
+            {{ form_widget(form.classe) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Theme</label>
+        <div class="controls">
+            {{ form_widget(form.theme) }}
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Introduction</label>
+        <div class="controls">
+            {{ form_widget(form.intro) }}
+        </div>
+    </div>
+    {{ form_widget(form._token) }}
+    <div class="control-group">
+        <div class="controls">
+            <input class='etablissement-create' type='image' src='{{ asset('bundles/terranova/img/button/create.png') }}'/>
+        </div>
+    </div>

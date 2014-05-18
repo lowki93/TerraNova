@@ -199,7 +199,8 @@
         <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
         {% javascripts
             'jquery/jquery.js'
-            'jquery/jquery-ui.js'
+            'bundles/terranova/jquery-ui/ui/jquery-ui.js'
+            'bundles/terranova/jquery-ui/ui/i18n/jquery.ui.datepicker-fr.js'
             'bundles/terranova/js/modernizr.custom.js'
             'bundles/terranova/js/classie.js'
             'bundles/terranova/js/mlpushmenu.js'
@@ -230,15 +231,23 @@
                 offset: 100
               });
 
-            {% if app.request.attributes.get('_route') != ('terra_nova_homepage') %}
-                $contenu = $('.contenu');
-                $window = $(window);
-                if ($contenu.height() < $window.height()) {
-                    $contenu.css("margin-bottom",$('footer').height());
-                    $('footer').css("position","absolute");
-                };
-            {% endif %}
+            var resizeFunction = {
+                init: function(){
+                    $contenu = $('.contenu');
+                    $window = $(window);
+                    if ($contenu.height() < $window.height()-$('footer').height()) {
+                        $contenu.css("margin-bottom",$('footer').height());
+                        $('footer').css("position","absolute");
+                    } else {
+                        $contenu.css("margin-bottom",0);
+                        $('footer').css("position","none");
+                    };
+                }
+            }
 
+            {% if app.request.attributes.get('_route') != ('terra_nova_homepage') %}
+                resizeFunction.init();
+            {% endif %}
             // $(".navbar ul li a[href^='#']").on('click', function(e) {
 
             //    // prevent default anchor click behavior

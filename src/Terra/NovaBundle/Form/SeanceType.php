@@ -27,9 +27,18 @@ class SeanceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('date')
-            ->add('heure')
-            ->add('intro')
+            ->add('date', 'date', array(
+                'widget' => 'single_text',
+                'input' => 'datetime',
+                'format' => 'dd/MM/yyyy',
+                'attr' => array('class' => 'date'),
+              ))
+            ->add('heure', 'time', array(
+                'widget' => 'single_text',
+                'input' => 'datetime',
+                'attr' => array('class' => 'time'),
+              ))
+            ->add('intro','textarea',array('attr' => array('rows' => '5','cols' => '15')))
             ->add('test', 'choice', array('choices' => array('1' => 'Oui', '0' => 'Non')))
             ->add('classe', 'entity', array(
                 'class' => 'TerraNovaBundle:Classe',

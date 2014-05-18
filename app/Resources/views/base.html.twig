@@ -234,7 +234,7 @@
                 $contenu = $('.contenu');
                 $window = $(window);
                 if ($contenu.height() < $window.height()) {
-                    $contenu.css("margin-botom",$window.height());
+                    $contenu.css("margin-bottom",$('footer').height());
                     $('footer').css("position","absolute");
                 };
             {% endif %}

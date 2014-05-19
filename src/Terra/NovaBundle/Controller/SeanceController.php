@@ -21,13 +21,7 @@ class SeanceController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-        $user = $this->container->get('security.context')->getToken()->getUser();
-        $entities = $em->getRepository('TerraNovaBundle:Seance')->findByEnseignant($user);
-
-        return $this->render('TerraNovaBundle:Seance:index.html.twig', array(
-            'entities' => $entities,
-        ));
+        return $this->render('TerraNovaBundle:Seance:index.html.twig');
     }
     /**
      * Creates a new Seance entity.
@@ -244,6 +238,7 @@ class SeanceController extends Controller
         $date = date('Y-m-d');
 
         $seances = $em->getRepository('TerraNovaBundle:Seance')->findByEnseignantAndNext($user,$date);
+        
         return $this->render('TerraNovaBundle:Seance:next.html.twig', array(
             'seances' => $seances
         ));

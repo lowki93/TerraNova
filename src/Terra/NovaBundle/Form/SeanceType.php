@@ -57,6 +57,7 @@ class SeanceType extends AbstractType
             ->add('enseignant', 'entity', array(
                 'class' => 'TerraNovaBundle:User',
                 'property' => 'name',
+                 'attr' => array('class' => 'hidden-form'),
                 'query_builder' => function(EntityRepository $er){
                     return $er->createQueryBuilder('u')
                               ->where('u.id = :id')

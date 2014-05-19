@@ -30,7 +30,7 @@ class SeanceRepository extends EntityRepository {
     public function findByEnseignantAndNext($user,$date) {
         $qb = $this->createQueryBuilder('s');
         $qb->where('s.enseignant = :user')
-        	->andWhere('s.date > :date')
+        	->andWhere('s.date >= :date')
         	->setParameters(array(
                 'user' => $user,
                 'date' => $date,

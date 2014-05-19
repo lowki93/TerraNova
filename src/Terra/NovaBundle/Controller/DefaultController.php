@@ -21,24 +21,24 @@ class DefaultController extends Controller
 	        $form->bind($request);
 
 	        if ($form->isValid()) {
-	            $message = \Swift_Message::newInstance()
-	                ->setSubject($form->get('subject')->getData())
-	                ->setFrom($form->get('email')->getData())
-	                ->setTo('contact@example.com')
-	                ->setBody(
-	                    $this->renderView(
-	                        'LCWebsiteBundle:Mail:contact.html.twig',
-	                        array(
-	                            'ip' => $request->getClientIp(),
-	                            'name' => $form->get('name')->getData(),
-	                            'message' => $form->get('message')->getData()
-	                        )
-	                    )
-	                );
+	            // $message = \Swift_Message::newInstance()
+	            //     ->setSubject($form->get('subject')->getData())
+	            //     ->setFrom($form->get('email')->getData())
+	            //     ->setTo('contact@example.com')
+	            //     ->setBody(
+	            //         $this->renderView(
+	            //             'LCWebsiteBundle:Mail:contact.html.twig',
+	            //             array(
+	            //                 'ip' => $request->getClientIp(),
+	            //                 'name' => $form->get('name')->getData(),
+	            //                 'message' => $form->get('message')->getData()
+	            //             )
+	            //         )
+	            //     );
 
-	            $this->get('mailer')->send($message);
+	            // $this->get('mailer')->send($message);
 
-	            $request->getSession()->getFlashBag()->add('success', 'Your email has been sent! Thanks!');
+	            // $request->getSession()->getFlashBag()->add('success', 'Your email has been sent! Thanks!');
 
 	            return $this->redirect($this->generateUrl('terra_nova_homepage'));
 	        }

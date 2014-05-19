@@ -44,10 +44,10 @@
                             </ul>
                         {% endif %}
                         <ul>
-                            <li><a href="{{ path('terra_nova_homepage')}}#game">Le jeu</a></li>
-                            <li><a href="{{ path('terra_nova_homepage')}}#principle">Le principe</a></li>
-                            <li><a href="{{ path('terra_nova_homepage')}}#team">L'équipe</a></li>
-                            <li><a href="{{ path('terra_nova_homepage')}}#contact">Contact</a></li>
+                            <li><a data-scroll href="#game">Le jeu</a></li>
+                            <li><a data-scroll href="#principle">Le principe</a></li>
+                            <li><a data-scroll href="#team">L'équipe</a></li>
+                            <li><a data-scroll href="#contact">Contact</a></li>
                         </ul>
                     {% else %}
                         {% if is_granted("ROLE_ENSEIGNANT") %}
@@ -79,10 +79,10 @@
                             <a class="brand" href="{{ path('terra_nova_homepage')}}"><img src="{{ asset('bundles/terranova/img/logo.png') }}" alt="Wipo"/></a>
                             {% if app.request.attributes.get('_route') == ('terra_nova_homepage') or app.request.attributes.get('_route') == ('terra_nova_enseigant_register') %}
                                 <ul class="nav full pull-left hidden-tablette">
-                                    <li><a href="{{ path('terra_nova_homepage')}}#game">Le jeu</a></li>
-                                    <li><a href="{{ path('terra_nova_homepage')}}#principle">Le principe</a></li>
-                                    <li><a href="{{ path('terra_nova_homepage')}}#team">L'équipe</a></li>
-                                    <li><a href="{{ path('terra_nova_homepage')}}#contact">Contact</a></li>
+                                    <li><a data-scroll href="#game">Le jeu</a></li>
+                                    <li><a data-scroll href="#principle">Le principe</a></li>
+                                    <li><a data-scroll href="#team">L'équipe</a></li>
+                                    <li><a data-scroll href="#contact">Contact</a></li>
                                 </ul>
                                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                                     {% if is_granted("ROLE_ENSEIGNANT") %}
@@ -200,6 +200,7 @@
         {% javascripts
             'jquery/jquery.js'
             'bundles/terranova/jquery-ui/ui/jquery-ui.js'
+            'bundles/terranova/jquery.smooth-scroll/jquery.smooth-scroll.js'
             'bundles/terranova/jquery-ui/ui/i18n/jquery.ui.datepicker-fr.js'
             'bundles/terranova/js/modernizr.custom.js'
             'bundles/terranova/js/classie.js'
@@ -228,16 +229,10 @@
 
             $('.connexion-popover').popover();
 
-            $('#navbar').scrollspy({
-                offset: 100
-              });
-
             var resizeFunction = {
                 init: function(){
                     $contenu = $('.contenu');
                     $window = $(window);
-                    console.log($contenu.height());
-                    console.log($window.height()-$('footer').height());
                     if ($contenu.height() < $window.height()-$('footer').height()) {
                         $contenu.css("margin-bottom",$('footer').height());
                         $('footer').css("position","absolute");
@@ -257,27 +252,15 @@
                     resizeFunction.init();
                 })
             {% endif %}
-            // $(".navbar ul li a[href^='#']").on('click', function(e) {
 
-            //    // prevent default anchor click behavior
-            //    e.preventDefault();
-
-            //    // store hash
-            //    var hash = this.hash;
-            //    console.log($(this.hash).offset().top-60);
-            //    console.log($(this.hash).offset().top);
-            //    // animate
-            //    $('.scroll-area').animate({
-            //        scrollTop: $(this.hash).offset().top
-            //      }, 300, function(){
-
-            //        // when done, add hash to url
-            //        // (default click behaviour)
-            //        // window.location.hash = hash;
-            //      });
-
-            // });
-
+            $('.navbar ul li a[href*=#]').click(function() {
+                $url = $(this).attr('href');
+                 $.smoothScroll({
+                  scrollElement: $('.scroll-area'),
+                  scrollTarget: $url
+                });
+                return false;
+              });
         </script>
     </body>
 </html>

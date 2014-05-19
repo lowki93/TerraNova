@@ -18,6 +18,7 @@ var student = {
              complete: function(content){
                  var response = content.responseJSON.content;
                  $(".content-student-list").html(response);
+                 resizeFunction.init();
              }
         });
     }

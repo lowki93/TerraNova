@@ -1,7 +1,17 @@
 {% if seances %}
-	{% for seance in seances %}
-	    {{ seance.theme.name }}
-	{% endfor %}
+	<ul class="theme-list">
+		{% for seance in seances %}
+			<a href="{{ path('seance_edit', {'id': seance.id }) }}">
+				<li>
+				    <div class="img-conteneur">
+				        <img src="/img/theme/{{ seance.theme.path }}" alt="{{ seance.theme.name }}" />
+				    </div>
+				    <p>{{ seance.theme.name }}</p>
+				    <span>pour le {{ seance.date|date('d/m/Y') }}<br />à {{seance.heure|date('H:i')}}<br />Classe : {{seance.classe.name}}</span>
+				</li>
+			</a>
+		{% endfor %}
+	</ul>
 {% else %}
     Aucune séance de prevu
 {% endif %}

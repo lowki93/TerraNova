@@ -1,16 +1,73 @@
 {% extends '::base.html.twig' %}
 
+{% block title%}Enseignant | Modifié votre séance{% endblock %}
+
+{% block stylesheets %}
+    {% stylesheets
+        'bundles/terranova/css/seance.sass'
+        filter="cssrewrite,sass" output='css/seance.css' %}
+           <link href="{{ asset_url }}" type="text/css" rel="stylesheet" />
+    {% endstylesheets %}
+    <link rel="stylesheet" type="text/css" href="/bundles/terranova/jquery-ui/themes/cupertino/jquery-ui.css">
+{% endblock %}
+
 {% block body -%}
-    <h1>Seance edit</h1>
+	<div class="container">
+	    <h1>modifié votre séance</h1>
+	    <p><a class="back" href="javascript:history.back()"><img src="{{ asset('bundles/terranova/img/back-button.png') }}" alt="back-button">retour aux séances</a></p>
 
-    {{ form(edit_form) }}
+	    {{ form_start(edit_form, { 'attr': {'class' : 'form-horizontal'} }) }}
+	    <div class="control-group">
+	        <label class="control-label">Date</label>
+	        <div class="controls">
+	            {{ form_widget(edit_form.date) }}
+	        </div>
+	    </div>
+	    <div class="control-group">
+	        <label class="control-label">Heure de début</label>
+	        <div class="controls">
+	            {{ form_widget(edit_form.heure) }}
+	        </div>
+	    </div>
+	    <div class="control-group">
+	        <label class="control-label">Test</label>
+	        <div class="controls">
+	            {{ form_widget(edit_form.test) }}
+	        </div>
+	    </div>
+	    <div class="control-group">
+	        <label class="control-label">Classe</label>
+	        <div class="controls">
+	            {{ form_widget(edit_form.classe) }}
+	        </div>
+	    </div>
+	    <div class="control-group">
+	        <label class="control-label">Theme</label>
+	        <div class="controls">
+	            {{ form_widget(edit_form.theme) }}
+	        </div>
+	    </div>
+	    <div class="control-group">
+	        <label class="control-label">Introduction</label>
+	        <div class="controls">
+	            {{ form_widget(edit_form.intro) }}
+	        </div>
+	    </div>
+	    {{ form_widget(edit_form.enseignant) }}
+	    {{ form_widget(edit_form._token) }}
+	    <div class="control-group">
+	        <div class="controls">
+	            <input class='etablissement-create' type='image' src='{{ asset('bundles/terranova/img/button/update.png') }}'/>
+	        </div>
+	    </div>
+	</div>
+{% endblock %}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('seance') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+{% block javascripts %}
+    <script type="text/javascript">  
+        $("form input.date").datepicker({
+            dateFormat: 'dd/mm/yy', 
+            firstDay:1
+        }).attr("readonly","readonly");
+    </script>   
 {% endblock %}

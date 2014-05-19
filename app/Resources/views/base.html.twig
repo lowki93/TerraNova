@@ -214,6 +214,7 @@
         %}
         <script src="{{ asset_url }}"></script>
         {% endjavascripts %}
+        {% block javascripts %}{% endblock %}
         <script>
             // add menuSlider
             var menu = new mlPushMenu( 
@@ -235,6 +236,8 @@
                 init: function(){
                     $contenu = $('.contenu');
                     $window = $(window);
+                    console.log($contenu.height());
+                    console.log($window.height()-$('footer').height());
                     if ($contenu.height() < $window.height()-$('footer').height()) {
                         $contenu.css("margin-bottom",$('footer').height());
                         $('footer').css("position","absolute");
@@ -246,7 +249,13 @@
             }
 
             {% if app.request.attributes.get('_route') != ('terra_nova_homepage') %}
-                resizeFunction.init();
+                $(document).ready(function($){
+                    resizeFunction.init();
+                });
+
+                $(window).resize(function(){
+                    resizeFunction.init();
+                })
             {% endif %}
             // $(".navbar ul li a[href^='#']").on('click', function(e) {
 
@@ -270,6 +279,5 @@
             // });
 
         </script>
-        {% block javascripts %}{% endblock %}
     </body>
 </html>

@@ -20,6 +20,7 @@
 		a
 			width: 19%
 			display: inline-block
+			vertical-align: top
 			li
 				display: inline-block
 				margin:
@@ -112,3 +113,21 @@
 					font-family: 'vagroundedsrd-light'
 					font-size: 18px
 					color: $greenLabel
+
+@media (max-width: 979px) and (min-width: 768px)
+	.content-student
+		ul.theme-list
+			a
+				width: 24%
+
+@media (max-width: 767px)
+	.content-student
+		ul.theme-list
+			a
+				width: 30%
+
+@media (max-width: 520px)
+	.content-student
+		ul.theme-list
+			a
+				width: 49%

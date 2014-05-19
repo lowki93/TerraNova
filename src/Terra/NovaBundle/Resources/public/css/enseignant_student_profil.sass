@@ -30,6 +30,7 @@
 			a
 				width: 22%
 				display: inline-block
+				vertical-align: top
 				li
 					display: inline-block
 					margin:
@@ -45,6 +46,9 @@
 					background-color: rgba(255, 255, 255, 0.5)
 					p
 						margin: 0
+						font-size: 18px
+					span
+						font-size: 14px
 					.img-conteneur
 						width: 100%
 						position: relative
@@ -237,13 +241,27 @@
 									span
 										font-size: 25px
 
-	
-@media (max-width: 520px)
+@media (max-width: 979px) and (min-width: 768px)
 	.content-student
 		.span8
 			ul
 				a
 					width: 33%
+
+@media (max-width: 767px)
+	.content-student
+		.span8
+			ul
+				a
+					width: 30%	
+
+
+@media (max-width: 520px)
+	.content-student
+		.span8
+			ul
+				a
+					width: 49%
 					li
 						.hover
 							span

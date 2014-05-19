@@ -9,7 +9,6 @@
     {% if entities %}
         <table class="table table-striped">
                 <tr>
-                    <th>Id</th>
                     <th>Numeronational</th>
                     <th>Name</th>
                     <th>Type</th>
@@ -21,7 +20,6 @@
                 </tr>
             {% for entity in entities %}
                 <tr>
-                    <td>{{ entity.id }}</td>
                     <td>{{ entity.numeroNational }}</td>
                     <td>{{ entity.name }}</td>
                     <td>{{ entity.type }}</td>

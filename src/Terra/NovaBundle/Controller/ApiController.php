@@ -25,15 +25,11 @@ class ApiController extends Controller
 	public function teacherLoginAction(Request $request)
 	{
 		$date = date('Y-m-d');
-		// if ('POST' === $request->getMethod()) {
-		// 	die('test');
-
-  //       }
-		// $data = $request->request->all();
-		// $email = $data['email'];
-		// $password = $data['password'];
-		$email = "gsonna@gmail.com";
-		$password = "k7gwEoYUuiQ57uaoTRMFm6uAEKjikKKUKX9bZgve9E1RJwLab6J/gxtvKOI06w2M4iEo+M789bRcok1J4zzl5A==";
+		$data = $request->request->all();
+		$email = $data['email'];
+		$password = $data['password'];
+		// $email = "gsonna@gmail.com";
+		// $password = "k7gwEoYUuiQ57uaoTRMFm6uAEKjikKKUKX9bZgve9E1RJwLab6J/gxtvKOI06w2M4iEo+M789bRcok1J4zzl5A==";
 
 		// // Pour récupérer le service UserManager du bundle
 		$userManager = $this->get('fos_user.user_manager');
@@ -51,36 +47,36 @@ class ApiController extends Controller
 				unset($user->getSeance()[$i]);
 			}
 		}
-		//return new JsonResponse($user)
-	    return $this->handleView($this->view($user, 200));
+		return new JsonResponse($user)
+	    //return $this->handleView($this->view($user, 200));
 	}
 
 	public function studentLoginAction(Request $request)
 	{	
-		// $data = $request->request->all();
-		// $enseignantId = $data['enseignant_id'];
-		// $classeId = $data['class_id'];
-		// $login = $data['login'];
-		$enseignantId = "5";
-		$classeId = "2";
-		$login = "Jordan";
+		$data = $request->request->all();
+		$enseignantId = $data['enseignant_id'];
+		$classeId = $data['class_id'];
+		$login = $data['login'];
+		// $enseignantId = "5";
+		// $classeId = "2";
+		// $login = "Jordan";
 
 		$em = $this->getDoctrine();
 
 		$class = $em->getRepository('TerraNovaBundle:Classe')->findById($classeId);
 		$student = $em->getRepository('TerraNovaBundle:Student')->findByStudent($login,$class);
 
-		//return new JsonResponse($student)
-	    return $this->handleView($this->view($student, 200));
+		return new JsonResponse($student)
+	    //return $this->handleView($this->view($student, 200));
 	}
 
 	public function updateAvatarAction(Request $request)
 	{	
-		// $data = $request->request->all();
-		// $studentId = $data['student_id'];
-		// $avatar = $data['avatar'];
-		$studentId = "1";
-		$avatar = "55844844";
+		$data = $request->request->all();
+		$studentId = $data['student_id'];
+		$avatar = $data['avatar'];
+		// $studentId = "1";
+		// $avatar = "55844844";
 
 		$em = $this->getDoctrine();
 	    $student = $em->getRepository('TerraNovaBundle:Student')->unSetAvatar($studentId,$avatar);
@@ -90,38 +86,38 @@ class ApiController extends Controller
 	    else
 			$response['good'] = false;
 
-	    // return new JsonResponse($response);
-	    return $this->handleView($this->view($response, 200));
+	    return new JsonResponse($response);
+	    //return $this->handleView($this->view($response, 200));
 	}
 
 	public function resultSubThemeAction(Request $request)
 	{
-		// $data = $request->request->all();
-		// $seanceId = $data['seance_id'];
-		// $studentId = $data['student_id'];
-		// $cozeText = $data['cozeText'];
-		// $dragCozeText = $data['dragCozeText'];
-		// $trueFalse = $data['trueFalse'];
-		// $freeSentence = $data['freeSentence'];
-		// $success = $data['success'];
-		// $raTime = $data['raTime'];
-		// $gameTime = $data['gameTime'];
-		// $timePassing = $data['timePassing'];
-		// $levelSuccess = $data['levelSuccess'];
-		// $subThemeId = $data['subThemeId'];
+		$data = $request->request->all();
+		$seanceId = $data['seance_id'];
+		$studentId = $data['student_id'];
+		$cozeText = $data['cozeText'];
+		$dragCozeText = $data['dragCozeText'];
+		$trueFalse = $data['trueFalse'];
+		$freeSentence = $data['freeSentence'];
+		$success = $data['success'];
+		$raTime = $data['raTime'];
+		$gameTime = $data['gameTime'];
+		$timePassing = $data['timePassing'];
+		$levelSuccess = $data['levelSuccess'];
+		$subThemeId = $data['subThemeId'];
 
-		$seanceId = 2;
-		$studentId = 1;
-		$cozeText = "soleil,vapeur d'eau,nuages,s'infiltre,nappe phréatique,source,ruisselle,fleuves";
-		$dragCozeText = "false,false,false,true,false,true,false,true";
-		$trueFalse = "false,false,false";
-		$freeSentence = "je suis Sherilybn Kamga";
-		$success = 100;
-		$raTime = new DateTime('0000-00-00 0:10');
-		$gameTime = new DateTime('0000-00-00 0:10');
-		$timePassing = new DateTime('0000-00-00 0:20');
-		$levelSuccess = "or";
-		$subThemeId = 4;
+		// $seanceId = 2;
+		// $studentId = 1;
+		// $cozeText = "soleil,vapeur d'eau,nuages,s'infiltre,nappe phréatique,source,ruisselle,fleuves";
+		// $dragCozeText = "false,false,false,true,false,true,false,true";
+		// $trueFalse = "false,false,false";
+		// $freeSentence = "je suis Sherilybn Kamga";
+		// $success = 100;
+		// $raTime = new DateTime('0000-00-00 0:10');
+		// $gameTime = new DateTime('0000-00-00 0:10');
+		// $timePassing = new DateTime('0000-00-00 0:20');
+		// $levelSuccess = "or";
+		// $subThemeId = 4;
 
 		$resultSubTheme = new ResultSubTheme();
 
@@ -170,7 +166,7 @@ class ApiController extends Controller
 	    else
 			$response['good'] = false;
 
-		// return new JsonResponse($response);
-	    return $this->handleView($this->view($response, 200));
+		return new JsonResponse($response);
+	    //return $this->handleView($this->view($response, 200));
 	}
 }

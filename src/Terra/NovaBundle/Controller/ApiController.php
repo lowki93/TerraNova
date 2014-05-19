@@ -47,7 +47,7 @@ class ApiController extends Controller
 				unset($user->getSeance()[$i]);
 			}
 		}
-		return new JsonResponse($user)
+		return new JsonResponse($user);
 	    //return $this->handleView($this->view($user, 200));
 	}
 
@@ -66,7 +66,7 @@ class ApiController extends Controller
 		$class = $em->getRepository('TerraNovaBundle:Classe')->findById($classeId);
 		$student = $em->getRepository('TerraNovaBundle:Student')->findByStudent($login,$class);
 
-		return new JsonResponse($student)
+		return new JsonResponse($student);
 	    //return $this->handleView($this->view($student, 200));
 	}
 

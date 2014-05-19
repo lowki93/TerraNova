@@ -5,7 +5,7 @@
 {% block body %}
 	<div class="container">
 		<h1>Créer un élève</h1>
-		<p><a class="back" href="{{ path('terra_nova_homepage') }}"><img src="{{ asset('bundles/terranova/img/back-button.png') }}" alt="back-button">retour</a></p>
+		<p><a class="back" href="javascript:history.back()"><img src="{{ asset('bundles/terranova/img/back-button.png') }}" alt="back-button">retour</a></p>
 
 		{{ form_start(form, { 'attr': {'class' : 'form-horizontal'} }) }}
 		<div class="control-group">

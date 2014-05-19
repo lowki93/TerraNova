@@ -215,7 +215,6 @@
         %}
         <script src="{{ asset_url }}"></script>
         {% endjavascripts %}
-        {% block javascripts %}{% endblock %}
         <script>
             // add menuSlider
             var menu = new mlPushMenu( 
@@ -238,7 +237,7 @@
                         $('footer').css("position","absolute");
                     } else {
                         $contenu.css("margin-bottom",0);
-                        $('footer').css("position","none");
+                        $('footer').css("position","relative");
                     };
                 }
             }
@@ -262,5 +261,6 @@
                 return false;
               });
         </script>
+        {% block javascripts %}{% endblock %}
     </body>
 </html>

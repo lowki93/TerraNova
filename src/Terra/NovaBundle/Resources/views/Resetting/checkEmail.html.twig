@@ -5,9 +5,8 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block body %}
-
-	<p>
-	{{ 'resetting.check_email'|trans({'%email%': email}) }}
-	</p>
-
+	<div class="container">
+		<p class="error-content">{{ 'resetting.check_email'|trans({'%email%': email}) }}</p>
+		<p><a class="back" href="{{ path('terra_nova_homepage') }}"><img src="{{ asset('bundles/terranova/img/back-button.png') }}" alt="back-button">retour</a></p>
+	</div>
 {% endblock %}

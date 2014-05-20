@@ -3,15 +3,30 @@
 {% block title %}Enseignant | Reinitilisation{% endblock %}
 
 {% block body %}
-
-	{% trans_default_domain 'FOSUserBundle' %}
-
-	<form action="{{ path('fos_user_resetting_reset', {'token': token}) }}" {{ form_enctype(form) }} method="POST" class="fos_user_resetting_reset">
-	    {{ form_widget(form) }}
-	    <div>
-	        <input type="submit" value="{{ 'resetting.reset.submit'|trans }}" />
-	    </div>
-	</form>
-
+	<div class="container">
+		{% trans_default_domain 'FOSUserBundle' %}
+		<h1>votre nouveau mot de passe</h1>
+		<p><a class="back" href="{{ path('terra_nova_homepage') }}"><img src="{{ asset('bundles/terranova/img/back-button.png') }}" alt="back-button">retour</a></p>
+		<form action="{{ path('fos_user_resetting_reset', {'token': token}) }}" {{ form_enctype(form) }} method="POST" class="fos_user_resetting_reset form-horizontal">
+		    <div class="control-group">
+		        <label class="control-label">Mot de passe</label>
+		        <div class="controls">
+		            {{ form_widget(form.plainPassword.first) }}
+		        </div>
+		    </div>
+		    <div class="control-group">
+		        <label class="control-label">Vérification</label>
+		        <div class="controls">
+		            {{ form_widget(form.plainPassword.second) }}
+		        </div>
+		    </div>
+		    {{ form_widget(form._token) }}
+			<div class="control-group">
+		        <div class="controls">
+		            <input class="etablissement-create" type="image" src="{{ asset('bundles/terranova/img/button/validate.png') }}"/>
+		        </div>
+		    </div>
+		</form>
+	</div>
 
 {% endblock %}

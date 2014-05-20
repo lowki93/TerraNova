@@ -6,7 +6,6 @@ use Symfony\Component\HttpFoundation\Request;
 use FOS\RestBundle\Controller\FOSRestController as Controller;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-// use Symfony\Component\Validator\Constraints\DateTime;
 use Terra\NovaBundle\Entity\ResultSubTheme;
 use \DateTime;
 
@@ -26,29 +25,38 @@ class ApiController extends Controller
 	{
 		$date = date('Y-m-d');
 		$data = $request->request->all();
-		$email = $data['email'];
+		$username = $data['username'];
 		$password = $data['password'];
-		// $email = "gsonna@gmail.com";
-		// $password = "k7gwEoYUuiQ57uaoTRMFm6uAEKjikKKUKX9bZgve9E1RJwLab6J/gxtvKOI06w2M4iEo+M789bRcok1J4zzl5A==";
 
-		// // Pour récupérer le service UserManager du bundle
+		// Pour récupérer le service UserManager du bundle
 		$userManager = $this->get('fos_user.user_manager');
 
+		$user = $userManager->loadUserByUsername($username);
+	    $encoder = $this->get('security.encoder_factory')->getEncoder($user);
+	    $encodedPass = $encoder->encodePassword($password, $user->getSalt());
+
 		// Pour charger un utilisateur
-		$user = $userManager->findUserBy(array('email' => $email, 'password' => $password));
+		$user = $userManager->findUserBy(array('username' => $username, 'password' => $encodedPass));
 
-		$seance =count($user->getSeance());
+		if(count($user) == 0 ) {
+			$response['teacher'] = false;
+	    	return $this->handleView($this->view($response, 200));
+		}
 
-		for ($i=0; $i < $seance; $i++) {
-			$dateSeance = date_format($user->getSeance()[$i]->getDate(), 'Y-m-d');
-			$classId = $user->getSeance()[$i]->getClasse()->getId();
+		if(count($user->getSeance()) != 0) {
+			$seance =count($user->getSeance());
 
-			if($dateSeance !== $date || $classId !== $user->getCurrentClass()->getId()) {
-				unset($user->getSeance()[$i]);
+			for ($i=0; $i < $seance; $i++) {
+				$dateSeance = date_format($user->getSeance()[$i]->getDate(), 'Y-m-d');
+				$classId = $user->getSeance()[$i]->getClasse()->getId();
+
+				if($dateSeance !== $date || $classId !== $user->getCurrentClass()->getId()) {
+					unset($user->getSeance()[$i]);
+				}
 			}
 		}
-		return new JsonResponse($user);
-	    //return $this->handleView($this->view($user, 200));
+	    
+	    return $this->handleView($this->view($user, 200));
 	}
 
 	public function studentLoginAction(Request $request)
@@ -66,8 +74,7 @@ class ApiController extends Controller
 		$class = $em->getRepository('TerraNovaBundle:Classe')->findById($classeId);
 		$student = $em->getRepository('TerraNovaBundle:Student')->findByStudent($login,$class);
 
-		return new JsonResponse($student);
-	    //return $this->handleView($this->view($student, 200));
+	    return $this->handleView($this->view($student, 200));
 	}
 
 	public function updateAvatarAction(Request $request)
@@ -86,8 +93,7 @@ class ApiController extends Controller
 	    else
 			$response['good'] = false;
 
-	    return new JsonResponse($response);
-	    //return $this->handleView($this->view($response, 200));
+	    return $this->handleView($this->view($response, 200));
 	}
 
 	public function resultSubThemeAction(Request $request)
@@ -166,7 +172,6 @@ class ApiController extends Controller
 	    else
 			$response['good'] = false;
 
-		return new JsonResponse($response);
-	    //return $this->handleView($this->view($response, 200));
+	    return $this->handleView($this->view($response, 200));
 	}
 }

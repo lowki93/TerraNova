@@ -38,7 +38,7 @@ class SeanceController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('seance_show'));
+            return $this->redirect($this->generateUrl('seance'));
         }
 
         return $this->render('TerraNovaBundle:Seance:new.html.twig', array(

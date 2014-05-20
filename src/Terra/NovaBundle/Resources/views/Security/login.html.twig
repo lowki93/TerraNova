@@ -22,12 +22,6 @@
 		</fieldset>
 	</form>	
 	{% if error %}
-	    <p class='error'>{{ error|trans }}</p>
+	    <p class='error-red min'>{{ error|trans }}</p>
 	{% endif %}
 </div>
-
-{% for type, messages in app.session.flashbag.all() %}
-	{% for message in messages %}
-			<p>{{ message }}</p>
-	{% endfor %}
-{% endfor %}

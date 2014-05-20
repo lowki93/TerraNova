@@ -5,19 +5,21 @@
 {% block body %}
 
 	{% trans_default_domain 'FOSUserBundle' %}
-
-	<p><a href={{path('terra_nova_enseigant_connection')}}>Back to login</a></p>
-	<form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
-	    <div>
-	        {% if invalid_username is defined %}
-	            <p>{{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}) }}</p>
-	        {% endif %}
-	        <label for="username">{{ 'resetting.request.username'|trans }}</label>
-	        <input type="text" id="username" name="username" required="required" />
-	    </div>
-	    <div>
-	        <input type="submit" value="{{ 'resetting.request.submit'|trans }}" />
-	    </div>
-	</form>
+	<div class="container">
+		<h1>un nouveau mot de passe ?</h1>
+		<p><a class="back" href="{{ path('terra_nova_homepage') }}"><img src="{{ asset('bundles/terranova/img/back-button.png') }}" alt="back-button">retour</a></p>
+		<form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request form-horizontal">
+		    <div>
+		        {% if invalid_username is defined %}
+		            <p class="error-red">{{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}) }}</p>
+		        {% endif %}
+		        <label for="username">{{ 'resetting.request.username'|trans }}</label>
+		        <input type="text" id="username" name="username" required="required" />
+		    </div>
+		    <div>
+		        <input class="etablissement-create" type="image" src="{{ asset('bundles/terranova/img/button/validate.png') }}"/>
+		    </div>
+		</form>
+	</div>
 
 {% endblock %}

@@ -17,10 +17,10 @@ class StudentRepository extends EntityRepository {
 
     public function findByStudent($login,$class){
 		$qb = $this->createQueryBuilder('s');
-		$qb->where('s.login = :login')
+		$qb->where('lower(s.login) LIKE :login')
 			->andWhere('s.classe = :class')
 			->setParameters(array(
-					'login' => $login,
+					'login' => strtolower($login),
 					'class' => $class
 				));
 

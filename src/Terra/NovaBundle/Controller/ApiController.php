@@ -106,11 +106,11 @@ class ApiController extends Controller
 		$trueFalse = $data['trueFalse'];
 		$freeSentence = $data['freeSentence'];
 		$success = $data['success'];
-		$raTime = $data['raTime'];
-		$gameTime = $data['gameTime'];
-		$timePassing = $data['timePassing'];
+		$raTime = date_create_from_format('H:i:s', $data['raTime']);
+		$gameTime = date_create_from_format('H:i:s', $data['gameTime']);
+		$timePassing = date_create_from_format('H:i:s', $data['timePassing']);
 		$levelSuccess = $data['levelSuccess'];
-		$subThemeId = $data['subThemeId'];
+		$subThemeId = $data['subTheme_id'];
 
 		// $seanceId = 2;
 		// $studentId = 1;

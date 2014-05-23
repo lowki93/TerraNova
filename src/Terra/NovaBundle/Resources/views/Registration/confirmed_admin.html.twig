@@ -10,9 +10,9 @@
       <span class="current">Confirmation d'inscription</span>
     </div>
     <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
-    <p><a href="{{ path('terra_nova_homepage') }}">Back to index</a></p>
+    <p><a href="{{ path('terra_nova_homepage') }}">retour sur la page d'acceuil</a></p>
 
-	<p><a href="{{ path('terra_nova_admin_index') }}">Back to admin</a></p>
+	<p><a href="{{ path('terra_nova_admin_index') }}">retour sur la page d'admin</a></p>
 
     {% if app.session is not empty %}
         {% set targetUrl = app.session.get('_security.' ~ app.security.token.providerKey ~ '.target_path') %}

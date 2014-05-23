@@ -10,7 +10,7 @@ use JMS\Serializer\Annotation\Expose;
  * SousTheme
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Terra\NovaBundle\Entity\SousThemeRepository")
  * @ExclusionPolicy("all")
  */
 class SousTheme

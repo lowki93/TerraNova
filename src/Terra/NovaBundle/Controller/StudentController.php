@@ -333,6 +333,15 @@ class StudentController extends Controller
         $seance = $em->getRepository('TerraNovaBundle:Seance')->find($idSeance);
         $resultSubThemes = $em->getRepository('TerraNovaBundle:ResultSubTheme')->findBySeance($idSeance,$id);
 
+        foreach ($resultSubThemes as $resultSubTheme) {
+            if($resultSubTheme->getSousTheme() == null) {
+                $subTheme = $em->getRepository("TerraNovaBundle:SousTheme")->findByName("le cycle de l'eau");
+
+                $resultSubTheme->setSousTheme($subTheme[0]);
+                $em->flush();
+            }   
+        }
+
         return $this->render('TerraNovaBundle:Student:seance.html.twig', array(
             'student' => $student,
             'result' => $result,

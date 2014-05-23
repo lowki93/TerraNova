@@ -152,16 +152,7 @@ class StudentController extends Controller
         $resultSubTheme = $em->getRepository('TerraNovaBundle:ResultSubTheme')->findByStudent($id);
         $nbResulSubTHheme = count($resultSubTheme);
 
-        // $badges = array();
-        // for ($i=0; $i < $nbResulSubTHheme; $i++) { 
-        //     $subThemeId = $resultSubTheme[$i]->getSousTheme()->getId();
-        //     $levelSuccess = $resultSubTheme[$i]->getLevelSuccess();
-        //     $badge = $em->getRepository('TerraNovaBundle:Trophy')->findByResult($subThemeId,$levelSuccess);
-        //     $badges = array_merge($badges, $badge);
-        // }
-
-        $badges = $em->getRepository('TerraNovaBundle:Badge')->findAll();
-
+        $badges = $em->getRepository('TerraNovaBundle:Badge')->findById($entity->getBadges());
         $nbSeance = count($seances);
 
         if (!$entity) {
@@ -219,8 +210,6 @@ class StudentController extends Controller
             'action' => $this->generateUrl('Eleve_update', array('id' => $entity->getId(), 'idClasse' => $idClasse)),
             'method' => 'PUT',
         ));
-
-        $form->add('submit', 'submit', array('label' => 'Update'));
 
         return $form;
     }

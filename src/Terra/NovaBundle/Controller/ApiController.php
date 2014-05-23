@@ -65,9 +65,6 @@ class ApiController extends Controller
 		$enseignantId = $data['enseignant_id'];
 		$classeId = $data['class_id'];
 		$login = $data['login'];
-		// $enseignantId = "5";
-		// $classeId = "2";
-		// $login = "Jordan";
 
 		$em = $this->getDoctrine();
 
@@ -82,8 +79,6 @@ class ApiController extends Controller
 		$data = $request->request->all();
 		$studentId = $data['student_id'];
 		$avatar = $data['avatar'];
-		// $studentId = "1";
-		// $avatar = "55844844";
 
 		$em = $this->getDoctrine();
 	    $student = $em->getRepository('TerraNovaBundle:Student')->unSetAvatar($studentId,$avatar);
@@ -111,19 +106,23 @@ class ApiController extends Controller
 		$timePassing = date_create_from_format('H:i:s', $data['timePassing']);
 		$levelSuccess = $data['levelSuccess'];
 		$subThemeId = $data['subTheme_id'];
+		$badgeId = array($data['badge_id']);
+		$idBadge = $data['badge_id'];
 
-		// $seanceId = 2;
-		// $studentId = 1;
+		// $seanceId = 6;
+		// $studentId = 3;
 		// $cozeText = "soleil,vapeur d'eau,nuages,s'infiltre,nappe phréatique,source,ruisselle,fleuves";
-		// $dragCozeText = "false,false,false,true,false,true,false,true";
+		// $dragCozeText = "soleil,vapeur d'eau,nuages,s'infiltre,nappe phréatique,source,ruisselle,fleuves";
 		// $trueFalse = "false,false,false";
-		// $freeSentence = "je suis Sherilybn Kamga";
+		// $freeSentence = "je suis Jordan Delcros";
 		// $success = 100;
 		// $raTime = new DateTime('0000-00-00 0:10');
 		// $gameTime = new DateTime('0000-00-00 0:10');
 		// $timePassing = new DateTime('0000-00-00 0:20');
 		// $levelSuccess = "or";
 		// $subThemeId = 4;
+		// $badgeId = array(3);
+		// $idBadge = 3;
 
 		$resultSubTheme = new ResultSubTheme();
 
@@ -165,10 +164,25 @@ class ApiController extends Controller
 		else
 			$newSuccess = ($oldSuccess + $success)/2;
 
+		$badge = $student->getBadges();
+
+		if($badge == null){
+			$badge = $badgeId;	
+		} else {
+			if (in_array($idBadge, (array)$badge)) {
+			} else {
+				array_push($badge,$idBadge);
+			}
+		}
+
 		$newsResult = $em->getRepository('TerraNovaBundle:ResultStudent')->updateResult($student,$newSuccess,$newTimePassing);
 
+		$student->setBadges($badge);
+		$em->flush();
+
+		$student = $em->getRepository('TerraNovaBundle:Student')->find($studentId);
 		if($newsResult == 1)
-			$response['good'] = true;	
+			$response = $student;	
 	    else
 			$response['good'] = false;
 

@@ -65,6 +65,13 @@ class Student
     private $remarks;
 
     /**
+     * @var array $badges
+     *
+     * @ORM\Column(name="badges", type="array", nullable=true)
+     */
+    private $badges;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Terra\NovaBundle\Entity\Classe", inversedBy="student")
      */
     protected $classe;
@@ -232,6 +239,7 @@ class Student
     public function __construct()
     {
         $this->resultSubTheme = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->badges = array();
     }
 
     /**
@@ -321,5 +329,27 @@ class Student
     public function getRemarks()
     {
         return $this->remarks;
+    }
+
+    /**
+     * Set badges
+     *
+     * @param array $badges
+     * @return Student
+     */
+    public function setBadges($badges)
+    {
+        $this->badges = $badges;
+        return $this;
+    }
+
+    /**
+     * Get badges
+     *
+     * @return array 
+     */
+    public function getBadges()
+    {
+        return $this->badges;
     }
 }

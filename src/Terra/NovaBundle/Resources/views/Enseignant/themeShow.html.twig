@@ -26,7 +26,7 @@
 						{% if theme.sousTheme is empty %}
 							<li>Pas de niveau</li>
 						{% else %}
-							{% for sousTheme in theme.sousTheme %}
+							{% for sousTheme in theme.sousTheme|reverse %}
 							    <li>Niveau {{loop.index}} : {{sousTheme.name}}</li>
 							{% endfor %}  
 						{% endif %}

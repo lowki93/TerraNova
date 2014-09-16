@@ -1,7 +1,7 @@
-set :domain, "frontapp0.demo.infra.universcine.com"
+set :domain, "178.32.221.32"
 set :symfony_env_prod, "prod"
 
-set :deploy_to, "/home/frontoffice/instances/kbudain-wipo"
+set :deploy_to, "/home/lowki/instances/wipo"
 
 role :web, domain
 role :app, domain

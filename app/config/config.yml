@@ -76,7 +76,7 @@ fos_user:
     service:
         mailer: fos_user.mailer.twig_swift
     from_email:
-        address:        noreply@terranova.dev
+        address:        noreply@wipo.kevinbudain.fr
         sender_name:    Terra Nova
     registration:
         form:
@@ -85,7 +85,7 @@ fos_user:
             enabled:    true
             template: TerraNovaBundle:Registration:email.txt.twig
             from_email:
-                address:    noreply@terranova.dev
+                address:    noreply@wipo.kevinbudain.fr
                 sender_name:    Terra Nova Registration
     profile:
         form:
@@ -96,7 +96,7 @@ fos_user:
     resetting:
         email:
             from_email:
-                address:    noreply@terranova.dev
+                address:    noreply@wipo.kevinbudain.fr
                 sender_name:    Terra Nova new password
             template:   TerraNovaBundle:Resetting:email.txt.twig
     template:

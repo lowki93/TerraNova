@@ -6,7 +6,7 @@ set :stages, %w(prod demo)
 
 set :application, "Wipo"
 set :app_path,    "app"
-set :user, "frontoffice"
+set :user, "lowki"
 
 set :repository,  ".git"
 set :scm,         :git
